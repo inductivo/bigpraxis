@@ -1,10 +1,10 @@
         <!-- Temas Matemáticas -->
         <div class="row">
             <div class="col-lg-12">
-                <h2 class="page-header">A. Números</h2>
+                <h2 class="page-header">I. Álgebra</h2>
             </div>
              <div class="col-lg-4 col-sm-4 text-center">
-                <img class="img-rounded img-responsive img-center" src="http://sumaventas.com.mx/study/img/preparatoria1/a-numeros.png" alt="Números">
+                <img class="img-rounded img-responsive img-center" src="http://sumaventas.com.mx/study/img/preparatoria1/h-propiedades.png" alt="Àlgebra">
                 <?= anchor('preparatoria/mat1','<h4>Matemáticas 1</h4>');?>
             </div>
 
@@ -12,7 +12,7 @@
                 <ul class="list-group">
             
                     <?php
-                        $clave="A";
+                        $clave="I";
                         $q = $this->Model_contenidos->mostrar($clave);
                         foreach ($q as $cont):
                     ?>

@@ -42,5 +42,10 @@
                 <?= anchor('preparatoria/propiedades','<img class="img-rounded img-responsive img-center" src="http://sumaventas.com.mx/study/img/preparatoria1/h-propiedades.png" alt="Propiedades">'); ?>
                 <h4>H. Propiedades</h4>
             </div>
+            <div class="col-lg-3 col-sm-4 text-center">
+                <?= anchor('contenidos/algebra','<img class="img-rounded img-responsive img-center" src="http://sumaventas.com.mx/study/img/preparatoria1/h-propiedades.png" alt="Algebra">'); ?>
+                <h4>I. Álgebra</h4>
+            </div>
+
             
         </div> <!--.row -->

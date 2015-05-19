@@ -23,6 +23,13 @@ class Contenidos extends CI_Controller {
 		$this->load->view('templates/template_principal',$data);
 	}
 
+	//I
+	public function algebra()
+	{
+		$data['contenido'] ='preparatoria/mat/primero/algebra';
+		$this->load->view('templates/template_principal',$data);
+	}
+
 	public function obtener_pregunta()
 	{
 		$id_contenido= $_GET['id_contenido'];
