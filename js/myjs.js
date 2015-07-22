@@ -1,11 +1,11 @@
 
 $(document).ready(function() {
-	$('#caja_tiempo').countdown({since:0,format: 'MS'});
+
+
+	$('#caja_tiempo').countdown({since:0,format: 'HMS',padZeroes: true, description: '',compact:true});
 
 	var problemas=0;
 	var aciertos=0;
-	
-
 	
 	$('#caja_aciertos').html(aciertos);
 	
@@ -15,9 +15,12 @@ $(document).ready(function() {
 	$('#lista_contenidos').on('click','li',iniciaTest);
 	$('#caja_siguiente').on('click','button',siguientePregunta);
 
+
 	//$('.eventValidar').click(validarRespuesta); 
 
-	
+
+
+
 	function validarRespuesta()
 	 {
 	 	var id_tipo = $(this).attr('data-tipo');
@@ -90,10 +93,10 @@ $(document).ready(function() {
 		 		var html2 ='';
 		 		var html3='';
 
-		 		html = '<h1 class="incorrecto">Incorrecto!</h1> <h4>La respuesta correctas es: </h4><span class="label label-info labelRespuestas">'+respuesta[i].respuestasok+'</span>';
-		 		html1 ='<div class="bs-callout bs-callout-warning"><h3>Repaso</h3><p>'+respuesta[i].repaso+'</p></div>';
-		 		html2='<div class="bs-callout bs-callout-success"><h3>Solución</h3><p>'+respuesta[i].solucion+'</p></div>';
-		 		html3='<button type="button" class="btn btn-info btn-lg" id="siguiente" data-idc="'+respuesta[i].id_contenidos+'">Siguiente <span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span></button>';
+		 		html = '<h1 class="incorrecto"><span class="label label-danger">INCORRECT!<span></h1><br> <h4>The correct answer is: </h4><span class="label label-info labelRespuestas">'+respuesta[i].respuestasok+'</span>';
+		 		html1 ='<div class="bs-callout bs-callout-warning"><h3>Review</h3><p>'+respuesta[i].repaso+'</p></div>';
+		 		html2='<div class="bs-callout bs-callout-success"><h3>Solution</h3><p>'+respuesta[i].solucion+'</p></div>';
+		 		html3='<button type="button" class="btn btn-info btn-lg" id="siguiente" data-idc="'+respuesta[i].id_contenidos+'">Next <span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span></button>';
 		 		
 		 		$('#caja_sorry').html(html);
 		 		$('#caja_boton').html('');
@@ -118,13 +121,14 @@ $(document).ready(function() {
 		}
 
 	 }
-	
+
 
 	function iniciaTest()
 	{
 		$('#principal').load('problemas');
 		var id_contenido = $(this).attr('id');
 		obtenerPregunta(id_contenido,mostrarPregunta);
+
 	}
 
 	function siguientePregunta()
@@ -155,12 +159,12 @@ $(document).ready(function() {
 	function obtenerPregunta(id_contenido,callback)
 	{
 		$.ajax({
-			data: {
-				format: 'jsonp',
-				method: 'get',
+			data : {
+				format : 'jsonp',
+				method : 'get',
 				id_contenido: id_contenido
 			},
-			url: 'obtener_pregunta'
+			url : 'obtener_pregunta'
 		}).done(callback);
 	}
 
@@ -178,8 +182,8 @@ $(document).ready(function() {
 		var tipo_preg = datos.id_tipo_pregunta;	
 
 	
-		var titulo = '<h2 class="page-header">'+datos.subclave+' '+datos.contenido+'</h2>';
-		var pregunta = '<h3>'+datos.pregunta+'</h3>';
+		var titulo = '<h2 class="page-header titulo">'+datos.subclave+' '+datos.contenido+'</h2>';
+		var pregunta = '<h3 class="pregunta">'+datos.pregunta+'</h3>';
 
 		$('#caja_titulo').html(titulo);	
 		$('#caja_pregunta').append(pregunta);	
@@ -252,3 +256,4 @@ $(document).ready(function() {
 
 
 });
+

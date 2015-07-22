@@ -6,36 +6,63 @@ class Model_contenidos extends CI_Model{
 		parent::__construct();
 	}
 
-	//Realiza la consulta para obtener los temas
-	public function mostrar($clave)
+	//Realiza la consulta para obtener los subtemas
+	public function mostrarSubtemas2($id_temas)
 	{
 		$this->db->select('contenidos.*,temas.*');
 		$this->db->from('contenidos');
 		$this->db->join('temas','temas.id_temas = contenidos.id_temas','inner');
-		$this->db->where('temas.clave',$clave);
+		$this->db->where('contenidos.id_temas',$id_temas);
 
 		$query= $this->db->get();
 		return $query->result();
+
 	}
 
+    public function mostrarSubtemas($id_temas)
+    {
+        $this->db->select('contenidos.*,temas.*');
+        $this->db->from('contenidos');
+        $this->db->join('temas','temas.id_temas = contenidos.id_temas','inner');
+        $this->db->where('contenidos.id_temas',$id_temas);
+
+        $query= $this->db->get();
+        $arreglo = array();
+
+        if($query->num_rows() > 0)
+        {
+            foreach($query->result() as $registro)
+            {
+                $arreglo[] = array(
+                'id_temas'=> $registro->id_temas,
+                'tema' => $registro->tema,
+                'id_contenidos' => $registro->id_contenidos,
+                'contenido' => $registro->contenido,
+                'subclave' => $registro->subclave,
+                'imagen' => $registro->imagen
+              );    
+            }
+        }
+
+        $json = json_encode($arreglo);
+        echo $json;  
+
+    }
+
+
 	//Obtener las preguntas del contenido
-	public function obtener_pregunta($idcont)
+	public function obtener_pregunta($id_contenido)
 	{
 		$this->db->select('preguntas.*, contenidos.contenido,contenidos.subclave');
 		$this->db->from('preguntas');
         $this->db->join('contenidos','preguntas.id_contenidos = contenidos.id_contenidos','inner');
-		$this->db->where('preguntas.id_contenidos',$idcont);
+		$this->db->where('preguntas.id_contenidos',$id_contenido);
 		$this->db->order_by('preguntas.id_preguntas','RANDOM');
 
-		$query= $this->db->get()->row();
+		$query = $this->db->get()->row();
 
       	$json = json_encode($query);
      	echo $json;
-
-		/*$numpreguntas = $query->num_rows();
-		$aleatorio = rand(0,$numpreguntas);
-		return $query->row($aleatorio);*/
-
 	}
 
     //Regresar las preguntas del contenido
@@ -54,7 +81,7 @@ class Model_contenidos extends CI_Model{
 	public function obtener_opciones($id_preguntas)
 	{
 		
-        $sql = "SELECT * FROM opciones WHERE id_preguntas = ?";
+        $sql = "SELECT * FROM opciones WHERE id_preguntas = ? ORDER BY RAND();";
         $consulta = $this->db->query($sql, array($id_preguntas));
 
         $arreglo = array();
@@ -224,8 +251,6 @@ class Model_contenidos extends CI_Model{
        
         echo $json;
         
-
     }
-
-
 }
+

@@ -3,61 +3,80 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Preparatoria extends CI_Controller {
 
-//Matemáticas 1
-	public function mat1()
+	public function __construct(){
+		parent::__construct();
+		$this->load->model('Model_administracion');
+		$this->load->model('Model_cursos');
+		$this->load->model('Model_contenidos');
+
+	}
+	
+
+	//Matemáticas 1
+	public function matematicas1($id_materia)
 	{
-		$data['contenido'] = 'preparatoria/mat/primero';
-		$this->load->view('templates/template_principal',$data);
+		$data['contenido'] = 'preparatoria/semestre1/matematicas1/temas';
+		$data['tema'] = $this->Model_cursos->obtenerTemas($id_materia);
+		$this->load->view('templates/template_temas',$data);
+	}
+
+	//Química 1
+	public function quimica1($id_materia)
+	{
+		$data['contenido'] = 'preparatoria/semestre1/quimica1/temas';
+		$data['id_materia'] = $id_materia;
+		$this->load->view('templates/template_temas',$data);
+	}
+
+	//Ética y Valores 1
+	public function eticayvalores1($id_materia)
+	{
+		$data['contenido'] = 'preparatoria/semestre1/eticayvalores1/temas';
+		$data['id_materia'] = $id_materia;
+		$this->load->view('templates/template_temas',$data);
+	}
+
+	//Perspectivas Globales 1
+	public function perspectivas1($id_materia)
+	{
+		$data['contenido'] = 'preparatoria/semestre1/perspectivas1/temas';
+		$data['id_materia'] = $id_materia;
+		$this->load->view('templates/template_temas',$data);
+	}
+
+	//Taller de Lectura y Redacción
+	public function lectura($id_materia)
+	{
+		$data['contenido'] = 'preparatoria/semestre1/lectura/temas';
+		$data['id_materia'] = $id_materia;
+		$this->load->view('templates/template_temas',$data);
+	}
+
+	//Francés 1
+	public function frances1($id_materia)
+	{
+		$data['contenido'] = 'preparatoria/semestre1/frances1/temas';
+		$data['id_materia'] = $id_materia;
+		$this->load->view('templates/template_temas',$data);
+	}
+
+	//Informática1
+	public function informatica1($id_materia)
+	{
+		$data['contenido'] = 'preparatoria/semestre1/informatica1/temas';
+		$data['id_materia'] = $id_materia;
+		$this->load->view('templates/template_temas',$data);
 	}
 
 
-
-	//B. Operaciones
-	public function operaciones()
+	//Semestre 2
+	public function matematicas2($id_materia)
 	{
-		$data['contenido'] ='preparatoria/mat/primero/operaciones';
-		$this->load->view('templates/template_principal',$data);
+		$data['contenido'] = 'preparatoria/semestre2/matematicas2/temas';
+		$data['id_materia'] = $id_materia;
+		$this->load->view('templates/template_temas',$data);
 	}
 
-	//C. Relaciones y proporciones
-	public function relaciones()
-	{
-		$data['contenido'] ='preparatoria/mat/primero/relaciones';
-		$this->load->view('templates/template_principal',$data);
-	}
+	
 
-	//D. Porcentajes
-	public function porcentajes()
-	{
-		$data['contenido'] ='preparatoria/mat/primero/porcentajes';
-		$this->load->view('templates/template_principal',$data);
-	}
-
-	//E. Mediciones
-	public function mediciones()
-	{
-		$data['contenido'] ='preparatoria/mat/primero/mediciones';
-		$this->load->view('templates/template_principal',$data);
-	}
-
-	//F. Geometría
-	public function geometria()
-	{
-		$data['contenido'] ='preparatoria/mat/primero/geometria';
-		$this->load->view('templates/template_principal',$data);
-	}
-
-	//G. Gráficos de coordenadas
-	public function coordenadas()
-	{
-		$data['contenido'] ='preparatoria/mat/primero/coordenadas';
-		$this->load->view('templates/template_principal',$data);
-	}
-
-	//H. Propiedades
-	public function propiedades()
-	{
-		$data['contenido'] ='preparatoria/mat/primero/propiedades';
-		$this->load->view('templates/template_principal',$data);
-	}
 }

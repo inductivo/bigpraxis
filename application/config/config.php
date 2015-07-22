@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | environments.
 |
 */
-$config['base_url'] = 'http://www.sumaventas.com.mx/study';
+$config['base_url'] = 'http://www.bigpraxis.com/en';
 
 /*
 |--------------------------------------------------------------------------
@@ -355,7 +355,7 @@ $config['encryption_key'] = 'DD8a1R7QXQIl7Sqr1FL7fh0OcyXvrZdg';
 | except for 'cookie_prefix' and 'cookie_httponly', which are ignored here.
 |
 */
-$config['sess_driver'] = 'files';
+$config['sess_driver'] = 'database';
 $config['sess_cookie_name'] = 'ci_session';
 $config['sess_expiration'] = 7200;
 $config['sess_save_path'] = 'ci_session';

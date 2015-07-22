@@ -1,11 +1,68 @@
-/*!
- * Start Bootstrap - Round About HTML Template (http://startbootstrap.com)
- * Code licensed under the Apache License v2.0.
- * For details, see http://www.apache.org/licenses/LICENSE-2.0.
- */
+/* Principal*/
+
+/*Fonts*/
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+@import url(http://fonts.googleapis.com/css?family=Roboto:500,900,100,300,700,400);
 
 body {
-    padding-top: 60px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+
+	padding-bottom: 70px;
+    padding-top: 60px; 
+    background-color: #58b78e;
+}
+
+nav.barnav
+{
+	background-color: #fff;
+}
+
+button.btniconbar
+{
+	background-color: #58b78e;
+}
+
+img.logo{
+max-width: 150px;
+margin-top: -7px;
+
+}
+
+i.txtmenu
+{
+	color:#e84b40;
+}
+
+i.txtmenu:hover
+{
+	color:#000;
+}
+
+/*Titulo Inicio */
+h1.titulo{
+	color:#fff;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: bold;
+	font-size: 45px;
+}
+
+
+
+h3.steps{
+	color:#f1f2f2;
+	font-family: 'Roboto', sans-serif;
+	font-size: 30px;
+	font-weight: 100;
+}
+
+div.divstart{
+	margin-top: 10px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+}
+
+button.btnstart
+{
+	font-size: 25px;
 }
 
 .img-center {
@@ -21,4 +78,35 @@ p.materias
 
 footer {
     margin: 0px 0;
+    color:#fff;
 }
+
+footer nav.navfooter
+{
+	background-color: #58b78e;
+	min-height: 10px;
+}
+
+p.txtsv
+{
+	font-size: 12px;
+	margin-top: 12px;
+}
+
+i.txtfooter
+{
+	color:#fff;
+	margin-top: 12px;
+}
+
+i.tw-icon:hover
+{
+	color:#3b5998;
+}
+
+i.fac-icon:hover
+{
+	color:#55acee;
+}
+
+

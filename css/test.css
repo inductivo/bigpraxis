@@ -1,6 +1,11 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700);
 /* Preguntas Radio*/
 
+body
+{
+	padding-bottom: 70px;
+}
+
 div.test{
 	clear: both;
 	margin: 0 50px;
@@ -137,7 +142,7 @@ input.checkbox:focus ~ label:before {
 
 h1.incorrecto
 {
-	color: #e74c3c;
+	color: #fff;
 }
 
 span.labelRespuestas
@@ -150,3 +155,51 @@ div.paneltop
 	font-size: 20px;
 	font-weight: bold;
 }
+
+
+div.stats1txt
+{
+	color: #fff;
+	margin-top: 5px;
+	
+}
+
+div.stats2txt
+{
+	color: #fff;
+	margin-top: 5px;
+}
+
+
+div.stats3txt
+{
+	color: #fff;
+	margin-top: 5px;
+}
+
+div.statsnumber
+{
+	font-size: 35px;
+	font-weight: bold;
+}
+
+img.img-stats
+{
+	margin: 0 auto;
+	max-width: 100px;
+	max-height: 100px;
+
+}
+
+div.statsbg
+{
+	background-color: #58b78e;
+	border-radius: 13px 13px 13px 13px;
+	-moz-border-radius: 13px 13px 13px 13px;
+	-webkit-border-radius: 13px 13px 13px 13px;
+	border: 0px solid #000000;
+	/*margin: 0 auto;*/
+}
+
+
+

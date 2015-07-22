@@ -64,10 +64,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'bdstudy.db.10858742.hostedresource.com',
-	'username' => 'bdstudy',
+	'hostname' => 'localhost',
+	'username' => 'bdbigpraxis',
 	'password' => 'Sum4v3nt4s%',
-	'database' => 'bdstudy',
+	'database' => 'bdbigpraxis',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

@@ -1,0 +1,115 @@
+/* Principal*/
+
+/*Fonts*/
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+@import url(http://fonts.googleapis.com/css?family=Roboto:500,900,100,300,700,400);
+
+body {
+	padding-bottom: 70px;
+    padding-top: 60px; 
+    background-color: #fff;
+}
+
+nav.barnav
+{
+	background-color: #fff;
+}
+
+button.btniconbar
+{
+	background-color: #58b78e;
+}
+
+img.logo{
+max-width: 150px;
+margin-top: -7px;
+
+}
+
+i.txtmenu
+{
+	color:#000;
+}
+
+i.txtmenu:hover
+{
+	color:#e84b40;
+}
+
+/*Titulo Inicio */
+h1.titulo{
+	color:#e9bc1b;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: bold;
+	font-size: 45px;
+}
+
+
+h3.h3semester{
+	color:#e84b40;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+}
+
+li.listcursos{
+	background-color: #58b78e;	
+}
+
+
+li.listcursos:hover
+{
+	background-color: #e84b40;
+}
+
+.txtcursos
+{
+	color:#fff;
+}
+
+.img-center {
+	margin: 0 auto;
+}
+
+p.materias
+{
+	font-size: 18px;
+	
+}
+
+
+footer {
+    margin: 0px 0;
+    color:#fff;
+}
+
+footer nav.navfooter
+{
+	background-color: #fff;
+	min-height: 10px;
+}
+
+p.txtsv
+{
+	color:#58b78e;
+	font-size: 12px;
+	margin-top: 12px;
+
+}
+
+i.txtfooter
+{
+	color:#58b78e;
+	margin-top: 12px;
+}
+
+i.tw-icon:hover
+{
+	color:#3b5998;
+}
+
+i.fac-icon:hover
+{
+	color:#55acee;
+}
+
+

@@ -1,0 +1,20 @@
+body
+{
+	background-color: #f1f2f2;
+	padding-bottom: 70px;
+}
+
+div.margen { margin:10px 0;}
+div.margenbtn { margin:20px 0;
+				display: none;}
+
+textarea.txtarea{width: 100%;
+				font-size: 16px;}
+
+p {font-weight: bold;}
+
+#cajatipopregunta {display:none;}
+#cajarespuestas {display:none;}
+#cajanuevaresp{display: none;}
+#cajas{display: none;}
+#publicar{display: none;}
