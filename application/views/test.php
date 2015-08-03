@@ -1,5 +1,6 @@
 
-
+    
+        <input type="hidden" id="id_contenidos" value="<?php echo $_POST['id_contenidos'];?>"></input>   
         <!-- Test -->
         <div class="row">
            <div class="col-lg-12">
@@ -52,3 +53,9 @@
             </div> <!--.col-lg-12 -->
         </div><!--.row -->
    
+        <script type="text/javascript" src="<?= base_url('js/jquery.js')?>"></script>
+        <script type="text/javascript" src="<?= base_url('js/jquery.plugin.js')?>"></script> 
+        <script type="text/javascript" src="<?= base_url('js/jquery.countdown.js')?>"></script>
+        <script type="text/javascript" src="<?= base_url('js/jquery.countdown-es.js')?>"></script>
+        <script src="<?= base_url('js/sweetalert.min.js')?>"></script>
+        <script type="text/javascript" src="<?= base_url('js/test_funcion.js')?>"></script>

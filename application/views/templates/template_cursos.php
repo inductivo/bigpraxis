@@ -1,11 +1,11 @@
-<DOCTYPE html>
+
 <html lang="en">
 
 <head>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
     <meta name="description" content="bigpraxis - Exercises to reinforce learning">
     <meta name="author" content="Suma Ventas Consultores">
 
@@ -19,11 +19,6 @@
     <!-- Custom CSS -->
     <link href="<?= base_url('css/cursos.css')?>" rel="stylesheet">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <script src="<?= base_url('js/jquery.js')?>"></script>
-    <script src="<?= base_url('js/cursos.js')?>"></script> 
-
-
-
 </head>
 
 <body>
@@ -57,12 +52,12 @@
 
         <?php $this->load->view($contenido); ?>
 
+    </div>
+    <!-- /.container -->
 
-        <hr>
-
-        <!-- Footer -->
-        <footer>
-            <nav class="navbar navbar-default navbar-fixed-bottom navfooter">
+    <!-- Footer -->
+    <footer>
+        <nav class="navbar navbar-default navbar-fixed-bottom navfooter">
               <div class="container">
                     <div class="row">
                         <div class="col-lg-10 col-sm-10 col-xs-8">
@@ -76,20 +71,13 @@
                         </div><!-- /.col-lg-12 --> 
                     </div> <!-- /.row -->
                 </div>        
-            </nav>
-        </footer>
-
-    </div>
-    <!-- /.container -->
-
-    <!-- Bootstrap Core JavaScript 1111 -->
-           <!-- jQuery -->
-    <script src="<?= base_url('js/bootstrap.min.js')?>"></script>
-   
-    <script src="<?= base_url('js/sweetalert.min.js')?>"></script>
-
-
-
+        </nav>
+        <!-- jQuery -->
+        <script src="<?= base_url('js/jquery.js')?>"></script>
+        <script src="<?= base_url('js/cursos.js')?>"></script> 
+        <script src="<?= base_url('js/bootstrap.min.js')?>"></script>
+        <script src="<?= base_url('js/sweetalert.min.js')?>"></script>
+    </footer>
 
 </body>
 

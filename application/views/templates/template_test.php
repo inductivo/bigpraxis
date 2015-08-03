@@ -1,11 +1,11 @@
-<DOCTYPE html>
+
 <html lang="en">
 
 <head>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
     <meta name="description" content="bigpraxis - Exercises to reinforce learning">
     <meta name="author" content="Suma Ventas Consultores">
 
@@ -22,12 +22,8 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url('css/sweetalert.css')?>"> 
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <script src="<?= base_url('js/jquery.js')?>"></script>
-
     <link rel="stylesheet" type="text/css" href="<?= base_url('css/jquery.countdown.css')?>"> 
-    <script type="text/javascript" src="<?= base_url('js/jquery.plugin.js')?>"></script> 
-    <script type="text/javascript" src="<?= base_url('js/jquery.countdown.js')?>"></script>
-    <script type="text/javascript" src="<?= base_url('js/jquery.countdown-es.js')?>"></script>
+    
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -64,10 +60,12 @@
     <div class="container" id="principal">
 
         <?php $this->load->view($contenido); ?>
+    </div>
+    <!-- /.container -->
 
-        <!-- Footer -->
-        <footer>
-            <nav class="navbar navbar-default navbar-fixed-bottom navfooter">
+    <!-- Footer -->
+    <footer>
+        <nav class="navbar navbar-default navbar-fixed-bottom navfooter">
               <div class="container">
                     <div class="row">
                         <div class="col-lg-10 col-sm-10 col-xs-8">
@@ -75,19 +73,14 @@
                         </div>
                     </div> <!-- /.row -->
                 </div>        
-            </nav>
-        </footer>
+        </nav>
 
-    </div>
-    <!-- /.container -->
+        <!-- jQuery -->
+        <script src="<?= base_url('js/jquery.js')?>"></script>
+        <script src="<?= base_url('js/bootstrap.min.js')?>"></script>
+        
 
-    <!-- Bootstrap Core JavaScript 1111 -->
-           <!-- jQuery -->
-    <script src="<?= base_url('js/bootstrap.min.js')?>"></script>
-    <script src="<?= base_url('js/myjs.js')?>"></script> 
-    <script src="<?= base_url('js/sweetalert.min.js')?>"></script>
-
-
+    </footer>
 
 </body>
 

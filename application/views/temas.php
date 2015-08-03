@@ -1,15 +1,15 @@
-
+	
+    
+    <input type="hidden" id="id_materias" value="<?php echo $_POST['id_materias'];?>"></input>
+    <input type="hidden" id="materia" value="<?php echo $_POST['materia'];?>"></input>
         <!-- Temas Matemáticas -->
         <div class="row">
-            <div class="col-lg-12">
-                <h1 id="h1-temas" class="page-header text-center titulo"><br>
-                    <small>High School</small>
-                </h1>
-            </div>
+            <div id="titulo-tema" class="col-lg-12"></div>
         </div>
 
-        <div id="lista-temas"> </div> <!--.row -->
-
- 
-            
+        
+        <div id="lista-temas" class="row"></div> <!--.row -->
+        
+    <script type="text/javascript" src="<?= base_url('js/cursos_funcion.js')?>"></script> 
+    <script type="text/javascript" src="<?= base_url('js/contenidos.js')?>"></script>    
        

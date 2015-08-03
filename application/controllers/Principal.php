@@ -26,7 +26,7 @@ class Principal extends CI_Controller {
 	public function cursos()
 	{
 		$data['contenido'] = 'cursos';
-		$this->load->view('templates/template_cursos',$data);
+		$this->load->view('templates/template_temas',$data);
 	}
 
 	//Acceso Estudiantes
@@ -175,28 +175,35 @@ class Principal extends CI_Controller {
 
 
 			$this->Model_administracion->insertar_pregunta($pregunta,$opciones,$respuestas);
-			$this->panel();
+			$this->panel_profesores();
 
 
 			
 		}
 		else
 		{
-			$this->panel();
+			$this->panel_profesores();
 		}
 
 	}
 
+
 	public function vista_temas()
 	{
-		$data['contenido'] ='temas';
-		$this->load->view('templates/template_temas',$data);
+		$this->load->view('temas');
 	}
+
 
 	public function temas()
 	{
 		$id_materia= $_GET['id_materias'];
 		$this->Model_cursos->obtenerTemas($id_materia);	
+	}
+
+
+	public function vista_contenidos()
+	{
+		$this->load->view('contenidos');
 	}
 
 	public function subtemas()
@@ -205,21 +212,15 @@ class Principal extends CI_Controller {
 		$this->Model_contenidos->mostrarSubtemas($id_temas);	
 	}
 
-	public function vista_contenidos()
-	{
-		$data['contenido'] ='contenidos';
-		$this->load->view('templates/template_temas',$data); //
-	}
 
 	public function problemas()
 	{
-		$data['contenido'] ='test';
-		$this->load->view('templates/template_test',$data);
+		$this->load->view('test');
 	}
 
 	public function obtener_pregunta()
 	{
-		$id_contenido= $_GET['id_contenido'];
+		$id_contenido= $_GET['id_contenidos'];
 		$this->Model_contenidos->obtener_pregunta($id_contenido);	
 	}
 

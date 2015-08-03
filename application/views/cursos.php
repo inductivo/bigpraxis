@@ -19,7 +19,7 @@
                   $sem1 = $this->Model_cursos->mostrarSemestre1();
                   foreach ($sem1 as $materia):
                 ?>                     
-                    <li class="list-group-item listcursos" id-idmateria="<?php echo $materia->id_materias ?>"> <?=$materia->materia ?></li>
+                    <li class="list-group-item listcursos" data-idmateria="<?php echo $materia->id_materias ?>" data-materia="<?php echo $materia->materia ?>" style="cursor:pointer"> <?=$materia->materia ?></li>
 
 
                 <?php endforeach; ?> 
@@ -102,3 +102,6 @@
             </div>
 
         </div>
+
+      <script type="text/javascript" src="<?= base_url('js/jquery.js')?>"></script>
+      <script type="text/javascript" src="<?= base_url('js/cursos.js')?>"></script>

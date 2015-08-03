@@ -1,24 +1,18 @@
-
 $(document).ready(function() {
-
-
-	$('#caja_tiempo').countdown({since:0,format: 'HMS',padZeroes: true, description: '',compact:true});
 
 	var problemas=0;
 	var aciertos=0;
-	
+
+	$('#caja_tiempo').countdown({since:0,format: 'HMS',padZeroes: true, description: '',compact:true});
 	$('#caja_aciertos').html(aciertos);
-	
+	//$('#caja_problemas').html(problemas);
 
 	$('#caja_boton').on('click','button',validarRespuesta);
-	//$('.eventInicio').click(iniciaTest);
-	$('#lista_contenidos').on('click','li',iniciaTest);
 	$('#caja_siguiente').on('click','button',siguientePregunta);
 
-
-	//$('.eventValidar').click(validarRespuesta); 
-
-
+		
+	var id_contenidos = $("#id_contenidos").val();
+	obtenerPregunta(id_contenidos,mostrarPregunta);
 
 
 	function validarRespuesta()
@@ -26,6 +20,7 @@ $(document).ready(function() {
 	 	var id_tipo = $(this).attr('data-tipo');
 	 	var id_pregunta = $(this).attr('data-preg');
 	 	var id_contenidos = $(this).attr('data-idcont');
+
 
 		if(id_tipo == 1)
 		{
@@ -83,7 +78,7 @@ $(document).ready(function() {
 	 	
 	 	var respuesta = JSON.parse(jsonData);
 
-	 	for(i=0; i<respuesta.length;i++)
+	 	for(var i=0; i<respuesta.length;i++)
 		{
 				
 			if(respuesta[i].validacion == 0)
@@ -122,15 +117,6 @@ $(document).ready(function() {
 
 	 }
 
-
-	function iniciaTest()
-	{
-		$('#principal').load('problemas');
-		var id_contenido = $(this).attr('id');
-		obtenerPregunta(id_contenido,mostrarPregunta);
-
-	}
-
 	function siguientePregunta()
 	{
 
@@ -162,7 +148,7 @@ $(document).ready(function() {
 			data : {
 				format : 'jsonp',
 				method : 'get',
-				id_contenido: id_contenido
+				id_contenidos: id_contenido
 			},
 			url : 'obtener_pregunta'
 		}).done(callback);
@@ -170,13 +156,16 @@ $(document).ready(function() {
 
 	function mostrarPregunta(jsonData)
 	{
-		problemas=problemas+1;
+		//problemas=problemas+1;
+		problemas++;
 		$('#caja_problemas').html(problemas);
 
 		$('#caja_pregunta').empty();
+		$('#caja_boton').empty();
 
 		var datos = JSON.parse(jsonData);
-		var html ='';
+
+		var html1 ='';
 		var id_cont = datos.id_contenidos;
 		var id_preg = datos.id_preguntas;
 		var tipo_preg = datos.id_tipo_pregunta;	
@@ -199,9 +188,9 @@ $(document).ready(function() {
 			obtenerOpciones(datos.id_preguntas,mostrarOpcionesCheck);
 		}
 		
-		html = '<button type="button" class="btn btn-success" name="enviar" id="btnenviar" data-idcont="'+id_cont+'" data-preg="'+id_preg+'" data-tipo="'+tipo_preg+'">Enviar</button>';
+		html1 = '<button type="button" class="btn btn-success" name="enviar" id="btnenviar" data-idcont="'+id_cont+'" data-preg="'+id_preg+'" data-tipo="'+tipo_preg+'">Enviar</button>';
 
-		$('#caja_boton').html(html);
+		$('#caja_boton').html(html1);
 
 	}
 
@@ -226,7 +215,7 @@ $(document).ready(function() {
 		var html1 ='';
 		var html2='';
 
-		for(i=0; i<datos.length;i++)
+		for(var i=0; i<datos.length;i++)
 		{
 			
 			html1= '<div class="test"><input type="radio" name="radio" id="'+datos[i].id_opciones+'" class="radio" value="'+datos[i].opcion+'">';
@@ -245,7 +234,7 @@ $(document).ready(function() {
 		var html1 ='';
 		var html2='';
 
-		for(i=0; i<datos.length;i++)
+		for(var i=0; i<datos.length;i++)
 		{
 			
 			html1= '<div class="test"><input type="checkbox" name="checkbox[]" id="'+datos[i].id_opciones+'" class="checkbox" value="'+datos[i].opcion+'">';
