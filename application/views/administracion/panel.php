@@ -1,6 +1,7 @@
+
+<script src="<?= base_url('js/jquery.js')?>"></script>
 <script src="<?= base_url('js/preguntas.js')?>"></script>
 <script src="<?= base_url('js/tinymce/tinymce.min.js')?>"></script>
-<link href="<?= base_url('css/panel.css')?>" rel="stylesheet">
 
 <form class="form-horizontal frmpublicar" action= "publicar" method="post" id="frmpublicar">
 
@@ -12,16 +13,24 @@
 </div>
 
 <div class="row">
-	<div class="col-lg-6 col-sm-6 margen">
+	<div class="col-lg-4 col-sm-4 margen">
 		<p>NIVEL:</p>
 		<select class="form-control" name="grados" id="grados" autofocus></select>
 	</div>
 
-	<div class="col-lg-6 col-sm-6 margen">
+	<div class="col-lg-4 col-sm-4 margen">
+		<p>SEMESTRE:</p>
+		<select class="form-control" name="semestres" id="semestres"></select>
+	</div>
+
+	<div class="col-lg-4 col-sm-4 margen">
 		<p>MATERIA:</p>
 		<select class="form-control" name="materias" id="materias"></select>
 	</div>
+
 </div>
+
+
 
 <div class="row">
 	<div class="col-lg-6 col-sm-6 margen">
@@ -40,7 +49,7 @@
 		<button type="button" class="btn btn-info" id="agregar">AGREGAR PREGUNTA</button>
 	</div>
 
-	<div class="col-lg-6 col-sm-6 margenbtn" id="cajaPregunta">
+	<div class="col-lg-12 col-sm-12 margenbtn" id="cajaPregunta">
 		<p><i class="fa fa-pencil"></i> ESCRIBIR PREGUNTA</p>
 		<textarea name="txtpregunta" class="txtarea" id="txtpregunta"></textarea>
 	</div>
@@ -76,12 +85,13 @@
 </div>
 
 <div class="row" id="cajas">
-	<div class="col-lg-6 col-sm-6 margen" id="cajaRepaso">
+	<div class="col-lg-12 col-sm-12 margen" id="cajaRepaso">
 		<p><i class="fa fa-book"></i> REPASO</p>
 		<textarea name="txtrepaso" class="txtarea" id="txtrepaso"></textarea>
 	</div>
 
-	<div class="col-lg-6 col-sm-6 margen" id="cajaSolucion">
+
+	<div class="col-lg-12 col-sm-12 margen" id="cajaSolucion">
 		<p><i class="fa fa-check-square-o"></i> SOLUCION</p>
 		<textarea name="txtsolucion" class="txtarea" id="txtsolucion"></textarea>
 	</div>
@@ -94,3 +104,5 @@
 </div>
 
 </form>
+
+

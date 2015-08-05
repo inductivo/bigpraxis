@@ -117,9 +117,15 @@ class Principal extends CI_Controller {
 		$this->Model_administracion->cargarGrados();
 	}
 
+	public function cargarSemestres()
+	{
+		$this->Model_administracion->cargarSemestres();
+	}
+
 	public function cargarMaterias()
 	{
-		$this->Model_administracion->cargarMaterias();
+		$idsemestre=$_GET['id_semestre'];
+		$this->Model_administracion->cargarMaterias($idsemestre);
 	}
 
 	public function cargarTemas()
@@ -152,6 +158,7 @@ class Principal extends CI_Controller {
 
 			$pregunta = array(
 				'id_grados' => $this->input->post('grados'),
+				'id_semestre' => $this->input->post('semestres'),
 				'id_temas' => $this->input->post('temas'),
 				'id_contenidos' => $this->input->post('contenidos'),
 				'id_tipo_pregunta' => $this->input->post('tipopregunta'),

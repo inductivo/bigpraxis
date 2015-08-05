@@ -9,7 +9,62 @@ class Model_cursos extends CI_Model{
     function mostrarSemestre1()
     {
 
-        $this->db->where('semestre',1);
+        $this->db->where('id_semestre',1);
+        //$this->db->order_by('semestre','asc');
+
+        $query = $this->db->get('materias');
+        return $query->result();
+
+    }
+
+    function mostrarSemestre2()
+    {
+
+        $this->db->where('id_semestre',2);
+        //$this->db->order_by('semestre','asc');
+
+        $query = $this->db->get('materias');
+        return $query->result();
+
+    }
+
+    function mostrarSemestre3()
+    {
+
+        $this->db->where('id_semestre',3);
+        //$this->db->order_by('semestre','asc');
+
+        $query = $this->db->get('materias');
+        return $query->result();
+
+    }
+
+    function mostrarSemestre4()
+    {
+
+        $this->db->where('id_semestre',4);
+        //$this->db->order_by('semestre','asc');
+
+        $query = $this->db->get('materias');
+        return $query->result();
+
+    }
+
+    function mostrarSemestre5()
+    {
+
+        $this->db->where('id_semestre',5);
+        //$this->db->order_by('semestre','asc');
+
+        $query = $this->db->get('materias');
+        return $query->result();
+
+    }
+
+    function mostrarSemestre6()
+    {
+
+        $this->db->where('id_semestre',6);
         //$this->db->order_by('semestre','asc');
 
         $query = $this->db->get('materias');

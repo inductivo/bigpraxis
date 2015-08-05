@@ -33,9 +33,33 @@ class Model_administracion extends CI_Model{
 	            echo $json;              
       }
 
-      public function cargarMaterias()
+      public function cargarSemestres()
       	{
-	        $query = $this->db->query('SELECT * FROM materias'); 
+	        $query = $this->db->query('SELECT * FROM semestres'); 
+	        $arreglo = array();
+
+	        if($query->num_rows() > 0)
+	        {
+	           foreach($query->result() as $registro)
+	           {
+
+	            $arreglo[] = array(
+	                'id_semestre'=> $registro->id_semestre,
+	                'semestre' => $registro->semestre
+	              );    
+	           }
+	        }
+	            $json = json_encode($arreglo);
+	            echo $json;              
+      }
+
+      public function cargarMaterias($idsemestre)
+      	{
+	        
+      		$sql = "SELECT * FROM materias WHERE id_semestre = ?";
+        	$query = $this->db->query($sql, array($idsemestre));
+
+	        //$query = $this->db->query('SELECT * FROM materias'); 
 	        $arreglo = array();
 
 	        if($query->num_rows() > 0)

@@ -1,29 +1,40 @@
+	
 $(document).ready(function() {
 
 
-	window.onload = cargarGrados();
-	$('#grados').on('change', cargarMaterias);
-	$('#grados').on('focus', cargarMaterias);
+	cargarGrados();
+
+	$('#grados').on('change', cargarSemestres);
+	$('#grados').on('focus', cargarSemestres);
+
+	$('#semestres').on('change', cargarMaterias);
+
 	$('#materias').on('change', cargarTemas);
-	$('#materias').on('select', cargarTemas);
+	$('#materias').on('click', cargarTemas);
+	//$('#materias').on('select', cargarTemas);
+	//$('#materias').on('focus', cargarTemas);
+
 	$('#temas').on('change', cargarContenidos);
-	$('#temas').on('select', cargarContenidos);
+	$('#temas').on('click', cargarContenidos);
+	//$('#temas').on('focus', cargarContenidos);
 	
 	$('#agregar').on('click', construirPregunta);
 	$('#agregar').on('click', cargarTipoPregunta);
 	$('#agregar').on('click', cargarRespuestas);
 
 	//Datos para desplegar campos Respuestas
-	 var maxInputs = 4;
-	 var contenedor_r = $('#respuestas');
-	 var agregar_r = $('#agregar_respuesta');
+	var maxInputs = 4;
+	var contenedor_r = $('#respuestas');
+	var agregar_r = $('#agregar_respuesta');
 
 	  //var x = número de campos existentes en el contenedor
     var x = $('#respuestas div').length + 1;
     console.log(x);
+    
     var FieldCount = x-1; //para el seguimiento de los campos
 	
 	$(agregar_r).on('click', agregarRespuesta);
+
 
 	 $('body').on('click','.eliminar', function(e){ //click en eliminar campo
         if( x > 1 ) {
@@ -37,7 +48,7 @@ $(document).ready(function() {
 	function cargarGrados()
 	{
 		obtenerGrados(imprimirGrados);
-		cargarMaterias();
+		cargarSemestres();
 		
 		
 	}
@@ -64,23 +75,57 @@ $(document).ready(function() {
 		}
 	}
 
-	//Se cargan las materias
+	//Se cargan los semestres
 
-	function cargarMaterias()
+	function cargarSemestres()
 	{
 		var idgrado = $('#grados').val();
-		obtenerMaterias(idgrado,imprimirMaterias);
-		cargarTemas();
-
+		obtenerSemestres(idgrado,imprimirSemestres);
+	
 	}
 
-	function obtenerMaterias(idgrado,imprimirMaterias)
+	function obtenerSemestres(idgrado,imprimirSemestres)
 	{
 		$.ajax({
 			data : {
 				format :'jsonp',
 				method : 'get',
 				id_grados: idgrado
+			},
+			url: 'cargarsemestres',
+		}) .done(imprimirSemestres);
+	}
+
+	function imprimirSemestres(jsonData)
+	{
+		$('#semestres').empty();
+		$('#materias').empty();
+		$('#temas').empty();
+		$('#contenidos').empty();
+
+		$opciones = JSON.parse(jsonData);
+		
+		for(i=0; i<$opciones.length;i++)
+		{
+			$('#semestres').append('<option value="'+ $opciones[i].id_semestre +'">'+ $opciones[i].semestre+'</option>');
+		}
+	}
+
+
+	function cargarMaterias()
+	{
+		var idsemestre = $('#semestres').val();
+		obtenerMaterias(idsemestre,imprimirMaterias);
+	
+	}
+
+	function obtenerMaterias(idsemestre,imprimirMaterias)
+	{
+		$.ajax({
+			data : {
+				format :'jsonp',
+				method : 'get',
+				id_semestre: idsemestre
 			},
 			url: 'cargarmaterias',
 		}) .done(imprimirMaterias);
@@ -90,6 +135,9 @@ $(document).ready(function() {
 	{
 
 		$('#materias').empty();
+		$('#temas').empty();
+		$('#contenidos').empty();
+
 		$opciones = JSON.parse(jsonData);
 		
 		for(i=0; i<$opciones.length;i++)
@@ -104,7 +152,7 @@ $(document).ready(function() {
 	{
 		var idmateria = $('#materias').val();
 		obtenerTemas(idmateria,imprimirTemas);
-		cargarContenidos();
+		
 	}
 
 	function obtenerTemas(idmateria,imprimirTemas)
@@ -122,6 +170,8 @@ $(document).ready(function() {
 	function imprimirTemas(jsonData)
 	{
 		$('#temas').empty();
+		$('#contenidos').empty();
+
 		$opciones = JSON.parse(jsonData);
 		
 		for(i=0; i<$opciones.length;i++)
@@ -227,13 +277,19 @@ $(document).ready(function() {
 	        "searchreplace visualblocks code fullscreen",
 	        "insertdatetime media table contextmenu paste",
 	        "tiny_mce_wiris",
-	        "jbimages"
+	        "jbimages",
+	        "autoresize",
+	        "code",
+	      
 	    ],
-	    toolbar: "insertfile bold italic superscript subscript | bullist numlist | jbimages charmap link ",
+	    toolbar: "insertfile bold italic superscript subscript | bullist numlist | jbimages charmap link code ",
 	    menubar:false,
 	    statusbar : false,
 	    language : 'es_MX',
-	    relative_urls: false
+	    relative_urls: false,
+	    height: 200,
+	    autoresize_min_height: 200,
+  		autoresize_max_height: 800
 		});
 	}
 
