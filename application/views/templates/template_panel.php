@@ -42,7 +42,16 @@
                 </button>
                 <a class="navbar-brand" href="<?php echo site_url('principal'); ?>"><img class="img-responsive logo" src="<?= base_url('img/logo.png')?>"></a>
             </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"></div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+               <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                          <a href="#" class="dropdown-toggle menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= $this->session->userdata('nombre'); ?> <?= $this->session->userdata('apellidos'); ?> <span class="caret"></span></a>
+                          <ul class="dropdown-menu">
+                                <li><a href="<?php echo site_url('principal/cerrar_sesion')?>" ><font color="red"><i class="fa fa-power-off"></i></font> Cerrar sesión</a></li>
+                          </ul>
+                        </li>
+                </ul>
+            </div>
         
         </div>
         <!-- /.container -->

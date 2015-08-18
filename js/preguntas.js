@@ -8,6 +8,7 @@ $(document).ready(function() {
 	$('#grados').on('focus', cargarSemestres);
 
 	$('#semestres').on('change', cargarMaterias);
+	$('#semestres').on('click', cargarMaterias);
 
 	$('#materias').on('change', cargarTemas);
 	$('#materias').on('click', cargarTemas);
@@ -306,6 +307,12 @@ $(document).ready(function() {
 		}
 		return false;
 	}
+
+	window.setTimeout(function() {
+    	$(".alerta").fadeTo(1500, 0).slideUp(500, function(){
+        $(this).remove(); 
+    	});
+	}, 5000);
 
 
 

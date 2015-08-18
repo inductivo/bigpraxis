@@ -119,4 +119,22 @@ i.fac-icon:hover
 	color:#55acee;
 }
 
+#caja_repaso{
+
+	color:#000;
+	font-family: 'Roboto', sans-serif;
+	font-size: 20px;
+	font-weight: 100;
+
+}
+
+#caja_solucion{
+
+	color:#000;
+	font-family: 'Roboto', sans-serif;
+	font-size: 20px;
+	font-weight: 100;
+
+}
+
 

@@ -16,6 +16,7 @@ class Administracionlib{
 			$datosSession = array('id_usuarios' => $usuario->id_usuarios,
 								  'nombre' => $usuario->nombre,
 								  'apellidos' => $usuario->apellidos
+
 								 );
 
 			$this->CI->session->set_userdata($datosSession);

@@ -23,6 +23,13 @@ class Principal extends CI_Controller {
 		$this->load->view('templates/template_principal',$data);
 	}
 
+	/* Funciòn para cerrar la sesiòn del usuario*/
+	public function cerrar_sesion()
+	{
+		$this->session->sess_destroy();
+		redirect('principal/index');
+	}
+
 	public function cursos()
 	{
 		$data['contenido'] = 'cursos';
@@ -183,9 +190,7 @@ class Principal extends CI_Controller {
 
 			$this->Model_administracion->insertar_pregunta($pregunta,$opciones,$respuestas);
 			$this->panel_profesores();
-
-
-			
+			echo  '<div class="row text-center"><div class="col-lg-12 margen alert alert-success alerta" id="mensaje"><strong>Muy bien!</strong> Pregunta agregada con éxito.</div></div>';
 		}
 		else
 		{

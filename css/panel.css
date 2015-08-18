@@ -13,6 +13,15 @@ textarea.txtarea{width: 100%;
 
 p {font-weight: bold;}
 
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus{
+	background-color: #FFF;
+	color: #e84b40;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color:#000;
+}
+
 #cajatipopregunta {display:none;}
 #cajarespuestas {display:none;}
 #cajanuevaresp{display: none;}

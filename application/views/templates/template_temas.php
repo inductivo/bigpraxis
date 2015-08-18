@@ -45,9 +45,7 @@
                 <a class="navbar-brand" href="<?php echo site_url('principal'); ?>"><img class="img-responsive logo" src="<?= base_url('img/logo.png')?>"></a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><?= anchor('principal/acceder','<i class="fa fa-user txtmenu"> Login</i>');?></li>
-                </ul>
+            
             </div>
         
         </div>
