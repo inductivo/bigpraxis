@@ -281,9 +281,11 @@ $(document).ready(function() {
 	        "jbimages",
 	        "autoresize",
 	        "code",
+	        "leaui_code_editor",
 	      
 	    ],
-	    toolbar: "insertfile bold italic superscript subscript | bullist numlist | jbimages charmap link code ",
+	    paste_data_images: true,
+	    toolbar: "leaui_formula | insertfile bold italic superscript subscript | bullist numlist | jbimages charmap link code ",
 	    menubar:false,
 	    statusbar : false,
 	    language : 'es_MX',
