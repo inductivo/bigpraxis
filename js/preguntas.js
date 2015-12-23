@@ -46,6 +46,34 @@ $(document).ready(function() {
         return false;
     });
 
+//EDITOR
+	 tinymce.init({
+	    selector: "textarea",
+	    plugins: [
+	        "leaui_formula",
+	        "advlist autolink lists link image charmap print preview anchor",
+	        "searchreplace visualblocks code fullscreen",
+	        "insertdatetime media table contextmenu paste",
+	        "tiny_mce_wiris",
+	        "jbimages",
+	        "autoresize",
+	        "code",
+	        
+	      
+	    ],
+	    paste_data_images: true,
+	    toolbar: "leaui_formula | insertfile bold italic superscript subscript | bullist numlist | jbimages charmap link code ",
+	    menubar:false,
+	    statusbar : false,
+	    language : 'es_MX',
+	    relative_urls: false,
+	    height: 200,
+	    autoresize_min_height: 200,
+  		autoresize_max_height: 800
+		});
+
+
+
 	function cargarGrados()
 	{
 		obtenerGrados(imprimirGrados);
@@ -270,43 +298,48 @@ $(document).ready(function() {
 		var publicar=document.getElementById("publicar");
 		publicar.style.display = 'block';
 
-
-		tinymce.init({
-	    selector: "textarea",
-	    plugins: [
-	        "advlist autolink lists link image charmap print preview anchor",
-	        "searchreplace visualblocks code fullscreen",
-	        "insertdatetime media table contextmenu paste",
-	        "tiny_mce_wiris",
-	        "jbimages",
-	        "autoresize",
-	        "code",
-	        "leaui_code_editor",
-	      
-	    ],
-	    paste_data_images: true,
-	    toolbar: "leaui_formula | insertfile bold italic superscript subscript | bullist numlist | jbimages charmap link code ",
-	    menubar:false,
-	    statusbar : false,
-	    language : 'es_MX',
-	    relative_urls: false,
-	    height: 200,
-	    autoresize_min_height: 200,
-  		autoresize_max_height: 800
-		});
 	}
 
 	function agregarRespuesta()
 	{
+		
+
 		if(x <= maxInputs)
 		{
 			 FieldCount++;
             //agregar campo
-            $(contenedor_r).append('<div class="input-group"><input type="hidden" name="chk'+FieldCount+'" value="0" ><span class="input-group-addon"><input type="checkbox" value="1" id="check' + FieldCount +'"  name="chk'+FieldCount+'"></span> <input type="text" name="resp[]" id="r'+ FieldCount +'" class="form-control" placeholder="Por favor ingrese una respuesta"><a href="#" class="eliminar">&times;</a></div>');
+            $(contenedor_r).append('<div class="input-group"><input type="hidden" name="chk'+FieldCount+'" value="0" ><span class="input-group-addon"><input type="checkbox" value="1" id="check' + FieldCount +'"  name="chk'+FieldCount+'"></span> <textarea name="resp[]" id="r'+ FieldCount +'" class="txtarea" ></textarea><a href="#" class="eliminar">&times;</a></div>');
 
             //$(respuestas).append('<div><input type="text" name="resp[]" id="r'+ FieldCount +'" placeholder="Texto '+ FieldCount +'"/><a href="#" class="eliminar">&times;</a></div>');
             x++; //text box increment
+
 		}
+
+		tinymce.init({
+		    selector: "textarea",
+		    plugins: [
+		        "leaui_formula",
+		        "advlist autolink lists link image charmap print preview anchor",
+		        "searchreplace visualblocks code fullscreen",
+		        "insertdatetime media table contextmenu paste",
+		        "tiny_mce_wiris",
+		        "jbimages",
+		        "autoresize",
+		        "code",
+		        
+		      
+		    ],
+		    paste_data_images: true,
+		    toolbar: "leaui_formula | insertfile bold italic superscript subscript | bullist numlist | jbimages charmap link code ",
+		    menubar:false,
+		    statusbar : false,
+		    language : 'es_MX',
+		    relative_urls: false,
+		    height: 200,
+		    autoresize_min_height: 200,
+	  		autoresize_max_height: 800
+			});
+
 		return false;
 	}
 

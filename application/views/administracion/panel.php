@@ -1,7 +1,5 @@
 
-<script src="<?= base_url('js/jquery.js')?>"></script>
-<script src="<?= base_url('js/preguntas.js')?>"></script>
-<script src="<?= base_url('js/tinymce/tinymce.min.js')?>"></script>
+
 
 <form class="form-horizontal frmpublicar" action= "publicar" method="post" id="frmpublicar">
 
@@ -63,14 +61,21 @@
 </div>
 
 <div class="row" id="cajarespuestas">
-	<div class="col-lg-6 col-sm-6" id="respuestas">
+	<div class="col-lg-12 col-sm-12" id="respuestas">
 		<p>RESPUESTAS</p>
-		<div class="input-group">
+	<div class="input-group">
+		<input type="hidden" name="chk1" value="0">
+		<span class="input-group-addon"><input type="checkbox" name="chk1" value="1"></span>
+		<textarea name="resp[]" class="txtarea" id="r1"></textarea>
+		<a href="#" class="eliminar">&times;</a>	
+	</div>
+
+		<!--<div class="input-group">
 			<input type="hidden" name="chk1" value="0">
 			<span class="input-group-addon"><input type="checkbox" name="chk1" value="1"></span>
 			<input type="text" name="resp[]" id="r1" class="form-control" placeholder="Por favor ingrese una respuesta">
 			<a href="#" class="eliminar">&times;</a>
-		</div>
+		</div> -->
 
 	</div>
 </div>
@@ -105,4 +110,6 @@
 
 </form>
 
-
+<script src="<?= base_url('js/jquery.js')?>"></script>
+<script src="<?= base_url('js/preguntas.js')?>"></script>
+<script src="<?= base_url('js/tinymce/tinymce.min.js')?>"></script>

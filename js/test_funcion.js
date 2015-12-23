@@ -45,6 +45,9 @@ $(document).ready(function() {
 
 	 function validaradio(id_preguntas,id_contenidos,opcion,callback)
 	 {
+	 	console.log("id_preguntas: "+ id_preguntas);
+	 	console.log("id_contenidos: "+ id_contenidos);
+	 	console.log("Opcion: "+ opcion);
 
 	 	$.ajax({
 			data: {
@@ -78,17 +81,19 @@ $(document).ready(function() {
 	 	
 	 	var respuesta = JSON.parse(jsonData);
 
+
 	 	for(var i=0; i<respuesta.length;i++)
 		{
 				
 			if(respuesta[i].validacion == 0)
 		 	{
+		 		console.log("Respuesta 0: " + respuesta[i].validacion);
 		 		var html ='';
 		 		var html1 = '';
 		 		var html2 ='';
 		 		var html3='';
 
-		 		html = '<h1 class="incorrecto"><span class="label label-danger">INCORRECT!<span></h1><br> <h4>The correct answer is: </h4><span class="label label-info labelRespuestas">'+respuesta[i].respuestasok+'</span>';
+		 		html = '<h1 class="incorrecto"><span class="label label-danger">INCORRECT!<span></h1><br> <h4>The correct answer is: </h4> <h3><strong>'+respuesta[i].respuestasok+'</h3></strong>';
 		 		html1 ='<div class="bs-callout bs-callout-warning"><h3>Review</h3><p>'+respuesta[i].repaso+'</p></div>';
 		 		html2='<div class="bs-callout bs-callout-success"><h3>Solution</h3><p>'+respuesta[i].solucion+'</p></div>';
 		 		html3='<button type="button" class="btn btn-info btn-lg" id="siguiente" data-idc="'+respuesta[i].id_contenidos+'">Next <span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span></button>';
@@ -102,6 +107,7 @@ $(document).ready(function() {
 		 	}
 		 	else if(respuesta[i].validacion = 1)
 		 	{
+		 		console.log("Respuesta 1: " + respuesta[i].validacion);
 		 		//var html3='';
 		 		//html3 = '<div class="alert alert-success" role="alert">'+respuesta[i].mensaje+'</div>';
 		 		//$('#caja').html(html3);
@@ -217,9 +223,10 @@ $(document).ready(function() {
 
 		for(var i=0; i<datos.length;i++)
 		{
-			
-			html1= '<div class="test"><input type="radio" name="radio" id="'+datos[i].id_opciones+'" class="radio" value="'+datos[i].opcion+'">';
-            html2= '<label for="'+datos[i].id_opciones+'">'+datos[i].opcion+'</label></div>'
+			console.log(datos[i].opcion);
+
+			html1= '<div class="test"><input type="radio" maxlength="524288" name="radio" id="'+datos[i].id_opciones+'" class="radio" value="'+datos[i].opcion+'">';
+            html2= '<label for="'+datos[i].id_opciones+'">'+ datos[i].opcion +'</label></div>';
             $('#caja_opciones').append(html1+html2);
 		}
 		
@@ -238,7 +245,7 @@ $(document).ready(function() {
 		{
 			
 			html1= '<div class="test"><input type="checkbox" name="checkbox[]" id="'+datos[i].id_opciones+'" class="checkbox" value="'+datos[i].opcion+'">';
-            html2= '<label for="'+datos[i].id_opciones+'">'+datos[i].opcion+'</label></div>'
+            html2= '<label for="'+datos[i].id_opciones+'">'+datos[i].opcion+'</label></div>';
             $('#caja_opciones').append(html1+html2);
 		}
 	}
