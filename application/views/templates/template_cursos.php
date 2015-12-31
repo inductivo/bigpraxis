@@ -61,7 +61,7 @@
               <div class="container">
                     <div class="row">
                         <div class="col-lg-10 col-sm-10 col-xs-8">
-                            <p class="txtsv">Copyright &copy; Suma Ventas Consultores 2015</p>
+                            <p class="txtsv">Copyright &copy; Suma Ventas Consultores 2016</p>
                         </div>
                         <div class="col-lg-2 col-sm-2 col-xs-4 text-right ">
                             <ul class="list-inline">
