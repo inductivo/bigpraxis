@@ -16,13 +16,13 @@ body {
 
 header nav.barnav
 {
-	background-color:#30CC71; 
+	background-color:$verde; 
 
 }
 
 button.btniconbar
 {
-	background-color: #30CC71;
+	background-color: $verde;
 }
 
 img.logo{
@@ -103,7 +103,7 @@ footer {
 
 footer nav.navfooter
 {
-	background-color: #30CC71;
+	background-color: $verde;
 	min-height: 10px;
 }
 
