@@ -26,7 +26,7 @@
 </head>
 
 <body>
-
+<header>
     <!-- Navigation -->
     <nav class="barnav navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
@@ -49,7 +49,9 @@
         
         </div>
         <!-- /.container -->
-    </nav>
+    </nav>  
+</header>
+    
 
     <!-- Page Content -->
     <div class="container" id="principal">

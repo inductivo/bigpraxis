@@ -1,0 +1,133 @@
+
+
+$verde: #30CC71;
+
+/*Fonts*/
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+@import url(http://fonts.googleapis.com/css?family=Roboto:500,900,100,300,700,400);
+
+body {
+
+	padding-bottom: 70px;
+    padding-top: 60px; 
+    background-color: $verde;
+}
+
+
+header nav.barnav
+{
+	background-color:#30CC71; 
+
+}
+
+button.btniconbar
+{
+	background-color: #30CC71;
+}
+
+img.logo{
+max-width: 150px;
+margin-top: -15px;
+
+}
+
+
+i.txtmenu
+{
+	color:#FFFFFF;
+	
+}
+
+i.txtmenu:hover
+{
+	color:#ff4842;
+}
+
+/*Titulo Inicio */
+h1.titulo{
+	color:#fff;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: bold;
+	font-size: 45px;
+}
+
+
+
+h3.steps{
+	color:#f1f2f2;
+	font-family: 'Roboto', sans-serif;
+	font-size: 30px;
+	font-weight: 100;
+}
+
+div.divstart{
+	margin-top: 10px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+}
+
+div a.btnstart
+{
+	font-size: 25px;
+	font-family: 'Montserrat', sans-serif;
+	color: #FFFFFF;
+	background-color: #D6523C;
+	border-bottom: 6px solid #AA4437;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+
+}
+
+div a.btnstart:hover
+{
+	background-color: #ff4842;
+}
+
+
+
+.img-center {
+	margin: 0 auto;
+}
+
+p.materias
+{
+	font-size: 18px;
+	
+}
+
+
+footer {
+    margin: 0px 0;
+    color:#fff;
+}
+
+footer nav.navfooter
+{
+	background-color: #30CC71;
+	min-height: 10px;
+}
+
+p.txtsv
+{
+	font-size: 12px;
+	font-family: 'Montserrat', sans-serif;
+	margin-top: 12px;
+}
+
+i.txtfooter
+{
+	color:#fff;
+	margin-top: 12px;
+}
+
+i.tw-icon:hover
+{
+	color:#3b5998;
+}
+
+i.fac-icon:hover
+{
+	color:#55acee;
+}
+
+

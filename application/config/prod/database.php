@@ -59,10 +59,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | the query builder class.
 */
 
-$active_group = 'default';
+$active_group = 'prod';
 $query_builder = TRUE;
 
-$db['default'] = array(
+
+// Configuración para produccion
+
+$db['prod'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
 	'username' => 'bdbigpraxis',
@@ -83,3 +86,6 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+
+
+

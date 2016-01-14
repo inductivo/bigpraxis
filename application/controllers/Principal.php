@@ -21,6 +21,7 @@ class Principal extends CI_Controller {
 	{
 		$data['contenido'] = 'inicio';
 		$this->load->view('templates/template_principal',$data);
+
 	}
 
 	/* Funciòn para cerrar la sesiòn del usuario*/

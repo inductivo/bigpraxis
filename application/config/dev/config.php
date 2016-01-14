@@ -17,7 +17,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | environments.
 |
 */
-$config['base_url'] = 'http://www.bigpraxis.com/en';
+//$config['base_url'] = 'http://www.bigpraxis.com/en';
+$config['base_url'] = '';
 
 /*
 |--------------------------------------------------------------------------
