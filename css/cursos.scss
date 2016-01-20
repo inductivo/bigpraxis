@@ -1,5 +1,6 @@
 /* Cursos de cada Semestre*/
 $verde: #30CC71;
+$rojo: #ff4842;
 
 /*Fonts*/
 @import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
@@ -22,7 +23,7 @@ button.btniconbar {
 
 .navbar-inverse .btniconbar:hover
 {
-  background-color:#e84b40;
+  background-color:$rojo;
 
 }
 
@@ -60,12 +61,12 @@ h2.h2semester {
   font-size: 80px;
 }
 
-span.number-semester{
-  border:3px solid #FFFFFF;
+span.number-semester{ 
+  background-color: #FFFFFF;
   border-radius: 0.8em;
   -moz-border-radius: 0.8em;
   -webkit-border-radius: 0.8em;
-  color: #ffffff;
+  color: #30CC71;
   display: inline-block;
   font-weight: bold;
   line-height: 1.6em;
