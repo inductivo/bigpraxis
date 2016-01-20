@@ -2,7 +2,7 @@
 <!-- Introduction Row -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header text-center titulo">HIGH SCHOOL</h1>
+                <h1 class="page-header text-center titulo">SELECT THE COURSE</h1>
             </div>
         </div>
 
@@ -12,7 +12,8 @@
             <!--First Semester -->
 
             <div class="col-lg-4 col-sm-4 text-center" id="lista-materias1">
-                <img class="img-circle img-responsive img-center" src="http://sumaventas.com.mx/study/img/primero.png" alt="Primero">
+                <h2 class="h2semester"><span class="number-semester">1</span></h2>
+                
                 <h3 class="h3semester">First Semester</h3>
               
               <ul class="list-group">
@@ -32,7 +33,8 @@
             <!--Second Semester -->
 
              <div class="col-lg-4 col-sm-4 text-center" id="lista-materias2">
-                <img class="img-circle img-responsive img-center" src="http://sumaventas.com.mx/study/img/segundo.png" alt="Segundo">
+                
+               <h2 class="h2semester"><span class="number-semester">2</span></h2>
                 <h3 class="h3semester">Second Semester</h3>
               
                 <ul class="list-group">
@@ -45,12 +47,13 @@
                   <?php endforeach; ?> 
                 </ul>
             </div>
-
+          
 
             <!--Third Semester -->
-
+          
              <div class="col-lg-4 col-sm-4 text-center" id="lista-materias3">
-                <img class="img-circle img-responsive img-center" src="http://sumaventas.com.mx/study/img/tercero.png" alt="Tercero">
+                
+                <h2 class="h2semester"><span class="number-semester">3</span></h2>
                 <h3 class="h3semester">Third Semester</h3>
               
                 <ul class="list-group">
@@ -63,11 +66,12 @@
                   <?php endforeach; ?> 
                 </ul>
             </div>
-
+          </div>
             <!--Fourth Semester -->
-
+          <div>
              <div class="col-lg-4 col-sm-4 text-center" id="lista-materias4">
-                <img class="img-circle img-responsive img-center" src="http://sumaventas.com.mx/study/img/cuarto.png" alt="Cuarto">
+                
+                <h2 class="h2semester"><span class="number-semester">4</span></h2>
                 <h3 class="h3semester">Fourth Semester</h3>
               
                 <ul class="list-group">
@@ -84,7 +88,7 @@
             <!--Fifth Semester -->
 
              <div class="col-lg-4 col-sm-4 text-center" id="lista-materias5">
-                <img class="img-circle img-responsive img-center" src="http://sumaventas.com.mx/study/img/quinto.png" alt="Quinto">
+                <h2 class="h2semester"><span class="number-semester">5</span></h2>
                 <h3 class="h3semester">Fifth Semester</h3>
               
                 <ul class="list-group">
@@ -101,7 +105,7 @@
             <!--Sixth Semester -->
 
              <div class="col-lg-4 col-sm-4 text-center" id="lista-materias6">
-                <img class="img-circle img-responsive img-center" src="http://sumaventas.com.mx/study/img/sexto.png" alt="Sexto">
+                 <h2 class="h2semester"><span class="number-semester">6</span></h2>
                 <h3 class="h3semester">Sixth Semester</h3>
               
                 <ul class="list-group">

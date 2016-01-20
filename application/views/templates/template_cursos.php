@@ -22,30 +22,31 @@
 </head>
 
 <body>
-
-    <!-- Navigation -->
-    <nav class="barnav navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle btniconbar" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="<?php echo site_url('principal'); ?>"><img class="img-responsive logo" src="<?= base_url('img/logo.png')?>"></a>
+    <header>
+        <!-- Navigation -->
+        <nav class="barnav navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="btniconbar navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="<?php echo site_url('principal'); ?>"><img class="img-responsive logo" src="<?= base_url('img/logo.png')?>"></a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                       <li><?= anchor('principal/acceder','<i class="fa fa-group txtmenu"> Teachers</i>');?></li>
+                        <li><?= anchor('principal/acceder','<i class="fa fa-book txtmenu"> Students</i>');?></li>   
+                    </ul>
+                </div>
+            
             </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                   <li><?= anchor('principal/acceder','<i class="fa fa-group txtmenu"> Teachers</i>');?></li>
-                    <li><?= anchor('principal/acceder','<i class="fa fa-book txtmenu"> Students</i>');?></li>   
-                </ul>
-            </div>
-        
-        </div>
-        <!-- /.container -->
-    </nav>
+            <!-- /.container -->
+        </nav>
+    </header>
 
     <!-- Page Content -->
     <div class="container" id="principal">
