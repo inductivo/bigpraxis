@@ -2,7 +2,7 @@
     
     <input type="hidden" id="id_materias" value="<?php echo $_POST['id_materias'];?>"></input>
     <input type="hidden" id="materia" value="<?php echo $_POST['materia'];?>"></input>
-        <!-- Temas Matemáticas -->
+        
         <div class="row">
             <div id="titulo-tema" class="col-lg-12"></div>
         </div>

@@ -23,10 +23,12 @@ $(document).ready(function() {
 	//$('#js').append(js);
 
 		var datos = JSON.parse(jsonData);
+		console.log(datos);
 
 		var html1 ='';
 		var html2='';
 		var html3='';
+		var html4='';
 		var imagen='';
 		var contenido='';
 		
@@ -34,19 +36,22 @@ $(document).ready(function() {
 
 		for(i=0; i<datos.length;i++)
 		{
-			html1='<li class="list-group-item" id="'+datos[i].id_contenidos+'">';
-			html2= '<h4 class="h4temas" style="cursor:pointer"> <span class="label label-info">'+datos[i].subclave +' </span>' + datos[i].contenido+'</h4></li>';
+			html1='<li class="list-group-item li-contenidos" id="'+datos[i].id_contenidos+'">';
+			html2= '<h4 class="h4contenidos"> <span class="label label-info">'+datos[i].subclave +' </span>' + datos[i].contenido+'</h4></li>';
 
 			imagen=datos[i].imagen;
 			contenido=datos[i].contenido;
+			titulo = datos[i].tema;
 			$('#ul-contenidos').append(html1+html2);
 			
 		}
+			html3= '<h1 class="page-header text-center titulo-contenidos">'+titulo+'</h1>';
+			$("#titulo-contenidos").append(html3);
 
-		   html3='<img class="img-rounded img-responsive img-center" src="'+imagen+'" alt="'+contenido+'">';
-			$('#div-imagen').append(html3);	  
+		   	html4='<img class="img-rounded img-responsive img-center" src="'+imagen+'" alt="'+contenido+'">';
+			$('#div-imagen').append(html4);	  
 			 
-
+			
 	}
 
 

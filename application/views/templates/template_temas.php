@@ -1,6 +1,6 @@
-
+<!DOCTYPE html>
 <html lang="en">
-
+<!-- TEMPLATE TEMAS-->
 <head>
 
     <meta charset="utf-8">
@@ -16,17 +16,15 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
     <!-- Custom CSS -->
-    <link href="<?= base_url('css/temas.css')?>" rel="stylesheet">
-    <link href="<?= base_url('css/test.css')?>" rel="stylesheet">
+    <link href="<?= base_url('css/temas.css')?>" rel="stylesheet"> 
     <link href="<?= base_url('css/cursos.css')?>" rel="stylesheet">
+
     <link href="<?= base_url('css/callouts.css')?>" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?= base_url('css/sweetalert.css')?>"> 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url('css/jquery.countdown.css')?>"> 
 
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
- 
-
 </head>
 
 <body>

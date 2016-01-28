@@ -2,10 +2,10 @@
         <input type="hidden" id="id_temas" value="<?php echo $_POST['id_temas'];?>"></input>
 
         <div class="row">
-            <div class="col-lg-12">
-                <h1 id="h1-titulo" class="page-header titulo text-center"></h1>
-            </div>
-          
+            <div id="titulo-contenidos" class="col-lg-8 col-lg-offset-4"></div>
+        </div>
+        
+        <div class="row">
             <div class="col-lg-4 col-sm-4 text-center" id="div-imagen"></div>
 
             <div id="lista_contenidos" class="col-lg-8 col-sm-8 text-left">

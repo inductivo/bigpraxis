@@ -1,0 +1,209 @@
+$verde: #30CC71;
+$rojo: #ff4842;
+
+@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700);
+
+/* Preguntas Radio*/
+
+body {
+  background-color: #FFFFFF;
+}
+
+
+h2.titulo-test {
+  color: #585858;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+}
+
+
+h3.pregunta {
+  color: #585858;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+div.test {
+  clear: both;
+  margin: 0 50px;
+  margin-top: 20px;
+}
+
+div.seccion-estadisticas{
+  border-bottom:1px solid #bdc3c7;
+}
+
+label {
+  width: 100%;
+  border-radius: 3px;
+  border: 1px solid #D1D3D4;
+}
+
+/* hide input */
+
+input {
+  &.radio {
+    &:empty {
+      margin-left: -999px;
+      ~ label {
+        position: relative;
+        float: left;
+        line-height: 2.5em;
+        text-indent: 3.25em;
+        margin-top: 0.5em;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        &:before {
+          position: absolute;
+          display: block;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          content: '';
+          width: 2.5em;
+          background: #D1D3D4;
+          border-radius: 3px 0 0 3px;
+        }
+      }
+    }
+    &:hover:not(:checked) ~ label {
+      &:before {
+        content: '\2714';
+        text-indent: .9em;
+        color: #C2C2C2;
+      }
+      color: #888;
+    }
+    &:checked ~ label {
+      &:before {
+        content: '\2714';
+        text-indent: .9em;
+        color: #FFFFFF;
+        background-color: $verde;
+      }
+      color: #777;
+    }
+    &:focus ~ label:before {
+      box-shadow: 0 0 0 3px #999;
+    }
+  }
+  &.checkbox:empty {
+    margin-left: -999px;
+    ~ label {
+      position: relative;
+      float: left;
+      line-height: 2.5em;
+      text-indent: 3.25em;
+      margin-top: 0.5em;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      &:before {
+        position: absolute;
+        display: block;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        content: '';
+        width: 2.5em;
+        background: #D1D3D4;
+        border-radius: 3px 0 0 3px;
+      }
+    }
+  }
+  &.checked:hover:not(:checked) ~ label:before {
+    content: '\2714';
+    text-indent: .9em;
+    color: #C2C2C2;
+  }
+  &.checkbox {
+    &:hover:not(:checked) ~ label {
+      color: #888;
+    }
+    &:checked ~ label {
+      &:before {
+        content: '\2714';
+        text-indent: .9em;
+        color: #9CE2AE;
+        background-color: #18bc9c;
+      }
+      color: #777;
+    }
+    &:focus ~ label:before {
+      box-shadow: 0 0 0 3px #999;
+    }
+  }
+}
+
+h1.incorrecto {
+  color: #fff;
+}
+
+span.labelRespuestas {
+  font-size: larger;
+}
+
+div {
+  &.paneltop {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  &.statstxt {
+    color: #585858;
+    margin-top: 40px;
+  }
+  &.statsnumber {
+    color: #585858;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+  }
+  &.txttime {
+    color: #585858;
+    font-size: 35px;
+    font-weight: bold;
+  }
+}
+
+img.img-stats {
+  margin: 0 auto;
+  max-width: 100px;
+  max-height: 100px;
+}
+
+div.statsbg {
+  /*background-color: #58b78e;*/
+  border-radius: 13px 13px 13px 13px;
+  -moz-border-radius: 13px 13px 13px 13px;
+  -webkit-border-radius: 13px 13px 13px 13px;
+ 
+}
+
+div.cont-btnenviar
+{
+  margin-top: 60px;
+  margin-bottom: 20px;
+}
+
+button.btn-enviar{
+  background-color:$verde;
+  border-bottom: 4px solid #18683A;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  color:#FFFFFF;
+
+  &:hover{
+    background-color:$rojo;
+    border-bottom: 4px solid #AA4437;
+  }
+}
+
+#caja_opciones{
+  margin-bottom: 10px;
+}
+

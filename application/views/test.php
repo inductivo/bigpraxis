@@ -1,55 +1,40 @@
+        
+    <link href="<?= base_url('css/test.css')?>" rel="stylesheet">
 
     
         <input type="hidden" id="id_contenidos" value="<?php echo $_POST['id_contenidos'];?>"></input>   
-        <!-- Test -->
-        <div class="row">
-           <div class="col-lg-12">
-                <div id="caja_titulo"></div>
+       
+       <!--Sección de Time -->
+        <div class="row text-center">
+            <div class="col-lg-12 statstxt">
+                <i class="fa fa-clock-o fa-3x"></i>
+                <div id="caja_tiempo" class="txttime"></div>
             </div>
+        </div>
+
+        <!-- Seccion de estadísticas-->
+        <div class="row seccion-estadisticas">
+           <div class="col-lg-6 col-sm-6 col-xs-6 text-left">
+                <p id="caja_titulo"></p>
+            </div>
+            <div class="col-lg-6 col-sm-6 col-xs-6 text-right">
+                <p clas="text-right"></strong><strong id="caja_aciertos"></strong> aciertos / <strong id="caja_problemas"></strong> problemas</p>
+           </div>
         </div> <!-- .row -->
-        
-         <div class="row text-center statsbg">
 
-            <div class="col-lg-2 col-sm-2 hidden-xs">
-                <img class="img-circle img-responsive img-stats" src="<?= base_url('img/exercises.png')?>" alt="Exercises">
-            </div>
-            <div class="col-lg-2 col-sm-2 stats1txt">
-                <div id="caja_problemas" class="statsnumber"></div>
-                <p>EXERCISES</p>
-            </div>
-             
-            <div class="col-lg-2 col-sm-2 hidden-xs">
-                <img class="img-circle img-responsive img-stats" src="<?= base_url('img/score.png')?>" alt="Score">
-            </div>
-            <div class="col-lg-2 col-sm-2 stats2txt">  
-                <div id="caja_aciertos" class="statsnumber"></div>
-                <p>SCORE</p>
-            </div>
-
-            <div class="col-lg-2 col-sm-2 hidden-xs">
-                <img class="img-circle img-responsive img-stats" src="<?= base_url('img/time.png')?>" alt="Time">
-            </div>
-            <div class="col-lg-2 col-sm-2 stats3txt">
-                <div id="caja_tiempo" class="statsnumber"></div>
-                <p>TIME</p>
-            </div>
-            
-        </div> <!--.row -->
-
-        <div class="row">
+        <!--Sección de preguntas -->
+        <div class="row seccion-preguntas">
             <div class="col-lg-12 text-left">
             
-                <div id="caja" class="caja">
-                    
-                    <div id="caja_sorry"></div>
-                    <div id="caja_pregunta"></div>
+                <div id="caja" class="caja">    
+                    <h3 id="caja_pregunta" class="pregunta"></h3>
+                    <div id="caja_sorry"></div>        
                     <div id="caja_opciones"></div>
                     <div id="caja_boton" class="test"></div>
                     <div id="caja_repaso"></div>
                     <div id="caja_solucion"></div>
                     <div id="caja_siguiente"></div>
                 </div> <!-- div caja principal-->
- 
             </div> <!--.col-lg-12 -->
         </div><!--.row -->
    

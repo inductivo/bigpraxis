@@ -2,21 +2,25 @@ $(document).ready(function() {
 
 	var problemas=0;
 	var aciertos=0;
+	
 
 	$('#caja_tiempo').countdown({since:0,format: 'HMS',padZeroes: true, description: '',compact:true});
 	$('#caja_aciertos').html(aciertos);
-	//$('#caja_problemas').html(problemas);
+	$('#caja_problemas').html(problemas);
 
 	$('#caja_boton').on('click','button',validarRespuesta);
 	$('#caja_siguiente').on('click','button',siguientePregunta);
 
-		
+	//Carga la primer pregunta
 	var id_contenidos = $("#id_contenidos").val();
 	obtenerPregunta(id_contenidos,mostrarPregunta);
 
 
 	function validarRespuesta()
 	 {
+	 	problemas++;
+		$('#caja_problemas').html(problemas);
+
 	 	var id_tipo = $(this).attr('data-tipo');
 	 	var id_pregunta = $(this).attr('data-preg');
 	 	var id_contenidos = $(this).attr('data-idcont');
@@ -45,9 +49,6 @@ $(document).ready(function() {
 
 	 function validaradio(id_preguntas,id_contenidos,opcion,callback)
 	 {
-	 	console.log("id_preguntas: "+ id_preguntas);
-	 	console.log("id_contenidos: "+ id_contenidos);
-	 	console.log("Opcion: "+ opcion);
 
 	 	$.ajax({
 			data: {
@@ -81,13 +82,11 @@ $(document).ready(function() {
 	 	
 	 	var respuesta = JSON.parse(jsonData);
 
-
 	 	for(var i=0; i<respuesta.length;i++)
 		{
 				
 			if(respuesta[i].validacion == 0)
 		 	{
-		 		console.log("Respuesta 0: " + respuesta[i].validacion);
 		 		var html ='';
 		 		var html1 = '';
 		 		var html2 ='';
@@ -107,7 +106,6 @@ $(document).ready(function() {
 		 	}
 		 	else if(respuesta[i].validacion = 1)
 		 	{
-		 		console.log("Respuesta 1: " + respuesta[i].validacion);
 		 		//var html3='';
 		 		//html3 = '<div class="alert alert-success" role="alert">'+respuesta[i].mensaje+'</div>';
 		 		//$('#caja').html(html3);
@@ -162,12 +160,11 @@ $(document).ready(function() {
 
 	function mostrarPregunta(jsonData)
 	{
-		//problemas=problemas+1;
-		problemas++;
-		$('#caja_problemas').html(problemas);
 
 		$('#caja_pregunta').empty();
 		$('#caja_boton').empty();
+
+		console.log("jsonData: " + jsonData);
 
 		var datos = JSON.parse(jsonData);
 
@@ -176,12 +173,11 @@ $(document).ready(function() {
 		var id_preg = datos.id_preguntas;
 		var tipo_preg = datos.id_tipo_pregunta;	
 
-	
-		var titulo = '<h2 class="page-header titulo">'+datos.subclave+' '+datos.contenido+'</h2>';
-		var pregunta = '<h3 class="pregunta">'+datos.pregunta+'</h3>';
+		var titulo = datos.subclave+' '+datos.contenido;
+		var pregunta = datos.pregunta;
 
 		$('#caja_titulo').html(titulo);	
-		$('#caja_pregunta').append(pregunta);	
+		$('#caja_pregunta').html(pregunta);
 
 		if(tipo_preg == 1)
 		{
@@ -193,8 +189,8 @@ $(document).ready(function() {
 		{
 			obtenerOpciones(datos.id_preguntas,mostrarOpcionesCheck);
 		}
-		
-		html1 = '<button type="button" class="btn btn-success" name="enviar" id="btnenviar" data-idcont="'+id_cont+'" data-preg="'+id_preg+'" data-tipo="'+tipo_preg+'">Enviar</button>';
+					
+		html1 = '<div class="row cont-btnenviar"><div class="col-md-2"><button type="button" class="btn btn-block btn-enviar" name="enviar" id="btnenviar" data-idcont="'+id_cont+'" data-preg="'+id_preg+'" data-tipo="'+tipo_preg+'">Revisar respuesta</button></div></div>';
 
 		$('#caja_boton').html(html1);
 
@@ -223,7 +219,6 @@ $(document).ready(function() {
 
 		for(var i=0; i<datos.length;i++)
 		{
-			console.log(datos[i].opcion);
 
 			html1= '<div class="test"><input type="radio" maxlength="524288" name="radio" id="'+datos[i].id_opciones+'" class="radio" value="'+datos[i].opcion+'">';
             html2= '<label for="'+datos[i].id_opciones+'">'+ datos[i].opcion +'</label></div>';

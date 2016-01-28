@@ -50,7 +50,7 @@ class Model_contenidos extends CI_Model{
     }
 
 
-	//Obtener las preguntas del contenido
+	//Obtiene TODAS las preguntas de la BD con el id_contenido que se pasa como parámetro
 	public function obtener_pregunta($id_contenido)
 	{
 		$this->db->select('preguntas.*, contenidos.contenido,contenidos.subclave');
@@ -59,11 +59,49 @@ class Model_contenidos extends CI_Model{
 		$this->db->where('preguntas.id_contenidos',$id_contenido);
 		$this->db->order_by('preguntas.id_preguntas','RANDOM');
 
-		$query = $this->db->get()->row();
+		$query = $this->db->get();
 
-      	$json = json_encode($query);
+        $arreglo = array();
+
+        if($query->num_rows() > 0)
+        {
+            foreach($query->result() as $registro)
+            {
+                $arreglo[] = array(
+                'id_preguntas'=> $registro->id_preguntas,
+                'id_grados' => $registro->id_grados,
+                'id_semestre' => $registro->id_semestre,
+                'id_temas' => $registro->id_temas,
+                'id_contenidos' => $registro->id_contenidos,
+                'id_tipo_pregunta' => $registro->id_tipo_pregunta,
+                'pregunta' => $registro->pregunta,
+                'repaso'    => $registro->repaso,
+                'solucion'  => $registro->solucion,
+                'contenido' => $registro->contenido,
+                'subclave'  => $registro->subclave
+              );    
+            }
+        }
+
+      	$json = json_encode($arreglo);
      	echo $json;
 	}
+
+    //Obtiene una sola pregunta de la BD
+    public function obtener_pregunta2($id_contenido)
+    {
+        $this->db->select('preguntas.*, contenidos.contenido,contenidos.subclave');
+        $this->db->from('preguntas');
+        $this->db->join('contenidos','preguntas.id_contenidos = contenidos.id_contenidos','inner');
+        $this->db->where('preguntas.id_contenidos',$id_contenido);
+        $this->db->order_by('preguntas.id_preguntas','RANDOM');
+
+        $query = $this->db->get()->row();
+
+        $json = json_encode($query);
+        echo $json;
+    }
+
 
     //Regresar las preguntas del contenido
     function regresarpregunta($idp)
