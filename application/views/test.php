@@ -2,7 +2,8 @@
     <link href="<?= base_url('css/test.css')?>" rel="stylesheet">
 
     
-        <input type="hidden" id="id_contenidos" value="<?php echo $_POST['id_contenidos'];?>"></input>   
+        <input type="hidden" id="id_contenidos" value="<?php echo $_POST['id_contenidos'];?>"></input>
+        <input type="hidden" id="num_preguntas" value="<?php echo $this->Model_contenidos->num_preguntas($_POST['id_contenidos']);?>"></input>    
        
        <!--Sección de Time -->
         <div class="row text-center">
@@ -18,7 +19,7 @@
                 <p id="caja_titulo"></p>
             </div>
             <div class="col-lg-6 col-sm-6 col-xs-6 text-right">
-                <p clas="text-right"></strong><strong id="caja_aciertos"></strong> aciertos / <strong id="caja_problemas"></strong> problemas</p>
+                <p clas="text-right"></strong><strong id="caja_aciertos"></strong> aciertos / <strong id="caja_problemas"></strong> preguntas</p>
            </div>
         </div> <!-- .row -->
 

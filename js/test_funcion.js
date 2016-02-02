@@ -2,6 +2,8 @@ $(document).ready(function() {
 
 	var problemas=0;
 	var aciertos=0;
+	var preguntas_rep = [];
+
 	
 
 	$('#caja_tiempo').countdown({since:0,format: 'HMS',padZeroes: true, description: '',compact:true});
@@ -11,8 +13,14 @@ $(document).ready(function() {
 	$('#caja_boton').on('click','button',validarRespuesta);
 	$('#caja_siguiente').on('click','button',siguientePregunta);
 
-	//Carga la primer pregunta
+	//Obtenemos el id del contenido
 	var id_contenidos = $("#id_contenidos").val();
+
+	//Conocemos el número de preguntas del contenido
+	var num_preguntas =$("#num_preguntas").val();
+	console.log("Numero de preguntas:" + num_preguntas);
+
+	//Se incia el test
 	obtenerPregunta(id_contenidos,mostrarPregunta);
 
 
@@ -145,7 +153,6 @@ $(document).ready(function() {
 	}
 
 
-
 	function obtenerPregunta(id_contenido,callback)
 	{
 		$.ajax({
@@ -164,15 +171,12 @@ $(document).ready(function() {
 		$('#caja_pregunta').empty();
 		$('#caja_boton').empty();
 
-		console.log("jsonData: " + jsonData);
-
 		var datos = JSON.parse(jsonData);
+		var id_preg = datos.id_preguntas;
+		var id_cont = datos.id_contenidos;
 
 		var html1 ='';
-		var id_cont = datos.id_contenidos;
-		var id_preg = datos.id_preguntas;
 		var tipo_preg = datos.id_tipo_pregunta;	
-
 		var titulo = datos.subclave+' '+datos.contenido;
 		var pregunta = datos.pregunta;
 

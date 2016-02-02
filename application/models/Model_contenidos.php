@@ -49,9 +49,17 @@ class Model_contenidos extends CI_Model{
 
     }
 
+    //Se obtiene el número total de preguntas que tiene un contenido
+    public function num_preguntas($id_contenido)
+    {
+        $this->db->where('id_contenidos', $id_contenido);
+        $this->db->from('preguntas');
+        return $this->db->count_all_results();
+    }
+
 
 	//Obtiene TODAS las preguntas de la BD con el id_contenido que se pasa como parámetro
-	public function obtener_pregunta($id_contenido)
+	public function obtener_pregunta2($id_contenido)
 	{
 		$this->db->select('preguntas.*, contenidos.contenido,contenidos.subclave');
 		$this->db->from('preguntas');
@@ -88,7 +96,7 @@ class Model_contenidos extends CI_Model{
 	}
 
     //Obtiene una sola pregunta de la BD
-    public function obtener_pregunta2($id_contenido)
+    public function obtener_pregunta($id_contenido)
     {
         $this->db->select('preguntas.*, contenidos.contenido,contenidos.subclave');
         $this->db->from('preguntas');
