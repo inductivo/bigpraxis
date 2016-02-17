@@ -13,15 +13,15 @@ body {
 h2.titulo-test {
   color: #585858;
   font-family: 'Roboto', sans-serif;
-  font-size: 20px;
+  font-size: 23px;
 }
 
 
 h3.pregunta {
   color: #585858;
   font-family: 'Roboto', sans-serif;
-  font-size: 20px;
-  font-weight: 400;
+  font-size: 23px;
+  font-weight: 500;
 }
 
 div.test {
@@ -32,6 +32,35 @@ div.test {
 
 div.seccion-estadisticas{
   border-bottom:1px solid #bdc3c7;
+}
+
+div.caja-incorrecto{
+    background-color: $rojo;
+    color: #FFFFFF;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -mox-border-radius: 5px;
+    height: 50px;
+
+    h3{
+      padding-top: 10px;
+      //transition: opacity 0.9s ease-in;
+    }
+}
+
+div.caja-respuesta{
+    background-color: $verde;
+    color: #FFFFFF;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -mox-border-radius: 5px;
+    height: 50px;
+    margin-top: 10px;
+    
+  p{
+      padding-top: 10px;
+      font-size: 1.5em;
+    }
 }
 
 label {
@@ -131,7 +160,7 @@ input {
         content: '\2714';
         text-indent: .9em;
         color: #9CE2AE;
-        background-color: #18bc9c;
+        background-color: $verde;
       }
       color: #777;
     }
@@ -141,9 +170,6 @@ input {
   }
 }
 
-h1.incorrecto {
-  color: #fff;
-}
 
 span.labelRespuestas {
   font-size: larger;
@@ -191,19 +217,35 @@ div.cont-btnenviar
 }
 
 button.btn-enviar{
-  background-color:$verde;
-  border-bottom: 4px solid #18683A;
+  background-color:#30ccbf;
+  border-bottom: 4px solid #1c7a72;
   border-radius: 5px;
   -webkit-border-radius: 5px;
   color:#FFFFFF;
+  
+  &:hover{
+    background-color:rgba(#30ccbf,0.8);
+  }
+}
+
+button.btn-siguiente{
+  background-color: #30ccbf;
+  border-bottom: 4px solid #1c7a72;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  color:#FFFFFF;
+  font-size: 20px;
+
 
   &:hover{
-    background-color:$rojo;
-    border-bottom: 4px solid #AA4437;
+    background-color:rgba(#30ccbf,0.8);
   }
 }
 
 #caja_opciones{
   margin-bottom: 10px;
 }
+
+
+
 

@@ -2,7 +2,7 @@ $(document).ready(function() {
 
 	var problemas=0;
 	var aciertos=0;
-	var preguntas_rep = [];
+	var preguntas_mostradas=0;
 
 	
 
@@ -17,7 +17,7 @@ $(document).ready(function() {
 	var id_contenidos = $("#id_contenidos").val();
 
 	//Conocemos el número de preguntas del contenido
-	var num_preguntas =$("#num_preguntas").val();
+	var num_preguntas = $("#num_preguntas").val();
 	console.log("Numero de preguntas:" + num_preguntas);
 
 	//Se incia el test
@@ -100,12 +100,22 @@ $(document).ready(function() {
 		 		var html2 ='';
 		 		var html3='';
 
-		 		html = '<h1 class="incorrecto"><span class="label label-danger">INCORRECT!<span></h1><br> <h4>The correct answer is: </h4> <h3><strong>'+respuesta[i].respuestasok+'</h3></strong>';
+		 		html0='<h3><i class="fa fa-times fa-lg"></i>  INCORRECT!</h3>';
+		 		//html = '<p> The correct answer is: <strong>'+respuesta[i].respuestasok+'</p></strong>';
 		 		html1 ='<div class="bs-callout bs-callout-warning"><h3>Review</h3><p>'+respuesta[i].repaso+'</p></div>';
 		 		html2='<div class="bs-callout bs-callout-success"><h3>Solution</h3><p>'+respuesta[i].solucion+'</p></div>';
-		 		html3='<button type="button" class="btn btn-info btn-lg" id="siguiente" data-idc="'+respuesta[i].id_contenidos+'">Next <span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span></button>';
-		 		
-		 		$('#caja_sorry').html(html);
+		 		//html3='<button type="button" class="btn btn-info btn-lg" id="siguiente" data-idc="'+respuesta[i].id_contenidos+'">Next <span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span></button>';
+		 		html3 = '<div class="row cont-btnenviar"><div class="col-md-2"><button type="button" class="btn btn-block btn-siguiente" id="siguiente" data-idc="'+respuesta[i].id_contenidos+'">Siguiente <i class="fa fa-arrow-circle-o-right fa-lg"></i></button></div></div>';
+
+
+		 		$('#caja_incorrecto').addClass('caja-incorrecto text-center');
+		 		$('#caja_incorrecto').html(html0);
+
+		 		//$('#caja_respuesta').addClass('caja-respuesta text-center');
+		 		//$('#caja_respuesta').html(html);
+
+		 		$('#caja_opciones').empty();
+
 		 		$('#caja_boton').html('');
 		 		$('#caja_repaso').html(html1);
 		 		$('#caja_solucion').html(html2);
@@ -131,10 +141,12 @@ $(document).ready(function() {
 
 	function siguientePregunta()
 	{
-
+		$('#caja_incorrecto').removeClass('caja-incorrecto');
+		//$('#caja_respuesta').removeClass('caja-respuesta');
+		$('#caja_incorrecto').empty();
 		$('#caja_repaso').empty();
 		$('#caja_solucion').empty();
-		$('#caja_sorry').empty();
+		$('#caja_respuesta').empty();
 		$('#caja_siguiente').empty();
 
 		var id_contenido = $(this).attr('data-idc');
@@ -144,9 +156,12 @@ $(document).ready(function() {
 
 	function siguientePreguntaOk(id_contenido)
 	{
+		$('#caja_incorrecto').removeClass('caja-incorrecto');
+		//$('#caja_respuesta').removeClass('caja-respuesta');
+		$('#caja_incorrecto').empty();
 		$('#caja_repaso').empty();
 		$('#caja_solucion').empty();
-		$('#caja_sorry').empty();
+		$('#caja_respuesta').empty();
 		$('#caja_siguiente').empty();
 
 		obtenerPregunta(id_contenido,mostrarPregunta);
@@ -167,36 +182,54 @@ $(document).ready(function() {
 
 	function mostrarPregunta(jsonData)
 	{
+			preguntas_mostradas ++;	
 
-		$('#caja_pregunta').empty();
-		$('#caja_boton').empty();
+			$('#caja_pregunta').empty();
+			$('#caja_boton').empty();
 
-		var datos = JSON.parse(jsonData);
-		var id_preg = datos.id_preguntas;
-		var id_cont = datos.id_contenidos;
-
-		var html1 ='';
-		var tipo_preg = datos.id_tipo_pregunta;	
-		var titulo = datos.subclave+' '+datos.contenido;
-		var pregunta = datos.pregunta;
-
-		$('#caja_titulo').html(titulo);	
-		$('#caja_pregunta').html(pregunta);
-
-		if(tipo_preg == 1)
+		if(preguntas_mostradas<= num_preguntas)
 		{
 
-			obtenerOpciones(datos.id_preguntas,mostrarOpcionesRadio);
+			var datos = JSON.parse(jsonData);
+			var id_preg = datos.id_preguntas;
+			var id_cont = datos.id_contenidos;
 
-		}
-		else if(tipo_preg == 2)
-		{
-			obtenerOpciones(datos.id_preguntas,mostrarOpcionesCheck);
-		}
-					
-		html1 = '<div class="row cont-btnenviar"><div class="col-md-2"><button type="button" class="btn btn-block btn-enviar" name="enviar" id="btnenviar" data-idcont="'+id_cont+'" data-preg="'+id_preg+'" data-tipo="'+tipo_preg+'">Revisar respuesta</button></div></div>';
+			var html1 ='';
+			var tipo_preg = datos.id_tipo_pregunta;	
+			var titulo = datos.subclave+' '+datos.contenido;
+			var pregunta = datos.pregunta;
 
-		$('#caja_boton').html(html1);
+			$('#caja_titulo').html(titulo);	
+			$('#caja_pregunta').html(pregunta);
+
+			if(tipo_preg == 1)
+			{
+
+				obtenerOpciones(datos.id_preguntas,mostrarOpcionesRadio);
+
+			}
+			else if(tipo_preg == 2)
+			{
+				obtenerOpciones(datos.id_preguntas,mostrarOpcionesCheck);
+			}
+						
+			html1 = '<div class="row cont-btnenviar"><div class="col-md-2"><button type="button" class="btn btn-block btn-enviar" name="enviar" id="btnenviar" data-idcont="'+id_cont+'" data-preg="'+id_preg+'" data-tipo="'+tipo_preg+'">Revisar respuesta</button></div></div>';
+
+			$('#caja_boton').html(html1);
+		}
+		else{
+
+			$('#caja_pregunta').html("FIN DEL TEST");
+			$('#caja_opciones').empty();
+			$('#caja_incorrecto').removeClass('caja-incorrecto');
+			//$('#caja_respuesta').removeClass('caja-respuesta');
+			$('#caja_incorrecto').empty();
+			$('#caja_repaso').empty();
+			$('#caja_solucion').empty();
+			$('#caja_respuesta').empty();
+			$('#caja_siguiente').empty();
+			$('#caja_tiempo').countdown('pause');
+		}
 
 	}
 

@@ -28,9 +28,13 @@
             <div class="col-lg-12 text-left">
             
                 <div id="caja" class="caja">    
+
+                    <div id="caja_incorrecto"></div>
                     <h3 id="caja_pregunta" class="pregunta"></h3>
-                    <div id="caja_sorry"></div>        
-                    <div id="caja_opciones"></div>
+                    <div id="caja_respuesta"></div>  
+                    
+                    <div id="caja_opciones"></div>      
+                   
                     <div id="caja_boton" class="test"></div>
                     <div id="caja_repaso"></div>
                     <div id="caja_solucion"></div>
