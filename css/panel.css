@@ -13,6 +13,11 @@ textarea.txtarea{width: 100%;
 
 p {font-weight: bold;}
 
+nav.navbar-inverse
+{
+	background-color: #30CC71;
+}
+
 .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus{
 	background-color: #FFF;
 	color: #e84b40;
