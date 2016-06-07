@@ -37,5 +37,5 @@ function regresarPanel(){
 }
 
 function realizarConsulta(){
-	console.log("Click en consulta ---> !!! :) ");
+
 }

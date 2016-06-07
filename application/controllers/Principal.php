@@ -259,18 +259,18 @@ class Principal extends CI_Controller {
 		$this->Model_contenidos->check_obtener($id_p,$id_cont,$opcion);
 	}
 
-//Vista AGREGAR preguntas en Panel
+	//Vista AGREGAR preguntas en Panel
 	public function agregar_preguntas()
 	{
 		$this->load->view('administracion/agregar_preguntas');
 	}
-//Vista CONSULTAR preguntas en Panel
+	//Vista CONSULTAR preguntas en Panel
 	public function consultar_preguntas()
 	{
 		$this->load->view('administracion/consultar_preguntas');
 	}
 
-	//Vista CONSULTAR preguntas en Panel
+	//Vista Panel
 	public function panel_home()
 		{
 			$this->load->view('administracion/panel');
