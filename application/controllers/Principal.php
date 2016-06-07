@@ -59,7 +59,7 @@ class Principal extends CI_Controller {
 		if ($this->form_validation->run()){
 
 			/*Se accede al dashboard*/
-			redirect('principal/panel_estudiantes');	
+			redirect('principal/panel_estudiantes');
 		} else
 		{
 			$this->estudiantes();
@@ -74,7 +74,7 @@ class Principal extends CI_Controller {
 		if ($this->form_validation->run()){
 
 			/*Se accede al dashboard*/
-			redirect('principal/panel_profesores');	
+			redirect('principal/panel_profesores');
 		} else
 		{
 			$this->profesores();
@@ -156,7 +156,7 @@ class Principal extends CI_Controller {
 	public function publicar()
 	{
 		$respuestas = array();
-		
+
 		$this->form_validation->set_rules('txtpregunta','la Pregunta','required');
 		$this->form_validation->set_rules('txtrepaso','el Repaso','required');
 		$this->form_validation->set_rules('txtsolucion','la Solucion','required');
@@ -177,15 +177,15 @@ class Principal extends CI_Controller {
 
 			$opciones = $this->input->post('resp');
 
-			
+
 
 			$cont=count($opciones);
 
     		for ($i = 0; $i < $cont; $i++) {
-		       $check= $this->input->post('chk'.($i+1)); 
-		       
+		       $check= $this->input->post('chk'.($i+1));
+
 		       $respuestas[$i+1] = $check;
-		        
+
 		    }
 
 
@@ -210,7 +210,7 @@ class Principal extends CI_Controller {
 	public function temas()
 	{
 		$id_materia= $_GET['id_materias'];
-		$this->Model_cursos->obtenerTemas($id_materia);	
+		$this->Model_cursos->obtenerTemas($id_materia);
 	}
 
 
@@ -222,7 +222,7 @@ class Principal extends CI_Controller {
 	public function subtemas()
 	{
 		$id_temas= $_GET['id_temas'];
-		$this->Model_contenidos->mostrarSubtemas($id_temas);	
+		$this->Model_contenidos->mostrarSubtemas($id_temas);
 	}
 
 
@@ -234,13 +234,13 @@ class Principal extends CI_Controller {
 	public function obtener_pregunta()
 	{
 		$id_contenido= $_GET['id_contenidos'];
-		$this->Model_contenidos->obtener_pregunta($id_contenido);	
+		$this->Model_contenidos->obtener_pregunta($id_contenido);
 	}
 
 	public function obtener_opciones()
 	{
 		$id_pregunta = $_GET['id_pregunta'];
-		$this->Model_contenidos->obtener_opciones($id_pregunta);		
+		$this->Model_contenidos->obtener_opciones($id_pregunta);
 	}
 
 	public function validar_respuesta_radio()
@@ -258,7 +258,22 @@ class Principal extends CI_Controller {
 		$opcion = $_GET['opcion'];
 		$this->Model_contenidos->check_obtener($id_p,$id_cont,$opcion);
 	}
-	
-	
+
+//Vista AGREGAR preguntas en Panel
+	public function agregar_preguntas()
+	{
+		$this->load->view('administracion/agregar_preguntas');
+	}
+//Vista CONSULTAR preguntas en Panel
+	public function consultar_preguntas()
+	{
+		$this->load->view('administracion/consultar_preguntas');
+	}
+
+	//Vista CONSULTAR preguntas en Panel
+	public function panel_home()
+		{
+			$this->load->view('administracion/panel');
+		}
 
 }

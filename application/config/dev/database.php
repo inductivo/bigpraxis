@@ -68,7 +68,7 @@ $db['dev'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
 	'username' => 'root',
-	'password' => '',
+	'password' => 'root',
 	'database' => 'bdbigpraxis',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
@@ -85,8 +85,3 @@ $db['dev'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
-
-
-
-
-

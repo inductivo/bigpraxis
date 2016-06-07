@@ -1,0 +1,96 @@
+$verde: #30CC71;
+$gris_bg:#f1f2f2;
+$rojo:#D6523C;
+$amarillo:#e9bc1c;
+$amarillo-secundario:#fbc215;
+$azul:#30ccbf;
+
+
+
+
+body
+{
+	background-color: $gris_bg;
+	padding-bottom: 70px;
+}
+
+div.margen { margin:10px 0;}
+div.margenbtn { margin:20px 0;
+	display: none;}
+
+textarea.txtarea{width: 100%;
+				font-size: 16px;}
+
+p {font-weight: bold;}
+
+nav.navbar-inverse
+{
+	background-color: $verde;
+}
+
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus{
+	background-color: $verde;
+
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color:#000;
+}
+
+#cajatipopregunta {display:none;}
+#cajarespuestas {display:none;}
+#cajanuevaresp{display: none;}
+#cajas{display: none;}
+#publicar{display: none;}
+
+div.panelprincipal
+{
+	font-family: 'Roboto';
+	margin: 80px auto 10px auto;
+
+}
+
+.img-opcion
+{
+	max-width: 10em;
+	cursor: pointer;
+}
+
+.menu-txt{
+	color:black;
+	font-size: 20px;
+	margin: 10px auto 30px auto;
+}
+
+
+.li-opciones{
+	border: 1px solid $rojo;
+	color:black;
+
+	&:hover{
+		color:white;
+		background-color: $rojo;
+	}
+}
+
+.btnatras{
+	color:white;
+	background-color: $amarillo;
+	border-bottom:4px solid #bf9913;
+	margin-top: 30px;
+
+	&:hover{
+		background-color: $amarillo-secundario;
+	}
+}
+
+
+.btnconsultar{
+	background-color: $azul;
+	border-bottom: 4px solid #1c7a72;
+	color:white;
+
+	&:hover{
+		background-color:#1ddfcf;
+	}
+}

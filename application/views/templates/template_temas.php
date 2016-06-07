@@ -18,6 +18,7 @@
     <!-- Custom CSS -->
     <link href="<?= base_url('css/temas.css')?>" rel="stylesheet"> 
     <link href="<?= base_url('css/cursos.css')?>" rel="stylesheet">
+   
 
     <link href="<?= base_url('css/callouts.css')?>" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?= base_url('css/sweetalert.css')?>"> 

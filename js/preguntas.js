@@ -1,4 +1,4 @@
-	
+
 $(document).ready(function() {
 
 
@@ -18,7 +18,7 @@ $(document).ready(function() {
 	$('#temas').on('change', cargarContenidos);
 	$('#temas').on('click', cargarContenidos);
 	//$('#temas').on('focus', cargarContenidos);
-	
+
 	$('#agregar').on('click', construirPregunta);
 	$('#agregar').on('click', cargarTipoPregunta);
 	$('#agregar').on('click', cargarRespuestas);
@@ -30,17 +30,16 @@ $(document).ready(function() {
 
 	  //var x = número de campos existentes en el contenedor
     var x = $('#respuestas div').length + 1;
-    console.log(x);
-    
+
     var FieldCount = x-1; //para el seguimiento de los campos
-	
+
 	$(agregar_r).on('click', agregarRespuesta);
 
 
 	 $('body').on('click','.eliminar', function(e){ //click en eliminar campo
         if( x > 1 ) {
             $(this).parent('div').remove(); //eliminar el campo
-            
+
             x--;
         }
         return false;
@@ -58,8 +57,8 @@ $(document).ready(function() {
 	        "jbimages",
 	        "autoresize",
 	        "code",
-	        
-	      
+
+
 	    ],
 	    paste_data_images: true,
 	    toolbar: "leaui_formula | insertfile bold italic superscript subscript | bullist numlist | jbimages charmap link code ",
@@ -78,8 +77,6 @@ $(document).ready(function() {
 	{
 		obtenerGrados(imprimirGrados);
 		cargarSemestres();
-		
-		
 	}
 
 	function obtenerGrados(imprimirGrados)
@@ -97,7 +94,7 @@ $(document).ready(function() {
 	{
 		$('#grados').empty();
 		$opciones = JSON.parse(jsonData);
-		
+
 		for(i=0; i<$opciones.length;i++)
 		{
 			$('#grados').append('<option value="'+ $opciones[i].id_grados +'">'+ $opciones[i].grado +'</option>');
@@ -110,7 +107,7 @@ $(document).ready(function() {
 	{
 		var idgrado = $('#grados').val();
 		obtenerSemestres(idgrado,imprimirSemestres);
-	
+
 	}
 
 	function obtenerSemestres(idgrado,imprimirSemestres)
@@ -133,7 +130,7 @@ $(document).ready(function() {
 		$('#contenidos').empty();
 
 		$opciones = JSON.parse(jsonData);
-		
+
 		for(i=0; i<$opciones.length;i++)
 		{
 			$('#semestres').append('<option value="'+ $opciones[i].id_semestre +'">'+ $opciones[i].semestre+'</option>');
@@ -145,7 +142,7 @@ $(document).ready(function() {
 	{
 		var idsemestre = $('#semestres').val();
 		obtenerMaterias(idsemestre,imprimirMaterias);
-	
+
 	}
 
 	function obtenerMaterias(idsemestre,imprimirMaterias)
@@ -168,7 +165,7 @@ $(document).ready(function() {
 		$('#contenidos').empty();
 
 		$opciones = JSON.parse(jsonData);
-		
+
 		for(i=0; i<$opciones.length;i++)
 		{
 			$('#materias').append('<option value="'+ $opciones[i].id_materias +'">'+ $opciones[i].materia +'</option>');
@@ -181,7 +178,7 @@ $(document).ready(function() {
 	{
 		var idmateria = $('#materias').val();
 		obtenerTemas(idmateria,imprimirTemas);
-		
+
 	}
 
 	function obtenerTemas(idmateria,imprimirTemas)
@@ -202,7 +199,7 @@ $(document).ready(function() {
 		$('#contenidos').empty();
 
 		$opciones = JSON.parse(jsonData);
-		
+
 		for(i=0; i<$opciones.length;i++)
 		{
 			$('#temas').append('<option value="'+ $opciones[i].id_temas +'">'+ $opciones[i].clave +". " + $opciones[i].tema +'</option>');
@@ -234,7 +231,7 @@ $(document).ready(function() {
 	{
 		$('#contenidos').empty();
 		$opciones = JSON.parse(jsonData);
-		
+
 		for(i=0; i<$opciones.length;i++)
 		{
 			$('#contenidos').append('<option value="'+ $opciones[i].id_contenidos +'">'+ $opciones[i].subclave +" " + $opciones[i].contenido +'</option>');
@@ -269,7 +266,7 @@ $(document).ready(function() {
 	{
 		$('#tipopregunta').empty();
 		$opciones = JSON.parse(jsonData);
-		
+
 		for(i=0; i<$opciones.length;i++)
 		{
 			$('#tipopregunta').append('<option value="'+ $opciones[i].id_tipo_pregunta +'">'+ $opciones[i].tipo +'</option>');
@@ -302,7 +299,7 @@ $(document).ready(function() {
 
 	function agregarRespuesta()
 	{
-		
+
 
 		if(x <= maxInputs)
 		{
@@ -326,8 +323,8 @@ $(document).ready(function() {
 		        "jbimages",
 		        "autoresize",
 		        "code",
-		        
-		      
+
+
 		    ],
 		    paste_data_images: true,
 		    toolbar: "leaui_formula | insertfile bold italic superscript subscript | bullist numlist | jbimages charmap link code ",
@@ -345,11 +342,11 @@ $(document).ready(function() {
 
 	window.setTimeout(function() {
     	$(".alerta").fadeTo(1500, 0).slideUp(500, function(){
-        $(this).remove(); 
+        $(this).remove();
     	});
 	}, 5000);
 
 
 
 
-}); 
+});

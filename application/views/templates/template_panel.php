@@ -11,17 +11,19 @@
 
     <title>Bigpraxis</title>
 
+    <link href='https://fonts.googleapis.com/css?family=Montserrat|Lato:400,700,300,900|Roboto:400,100,300,700,500,900' rel='stylesheet' type='text/css'>
     <!-- Bootstrap Core CSS -->
     <link href="<?= base_url('css/bootstrap.min.css')?>" rel="stylesheet">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
 
     <!-- Custom CSS -->
-    
+
     <link href="<?= base_url('css/principal.css')?>" rel="stylesheet">
     <link href="<?= base_url('css/panel.css')?>" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="<?= base_url('css/sweetalert.css')?>"> 
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" type="text/css" href="<?= base_url('css/sweetalert.css')?>">
+
 
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
@@ -42,7 +44,7 @@
                 </button>
                 <a class="navbar-brand" href="<?php echo site_url('principal'); ?>"><img class="img-responsive logo" src="<?= base_url('img/logo.png')?>"></a>
             </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="collapse navbar-collapse">
                <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
                           <a href="#" class="dropdown-toggle menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= $this->session->userdata('nombre'); ?> <?= $this->session->userdata('apellidos'); ?> <span class="caret"></span></a>
@@ -52,7 +54,7 @@
                         </li>
                 </ul>
             </div>
-        
+
         </div>
         <!-- /.container -->
     </nav>
@@ -74,14 +76,14 @@
                             <p class="txtsv">Copyright &copy; Suma Ventas Consultores 2016</p>
                         </div>
                     </div> <!-- /.row -->
-            </div>        
+            </div>
         </nav>
 
         <!-- jQuery -->
         <script src="<?= base_url('js/jquery.js')?>"></script>
         <script src="<?= base_url('js/bootstrap.min.js')?>"></script>
         <script src="<?= base_url('js/sweetalert.min.js')?>"></script>
-       
+
 
         <!-- Validaciones -->
         <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.js"></script>
