@@ -15,7 +15,7 @@ class Model_administracion extends CI_Model{
 
     	public function cargarGrados()
       	{
-	        $query = $this->db->query('SELECT * FROM grados'); 
+	        $query = $this->db->query('SELECT * FROM grados');
 	        $arreglo = array();
 
 	        if($query->num_rows() > 0)
@@ -26,16 +26,16 @@ class Model_administracion extends CI_Model{
 	            $arreglo[] = array(
 	                'id_grados'=> $registro->id_grados,
 	                'grado' => $registro->grado
-	              );    
+	              );
 	           }
 	        }
 	            $json = json_encode($arreglo);
-	            echo $json;              
+	            echo $json;
       }
 
       public function cargarSemestres()
       	{
-	        $query = $this->db->query('SELECT * FROM semestres'); 
+	        $query = $this->db->query('SELECT * FROM semestres');
 	        $arreglo = array();
 
 	        if($query->num_rows() > 0)
@@ -46,20 +46,20 @@ class Model_administracion extends CI_Model{
 	            $arreglo[] = array(
 	                'id_semestre'=> $registro->id_semestre,
 	                'semestre' => $registro->semestre
-	              );    
+	              );
 	           }
 	        }
 	            $json = json_encode($arreglo);
-	            echo $json;              
+	            echo $json;
       }
 
       public function cargarMaterias($idsemestre)
       	{
-	        
+
       		$sql = "SELECT * FROM materias WHERE id_semestre = ?";
         	$query = $this->db->query($sql, array($idsemestre));
 
-	        //$query = $this->db->query('SELECT * FROM materias'); 
+	        //$query = $this->db->query('SELECT * FROM materias');
 	        $arreglo = array();
 
 	        if($query->num_rows() > 0)
@@ -70,11 +70,11 @@ class Model_administracion extends CI_Model{
 	            $arreglo[] = array(
 	                'id_materias'=> $registro->id_materias,
 	                'materia' => $registro->materia
-	              );    
+	              );
 	           }
 	        }
 	            $json = json_encode($arreglo);
-	            echo $json;              
+	            echo $json;
       }
 
        public function cargarTemas($idmateria)
@@ -94,11 +94,11 @@ class Model_administracion extends CI_Model{
 	                'clave' => $registro->clave,
 	                'tema' => $registro->tema
 
-	              );    
+	              );
 	           }
 	        }
 	            $json = json_encode($arreglo);
-	            echo $json;              
+	            echo $json;
       }
 
       public function cargarContenidos($idtema)
@@ -118,16 +118,16 @@ class Model_administracion extends CI_Model{
 	                'subclave' => $registro->subclave,
 	                'contenido' => $registro->contenido
 
-	              );    
+	              );
 	           }
 	        }
 	            $json = json_encode($arreglo);
-	            echo $json;              
+	            echo $json;
       }
 
   	public function cargarTipoPregunta()
     {
-	    $query = $this->db->query('SELECT * FROM tipo_pregunta'); 
+	    $query = $this->db->query('SELECT * FROM tipo_pregunta');
 	    $arreglo = array();
 
 	    if($query->num_rows() > 0)
@@ -138,11 +138,11 @@ class Model_administracion extends CI_Model{
 	          $arreglo[] = array(
 	            'id_tipo_pregunta'=> $registro->id_tipo_pregunta,
 	            'tipo' => $registro->tipo
-	           );    
+	           );
 	        }
 	    }
 	        $json = json_encode($arreglo);
-	        echo $json;              
+	        echo $json;
     }
 
     public function insertar_pregunta($pregunta,$opciones,$respuestas)
@@ -160,7 +160,7 @@ class Model_administracion extends CI_Model{
 
     	$cont=count($opciones);
     	for ($i = 0; $i < $cont; $i++) {
-		        
+
 		        $valores['id_preguntas']=$query->id_preguntas;
 		        $valores['opcion']=$opciones[$i];
 		        $valores['respuesta']=$respuestas[$i+1];
@@ -171,11 +171,42 @@ class Model_administracion extends CI_Model{
 		        //echo $respuestas[$i+1]. " </br></br>";
 
 
-		}
+					}
 
 
     }
 
-   
-       
+		public function cargarPreguntas($grado,$semestre,$materia,$tema,$contenido)
+		{
+			$this->db->where('id_grados', $grado);
+			$this->db->where('id_semestre', $semestre);
+			$this->db->where('id_temas', $tema);
+			$this->db->where('id_contenidos', $contenido);
+
+			$query = $this->db->get('preguntas');
+
+			$arreglo= array();
+
+			if($query->num_rows() > 0)
+			{
+					foreach($query->result() as $registro)
+					{
+							$arreglo[] = array(
+									'id_preguntas'=>$registro->id_preguntas,
+									'id_tipo_pregunta'=>$registro->id_tipo_pregunta,
+									'pregunta'=>$registro->pregunta,
+									'repaso'=>$registro->repaso,
+									'solucion'=>$registro->solucion,
+									'fecha'=>$registro->fecha
+									);
+					}
+			}
+
+			$json = json_encode($arreglo);
+			echo $json;
+
+		}
+
+
+
 }

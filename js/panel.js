@@ -38,4 +38,41 @@ function regresarPanel(){
 
 function realizarConsulta(){
 
+	var grado = $('#grados').val();
+	var semestre = $('#semestres').val();
+	var materia = $('#materias').val();
+	var tema = $('#temas').val();
+	var contenido = $('#contenidos').val();
+
+	obtenerPreguntas(grado,semestre,materia,tema,contenido,imprimirPreguntas);
+
+}
+
+function obtenerPreguntas(grado,semestre,materia,tema,contenido,preguntas)
+{
+	$.ajax({
+		data : {
+			format :'jsonp',
+			method : 'get',
+			grado : grado,
+			semestre : semestre,
+			materia : materia,
+			tema : tema,
+			contenido : contenido
+		},
+		url: 'cargarpreguntas',
+	}) .done(preguntas);
+}
+
+function imprimirPreguntas(jsonData)
+{
+	$('#mostrarPreguntas').empty();
+	$preguntas = JSON.parse(jsonData);
+	var cont=0;
+	for(i=0; i<$preguntas.length;i++)
+	{
+		cont++;
+		var rep = '<div class="panel panel-default"><div class="panel-body"><a href="#"><span class="badge">'+cont+'</span></a>'+ $preguntas[i].pregunta+'</div></div>';
+		$('#mostrarPreguntas').append(rep);
+	}
 }

@@ -63,12 +63,12 @@
                 </button>
                 <a class="navbar-brand" href="<?php echo site_url('principal'); ?>"><img class="img-responsive logo" src="<?= base_url('img/logo.png')?>"></a>
             </div>
-            <div class="collapse navbar-collapse">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
-                          <a href="#" class="dropdown-toggle menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= $this->session->userdata('nombre'); ?> <?= $this->session->userdata('apellidos'); ?> <span class="caret"></span></a>
+                          <a href="#" class="dropdown-toggle menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-lg avatar" aria-hidden="true"></i><?= $this->session->userdata('nombre'); ?> <?= $this->session->userdata('apellidos'); ?> <span class="caret"></span></a>
                           <ul class="dropdown-menu">
-                                <li><a href="<?php echo site_url('principal/cerrar_sesion')?>" ><font color="red"><i class="fa fa-power-off"></i></font> Cerrar sesión</a></li>
+                                <li><a class="cerrarsesion" href="<?php echo site_url('principal/cerrar_sesion')?>" ><font color="red"><i class="fa fa-power-off"></i></font> Cerrar sesión</a></li>
                           </ul>
                         </li>
                 </ul>
@@ -110,6 +110,10 @@
         <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/additional-methods.js"></script>
         <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/additional-methods.min.js"></script>
         <script src="<?= base_url('js/validaciones.js')?>"></script>
+
+        <script src="https://cdn.jsdelivr.net/lodash/4.13.1/lodash.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/lodash/4.13.1/lodash.fp.min.js"></script>
+
     </footer>
 
 </body>

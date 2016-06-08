@@ -50,14 +50,11 @@
   </div>
 
 </form>
+<div class="row">
+  <div id="mostrarPreguntas" class="col-lg-12"></div>
+</div>
+
 
 <script src="<?= base_url('js/jquery.js')?>"></script>
 <script src="<?= base_url('js/preguntas.js')?>"></script>
 <script src="<?= base_url('js/panel.js')?>"></script>
-
-<!-- Validaciones -->
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.js"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/additional-methods.js"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/additional-methods.min.js"></script>
-<script src="<?= base_url('js/validaciones.js')?>"></script>

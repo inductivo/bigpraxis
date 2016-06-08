@@ -34,7 +34,27 @@ nav.navbar-inverse
 }
 
 .navbar-inverse .navbar-nav>li>a {
-    color:#000;
+    color:white;
+
+		&:hover{
+			color:white;
+			text-decoration: underline;
+		}
+}
+
+.dropdown-menu>li>a {
+	background-color: white;
+	color:black;
+
+
+	&:hover{
+		background-color: white;
+		color:black;
+		font-weight: 900;
+	}
+}
+.avatar{
+	margin-right: 8px;
 }
 
 #cajatipopregunta {display:none;}
@@ -89,6 +109,7 @@ div.panelprincipal
 	background-color: $azul;
 	border-bottom: 4px solid #1c7a72;
 	color:white;
+	margin-bottom: 30px;
 
 	&:hover{
 		background-color:#1ddfcf;

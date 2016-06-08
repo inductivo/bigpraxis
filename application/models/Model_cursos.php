@@ -101,7 +101,7 @@ class Model_cursos extends CI_Model{
         }
 
         $json = json_encode($arreglo);
-        echo $json; 
+        echo $json;
 
     }
 

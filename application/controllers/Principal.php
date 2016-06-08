@@ -272,8 +272,21 @@ class Principal extends CI_Controller {
 
 	//Vista Panel
 	public function panel_home()
-		{
+	{
 			$this->load->view('administracion/panel');
-		}
+	}
+
+	// Realizar la consulta para obtener las preguntas del tema y contenido seleccionado
+	public function cargarPreguntas()
+	{
+		$grado=$_GET['grado'];
+		$semestre=$_GET['semestre'];
+		$materia=$_GET['materia'];
+		$tema=$_GET['tema'];
+		$contenido=$_GET['contenido'];
+
+		$this->Model_administracion->cargarPreguntas($grado,$semestre,$materia,$tema,$contenido);
+	}
+
 
 }
