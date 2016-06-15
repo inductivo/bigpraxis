@@ -21,7 +21,6 @@ div.margenbtn { margin:20px 0;
 textarea.txtarea{width: 100%;
 				font-size: 16px;}
 
-p {font-weight: bold;}
 
 nav.navbar-inverse
 {
@@ -114,4 +113,85 @@ div.panelprincipal
 	&:hover{
 		background-color:#1ddfcf;
 	}
+}
+
+.titulo-pregunta{
+	font-family: 'Roboto';
+	font-size: 18px;
+	font-weight: 500;
+  border: 2px solid #19B5FE;
+  padding: 5px 0 5px 10px;
+  background-color: #9FDEFD;
+  color: black;
+  border-radius: 5px;
+	cursor: pointer;
+}
+
+.titulo-respuesta{
+	font-family: 'Roboto';
+	font-size: 18px;
+	font-weight: 500;
+  border: 2px solid #30ccbf;
+  padding: 5px 0 5px 10px;
+  background-color: #84E8E1;
+  color: black;
+  border-radius: 5px;
+}
+
+.titulo-repaso{
+	font-family: 'Roboto';
+	font-size: 18px;
+	font-weight: 500;
+  border: 2px solid $amarillo-secundario;
+  padding: 5px 0 5px 10px;
+  background-color: #fcd660;
+  color: black;
+  border-radius: 5px;
+}
+
+.titulo-solucion{
+	font-family: 'Roboto';
+	font-size: 18px;
+	font-weight: 500;
+  border: 2px solid $verde;
+  padding: 5px 0 5px 10px;
+  background-color: #81E7AA;
+  color: black;
+  border-radius: 5px;
+}
+
+.panel-pregunta{
+	border: 2px solid #19B5FE;
+	font-size: 18px;
+}
+
+.panel-respuesta{
+	border: 2px solid #30ccbf;
+	font-size: 18px;
+	margin-bottom: 10px
+}
+.panel-repaso{
+	border: 2px solid $amarillo-secundario;
+	font-size: 18px;
+	margin-bottom: 10px;
+}
+
+.panel-solucion{
+	border: 2px solid $verde;
+	font-size: 18px;
+}
+
+
+.header-pregunta{
+	color:black;
+	font-size: 18px;
+	background: white;
+	border:1px solid #dce4ec;
+	border-radius: 5px;
+	padding: 5px 0 5px 10px;
+	margin-bottom: 20px;
+}
+
+.cont-pregunta{
+	cursor: pointer;
 }

@@ -5,6 +5,8 @@ $('#btnatras').on('click',regresarPanel);
 
 $('#btnconsultar').on('click',realizarConsulta);
 
+//$('.cont-pregunta').on('click',mostrarInfo);
+
 	function opcionesPreguntas()
 	{
 
@@ -69,10 +71,43 @@ function imprimirPreguntas(jsonData)
 	$('#mostrarPreguntas').empty();
 	$preguntas = JSON.parse(jsonData);
 	var cont=0;
+	var titulo = '<div class="row header-pregunta"><div class="col-lg-12 text-left"> <i class="fa fa-question-circle fa-lg" aria-hidden="true"></i> Se encontraron <bold>'+$preguntas.length+'</bold> preguntas</div> </div>';
+	$('#titulo-pregunta').html(titulo);
+
 	for(i=0; i<$preguntas.length;i++)
 	{
 		cont++;
-		var rep = '<div class="panel panel-default"><div class="panel-body"><a href="#"><span class="badge">'+cont+'</span></a>'+ $preguntas[i].pregunta+'</div></div>';
-		$('#mostrarPreguntas').append(rep);
+		//Activar Modal
+		//var preg='<div class="row"><div class="col-lg-12 panel panel-default cont-pregunta" data-repaso="'+$preguntas[i].repaso+'" data-solucion="'+$preguntas[i].solucion+'" data-toggle="modal" data-target="#modal-pregunta"><div class="panel-heading"><h3 class="panel-title badge"><bold>'+cont+'</bold></h3></div><div class="panel-body">'+ $preguntas[i].pregunta+'</div></div></div>';
+
+		//var preg='<div class="row"><div class="col-lg-12 panel panel-default cont-pregunta"><div class="panel-heading"><h3 class="panel-title badge"><bold>'+cont+'</bold></h3></div><div class="panel-body">'+ $preguntas[i].pregunta+'</div></div></div>';
+
+		var titulo_preg='<div class="row"><div class="col-lg-12 titulo-pregunta text-left">'+cont+'</div>';
+		var pregunta= '<div class="col-lg-12 panel panel-default panel-pregunta">'+ $preguntas[i].pregunta+'</div></div>';
+
+		var titulo_resp = '<div class="row" style="display:none"><div class="col-lg-12 titulo-respuesta"><i class="fa fa-th-list" aria-hidden="true"></i> Respuestas</div>';
+		var respuestas = '<div class="col-lg-12 panel panel-default panel-respuesta"><div class="panel-body">Listado de Respuesta</div></div>';
+
+		var titulo_repaso = '<div class="col-lg-12 titulo-repaso"><i class="fa fa-pencil-square" aria-hidden="true"></i> Repaso</div>';
+		var repaso = '<div class="col-lg-12 panel panel-default panel-repaso"><div class="panel-body">'+$preguntas[i].repaso+'</div></div>';
+
+		var titulo_solucion = '<div class="col-lg-12 titulo-solucion"><i class="fa fa-check-circle" aria-hidden="true"></i> Solución</div>';
+		var solucion = '<div class="col-lg-12 panel panel-default panel-solucion"><div class="panel-body">'+$preguntas[i].solucion+'</div></div></div>';
+
+		$('#mostrarPreguntas').append(titulo_preg+pregunta+titulo_resp+respuestas+titulo_repaso+repaso+titulo_solucion+solucion);
 	}
+
+	$('.titulo-pregunta').on('click', function(e) {
+		$(this).parent().next().toggle('slow');
+		//$('.caja-respuesta').toggle('slow');
+		//$('.caja-repaso').toggle('slow');
+		//$('.caja-solucion').toggle('slow');
+		e.preventDefault();
+
+		//Evento ventana Modal
+		/*var repasop = $(this).attr('data-repaso');
+		  $('.modal-title').text('Juan');
+			$('.modal-body').html(repasop);*/
+
+	});
 }
