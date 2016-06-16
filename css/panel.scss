@@ -78,6 +78,7 @@ div.panelprincipal
 .menu-txt{
 	color:black;
 	font-size: 20px;
+	font-weight: bold;
 	margin: 10px auto 30px auto;
 }
 
@@ -119,9 +120,9 @@ div.panelprincipal
 	font-family: 'Roboto';
 	font-size: 18px;
 	font-weight: 500;
-  border: 2px solid #19B5FE;
+  border: 2px solid #D6523C;
   padding: 5px 0 5px 10px;
-  background-color: #9FDEFD;
+  background-color: #FFA192;
   color: black;
   border-radius: 5px;
 	cursor: pointer;
@@ -161,8 +162,8 @@ div.panelprincipal
 }
 
 .panel-pregunta{
-	border: 2px solid #19B5FE;
-	font-size: 18px;
+	border: 2px solid #D6523C;
+	font-size: 20px;
 }
 
 .panel-respuesta{
@@ -180,7 +181,6 @@ div.panelprincipal
 	border: 2px solid $verde;
 	font-size: 18px;
 }
-
 
 .header-pregunta{
 	color:black;
