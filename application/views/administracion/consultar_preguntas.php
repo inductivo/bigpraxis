@@ -45,7 +45,7 @@
 
   <div class="row">
   	<div class="col-lg-12">
-  		<button type="button" class="btn btnconsultar" name="btnconsultar" id="btnconsultar">Consultar <i class="fa fa-search"></i> </button>
+  		<button type="button" class="btn btnconsultar" name="btnconsultarpreguntas" id="btnconsultarpreguntas">Consultar <i class="fa fa-search"></i> </button>
   	</div>
   </div>
 
@@ -73,5 +73,6 @@
 </div><!-- /.modal -->
 
 <script src="<?= base_url('js/jquery.js')?>"></script>
-<script src="<?= base_url('js/preguntas.js')?>"></script>
-<script src="<?= base_url('js/panel.js')?>"></script>
+<script src="<?= base_url('js/admin/agregar_preguntas.js')?>"></script>
+<script src="<?= base_url('js/admin/consultar_preguntas.js')?>"></script>
+<script src="<?= base_url('js/admin/panel.js')?>"></script>

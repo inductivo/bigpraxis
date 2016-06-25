@@ -135,6 +135,8 @@ $(document).ready(function() {
 		{
 			$('#semestres').append('<option value="'+ $opciones[i].id_semestre +'">'+ $opciones[i].semestre+'</option>');
 		}
+
+		//obtenerMaterias(1,imprimirMaterias);
 	}
 
 

@@ -40,12 +40,12 @@ class Model_contenidos extends CI_Model{
                 'contenido' => $registro->contenido,
                 'subclave' => $registro->subclave,
                 'imagen' => $registro->imagen
-              );    
+              );
             }
         }
 
         $json = json_encode($arreglo);
-        echo $json;  
+        echo $json;
 
     }
 
@@ -63,7 +63,7 @@ class Model_contenidos extends CI_Model{
 	{
 		$this->db->select('preguntas.*, contenidos.contenido,contenidos.subclave');
 		$this->db->from('preguntas');
-        $this->db->join('contenidos','preguntas.id_contenidos = contenidos.id_contenidos','inner');
+    $this->db->join('contenidos','preguntas.id_contenidos = contenidos.id_contenidos','inner');
 		$this->db->where('preguntas.id_contenidos',$id_contenido);
 		$this->db->order_by('preguntas.id_preguntas','RANDOM');
 
@@ -87,7 +87,7 @@ class Model_contenidos extends CI_Model{
                 'solucion'  => $registro->solucion,
                 'contenido' => $registro->contenido,
                 'subclave'  => $registro->subclave
-              );    
+              );
             }
         }
 
@@ -126,7 +126,7 @@ class Model_contenidos extends CI_Model{
 
 	public function obtener_opciones($id_preguntas)
 	{
-		
+
         $sql = "SELECT * FROM opciones WHERE id_preguntas = ? ORDER BY RAND();";
         $consulta = $this->db->query($sql, array($id_preguntas));
 
@@ -141,10 +141,10 @@ class Model_contenidos extends CI_Model{
                 'id_opciones'=> $registro->id_opciones,
                 'opcion' => $registro->opcion,
                 'respuesta' => $registro->respuesta
-              );    
+              );
            }
          }
-        
+
         $json = json_encode($arreglo);
         echo $json;
 	}
@@ -171,8 +171,8 @@ class Model_contenidos extends CI_Model{
             $row = $consulta->row();
 
             if($row->opcion == $opcion)
-            {      
-               
+            {
+
                 $this->db->select('mensajes.*');
                 $this->db->from('mensajes');
                 $this->db->order_by('mensajes.id_mensajes','RANDOM');
@@ -180,14 +180,14 @@ class Model_contenidos extends CI_Model{
                 $msj = $this->db->get();
 
                 foreach ($msj->result() as $registro) {
-                
+
                     $arreglo[] = array(
                     'id_mensajes'=> $registro->id_mensajes,
                     'mensaje' => $registro->mensaje,
                     'validacion' => 1,
                     'id_contenidos' => $idc
-                    
-                  ); 
+
+                  );
                 }
             }
             else
@@ -198,7 +198,7 @@ class Model_contenidos extends CI_Model{
                 $pregunta = $this->db->get();
 
                 foreach ($pregunta->result() as $registro) {
-                
+
                     $arreglo[] = array(
                     'id_preguntas'=> $registro->id_preguntas,
                     'id_contenidos' => $registro->id_contenidos,
@@ -207,17 +207,17 @@ class Model_contenidos extends CI_Model{
                     'solucion' => $registro->solucion,
                     'validacion' => 0,
                     'respuestasok' => $row->opcion
-                  ); 
+                  );
 
                 }
-           
+
             }
         }
-        
+
         $json = json_encode($arreglo);
-       
+
         echo $json;
-    	
+
     }
 
     public function check_obtener($idp,$idc,$opcion)
@@ -234,15 +234,15 @@ class Model_contenidos extends CI_Model{
 
         if ($consulta->num_rows() > 0)
         {
-            
+
             foreach ($consulta->result() as $reg) {
-                
+
                 for($i=0; $i<$opciones ;$i++)
                 {
                     if($opcion[$i] == $reg->opcion)
                     {
                         $ok=$ok+1;
-                        
+
                     }
                 }
 
@@ -250,8 +250,8 @@ class Model_contenidos extends CI_Model{
             }
 
             if($consulta->num_rows() == $ok && $consulta->num_rows() == $opciones)
-            {      
-               
+            {
+
                 $this->db->select('mensajes.*');
                 $this->db->from('mensajes');
                 $this->db->order_by('mensajes.id_mensajes','RANDOM');
@@ -259,13 +259,13 @@ class Model_contenidos extends CI_Model{
                 $msj = $this->db->get();
 
                 foreach ($msj->result() as $registro) {
-                
+
                     $arreglo[] = array(
                     'id_mensajes'=> $registro->id_mensajes,
                     'mensaje' => $registro->mensaje,
                     'validacion' => 1,
                     'id_contenidos' => $idc
-                  ); 
+                  );
                 }
             }
             else
@@ -276,7 +276,7 @@ class Model_contenidos extends CI_Model{
                 $pregunta = $this->db->get();
 
                 foreach ($pregunta->result() as $registro) {
-                
+
                     $arreglo[] = array(
                     'id_preguntas'=> $registro->id_preguntas,
                     'id_contenidos' => $registro->id_contenidos,
@@ -285,18 +285,17 @@ class Model_contenidos extends CI_Model{
                     'solucion' => $registro->solucion,
                     'validacion' => 0,
                     'respuestasok' => $respuestasok
-                  ); 
+                  );
 
                 }
-           
+
             }
         }
 
 
         $json = json_encode($arreglo);
-       
+
         echo $json;
-        
+
     }
 }
-

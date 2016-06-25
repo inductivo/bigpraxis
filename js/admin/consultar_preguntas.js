@@ -1,41 +1,33 @@
-
 $('#opcionpreguntas').on('click',opcionesPreguntas);
-$('#opciones').on('click','li',elegirPreguntas);
-$('#btnatras').on('click',regresarPanel);
+$('#opciones-preguntas').on('click','li',elegirPreguntas);
+$('#btnconsultarpreguntas').on('click',realizarConsulta);
 
-$('#btnconsultar').on('click',realizarConsulta);
+function opcionesPreguntas()
+{
+  var html2= '<ul class="list-group ul-opciones">';
+  var html3= '<li data-li="1" class="list-group-item li-opciones" style="cursor:pointer"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Agregar</li>';
+  var html4='<li data-li="2" class="list-group-item li-opciones" style="cursor:pointer"><i class="fa fa-search" aria-hidden="true"></i> Consultar</li>';
+  var html5='</ul>';
 
-//$('.cont-pregunta').on('click',mostrarInfo);
+  $('#opciones-temas').html('');
+  $('#opciones-alumnos').html('');
+  $('#opciones-profesores').html('');
+  $('#opciones-preguntas').html(html2+html3+html4+html5);
+}
 
-	function opcionesPreguntas()
-	{
-
-		var html2= '<ul class="list-group ul-opciones">';
-		var html3= '<li data-li="1" class="list-group-item li-opciones" style="cursor:pointer"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Agregar</li>';
-		var html4='<li data-li="2" class="list-group-item li-opciones" style="cursor:pointer"><i class="fa fa-search" aria-hidden="true"></i> Consultar</li>';
-		var html5='</ul>';
-
-    $('#opciones').html(html2+html3+html4+html5);
-
-	}
 
 function elegirPreguntas()
 {
-	var id_li = $(this).attr('data-li');
+var id_li = $(this).attr('data-li');
 
-	if(id_li == 1)
-	{
-			$('#principal').load('agregar_preguntas');
-	}
-	else {
-		$('#principal').load('consultar_preguntas');
-	}
-
+if(id_li == 1)
+{
+    $('#principal').load('agregar_preguntas');
+}
+else {
+  $('#principal').load('consultar_preguntas');
 }
 
-function regresarPanel(){
-
-	$('#principal').load('panel_home');
 }
 
 function realizarConsulta(){
@@ -102,9 +94,6 @@ function imprimirPreguntas(jsonData)
 
 	$('.titulo-pregunta').on('click', function(e) {
 		$(this).parent().next().toggle('slow');
-		//$('.caja-respuesta').toggle('slow');
-		//$('.caja-repaso').toggle('slow');
-		//$('.caja-solucion').toggle('slow');
 		e.preventDefault();
 
 		//Evento ventana Modal

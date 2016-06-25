@@ -270,6 +270,12 @@ class Principal extends CI_Controller {
 		$this->load->view('administracion/consultar_preguntas');
 	}
 
+	//Vista CONSULTAR temas en Panel
+	public function consultar_temas()
+	{
+		$this->load->view('administracion/consultar_temas');
+	}
+
 	//Vista Panel
 	public function panel_home()
 	{
@@ -288,5 +294,34 @@ class Principal extends CI_Controller {
 		$this->Model_administracion->cargarPreguntas($grado,$semestre,$materia,$tema,$contenido);
 	}
 
+	// Realizar la consulta para obtener los temas de la materia seleccionada
+	public function cargarConsultaTemas()
+	{
+		$materia=$_GET['materia'];
+
+		$this->Model_administracion->cargarConsultaTemas($materia);
+	}
+
+	// Realizar la consulta para obtener el tema y poder editarlo
+	public function editar_temas()
+	{
+		$id=$_GET['id_temas'];
+		$this->Model_administracion->editar_temas($id);
+	}
+
+	public function guardar_tema(){
+		$id=$_GET['id_temas'];
+		$clave=$_GET['clave'];
+		$tema=$_GET['tema'];
+		$id_materias=$_GET['id_materias'];
+
+		$registro = array(
+      'id_temas' => $id,
+      'clave'  => $clave,
+      'tema'  => $tema
+		);
+
+		$this->Model_administracion->actualizar_tema($registro,$id_materias);
+	}
 
 }

@@ -193,6 +193,8 @@ class Model_administracion extends CI_Model{
 					{
 							$arreglo[] = array(
 									'id_preguntas'=>$registro->id_preguntas,
+									'id_temas'=>$registro->id_temas,
+									'id_contenidos'=>$registro->id_contenidos,
 									'id_tipo_pregunta'=>$registro->id_tipo_pregunta,
 									'pregunta'=>$registro->pregunta,
 									'repaso'=>$registro->repaso,
@@ -207,6 +209,52 @@ class Model_administracion extends CI_Model{
 
 		}
 
+		public function cargarConsultaTemas($materia)
+		{
+			$this->db->where('id_materias', $materia);
+			$query = $this->db->get('temas');
+
+			$arreglo= array();
+
+			if($query->num_rows() > 0)
+			{
+					foreach($query->result() as $registro)
+					{
+							$arreglo[] = array(
+									'id_temas'=>$registro->id_temas,
+									'id_materias'=>$registro->id_materias,
+									'clave'=>$registro->clave,
+									'tema'=>$registro->tema,
+									'imagen'=>$registro->imagen
+									);
+					}
+			}
+			$json = json_encode($arreglo);
+			echo $json;
+		}
+
+		//Realiza la consulta para buscar el tema que se va a editar
+		public function editar_temas($id) {
+
+			$this->db->where('id_temas', $id);
+			$query = $this->db->get('temas')->row();
+
+			$json = json_encode($query);
+			echo $json;
+		}
 
 
-}
+		public function actualizar_tema($registro,$id_materias){
+		      //Se actualiza la información Tema
+		      $this->db->set($registro);
+		      $this->db->where('id_temas',$registro['id_temas']);
+		      $this->db->update('temas');
+
+					$this->db->where('id_materias',$id_materias);
+					$query = $this->db->get('materias')->row();
+
+					$json = json_encode($query);
+					echo $json;
+		}
+
+}//FIN

@@ -86,6 +86,3 @@ $db['prod'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
-
-
-
