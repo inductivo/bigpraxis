@@ -268,3 +268,25 @@ div.panelprincipal
 			background-color: #3FD363;
 		}
 }
+
+.alerta{
+	border-radius: 5px;
+	font-size: 18px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	line-height: 30px;
+}
+
+.alerta-exito{
+	background-color: white;
+	border:1px solid $verde;
+	color:$verde;
+}
+
+.alerta-eliminar{
+	background-color: white;
+	border:1px solid $rojo;
+	color:$rojo;
+}

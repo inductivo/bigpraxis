@@ -249,12 +249,13 @@ class Model_administracion extends CI_Model{
 		      $this->db->set($registro);
 		      $this->db->where('id_temas',$registro['id_temas']);
 		      $this->db->update('temas');
+		}
 
-					$this->db->where('id_materias',$id_materias);
-					$query = $this->db->get('materias')->row();
+		//Realiza la consulta para eliminar un tema
+		public function eliminar_tema($id) {
+			$this->db->where('id_temas', $id);
+			$this->db->delete('temas');
 
-					$json = json_encode($query);
-					echo $json;
 		}
 
 }//FIN

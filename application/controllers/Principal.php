@@ -324,4 +324,11 @@ class Principal extends CI_Controller {
 		$this->Model_administracion->actualizar_tema($registro,$id_materias);
 	}
 
+	// Realizar la consulta para eliminar un tema
+	public function eliminar_tema()
+	{
+		$id=$_GET['id_temas'];
+		$this->Model_administracion->eliminar_tema($id);
+	}
+
 }

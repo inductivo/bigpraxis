@@ -10,6 +10,8 @@ function opcionesTemas()
 
 function realizarConsulta(){
 	var materia = $('#materias').val();
+  $('#materias').val(materia);
+
 	obtenerTemas(materia,imprimirTemas);
 }
 
@@ -42,21 +44,22 @@ function imprimirTemas(jsonData)
 
     for(i=0; i<$temas.length;i++){
       var td = '<tr class="tr-temas"><td class="text-center">'+$temas[i].clave+'</td><td>'+$temas[i].tema+'</td>';
-      var action = '<td><span data-id='+$temas[i].id_temas+' data-toggle="modal" data-target="#editarTema" class="editarTema"><i class="fa fa-lg fa-pencil-square icon-editar" aria-hidden="true"> </i></span><span class="hidden-xs hidden-sm"> Editar</span></td><td><span data-id='+$temas[i].id_temas+' data-toggle="modal" data-target="#eliminarTema"><i class="fa fa-lg fa-times-circle icon-eliminar" aria-hidden="true"></i></span><span class="hidden-xs hidden-sm"> Eliminar</span></td></tr>';
+      var action = '<td><span data-id='+$temas[i].id_temas+' data-toggle="modal" data-target="#editarTema" class="editarTema"><i class="fa fa-lg fa-pencil-square icon-editar" aria-hidden="true"> </i></span><span class="hidden-xs hidden-sm"> Editar</span></td><td><span data-id='+$temas[i].id_temas+' data-toggle="modal" data-target="#eliminarTema" class="eliminarTema"><i class="fa fa-lg fa-times-circle icon-eliminar" aria-hidden="true"></i></span><span class="hidden-xs hidden-sm"> Eliminar</span></td></tr>';
       $('#fila-tema').append(td+action);
     }
 
     var btnNuevoTema = '<div class="row"><div class="col-lg-12"> <button type="button" class="btn btnNuevoTema" name="btnNuevoTema" ><i class="fa fa-file-text-o"></i>  Agregar Tema</button></div> </div>';
     $('#nuevoTema').html(btnNuevoTema);
-    //Funciones para buscar la informacion del tema que se selecciono
-    $('.editarTema').on('click',buscarTema);
 
-    function buscarTema(){
+    //Funciones para buscar la informacion del tema que se selecciono
+    $('.editarTema').on('click',buscarTemaEditar);
+
+    function buscarTemaEditar(){
       var id_tema = $(this).attr('data-id');
-    	editarTemas(id_tema,temaEncontrado);
+    	editarTema(id_tema,mostrarDatosTema);
     }
 
-    function editarTemas(id_temas,temaEncontrado)
+    function editarTema(id_temas,mostrarDatosTema)
     {
     	$.ajax({
     		data : {
@@ -65,10 +68,10 @@ function imprimirTemas(jsonData)
     			id_temas : id_temas
     		},
     		url: 'editar_temas',
-    	}) .done(temaEncontrado);
+    	}) .done(mostrarDatosTema);
     }
 
-    function temaEncontrado(jsonData){
+    function mostrarDatosTema(jsonData){
       $temas = JSON.parse(jsonData);
       $('#id_temas').val($temas.id_temas);
       $('#id_materias').val($temas.id_materias);
@@ -76,9 +79,48 @@ function imprimirTemas(jsonData)
       $('#tema').val($temas.tema);
     }
 
-  }
+//Funciones para eliminar un Tema
+		$('.eliminarTema').on('click',buscarTemaEliminar);
+
+		function buscarTemaEliminar(){
+      var id_tema = $(this).attr('data-id');
+			if(confirm('¿Estas seguro de eliminar este Tema?') == true)
+			{
+				eliminarTema(id_tema,temaEliminado);
+			}
+    }
+
+		function eliminarTema(id_temas,temaEliminado)
+    {
+    	$.ajax({
+    		data : {
+    			format :'jsonp',
+    			method : 'get',
+    			id_temas : id_temas
+    		},
+    		url: 'eliminar_tema',
+    	}) .done(temaEliminado);
+    }
+
+		function temaEliminado(){
+			var mensaje = '<div class="row"><div class="col-lg-12 text-center alerta alerta-eliminar">Tema eliminado <i class="fa fa-check-circle" aria-hidden="true"></i></div></div>';
+
+			$('#mensaje').html(mensaje);
+
+			window.setTimeout(function() {
+					$(".alerta-eliminar").fadeTo(1500, 0).slideUp(500, function(){
+						$(this).remove();
+					});
+			}, 3500);
+
+			realizarConsulta();
+
+    }
+
+	}
 }
 
+//Funciones para guardar un tema editado
 $('#btneditartemas').on('click',guardarTema);
 
 function guardarTema()
@@ -106,15 +148,18 @@ function enviarTema(id_temas,clave,tema,id_materias,edicionExitosa)
   }) .done(edicionExitosa);
 }
 
-function edicionExitosa(jsonData)
+function edicionExitosa()
 {
-  $materia= JSON.parse(jsonData);
+  var mensaje = '<div class="row"><div class="col-lg-12 text-center alerta alerta-exito">Actualización exitosa  <i class="fa fa-check-circle" aria-hidden="true"></i></div></div>';
 
-  $('#principal').load('consultar_temas');
+  $('#mensaje').html(mensaje);
 
-  $('#id_grados').val($materia.id_grados);
-  $('#id_semestre').val($materia.id_semestre);
-  $('#id_materias').val($materia.id_materias);
+  window.setTimeout(function() {
+      $(".alerta-exito").fadeTo(1500, 0).slideUp(500, function(){
+        $(this).remove();
+      });
+  }, 3500);
 
   realizarConsulta();
+
 }

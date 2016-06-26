@@ -37,6 +37,7 @@
   </div>
 
 </form>
+<div id="mensaje"></div>
 <div id="cabecera"></div>
 <div id="mostrarTemas"></div>
 <div id="nuevoTema"></div>
