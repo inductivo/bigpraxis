@@ -258,4 +258,9 @@ class Model_administracion extends CI_Model{
 
 		}
 
+		public function agregar_tema($registro){
+			$this->db->set($registro);
+			$this->db->insert('temas');
+		}
+
 }//FIN

@@ -40,7 +40,7 @@
 <div id="mensaje"></div>
 <div id="cabecera"></div>
 <div id="mostrarTemas"></div>
-<div id="nuevoTema"></div>
+<div id="botonTema"></div>
 
 <div id="editarTema" class="modal fade" tabindex="-1" role="dialog">
   <div class="modal-dialog">
@@ -65,14 +65,44 @@
                 <input id="tema" type="text" name="tema" class="input-editar" required>
               </div>
             </div>
-
             <div class="modal-footer">
               <button type="button" class="btn btn-cancelar" data-dismiss="modal"><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i> Cancelar</button>
               <button id="btneditartemas" type="button" data-dismiss="modal" class="btn btn-guardar"><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i> Guardar</button>
             </div>
           </form>
         </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
+<div id="agregarTema" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"> <i class="fa fa-lg fa-plus-circle icon-editar" aria-hidden="true"></i> AGREGAR TEMA</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" id="frmEditarTema" method="post" action="#">
+            <input type="hidden" name="id_nuevaMaterias" id="id_nuevaMateria">
+          <div class="row form-group">
+              <div class="col-lg-12">
+                <label class="txt-editar">Clave:</label>
+                <input id="nuevaClave" type="text" name="nuevaClave" class="input-editar" required>
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-lg-12">
+                <label class="txt-editar">Tema:</label>
+                <input id="nuevoTema" type="text" name="nuevoTema" class="input-editar" required>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-cancelar" data-dismiss="modal"><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i> Cancelar</button>
+              <button id="btnagregartema" type="button" data-dismiss="modal" class="btn btn-guardar"><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i> Guardar</button>
+            </div>
+          </form>
+        </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->

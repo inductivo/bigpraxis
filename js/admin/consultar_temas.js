@@ -10,7 +10,7 @@ function opcionesTemas()
 
 function realizarConsulta(){
 	var materia = $('#materias').val();
-  $('#materias').val(materia);
+  //$('#materias').val(materia);
 
 	obtenerTemas(materia,imprimirTemas);
 }
@@ -47,9 +47,6 @@ function imprimirTemas(jsonData)
       var action = '<td><span data-id='+$temas[i].id_temas+' data-toggle="modal" data-target="#editarTema" class="editarTema"><i class="fa fa-lg fa-pencil-square icon-editar" aria-hidden="true"> </i></span><span class="hidden-xs hidden-sm"> Editar</span></td><td><span data-id='+$temas[i].id_temas+' data-toggle="modal" data-target="#eliminarTema" class="eliminarTema"><i class="fa fa-lg fa-times-circle icon-eliminar" aria-hidden="true"></i></span><span class="hidden-xs hidden-sm"> Eliminar</span></td></tr>';
       $('#fila-tema').append(td+action);
     }
-
-    var btnNuevoTema = '<div class="row"><div class="col-lg-12"> <button type="button" class="btn btnNuevoTema" name="btnNuevoTema" ><i class="fa fa-file-text-o"></i>  Agregar Tema</button></div> </div>';
-    $('#nuevoTema').html(btnNuevoTema);
 
     //Funciones para buscar la informacion del tema que se selecciono
     $('.editarTema').on('click',buscarTemaEditar);
@@ -118,6 +115,8 @@ function imprimirTemas(jsonData)
     }
 
 	}
+	var btnNuevoTema = '<div class="row"><div class="col-lg-12"> <button type="button" class="btn btnNuevoTema" name="btnNuevoTema" data-toggle="modal" data-target="#agregarTema"><i class="fa fa-file-text-o"></i>  Agregar Tema</button></div> </div>';
+	$('#botonTema').html(btnNuevoTema);
 }
 
 //Funciones para guardar un tema editado
@@ -161,5 +160,44 @@ function edicionExitosa()
   }, 3500);
 
   realizarConsulta();
+}
 
+$('#btnagregartema').on('click',agregarTema);
+
+function agregarTema()
+{
+	var id_materias=$('#materias').val();
+  var clave = $('#nuevaClave').val();
+  var tema = $('#nuevoTema').val();
+
+  enviarNuevoTema(id_materias,clave,tema,temaAgregado);
+}
+
+function enviarNuevoTema(id_materias,clave,tema,temaAgregado)
+{
+  $.ajax({
+    data : {
+      format :'jsonp',
+      method : 'get',
+			id_materias : id_materias,
+      clave : clave,
+      tema : tema,
+    },
+    url: 'agregar_tema',
+  }) .done(temaAgregado);
+}
+
+function temaAgregado()
+{
+  var mensaje = '<div class="row"><div class="col-lg-12 text-center alerta alerta-exito">Nuevo tema agregado <i class="fa fa-check-circle" aria-hidden="true"></i></div></div>';
+
+  $('#mensaje').html(mensaje);
+
+  window.setTimeout(function() {
+      $(".alerta-exito").fadeTo(1500, 0).slideUp(500, function(){
+        $(this).remove();
+      });
+  }, 3500);
+
+  realizarConsulta();
 }

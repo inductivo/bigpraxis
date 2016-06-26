@@ -331,4 +331,19 @@ class Principal extends CI_Controller {
 		$this->Model_administracion->eliminar_tema($id);
 	}
 
+	public function agregar_tema(){
+
+		$id_materias=$_GET['id_materias'];
+		$clave=$_GET['clave'];
+		$tema=$_GET['tema'];
+
+		$registro = array(
+			'id_materias' => $id_materias,
+      'clave'  => $clave,
+      'tema'  => $tema
+		);
+
+		$this->Model_administracion->agregar_tema($registro);
+	}
+
 }
