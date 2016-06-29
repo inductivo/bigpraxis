@@ -234,7 +234,7 @@ class Model_administracion extends CI_Model{
 		}
 
 		//Realiza la consulta para buscar el tema que se va a editar
-		public function editar_temas($id) {
+		public function buscar_tema($id) {
 
 			$this->db->where('id_temas', $id);
 			$query = $this->db->get('temas')->row();
@@ -261,6 +261,35 @@ class Model_administracion extends CI_Model{
 		public function agregar_tema($registro){
 			$this->db->set($registro);
 			$this->db->insert('temas');
+		}
+
+		public function buscar_contenidos($id_temas)
+		{
+			//$this->db->where('id_temas', $id_temas);
+			//$query = $this->db->get('contenidos');
+			$this->db->select('contenidos.*,temas.tema');
+			$this->db->from('contenidos');
+			$this->db->join('temas','contenidos.id_temas = temas.id_temas','inner');
+			$this->db->where('contenidos.id_temas', $id_temas);
+			$query = $this->db->get();
+
+			$arreglo= array();
+
+			if($query->num_rows() > 0)
+			{
+					foreach($query->result() as $registro)
+					{
+							$arreglo[] = array(
+									'id_contenidos'=>$registro->id_contenidos,
+									'id_temas'=>$registro->id_temas,
+									'tema'=>$registro->tema,
+									'subclave'=>$registro->subclave,
+									'contenido'=>$registro->contenido
+									);
+					}
+			}
+			$json = json_encode($arreglo);
+			echo $json;
 		}
 
 }//FIN

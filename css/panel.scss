@@ -105,6 +105,17 @@ div.panelprincipal
 }
 
 
+.btnNuevoTema{
+	background-color: #30aacc;
+	border-bottom: 4px solid #185566;
+	color:white;
+	margin-bottom: 30px;
+
+	&:hover{
+		background-color:#17CCFF;
+	}
+}
+
 .btnconsultar{
 	background-color: $azul;
 	border-bottom: 4px solid #1c7a72;
@@ -218,13 +229,22 @@ div.panelprincipal
 	background-color:#dce4ec;
 }
 
-.icon-eliminar{
-	color:$rojo;
+.icon-cursor{
 	cursor: pointer;
 }
+.icon-eliminar{
+	color:$rojo;
+}
 .icon-editar{
-	color:#3cc0d6;
-	cursor: pointer;
+	color:#30ccbf;
+}
+
+.icon-contenido{
+	color:$amarillo;
+}
+
+.icon-tema{
+	color:#17CCFF;
 }
 
 //Estilos de la ventana modal de Editar Tema
@@ -289,4 +309,8 @@ div.panelprincipal
 	background-color: white;
 	border:1px solid $rojo;
 	color:$rojo;
+}
+
+.cajaBtnVerTemas{
+	text-align: right;
 }

@@ -3,7 +3,7 @@
 
   <div class="col-lg-12">
     <button type="button" class="btn btnatras" name="btnatras" id="btnatras"> <i class="fa fa-arrow-left"></i> Regresar </button>
-    <h2 class="page-header">Consultar Temas</h2>
+    <h2 class="page-header">Temas</h2>
   </div>
 
 </div>
@@ -39,8 +39,8 @@
 </form>
 <div id="mensaje"></div>
 <div id="cabecera"></div>
-<div id="mostrarTemas"></div>
-<div id="botonTema"></div>
+<div id="content"></div>
+<div id="botones"></div>
 
 <div id="editarTema" class="modal fade" tabindex="-1" role="dialog">
   <div class="modal-dialog">
@@ -56,7 +56,7 @@
           <div class="row form-group">
               <div class="col-lg-12">
                 <label class="txt-editar">Clave:</label>
-                <input id="clave" type="text" name="clave" class="input-editar" required>
+                <input id="clave" type="text" name="clave" class="input-editar" autofocus required>
               </div>
             </div>
             <div class="row form-group">
@@ -80,7 +80,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title"> <i class="fa fa-lg fa-plus-circle icon-editar" aria-hidden="true"></i> AGREGAR TEMA</h4>
+        <h4 class="modal-title"> <i class="fa fa-lg fa-file-text-o icon-tema" aria-hidden="true"></i> AGREGAR TEMA</h4>
       </div>
       <div class="modal-body">
         <form class="form-horizontal" id="frmEditarTema" method="post" action="#">
@@ -88,7 +88,7 @@
           <div class="row form-group">
               <div class="col-lg-12">
                 <label class="txt-editar">Clave:</label>
-                <input id="nuevaClave" type="text" name="nuevaClave" class="input-editar" required>
+                <input id="nuevaClave" type="text" name="nuevaClave" class="input-editar" autofocus required>
               </div>
             </div>
             <div class="row form-group">

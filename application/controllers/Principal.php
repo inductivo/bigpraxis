@@ -303,10 +303,10 @@ class Principal extends CI_Controller {
 	}
 
 	// Realizar la consulta para obtener el tema y poder editarlo
-	public function editar_temas()
+	public function buscar_tema()
 	{
 		$id=$_GET['id_temas'];
-		$this->Model_administracion->editar_temas($id);
+		$this->Model_administracion->buscar_tema($id);
 	}
 
 	public function guardar_tema(){
@@ -345,5 +345,13 @@ class Principal extends CI_Controller {
 
 		$this->Model_administracion->agregar_tema($registro);
 	}
+
+	// Realizar la consulta para obtener los contenidos del tema seleccionado
+	public function buscar_contenidos()
+	{
+		$id=$_GET['id_temas'];
+		$this->Model_administracion->buscar_contenidos($id);
+	}
+
 
 }
