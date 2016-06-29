@@ -120,6 +120,7 @@ function imprimirTemas(jsonData)
 
 		function buscarContenidos(){
       var id_tema = $(this).attr('data-id');
+			$('#id_Editartemas').val(id_tema);
 			obtenerNombreTema(id_tema,imprimirNombreTema);
 			obtenerContenidos(id_tema,imprimirContenidos);
     }
@@ -141,10 +142,10 @@ function imprimirTemas(jsonData)
 			$temas=JSON.parse(jsonData);
 
 			var tema = $temas.tema;
+			var clave = $temas.clave;
 
-			var cabecera = '<div class="row header-pregunta"><div class="col-lg-12 text-center"> <i class="fa fa-file-text-o" aria-hidden="true"></i>  <strong>'+tema+'</strong> </div></div>';
+			var cabecera = '<div class="row header-pregunta"><div class="col-lg-12 text-center"> <span class="titulo-tema"><strong>'+clave+'. '+tema+'</strong><span> </div></div>';
 			$('#cabecera').html(cabecera);
-
 		}
 
 		function obtenerContenidos(id_temas,imprimirContenidos)
@@ -178,6 +179,65 @@ function imprimirTemas(jsonData)
 
 					$('#fila-contenido').append(td+editar+eliminar);
 				}
+
+				//Funciones para buscar la informacion del contenido que se selecciono
+		    $('.editarContenido').on('click',buscarContenidoEditar);
+
+				function buscarContenidoEditar(){
+		      var id = $(this).attr('data-id');
+		    	editarContenido(id,mostrarDatosContenido);
+		    }
+
+		    function editarContenido(id_contenidos,mostrarDatosContenido)
+		    {
+		    	$.ajax({
+		    		data : {
+		    			format :'jsonp',
+		    			method : 'get',
+		    			id_contenidos : id_contenidos
+		    		},
+		    		url: 'buscar_contenido',
+		    	}) .done(mostrarDatosContenido);
+		    }
+
+		    function mostrarDatosContenido(jsonData){
+		      $contenido = JSON.parse(jsonData);
+		      $('#id_Editartemas').val($contenido.id_temas);
+		      $('#id_Editarcontenidos').val($contenido.id_contenidos);
+		      $('#subtemaEditar').val($contenido.subclave);
+		      $('#contenidoEditar').val($contenido.contenido);
+		    }
+
+				//Funciones para guardar un CONTENIDO editado
+				$('#btneditarcontenido').on('click',guardarContenido);
+
+				function guardarContenido(){
+					var id_contenido = $('#id_Editarcontenidos').val();
+				  var subclave = $('#subtemaEditar').val();
+				  var contenido = $('#contenidoEditar').val();
+				  enviarContenido(id_contenido,subclave,contenido,edicionContenidoExitosa);
+				}
+
+				function enviarContenido(id_contenidos,subclave,contenido,edicionContenidoExitosa){
+				  $.ajax({
+				    data : {
+				      format :'jsonp',
+				      method : 'get',
+							id_contenidos : id_contenidos,
+				      subclave : subclave,
+				      contenido : contenido
+				    },
+				    url: 'guardar_contenido',
+				  }) .done(edicionContenidoExitosa);
+				}
+
+				function edicionContenidoExitosa(){
+					mensajeExito();
+					var id_tema = $('#id_Editartemas').val();
+					obtenerNombreTema(id_tema,imprimirNombreTema);
+					obtenerContenidos(id_tema,imprimirContenidos);
+				}
+
 			}
 
 			var btnNuevoContenido = '<div class="row"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"> <button type="button" class="btn btnNuevoContenido" name="btnNuevoContenido" data-toggle="modal" data-target="#agregarContenido"><i class="fa fa-list"></i>  Agregar Contenido</button></div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 cajaBtnVerTemas"><button type="button" class="btn btnVerTemas" name="btnVerTemas"><i class="fa fa-file-text-o"></i>  Ver Temas</button></div></div>';
@@ -225,16 +285,7 @@ function enviarTema(id_temas,clave,tema,id_materias,edicionExitosa)
 
 function edicionExitosa()
 {
-  var mensaje = '<div class="row"><div class="col-lg-12 text-center alerta alerta-exito">Actualización exitosa  <i class="fa fa-check-circle" aria-hidden="true"></i></div></div>';
-
-  $('#mensaje').html(mensaje);
-
-  window.setTimeout(function() {
-      $(".alerta-exito").fadeTo(1500, 0).slideUp(500, function(){
-        $(this).remove();
-      });
-  }, 3500);
-
+	mensajeExito();
   realizarConsulta();
 }
 
@@ -265,18 +316,19 @@ function enviarNuevoTema(id_materias,clave,tema,temaAgregado)
 
 function temaAgregado()
 {
-  var mensaje = '<div class="row"><div class="col-lg-12 text-center alerta alerta-exito">Nuevo tema agregado <i class="fa fa-check-circle" aria-hidden="true"></i></div></div>';
-
-  $('#mensaje').html(mensaje);
-
-  window.setTimeout(function() {
-      $(".alerta-exito").fadeTo(1500, 0).slideUp(500, function(){
-        $(this).remove();
-      });
-  }, 3500);
-
+	mensajeExito();
   realizarConsulta();
-
 	$('#nuevaClave').val('');
 	$('#nuevoTema').val('');
+}
+
+function mensajeExito(){
+	var mensaje = '<div class="row"><div class="col-lg-12 text-center alerta alerta-exito">Actualización exitosa  <i class="fa fa-check-circle" aria-hidden="true"></i></div></div>';
+  $('#mensaje').html(mensaje);
+
+	window.setTimeout(function() {
+			$(".alerta-exito").fadeTo(1500, 0).slideUp(500, function(){
+				$(this).remove();
+			});
+	}, 3500);
 }

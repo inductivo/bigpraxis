@@ -342,7 +342,6 @@ class Principal extends CI_Controller {
       'clave'  => $clave,
       'tema'  => $tema
 		);
-
 		$this->Model_administracion->agregar_tema($registro);
 	}
 
@@ -351,6 +350,24 @@ class Principal extends CI_Controller {
 	{
 		$id=$_GET['id_temas'];
 		$this->Model_administracion->buscar_contenidos($id);
+	}
+
+	public function buscar_contenido(){
+		$id=$_GET['id_contenidos'];
+		$this->Model_administracion->buscar_contenido($id);
+	}
+
+	public function guardar_contenido(){
+		$id=$_GET['id_contenidos'];
+		$subclave=$_GET['subclave'];
+		$contenido=$_GET['contenido'];
+
+		$registro = array(
+      'id_contenidos' => $id,
+      'subclave'  => $subclave,
+      'contenido'  => $contenido
+		);
+		$this->Model_administracion->actualizar_contenido($registro);
 	}
 
 

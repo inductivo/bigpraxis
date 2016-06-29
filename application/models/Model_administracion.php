@@ -292,4 +292,19 @@ class Model_administracion extends CI_Model{
 			echo $json;
 		}
 
+		//Realiza la consulta para buscar el CONTENIDO que se va a editar
+		public function buscar_contenido($id) {
+			$this->db->where('id_contenidos', $id);
+			$query = $this->db->get('contenidos')->row();
+			$json = json_encode($query);
+			echo $json;
+		}
+
+		//Se actualiza la información del CONTENIDO editado
+		public function actualizar_contenido($registro){
+		      $this->db->set($registro);
+		      $this->db->where('id_contenidos',$registro['id_contenidos']);
+		      $this->db->update('contenidos');
+		}
+
 }//FIN

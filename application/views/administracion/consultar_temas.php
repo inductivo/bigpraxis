@@ -42,6 +42,7 @@
 <div id="content"></div>
 <div id="botones"></div>
 
+<!--Modal Editar Tema -->
 <div id="editarTema" class="modal fade" tabindex="-1" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -100,6 +101,41 @@
             <div class="modal-footer">
               <button type="button" class="btn btn-cancelar" data-dismiss="modal"><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i> Cancelar</button>
               <button id="btnagregartema" type="button" data-dismiss="modal" class="btn btn-guardar"><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i> Guardar</button>
+            </div>
+          </form>
+        </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<!--Modal Editar Contenido -->
+<div id="editarContenido" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"> <i class="fa fa-lg fa-pencil-square icon-editar" aria-hidden="true"></i> EDITAR CONTENIDO</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" id="frmEditarContenido" method="post" action="#">
+            <input type="hidden" name="id_Editartemas" id="id_Editartemas">
+            <input type="hidden" name="id_Editarcontenidos" id="id_Editarcontenidos">
+          <div class="row form-group">
+              <div class="col-lg-12">
+                <label class="txt-editar">Subtema:</label>
+                <input id="subtemaEditar" type="text" name="subtemaEditar" class="input-editar" autofocus required>
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-lg-12">
+                <label class="txt-editar">Contenido:</label>
+                <input id="contenidoEditar" type="text" name="contenidoEditar" class="input-editar" required>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-cancelar" data-dismiss="modal"><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i> Cancelar</button>
+              <button id="btneditarcontenido" type="button" data-dismiss="modal" class="btn btn-guardar"><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i> Guardar</button>
             </div>
           </form>
         </div>
