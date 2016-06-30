@@ -370,5 +370,26 @@ class Principal extends CI_Controller {
 		$this->Model_administracion->actualizar_contenido($registro);
 	}
 
+	// Realizar la consulta para eliminar un Contenido
+	public function eliminar_contenido()
+	{
+		$id=$_GET['id_contenidos'];
+		$this->Model_administracion->eliminar_contenido($id);
+	}
+
+	// Agrega un NUEVO CONTENIDO a la bd
+	public function agregar_contenido(){
+		$id_temas=$_GET['id_temas'];
+		$subclave=$_GET['subclave'];
+		$contenido=$_GET['contenido'];
+
+		$registro = array(
+			'id_temas' => $id_temas,
+      'subclave'  => $subclave,
+      'contenido'  => $contenido
+		);
+		$this->Model_administracion->agregar_contenido($registro);
+	}
+
 
 }

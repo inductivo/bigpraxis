@@ -212,6 +212,7 @@ class Model_administracion extends CI_Model{
 		public function cargarConsultaTemas($materia)
 		{
 			$this->db->where('id_materias', $materia);
+			$this->db->order_by('clave','asc');
 			$query = $this->db->get('temas');
 
 			$arreglo= array();
@@ -271,6 +272,7 @@ class Model_administracion extends CI_Model{
 			$this->db->from('contenidos');
 			$this->db->join('temas','contenidos.id_temas = temas.id_temas','inner');
 			$this->db->where('contenidos.id_temas', $id_temas);
+			$this->db->order_by('contenidos.subclave','asc');
 			$query = $this->db->get();
 
 			$arreglo= array();
@@ -305,6 +307,18 @@ class Model_administracion extends CI_Model{
 		      $this->db->set($registro);
 		      $this->db->where('id_contenidos',$registro['id_contenidos']);
 		      $this->db->update('contenidos');
+		}
+
+		//Realiza la consulta para eliminar un Contenido
+		public function eliminar_contenido($id) {
+			$this->db->where('id_contenidos', $id);
+			$this->db->delete('contenidos');
+		}
+
+		//Agrega el NUEVO CONTENIDO  a la BD
+		public function agregar_contenido($registro){
+			$this->db->set($registro);
+			$this->db->insert('contenidos');
 		}
 
 }//FIN

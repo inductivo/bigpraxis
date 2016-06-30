@@ -1,9 +1,9 @@
 
 <div class="row">
-
   <div class="col-lg-12">
     <button type="button" class="btn btnatras" name="btnatras" id="btnatras"> <i class="fa fa-arrow-left"></i> Regresar </button>
     <h2 class="page-header">Temas</h2>
+    <div id="mensaje"></div>
   </div>
 
 </div>
@@ -37,7 +37,6 @@
   </div>
 
 </form>
-<div id="mensaje"></div>
 <div id="cabecera"></div>
 <div id="content"></div>
 <div id="botones"></div>
@@ -76,6 +75,7 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
+<!--Modal Agregar Tema -->
 <div id="agregarTema" class="modal fade" tabindex="-1" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -136,6 +136,39 @@
             <div class="modal-footer">
               <button type="button" class="btn btn-cancelar" data-dismiss="modal"><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i> Cancelar</button>
               <button id="btneditarcontenido" type="button" data-dismiss="modal" class="btn btn-guardar"><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i> Guardar</button>
+            </div>
+          </form>
+        </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!--Modal Agregar Contenido -->
+<div id="agregarNuevoContenido" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"> <i class="fa fa-lg fa-list icon-contenido" aria-hidden="true"></i> AGREGAR CONTENIDO</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" id="frmAgregarContenido" method="post" action="#">
+            <input type="hidden" name="id_temaNuevoContenido" id="id_temaNuevoContenido">
+          <div class="row form-group">
+              <div class="col-lg-12">
+                <label class="txt-editar">Subtema:</label>
+                <input id="nuevoSubtema" type="text" name="nuevoSubtema" class="input-editar" autofocus required>
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-lg-12">
+                <label class="txt-editar">Contenido:</label>
+                <input id="nuevoContenido" type="text" name="nuevoContenido" class="input-editar" required>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-cancelar" data-dismiss="modal"><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i> Cancelar</button>
+              <button id="btnagregarcontenido" type="button" data-dismiss="modal" class="btn btn-guardar"><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i> Guardar</button>
             </div>
           </form>
         </div>
