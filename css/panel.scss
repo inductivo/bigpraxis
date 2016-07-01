@@ -127,6 +127,28 @@ div.panelprincipal
 	}
 }
 
+.btnNuevoContenido{
+	background-color:$amarillo;
+	border: 1px solid $amarillo;
+	color:white;
+	margin-bottom: 30px;
+
+	&:hover{
+		background-color:$amarillo-secundario;
+	}
+}
+
+.btnVerTemas{
+	background-color:#30aacc;
+	border: 1px solid #30aacc;
+	color:white;
+	margin-bottom: 30px;
+
+	&:hover{
+		background-color:#17CCFF;
+	}
+}
+
 .titulo-pregunta{
 	font-family: 'Roboto';
 	font-size: 18px;
