@@ -105,7 +105,7 @@ div.panelprincipal
 }
 
 
-.btnNuevoTema{
+.btnNuevo{
 	background-color: #30aacc;
 	border-bottom: 4px solid #185566;
 	color:white;
@@ -140,7 +140,6 @@ div.panelprincipal
 
 .btnVerTemas{
 	background-color:#30aacc;
-	border: 1px solid #30aacc;
 	color:white;
 	margin-bottom: 30px;
 
@@ -267,6 +266,10 @@ div.panelprincipal
 
 .icon-tema{
 	color:#17CCFF;
+}
+
+.icon-pass{
+	color:#ABB7B7;
 }
 
 //Estilos de la ventana modal de Editar Tema

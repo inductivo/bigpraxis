@@ -10,10 +10,8 @@ class Principal extends CI_Controller {
 		$this->load->model('Model_administracion');
 		$this->load->model('Model_cursos');
 		$this->load->model('Model_contenidos');
-
 		$this->form_validation->set_message('validar_credenciales', '<strong>Incorrect</strong> <strong>Username</strong> or <strong>Password</strong>');
 		$this->form_validation->set_message('required', 'Introducir <strong>%s</strong>');
-
 	}
 
 
@@ -72,7 +70,6 @@ class Principal extends CI_Controller {
 		$this->form_validation->set_rules('password','Password','trim');
 
 		if ($this->form_validation->run()){
-
 			/*Se accede al dashboard*/
 			redirect('principal/panel_profesores');
 		} else
@@ -103,13 +100,14 @@ class Principal extends CI_Controller {
 
 	public function panel_profesores()
 	{
-		if($this->session->userdata('id_usuarios') == null)
-		{
+		if($this->session->userdata('id_usuarios') == null){
 			redirect('principal/acceso_denegado');
-		}else{
-
-			$data['contenido'] = 'administracion/panel';
-			$this->load->view('templates/template_panel',$data);
+		}else if($this->session->userdata('nivel') == 1){
+						$data['contenido'] = 'administracion/panel';
+						$this->load->view('templates/template_panel',$data);
+					}else{
+						$data['contenido'] = 'administracion/panel_profesores';
+						$this->load->view('templates/template_panel',$data);
 		}
 
 	}
@@ -279,7 +277,13 @@ class Principal extends CI_Controller {
 	//Vista Panel
 	public function panel_home()
 	{
+		if($this->session->userdata('id_usuarios') == null){
+			redirect('principal/acceso_denegado');
+		}else if($this->session->userdata('nivel') == 1){
 			$this->load->view('administracion/panel');
+		}else{
+			$this->load->view('administracion/panel_profesores');
+		}
 	}
 
 	// Realizar la consulta para obtener las preguntas del tema y contenido seleccionado
@@ -389,6 +393,11 @@ class Principal extends CI_Controller {
       'contenido'  => $contenido
 		);
 		$this->Model_administracion->agregar_contenido($registro);
+	}
+
+	//Vista Profesores(usuarios)
+	public function consultar_profesores(){
+		$this->load->view('administracion/profesores');
 	}
 
 

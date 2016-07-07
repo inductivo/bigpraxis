@@ -188,7 +188,7 @@ function imprimirTemas(jsonData){
 		    }
 
 				//Funciones para guardar un CONTENIDO editado
-				$('#btneditarcontenido').on('click',guardarContenido);
+				$('.btneditarcontenido').on('click',guardarContenido);
 
 				function guardarContenido(){
 					var id_contenido = $('#id_Editarcontenidos').val();
@@ -257,7 +257,7 @@ function imprimirTemas(jsonData){
 	} //If imprimirTemas
 
 
-	var btnNuevoTema = '<div class="row"><div class="col-lg-12"> <button type="button" class="btn btnNuevoTema" name="btnNuevoTema" data-toggle="modal" data-target="#agregarTema"><i class="fa fa-file-text-o"></i>  Agregar Tema</button></div> </div>';
+	var btnNuevoTema = '<div class="row"><div class="col-lg-12"> <button type="button" class="btn btnNuevo" name="btnNuevoTema" data-toggle="modal" data-target="#agregarTema"><i class="fa fa-file-text-o"></i>  Agregar Tema</button></div> </div>';
 	$('#botones').html(btnNuevoTema);
 
 } //Cierre de función imprimirTemas

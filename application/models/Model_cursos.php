@@ -76,6 +76,7 @@ class Model_cursos extends CI_Model{
     public function obtenerTemas2($id_materia)
     {
         $this->db->where('id_materias',$id_materia);
+				$this->db->order_by('clave','asc');
         $query = $this->db->get('temas');
         return $query->result();
     }
@@ -83,6 +84,7 @@ class Model_cursos extends CI_Model{
     public function obtenerTemas($id_materia)
     {
         $this->db->where('id_materias',$id_materia);
+				$this->db->order_by('clave','asc');
         $query = $this->db->get('temas');
 
         $arreglo= array();

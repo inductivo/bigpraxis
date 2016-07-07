@@ -15,7 +15,8 @@ class Administracionlib{
 			$usuario = $query->row();
 			$datosSession = array('id_usuarios' => $usuario->id_usuarios,
 								  'nombre' => $usuario->nombre,
-								  'apellidos' => $usuario->apellidos
+								  'apellidos' => $usuario->apellidos,
+									'nivel' => $usuario->nivel
 
 								 );
 

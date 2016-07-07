@@ -79,7 +79,7 @@ class Model_administracion extends CI_Model{
 
        public function cargarTemas($idmateria)
       	{
-      		$sql = "SELECT * FROM temas WHERE id_materias = ?";
+      		$sql = "SELECT * FROM temas WHERE id_materias = ? ORDER BY clave ASC";
         	$query = $this->db->query($sql, array($idmateria));
 
 	        $arreglo = array();
@@ -103,7 +103,7 @@ class Model_administracion extends CI_Model{
 
       public function cargarContenidos($idtema)
       	{
-      		$sql = "SELECT * FROM contenidos WHERE id_temas = ?";
+      		$sql = "SELECT * FROM contenidos WHERE id_temas = ? ORDER BY subclave ASC";
         	$query = $this->db->query($sql, array($idtema));
 
 	        $arreglo = array();
@@ -169,11 +169,7 @@ class Model_administracion extends CI_Model{
 		       $this->db->insert('opciones');
 		        //echo $opciones[$i]. " </br>";
 		        //echo $respuestas[$i+1]. " </br></br>";
-
-
 					}
-
-
     }
 
 		public function cargarPreguntas($grado,$semestre,$materia,$tema,$contenido)
@@ -184,7 +180,6 @@ class Model_administracion extends CI_Model{
 			$this->db->where('id_contenidos', $contenido);
 
 			$query = $this->db->get('preguntas');
-
 			$arreglo= array();
 
 			if($query->num_rows() > 0)
@@ -319,6 +314,29 @@ class Model_administracion extends CI_Model{
 		public function agregar_contenido($registro){
 			$this->db->set($registro);
 			$this->db->insert('contenidos');
+		}
+
+		public function buscar_profesores(){
+			//$query = $this->db->query('SELECT * FROM usuarios');
+			$this->db->select('usuarios.*, acceso.*');
+			$this->db->from('usuarios');
+			$this->db->join('acceso','usuarios.nivel = acceso.nivel','inner');
+			$query = $this->db->get();
+
+			$arreglo = array();
+			if($query->num_rows() > 0){
+				 foreach($query->result() as $registro){
+					 $arreglo[] = array(
+							'id_usuarios'=> $registro->id_usuarios,
+							'nombre' => $registro->nombre,
+							'apellidos' => $registro->apellidos,
+							'email'	=> $registro->email,
+							'nivel' => $registro->descripcion
+						);
+				 }
+			}
+					$json = json_encode($arreglo);
+					echo $json;
 		}
 
 }//FIN

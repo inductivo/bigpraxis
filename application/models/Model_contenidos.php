@@ -13,6 +13,7 @@ class Model_contenidos extends CI_Model{
 		$this->db->from('contenidos');
 		$this->db->join('temas','temas.id_temas = contenidos.id_temas','inner');
 		$this->db->where('contenidos.id_temas',$id_temas);
+		$this->db->order_by('contenidos.subclave','asc');
 
 		$query= $this->db->get();
 		return $query->result();
@@ -25,6 +26,7 @@ class Model_contenidos extends CI_Model{
         $this->db->from('contenidos');
         $this->db->join('temas','temas.id_temas = contenidos.id_temas','inner');
         $this->db->where('contenidos.id_temas',$id_temas);
+				$this->db->order_by('contenidos.subclave','asc');
 
         $query= $this->db->get();
         $arreglo = array();
