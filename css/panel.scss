@@ -62,15 +62,12 @@ nav.navbar-inverse
 #cajas{display: none;}
 #publicar{display: none;}
 
-div.panelprincipal
-{
+div.panelprincipal{
 	font-family: 'Roboto';
 	margin: 80px auto 10px auto;
-
 }
 
-.img-opcion
-{
+.img-opcion{
 	max-width: 10em;
 	cursor: pointer;
 }
@@ -286,6 +283,11 @@ div.panelprincipal
 	font-size: 18px;
 	line-height: 35px;
 	width: 100%;
+}
+
+.select{
+	background-color: white;
+	height: 40px;
 }
 
 .btn-cancelar{

@@ -222,8 +222,7 @@ function imprimirTemas(jsonData){
 
 				function buscarContenidoEliminar(){
 				  var id = $(this).attr('data-id');
-					if(confirm('¿Estas seguro de eliminar este Contenido?') == true)
-						{
+					if(confirm('¿Estas seguro de eliminar este Contenido?') == true){
 							eliminarContenido(id,contenidoEliminado);
 						}
 				}

@@ -339,4 +339,32 @@ class Model_administracion extends CI_Model{
 					echo $json;
 		}
 
+		public function cargar_niveles_usuario(){
+			$query = $this->db->query('SELECT * FROM acceso ORDER BY descripcion DESC');
+			$arreglo = array();
+
+			if($query->num_rows() > 0){
+				 foreach($query->result() as $registro){
+					$arreglo[] = array(
+							'id_acceso'=> $registro->id_acceso,
+							'nivel' => $registro->nivel,
+							'descripcion' => $registro->descripcion
+						);
+				 }
+			}
+					$json = json_encode($arreglo);
+					echo $json;
+		}
+
+	public function agregar_profesor($registro){
+			$this->db->set($registro);
+			$this->db->insert('usuarios');
+	}
+
+//ELIMINA el registro del usuario PROFESOR
+public function eliminar_profesor($id) {
+			$this->db->where('id_usuarios', $id);
+			$this->db->delete('usuarios');
+}
+
 }//FIN

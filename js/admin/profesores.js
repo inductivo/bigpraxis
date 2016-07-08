@@ -21,7 +21,6 @@ function obtenerProfesores(imprimirProfesores){
 function imprimirProfesores(jsonData){
   $('#content').empty();
   $profesores = JSON.parse(jsonData);
-  console.log($profesores);
   var cabecera = '<div class="row header-pregunta"><div class="col-lg-12 text-left"> <i class="fa fa-question-circle fa-lg" aria-hidden="true"></i> Se encontraron <strong>'+$profesores.length+'</strong> profesores</div> </div>';
   $('#cabecera').html(cabecera);
 
@@ -42,5 +41,77 @@ function imprimirProfesores(jsonData){
   var btnNuevo = '<div class="row"><div class="col-lg-12"> <button type="button" class="btn btnNuevo" name="btnNuevo" data-toggle="modal" data-target="#nuevoProfesor"><i class="fa fa-user-plus"></i>  Agregar Profesor</button></div></div>';
   $('#botones').html(btnNuevo);
 
+	//Funciones para ELIMINAR el registro de un Profesor
+	$('.eliminarProfesor').on('click',buscarProfesorEliminar);
+	function buscarProfesorEliminar(){
+		var id=$(this).attr('data-id');
+		if(confirm('¿Estas seguro de eliminar este Contenido?') == true){
+				eliminarProfesor(id,profesorEliminado);
+			}
+	}
+	function eliminarProfesor(id_usuarios,profesorEliminado){
+		$.ajax({
+			data : {
+				format :'jsonp',
+				method : 'get',
+				id_usuarios : id_usuarios
+			},
+			url: '../administracion/eliminar_profesor',
+		}) .done(profesorEliminado);
+	}
 
+	function profesorEliminado(){
+		buscarProfesores();
+		mensajeRegistroEliminado();
+	}
+
+
+	//Funciones para cargar los niveles en el formulario
+	$('.btnNuevo').on('click',cargarNiveles);
+
+	function cargarNiveles(){
+		$.ajax({
+			data : {
+				format :'jsonp',
+				method : 'get'
+			},
+			url: '../administracion/cargar_niveles_usuario',
+		}) .done(imprimirNiveles);
+	}
+
+	function imprimirNiveles(jsonData){
+		$opciones = JSON.parse(jsonData);
+		for(var i=0; i<$opciones.length;i++){
+			$('#nuevoNivel').append('<option value="'+ $opciones[i].nivel +'">'+ $opciones[i].descripcion +'</option>');
+		}
+	}
 }
+
+	$('#btnGuardarProfesor').on('click',validarProfesor);
+	function validarProfesor(){
+		var nombre= $('#nuevoNombre').val();
+		var apellidos= $('#nuevoApellido').val();
+		var email= $('#nuevoEmail').val();
+		var nivel = $('#nuevoNivel').val();
+		var password= $('#nuevoPassword').val();
+		var password2= $('#nuevoPassword2').val();
+
+		$.ajax({
+			data : {
+				format :'jsonp',
+				method : 'get',
+				nombre : nombre,
+				apellidos : apellidos,
+				email : email,
+				nivel : nivel,
+				password : password,
+				password2 : password2
+			},
+			url: '../administracion/validar_profesor',
+		}) .done(confirmarProfesor);
+	}
+
+	function confirmarProfesor(){
+		buscarProfesores();
+		mensajeExito();
+	}
