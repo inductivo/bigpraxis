@@ -26,7 +26,6 @@ class Administracion extends CI_Controller {
 		$nivel=$_GET['nivel'];
 		$password=$_GET['password'];
 
-		if($this->form_validation->run()){
 			$registro = array(
 				'nombre' => $nombre,
 				'apellidos'  => $apellidos,
@@ -35,8 +34,6 @@ class Administracion extends CI_Controller {
 				'password' => $password
 			);
 			$this->Model_administracion->agregar_profesor($registro);
-		}
-
 	}
 
 	// Realizar la consulta para ELIMINAR el registro del Profesor

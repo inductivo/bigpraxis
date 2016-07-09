@@ -45,7 +45,7 @@ function imprimirProfesores(jsonData){
 	$('.eliminarProfesor').on('click',buscarProfesorEliminar);
 	function buscarProfesorEliminar(){
 		var id=$(this).attr('data-id');
-		if(confirm('¿Estas seguro de eliminar este Contenido?') == true){
+		if(confirm('¿Estas seguro de eliminar al Profesor?') == true){
 				eliminarProfesor(id,profesorEliminado);
 			}
 	}
@@ -80,6 +80,7 @@ function imprimirProfesores(jsonData){
 	}
 
 	function imprimirNiveles(jsonData){
+		$('#nuevoNivel').html(' ');
 		$opciones = JSON.parse(jsonData);
 		for(var i=0; i<$opciones.length;i++){
 			$('#nuevoNivel').append('<option value="'+ $opciones[i].nivel +'">'+ $opciones[i].descripcion +'</option>');
@@ -87,7 +88,7 @@ function imprimirProfesores(jsonData){
 	}
 }
 
-	$('#btnGuardarProfesor').on('click',validarProfesor);
+	//$('#btnGuardarProfesor').on('click',validarProfesor);
 	function validarProfesor(){
 		var nombre= $('#nuevoNombre').val();
 		var apellidos= $('#nuevoApellido').val();
@@ -112,6 +113,14 @@ function imprimirProfesores(jsonData){
 	}
 
 	function confirmarProfesor(){
+		$('#nuevoProfesor').modal('hide');
+		$('#nuevoNombre').val('');
+		$('#nuevoApellido').val('');
+		$('#nuevoEmail').val('');
+		$('#nuevoPassword').val('');
+		$('#nuevoPassword2').val('');
+
 		buscarProfesores();
 		mensajeExito();
+
 	}

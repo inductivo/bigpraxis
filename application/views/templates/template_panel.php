@@ -43,13 +43,11 @@
 
     <link rel="stylesheet" type="text/css" href="<?= base_url('css/sweetalert.css')?>">
 
-
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 </head>
 
 <body>
-
     <!-- Navigation -->
     <nav class="barnav navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
@@ -73,48 +71,33 @@
                         </li>
                 </ul>
             </div>
-
         </div>
         <!-- /.container -->
     </nav>
-
     <!-- Page Content -->
     <div class="container" id="principal">
-
         <?php $this->load->view($contenido); ?>
-
     </div>
     <!-- /.container -->
-
         <!-- Footer -->
-    <footer>
-        <nav class="navbar navbar-default navbar-fixed-bottom navfooter">
-            <div class="container">
-                    <div class="row">
-                        <div class="col-lg-10 col-sm-10 col-xs-8">
-                            <p class="txtsv">Copyright &copy; Suma Ventas Consultores 2016</p>
-                        </div>
-                    </div> <!-- /.row -->
-            </div>
-        </nav>
-
-        <!-- jQuery -->
-        <script src="<?= base_url('js/jquery.js')?>"></script>
-        <script src="<?= base_url('js/bootstrap.min.js')?>"></script>
-        <script src="<?= base_url('js/sweetalert.min.js')?>"></script>
-
-
-        <!-- Validaciones -->
-        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.js"></script>
-        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
-        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/additional-methods.js"></script>
-        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/additional-methods.min.js"></script>
-        <script src="<?= base_url('js/validaciones.js')?>"></script>
-
-        <script src="https://cdn.jsdelivr.net/lodash/4.13.1/lodash.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/lodash/4.13.1/lodash.fp.min.js"></script>
-
-    </footer>
+<footer>
+  <nav class="navbar navbar-default navbar-fixed-bottom navfooter">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 col-sm-10 col-xs-8">
+          <p class="txtsv">Copyright &copy; Suma Ventas Consultores 2016</p>
+        </div>
+      </div> <!-- /.row -->
+    </div>
+  </nav>
+  <!-- jQuery -->
+  <script type="text/javascript" src="<?= base_url('js/jquery.js')?>"></script>
+  <script type="text/javascript" src="<?= base_url('js/bootstrap.min.js')?>"></script>
+  <script type="text/javascript" src="<?= base_url('js/sweetalert.min.js')?>"></script>
+  <script type="text/javascript" src="<?= base_url('js/jquery.validate.js')?>"></script>
+  <script type="text/javascript" src="<?= base_url('js/validaciones.js')?>"></script>
+  <script type="text/javascript" src="<?= base_url('js/admin/validaciones.js')?>"></script>
+</footer>
 
 </body>
 

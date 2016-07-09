@@ -34,9 +34,10 @@
 	</div>
 </div>
 
-<script src="<?= base_url('js/jquery.js')?>"></script>
-<script src="<?= base_url('js/admin/panel.js')?>"></script>
-<script src="<?= base_url('js/admin/agregar_preguntas.js')?>"></script>
-<script src="<?= base_url('js/admin/consultar_preguntas.js')?>"></script>
-<script src="<?= base_url('js/admin/consultar_temas.js')?>"></script>
-<script src="<?= base_url('js/admin/profesores.js')?>"></script>
+<script type="text/javascript" src="<?= base_url('js/jquery.js')?>"></script>
+<script type="text/javascript" src="<?= base_url('js/jquery.validate.js')?>"></script>
+<script type="text/javascript" src="<?= base_url('js/admin/panel.js')?>"></script>
+<script type="text/javascript" src="<?= base_url('js/admin/agregar_preguntas.js')?>"></script>
+<script type="text/javascript" src="<?= base_url('js/admin/consultar_preguntas.js')?>"></script>
+<script type="text/javascript" src="<?= base_url('js/admin/consultar_temas.js')?>"></script>
+<script type="text/javascript" src="<?= base_url('js/admin/profesores.js')?>"></script>
