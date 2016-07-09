@@ -321,6 +321,7 @@ class Model_administracion extends CI_Model{
 			$this->db->select('usuarios.*, acceso.*');
 			$this->db->from('usuarios');
 			$this->db->join('acceso','usuarios.nivel = acceso.nivel','inner');
+			$this->db->order_by('usuarios.nivel','asc');
 			$query = $this->db->get();
 
 			$arreglo = array();

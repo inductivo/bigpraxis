@@ -31,7 +31,17 @@ $(document).ready(function(){
           required:"<span class='label label-danger'>Ingresar CONTRASEÑA</span>",
           equalTo:"<span class='label label-danger'>La CONTRASEÑA no coincide</span>"
         }
-      }
+      },
+				errorPlacement: function ( error, element ) {
+						error.insertAfter( element );
+
+				},
+				highlight: function ( element, errorClass, validClass ) {
+					$(element).addClass(errorClass).removeClass(validClass);
+				},
+				unhighlight: function (element, errorClass, validClass) {
+					$(element).addClass(validClass).removeClass(errorClass);
+				}
   });
 
   $.validator.setDefaults( {

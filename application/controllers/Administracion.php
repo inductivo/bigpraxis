@@ -31,7 +31,7 @@ class Administracion extends CI_Controller {
 				'apellidos'  => $apellidos,
 				'email'  => $email,
 				'nivel'	=> $nivel,
-				'password' => $password
+				'password' => md5($password)
 			);
 			$this->Model_administracion->agregar_profesor($registro);
 	}
