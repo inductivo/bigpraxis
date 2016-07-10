@@ -41,12 +41,47 @@ $(document).ready(function(){
 				},
 				unhighlight: function (element, errorClass, validClass) {
 					$(element).addClass(validClass).removeClass(errorClass);
-				}
-  });
-
-  $.validator.setDefaults( {
-  			submitHandler: function () {
+				},
+        submitHandler: function () {
         		validarProfesor();
   			}
-  		} );
+
+  });
+
+$('#frmEditarProfesor').validate({
+  rules:{
+    editarNombre:{
+      required:true
+    },
+    editarApellido:{
+      required:true
+    },
+    editarEmail:{
+      required:true,
+      email:true
+    }
+  },
+  messages:{
+    editarNombre: "<span class='label label-danger'>Ingresar NOMBRE</span>",
+    editarApellido: "<span class='label label-danger'>Ingresar APELLIDO</span>",
+    editarEmail:{
+      required:"<span class='label label-danger'>Ingresar EMAIL</span>",
+      email:"<span class='label label-danger'>Ingresar EMAIL VÁLIDO</span>"
+    }
+  },
+  errorPlacement: function ( error, element ) {
+      error.insertAfter( element );
+  },
+  highlight: function ( element, errorClass, validClass ) {
+    $(element).addClass(errorClass).removeClass(validClass);
+  },
+  unhighlight: function (element, errorClass, validClass) {
+    $(element).addClass(validClass).removeClass(errorClass);
+  },
+  submitHandler: function () {
+      validarEditarProfesor();
+  }
+
+});
+
 });

@@ -368,4 +368,19 @@ public function eliminar_profesor($id) {
 			$this->db->delete('usuarios');
 }
 
+//Realiza la consulta para buscar los datos del Profesor
+public function buscar_profesor($id) {
+	$this->db->where('id_usuarios', $id);
+	$query = $this->db->get('usuarios')->row();
+	$json = json_encode($query);
+	echo $json;
+}
+
+//Se actualiza la información del Profesor
+public function editar_profesor($registro){
+			$this->db->set($registro);
+			$this->db->where('id_usuarios',$registro['id_usuarios']);
+			$this->db->update('usuarios');
+}
+
 }//FIN

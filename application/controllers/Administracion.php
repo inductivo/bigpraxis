@@ -42,4 +42,27 @@ class Administracion extends CI_Controller {
 		$this->Model_administracion->eliminar_profesor($id);
 	}
 
+	// Realizar la consulta para obtener los datos del Profesor
+	public function buscar_profesor(){
+		$id=$_GET['id_usuarios'];
+		$this->Model_administracion->buscar_profesor($id);
+	}
+
+	public function editar_profesor(){
+		$id_usuarios=$_GET['id_usuarios'];
+		$nombre=$_GET['nombre'];
+		$apellidos=$_GET['apellidos'];
+		$email=$_GET['email'];
+		$nivel=$_GET['nivel'];
+
+			$registro = array(
+				'id_usuarios' => $id_usuarios,
+				'nombre' => $nombre,
+				'apellidos'  => $apellidos,
+				'email'  => $email,
+				'nivel'	=> $nivel
+			);
+			$this->Model_administracion->editar_profesor($registro);
+	}
+
 }

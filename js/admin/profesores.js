@@ -19,6 +19,7 @@ function obtenerProfesores(imprimirProfesores){
 }
 
 function imprimirProfesores(jsonData){
+	cargarNiveles();
   $('#content').empty();
   $profesores = JSON.parse(jsonData);
   var cabecera = '<div class="row header-pregunta"><div class="col-lg-12 text-left"> <i class="fa fa-question-circle fa-lg" aria-hidden="true"></i> Se encontraron <strong>'+$profesores.length+'</strong> profesores</div> </div>';
@@ -65,6 +66,33 @@ function imprimirProfesores(jsonData){
 		mensajeRegistroEliminado();
 	}
 
+	//Funciones para EDITAR los datos del Profesor
+	$('.editarProfesor').on('click',buscarProfesorEditar);
+	function buscarProfesorEditar(){
+		var id=$(this).attr('data-id');
+		editarProfesor(id,mostrarDatosProfesor);
+	}
+
+	function editarProfesor(id_usuarios, mostrarDatosProfesor){
+		$.ajax({
+			data : {
+				format :'jsonp',
+				method : 'get',
+				id_usuarios : id_usuarios
+			},
+			url: '../administracion/buscar_profesor',
+		}) .done(mostrarDatosProfesor);
+	}
+
+	function mostrarDatosProfesor(jsonData){
+		$profesor = JSON.parse(jsonData);
+		$('#id_editarProfesor').val($profesor.id_usuarios);
+		$('#editarNombre').val($profesor.nombre);
+		$('#editarApellido').val($profesor.apellidos);
+		$('#editarEmail').val($profesor.email);
+		$('#editarNivel').val($profesor.nivel);
+		$('#editarEmail').val($profesor.email);
+	}
 
 	//Funciones para cargar los niveles en el formulario
 	$('.btnNuevo').on('click',cargarNiveles);
@@ -80,15 +108,23 @@ function imprimirProfesores(jsonData){
 	}
 
 	function imprimirNiveles(jsonData){
-		$('#nuevoNivel').html(' ');
 		$opciones = JSON.parse(jsonData);
+
+		$('#nuevoNombre').val('');
+		$('#nuevoApellido').val('');
+		$('#nuevoEmail').val('');
+		$('#nuevoPassword').val('');
+		$('#nuevoPassword2').val('');
+		$('#nuevoNivel').html('');
+		$('#editarNivel').html('');
+
 		for(var i=0; i<$opciones.length;i++){
-			$('#nuevoNivel').append('<option value="'+ $opciones[i].nivel +'">'+ $opciones[i].descripcion +'</option>');
+			$('.niveles').append('<option value="'+ $opciones[i].nivel +'">'+ $opciones[i].descripcion +'</option>');
 		}
 	}
 }
 
-	//$('#btnGuardarProfesor').on('click',validarProfesor);
+	//Funciones para agregar un nuevo Profesor
 	function validarProfesor(){
 		var nombre= $('#nuevoNombre').val();
 		var apellidos= $('#nuevoApellido').val();
@@ -113,14 +149,43 @@ function imprimirProfesores(jsonData){
 	}
 
 	function confirmarProfesor(){
-		$('#nuevoProfesor').modal('hide');
 		$('#nuevoNombre').val('');
 		$('#nuevoApellido').val('');
 		$('#nuevoEmail').val('');
 		$('#nuevoPassword').val('');
 		$('#nuevoPassword2').val('');
-
+		$('#nuevoProfesor').modal('hide');
 		buscarProfesores();
 		mensajeExito();
+	}
 
+	//Funciones para enviar la información editada del Profesor
+	function validarEditarProfesor(){
+		var id_usuarios = $('#id_editarProfesor').val();
+		var nombre= $('#editarNombre').val();
+		var apellidos= $('#editarApellido').val();
+		var email= $('#editarEmail').val();
+		var nivel = $('#editarNivel').val();
+
+		$.ajax({
+			data : {
+				format :'jsonp',
+				method : 'get',
+				id_usuarios : id_usuarios,
+				nombre : nombre,
+				apellidos : apellidos,
+				email : email,
+				nivel : nivel
+			},
+			url: '../administracion/editar_profesor',
+		}) .done(confirmarProfesorActualizado);
+	}
+
+	function confirmarProfesorActualizado(){
+		$('#editarNombre').val('');
+		$('#editarApellido').val('');
+		$('#editarEmail').val('');
+		$('#editarProfesor').modal('hide');
+		buscarProfesores();
+		mensajeExito();
 	}

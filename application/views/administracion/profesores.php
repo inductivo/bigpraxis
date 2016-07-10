@@ -42,7 +42,7 @@
             <div class="row form-group">
               <div class="col-lg-12">
                 <label class="txt-editar" for="nuevoNivel">Nivel:</label>
-                <select id="nuevoNivel" class="select input-editar" name="nuevoNivel"></select>
+                <select id="nuevoNivel" class="select input-editar niveles" name="nuevoNivel"></select>
               </div>
             </div>
             <div class="row form-group">
@@ -60,6 +60,108 @@
             <div class="modal-footer">
               <button type="button" class="btn btn-cancelar" data-dismiss="modal"><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i> Cancelar</button>
               <button id="btnGuardarProfesor" type="submit" name="guardarProfesor" class="btn btn-guardar"><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i> Guardar</button>
+            </div>
+          </form>
+        </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!--Modal EDITAR Profesor -->
+<div id="editarProfesor" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"> <i class="fa fa-lg fa-user-plus icon-tema" aria-hidden="true"></i> EDITAR PROFESOR</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" id="frmEditarProfesor" class="frmEditarProfesor" method="post" action="">
+            <input type="hidden" name="id_editarProfesor" id="id_editarProfesor">
+          <div class="row form-group">
+              <div class="col-lg-12">
+                <label class="txt-editar" for="editarNombre">Nombre:</label>
+                <input id="editarNombre" type="text" name="editarNombre" class="input-editar" autofocus>
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-lg-12">
+                <label class="txt-editar" for="editarApellido">Apellidos:</label>
+                <input id="editarApellido" type="text" name="editarApellido" class="input-editar">
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-lg-12">
+                <label class="txt-editar" for="editarEmail">Email:</label>
+                <input id="editarEmail" type="email" name="editarEmail" class="input-editar">
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-lg-12">
+                <label class="txt-editar" for="editarNivel">Nivel:</label>
+                <select id="editarNivel" class="select input-editar niveles" name="editarNivel"></select>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-cancelar" data-dismiss="modal"><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i> Cancelar</button>
+              <button id="btnEditarProfesor" type="submit" name="editarProfesor" class="btn btn-guardar"><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i> Guardar</button>
+            </div>
+          </form>
+        </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!--Modal Actualizar -->
+<div id="actualizarPassword" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"> <i class="fa fa-lg fa-user-plus icon-tema" aria-hidden="true"></i> EDITAR PROFESOR</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" id="frmEditarProfesor" class="frmEditarProfesor" method="post" action="">
+            <input type="hidden" name="id_editarProfesor" id="id_editarProfesor">
+          <div class="row form-group">
+              <div class="col-lg-12">
+                <label class="txt-editar" for="editarNombre">Nombre:</label>
+                <input id="editarNombre" type="text" name="editarNombre" class="input-editar" autofocus>
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-lg-12">
+                <label class="txt-editar" for="editarApellido">Apellidos:</label>
+                <input id="editarApellido" type="text" name="editarApellido" class="input-editar">
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-lg-12">
+                <label class="txt-editar" for="editarEmail">Email:</label>
+                <input id="editarEmail" type="email" name="editarEmail" class="input-editar">
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-lg-12">
+                <label class="txt-editar" for="editarNivel">Nivel:</label>
+                <select id="editarNivel" class="select input-editar niveles" name="editarNivel"></select>
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-lg-12">
+                <label class="txt-editar" for="editarPassword">Contraseña:</label>
+                <input id="editarPassword" type="password" name="editarPassword" class="input-editar">
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-lg-12">
+                <label class="txt-editar" for="editarPassword2">Confirmar Contraseña:</label>
+                <input id="editarPassword2" type="password" name="editarPassword2" class="input-editar">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-cancelar" data-dismiss="modal"><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i> Cancelar</button>
+              <button id="btnEditarProfesor" type="submit" name="editarProfesor" class="btn btn-guardar"><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i> Guardar</button>
             </div>
           </form>
         </div>
