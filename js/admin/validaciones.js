@@ -29,7 +29,7 @@ $(document).ready(function(){
         nuevoPassword:"<span class='label label-danger'>Ingresar CONTRASEÑA</span>",
         nuevoPassword2:{
           required:"<span class='label label-danger'>Ingresar CONTRASEÑA</span>",
-          equalTo:"<span class='label label-danger'>La CONTRASEÑA no coincide</span>"
+          equalTo:"<span class='label label-danger'>Las CONTRASEÑAS no coinciden</span>"
         }
       },
 				errorPlacement: function ( error, element ) {
@@ -48,40 +48,71 @@ $(document).ready(function(){
 
   });
 
-$('#frmEditarProfesor').validate({
-  rules:{
-    editarNombre:{
-      required:true
+  $('#frmEditarProfesor').validate({
+    rules:{
+      editarNombre:{
+        required:true
+      },
+      editarApellido:{
+        required:true
+      },
+      editarEmail:{
+        required:true,
+        email:true
+      }
     },
-    editarApellido:{
-      required:true
+    messages:{
+      editarNombre: "<span class='label label-danger'>Ingresar NOMBRE</span>",
+      editarApellido: "<span class='label label-danger'>Ingresar APELLIDO</span>",
+      editarEmail:{
+        required:"<span class='label label-danger'>Ingresar EMAIL</span>",
+        email:"<span class='label label-danger'>Ingresar EMAIL VÁLIDO</span>"
+      }
     },
-    editarEmail:{
-      required:true,
-      email:true
+    errorPlacement: function ( error, element ) {
+        error.insertAfter( element );
+    },
+    highlight: function ( element, errorClass, validClass ) {
+      $(element).addClass(errorClass).removeClass(validClass);
+    },
+    unhighlight: function (element, errorClass, validClass) {
+      $(element).addClass(validClass).removeClass(errorClass);
+    },
+    submitHandler: function () {
+        validarEditarProfesor();
     }
-  },
-  messages:{
-    editarNombre: "<span class='label label-danger'>Ingresar NOMBRE</span>",
-    editarApellido: "<span class='label label-danger'>Ingresar APELLIDO</span>",
-    editarEmail:{
-      required:"<span class='label label-danger'>Ingresar EMAIL</span>",
-      email:"<span class='label label-danger'>Ingresar EMAIL VÁLIDO</span>"
-    }
-  },
-  errorPlacement: function ( error, element ) {
-      error.insertAfter( element );
-  },
-  highlight: function ( element, errorClass, validClass ) {
-    $(element).addClass(errorClass).removeClass(validClass);
-  },
-  unhighlight: function (element, errorClass, validClass) {
-    $(element).addClass(validClass).removeClass(errorClass);
-  },
-  submitHandler: function () {
-      validarEditarProfesor();
-  }
 
-});
+  });
+
+  $('#frmPassProfesor').validate({
+    rules:{
+      cambiarPassword:{
+        required:true
+      },
+      cambiarPassword2:{
+        required:true,
+        equalTo:"#cambiarPassword"
+      }
+    },
+    messages:{
+      cambiarPassword:"<span class='label label-danger'>Ingresar CONTRASEÑA</span>",
+      cambiarPassword2:{
+        required:"<span class='label label-danger'>Ingresar CONTRASEÑA</span>",
+        equalTo:"<span class='label label-danger'>Las CONTRASEÑAS no coinciden</span>"
+      }
+    },
+    errorPlacement: function ( error, element ) {
+        error.insertAfter( element );
+    },
+    highlight: function ( element, errorClass, validClass ) {
+      $(element).addClass(errorClass).removeClass(validClass);
+    },
+    unhighlight: function (element, errorClass, validClass) {
+      $(element).addClass(validClass).removeClass(errorClass);
+    },
+    submitHandler: function () {
+        validarPassProfesor();
+    }
+  });
 
 });

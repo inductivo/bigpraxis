@@ -22,7 +22,7 @@ function imprimirProfesores(jsonData){
 	cargarNiveles();
   $('#content').empty();
   $profesores = JSON.parse(jsonData);
-  var cabecera = '<div class="row header-pregunta"><div class="col-lg-12 text-left"> <i class="fa fa-question-circle fa-lg" aria-hidden="true"></i> Se encontraron <strong>'+$profesores.length+'</strong> profesores</div> </div>';
+  var cabecera = '<div class="row header-pregunta"><div class="col-lg-12 text-left"> <i class="fa fa-question-circle fa-lg" aria-hidden="true"></i> Existen <strong>'+$profesores.length+'</strong> profesores registrados</div> </div>';
   $('#cabecera').html(cabecera);
 
   if($profesores.length > 0){
@@ -32,7 +32,7 @@ function imprimirProfesores(jsonData){
     for(i=0; i<$profesores.length;i++){
       var td = '<tr class="tr-temas"><td class="text-center">'+(i+1)+'</td><td>'+$profesores[i].nombre+' '+$profesores[i].apellidos+'</td><td>'+$profesores[i].email+'</td><td class="text-center">'+$profesores[i].nivel+'</td>';
       var editar = '<td><span data-id='+$profesores[i].id_usuarios+' data-toggle="modal" data-target="#editarProfesor" class="editarProfesor"><i class="fa fa-lg fa-pencil-square icon-cursor icon-editar" aria-hidden="true"> </i></span><span class="hidden-xs hidden-sm"> Editar</span></td>';
-      var password = '<td><span data-id='+$profesores[i].id_usuarios+' data-toggle="modal" data-target="#cambiarPass" class="cambiarPass"><i class="fa fa-asterisk icon-cursor icon-pass" aria-hidden="true"> </i></span><span class="hidden-xs hidden-sm"></span></td>';
+      var password = '<td><span data-id='+$profesores[i].id_usuarios+' data-toggle="modal" data-target="#actualizarPassword" class="cambiarPassword"><i class="fa fa-asterisk icon-cursor icon-pass" aria-hidden="true"> </i></span><span class="hidden-xs hidden-sm"></span></td>';
       var eliminar = '<td><span data-id='+$profesores[i].id_usuarios+' data-toggle="modal" data-target="#eliminarProfesor" class="eliminarProfesor"><i class="fa fa-lg fa-times-circle icon-cursor icon-eliminar" aria-hidden="true"></i></span></td></tr>';
 
       $('#fila-tema').append(td+editar+password+eliminar);
@@ -92,6 +92,13 @@ function imprimirProfesores(jsonData){
 		$('#editarEmail').val($profesor.email);
 		$('#editarNivel').val($profesor.nivel);
 		$('#editarEmail').val($profesor.email);
+	}
+
+	$('.cambiarPassword').on('click',enviarID);
+	function enviarID(){
+		var id=$(this).attr('data-id');
+		$('#id_passProfesor').val(id);
+		console.log(id);
 	}
 
 	//Funciones para cargar los niveles en el formulario
@@ -182,10 +189,37 @@ function imprimirProfesores(jsonData){
 	}
 
 	function confirmarProfesorActualizado(){
+		$('#id_editarProfesor').val();
 		$('#editarNombre').val('');
 		$('#editarApellido').val('');
 		$('#editarEmail').val('');
 		$('#editarProfesor').modal('hide');
+		buscarProfesores();
+		mensajeExito();
+	}
+
+	//Funciones para CAMBIAR LA CONTRASEÑA del Profesor
+	function validarPassProfesor(){
+		var id_usuarios = $('#id_passProfesor').val();
+		var password= $('#cambiarPassword').val();
+
+		$.ajax({
+			data : {
+				format :'jsonp',
+				method : 'get',
+				id_usuarios : id_usuarios,
+				password : password
+			},
+			url: '../administracion/cambiar_password_profesor',
+		}) .done(confirmarPassProfesor);
+	}
+
+	function confirmarPassProfesor(){
+		$('#id_passProfesor').val('');
+		$('#cambiarPassword').val('');
+		$('#cambiarPassword2').val('');
+
+		$('#actualizarPassword').modal('hide');
 		buscarProfesores();
 		mensajeExito();
 	}

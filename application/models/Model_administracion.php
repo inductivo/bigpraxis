@@ -383,4 +383,11 @@ public function editar_profesor($registro){
 			$this->db->update('usuarios');
 }
 
+//Se actualiza el PASSWORD del Profesor
+public function cambiar_password_profesor($registro){
+			$this->db->set($registro);
+			$this->db->where('id_usuarios',$registro['id_usuarios']);
+			$this->db->update('usuarios');
+}
+
 }//FIN

@@ -65,4 +65,15 @@ class Administracion extends CI_Controller {
 			$this->Model_administracion->editar_profesor($registro);
 	}
 
+	public function cambiar_password_profesor(){
+		$id_usuarios=$_GET['id_usuarios'];
+		$password=$_GET['password'];
+
+		$registro = array(
+			'id_usuarios' => $id_usuarios,
+			'password' => md5($password)
+		);
+		$this->Model_administracion->cambiar_password_profesor($registro);
+	}
+
 }
