@@ -90,13 +90,6 @@
       </div> <!-- /.row -->
     </div>
   </nav>
-  <!-- jQuery -->
-  <script type="text/javascript" src="<?= base_url('js/jquery.js')?>"></script>
-  <script type="text/javascript" src="<?= base_url('js/bootstrap.min.js')?>"></script>
-  <script type="text/javascript" src="<?= base_url('js/sweetalert.min.js')?>"></script>
-  <script type="text/javascript" src="<?= base_url('js/jquery.validate.js')?>"></script>
-  <script type="text/javascript" src="<?= base_url('js/validaciones.js')?>"></script>
-  <script type="text/javascript" src="<?= base_url('js/admin/validaciones.js')?>"></script>
 </footer>
 
 </body>

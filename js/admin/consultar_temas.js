@@ -2,6 +2,8 @@ $('#opciontemas').on('click',opcionesTemas);
 $('#btnconsultartemas').on('click',realizarConsulta);
 $('#materias').on('change',realizarConsulta);
 
+cargarGrados();
+
 //Funciones para consultar los temas
 function opcionesTemas(){
 	$('#opciones-preguntas').html('');
@@ -48,7 +50,7 @@ function imprimirTemas(jsonData){
     $('.editarTema').on('click',buscarTemaEditar);
 
     function buscarTemaEditar(){
-      var id_tema = $(this).attr('data-id');
+			var id_tema = $(this).attr('data-id');
     	editarTema(id_tema,mostrarDatosTema);
     }
 
@@ -108,10 +110,6 @@ function imprimirTemas(jsonData){
 			obtenerContenidos(id_temaContenido,imprimirContenidos);
     }
 
-		function actualizarTablaContenidos(id_tema){
-			obtenerContenidos(id_tema,imprimirContenidos);
-		}
-
 		function obtenerNombreTema(id_temas){
 			$.ajax({
 				data : {
@@ -131,139 +129,14 @@ function imprimirTemas(jsonData){
 			var cabecera = '<div class="row header-pregunta"><div class="col-lg-12 text-center"> <span class="titulo-tema"><strong>'+clave+'. '+tema+'</strong><span> </div></div>';
 			$('#cabecera').html(cabecera);
 		}
-
-		function obtenerContenidos(id_temas,imprimirContenidos){
-			$.ajax({
-				data : {
-					format :'jsonp',
-					method : 'get',
-					id_temas : id_temas
-				},
-				url: 'buscar_contenidos',
-			}) .done(imprimirContenidos);
-		}
-
-		function imprimirContenidos(jsonData){
-			$('#content').empty();
-			$('#botones').empty();
-			$contenidos= JSON.parse(jsonData);
-
-			if($contenidos.length > 0)
-		  {
-		    var th= '<div class="row"><div class="col-lg-12"><div class="table-responsive"><table id="fila-contenido" class="table table-condensed tabla-temas"><tr class="th-temas"><th class="text-center">Subtema</th><th class="text-center">Contenido</th><th></th><th></th></tr></table></div></div></div>';
-		    $('#content').html(th);
-
-				for(i=0; i<$contenidos.length;i++){
-					var td = '<tr class="tr-temas"><td class="text-center">'+$contenidos[i].subclave+'</td><td>'+$contenidos[i].contenido+'</td>';
-					var editar = '<td><span data-id='+$contenidos[i].id_contenidos+' data-toggle="modal" data-target="#editarContenido" class="editarContenido"><i class="fa fa-lg fa-pencil-square icon-cursor icon-editar" aria-hidden="true"> </i></span><span class="hidden-xs hidden-sm"> Editar</span></td>';
-					var eliminar = '<td><span data-id='+$contenidos[i].id_contenidos+' class="eliminarContenido"><i class="fa fa-lg fa-times-circle icon-cursor icon-eliminar" aria-hidden="true"></i></span></td></tr>';
-					$('#fila-contenido').append(td+editar+eliminar);
-				}
-
-				//Funciones para buscar la informacion del contenido que se selecciono
-		    $('.editarContenido').on('click',buscarContenidoEditar);
-
-				function buscarContenidoEditar(){
-		      var id = $(this).attr('data-id');
-		    	editarContenido(id,mostrarDatosContenido);
-		    }
-
-		    function editarContenido(id_contenidos,mostrarDatosContenido){
-		    	$.ajax({
-		    		data : {
-		    			format :'jsonp',
-		    			method : 'get',
-		    			id_contenidos : id_contenidos
-		    		},
-		    		url: 'buscar_contenido',
-		    	}) .done(mostrarDatosContenido);
-		    }
-
-		    function mostrarDatosContenido(jsonData){
-		      $contenido = JSON.parse(jsonData);
-		      $('#id_Editartemas').val($contenido.id_temas);
-		      $('#id_Editarcontenidos').val($contenido.id_contenidos);
-		      $('#subtemaEditar').val($contenido.subclave);
-		      $('#contenidoEditar').val($contenido.contenido);
-		    }
-
-				//Funciones para guardar un CONTENIDO editado
-				$('.btneditarcontenido').on('click',guardarContenido);
-
-				function guardarContenido(){
-					var id_contenido = $('#id_Editarcontenidos').val();
-				  var subclave = $('#subtemaEditar').val();
-				  var contenido = $('#contenidoEditar').val();
-				  enviarContenido(id_contenido,subclave,contenido,edicionContenidoExitosa);
-				}
-
-				function enviarContenido(id_contenidos,subclave,contenido,edicionContenidoExitosa){
-				  $.ajax({
-				    data : {
-				      format :'jsonp',
-				      method : 'get',
-							id_contenidos : id_contenidos,
-				      subclave : subclave,
-				      contenido : contenido
-				    },
-				    url: 'guardar_contenido',
-				  }) .done(edicionContenidoExitosa);
-				}
-
-				function edicionContenidoExitosa(){
-					var id_tema = $('#id_Editartemas').val();
-					//obtenerNombreTema(id_tema,imprimirNombreTema);
-					obtenerContenidos(id_tema,imprimirContenidos);
-					mensajeExito();
-				}
-
-				//Funciones para ELIMINAR un CONTENIDO
-				$('.eliminarContenido').on('click',buscarContenidoEliminar);
-
-				function buscarContenidoEliminar(){
-				  var id = $(this).attr('data-id');
-					if(confirm('¿Estas seguro de eliminar este Contenido?') == true){
-							eliminarContenido(id,contenidoEliminado);
-						}
-				}
-
-				function eliminarContenido(id_contenidos,contenidoEliminado){
-				    	$.ajax({
-				    		data : {
-				    			format :'jsonp',
-				    			method : 'get',
-				    			id_contenidos : id_contenidos
-				    		},
-				    		url: 'eliminar_contenido',
-				    	}) .done(contenidoEliminado);
-				    }
-
-				function contenidoEliminado(){
-							var id_tema = $('#id_Editartemas').val();
-							//obtenerNombreTema(id_tema,imprimirNombreTema);
-							obtenerContenidos(id_tema,imprimirContenidos);
-							mensajeRegistroEliminado();
-				}
-
-			}//If imprimirContenidos
-
-			var btnNuevoContenido = '<div class="row"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"> <button type="button" class="btn btnNuevoContenido" name="btnNuevoContenido" data-toggle="modal" data-target="#agregarNuevoContenido"><i class="fa fa-list"></i>  Agregar Contenido</button></div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 cajaBtnVerTemas"><button type="button" class="btn btnVerTemas" name="btnVerTemas"><i class="fa fa-file-text-o"></i>  Ver Temas</button></div></div>';
-			$('#botones').html(btnNuevoContenido);
-			$('.btnVerTemas').on('click',realizarConsulta);
-
-		}//Fin imprimirContenidos
-
 	} //If imprimirTemas
 
-
-	var btnNuevoTema = '<div class="row"><div class="col-lg-12"> <button type="button" class="btn btnNuevo" name="btnNuevoTema" data-toggle="modal" data-target="#agregarTema"><i class="fa fa-file-text-o"></i>  Agregar Tema</button></div> </div>';
+	var btnNuevoTema = '<div class="row"><div class="col-lg-12"> <button type="button" class="btn btnNuevo" name="btnNuevoTema" data-toggle="modal" data-target="#agregarTemaModal"><i class="fa fa-file-text-o"></i>  Agregar Tema</button></div> </div>';
 	$('#botones').html(btnNuevoTema);
 
 } //Cierre de función imprimirTemas
 
-	//Funciones para guardar un tema editado
-	$('#btneditartemas').on('click',guardarTema);
-
+	//GUARDAR UN TEMA EDITADO
 	function guardarTema(){
 	  var id_tema = $('#id_temas').val();
 	  var clave = $('#clave').val();
@@ -287,42 +160,38 @@ function imprimirTemas(jsonData){
 	}
 
 	function edicionExitosa(){
-	  realizarConsulta();
+		$('#editarTema').modal('hide');
+		realizarConsulta();
 		mensajeExito();
 	}
 
 	//Funciones para AGREGAR UN TEMA NUEVO
-	$('#btnagregartema').on('click',agregarTema);
-
-	function agregarTema(){
+	function agregarNuevoTema(){
 		var id_materias=$('#materias').val();
 	  var clave = $('#nuevaClave').val();
 	  var tema = $('#nuevoTema').val();
-	  enviarNuevoTema(id_materias,clave,tema,temaAgregado);
-	}
 
-	function enviarNuevoTema(id_materias,clave,tema,temaAgregado){
 	  $.ajax({
 	    data : {
 	      format :'jsonp',
 	      method : 'get',
 				id_materias : id_materias,
 	      clave : clave,
-	      tema : tema,
+	      tema : tema
 	    },
 	    url: 'agregar_tema',
 	  }) .done(temaAgregado);
 	}
 
 	function temaAgregado(){
-	  realizarConsulta();
 		$('#nuevaClave').val('');
 		$('#nuevoTema').val('');
+		$('#agregarTemaModal').modal('hide');
+		realizarConsulta();
 		mensajeExito();
 	}
 
 	//Funciones para AGREGAR UN CONTENIDO NUEVO
-	$('#btnagregarcontenido').on('click',agregarContenido);
 	function agregarContenido(){
 		var id_nuevoTema = $('#id_temaNuevoContenido').val();
 		var nuevaSubclave = $('#nuevoSubtema').val();
@@ -345,10 +214,50 @@ function imprimirTemas(jsonData){
 
 	function contenidoAgregado(){
 		var id_temaNuevoContenido = $('#id_temaNuevoContenido').val();
-		//actualizarTablaContenidos(id_temaNuevoContenido);
 		$('#nuevoSubtema').val('');
 		$('#nuevoContenido').val('');
+		$('#agregarNuevoContenido').modal('hide');
+		obtenerContenidos(id_temaNuevoContenido,imprimirContenidos);
 		mensajeExito();
+	}
+
+	//Funciones para guardar un CONTENIDO editado
+	function guardarContenidoEditado(){
+		var id_contenido = $('#id_Editarcontenidos').val();
+		var subclave = $('#subtemaEditar').val();
+		var contenido = $('#contenidoEditar').val();
+		enviarContenido(id_contenido,subclave,contenido,edicionContenidoExitosa);
+	}
+
+	function enviarContenido(id_contenidos,subclave,contenido,edicionContenidoExitosa){
+		$.ajax({
+			data : {
+				format :'jsonp',
+				method : 'get',
+				id_contenidos : id_contenidos,
+				subclave : subclave,
+				contenido : contenido
+			},
+			url: 'guardar_contenido',
+		}) .done(edicionContenidoExitosa);
+	}
+
+	function edicionContenidoExitosa(){
+		var id_tema = $('#id_Editartemas').val();
+		obtenerContenidos(id_tema,imprimirContenidos);
+		$('#editarContenidoModal').modal('hide');
+		mensajeExito();
+	}
+
+	function obtenerContenidos(id_temas,imprimirContenidos){
+		$.ajax({
+			data : {
+				format :'jsonp',
+				method : 'get',
+				id_temas : id_temas
+			},
+			url: 'buscar_contenidos',
+		}) .done(imprimirContenidos);
 	}
 
 	function mensajeExito(){
@@ -371,3 +280,75 @@ function imprimirTemas(jsonData){
 				});
 		}, 3500);
 	}
+
+function imprimirContenidos(jsonData){
+	$('#content').empty();
+	$('#botones').empty();
+	$contenidos= JSON.parse(jsonData);
+
+	if($contenidos.length > 0){
+		var th= '<div class="row"><div class="col-lg-12"><div class="table-responsive"><table id="fila-contenido" class="table table-condensed tabla-temas"><tr class="th-temas"><th class="text-center">Subtema</th><th class="text-center">Contenido</th><th></th><th></th></tr></table></div></div></div>';
+		$('#content').html(th);
+
+		for(i=0; i<$contenidos.length;i++){
+			var td = '<tr class="tr-temas"><td class="text-center">'+$contenidos[i].subclave+'</td><td>'+$contenidos[i].contenido+'</td>';
+			var editar = '<td><span data-id='+$contenidos[i].id_contenidos+' data-toggle="modal" data-target="#editarContenidoModal" class="editarContenido"><i class="fa fa-lg fa-pencil-square icon-cursor icon-editar" aria-hidden="true"> </i></span><span class="hidden-xs hidden-sm"> Editar</span></td>';
+			var eliminar = '<td><span data-id='+$contenidos[i].id_contenidos+' class="eliminarContenido"><i class="fa fa-lg fa-times-circle icon-cursor icon-eliminar" aria-hidden="true"></i></span></td></tr>';
+			$('#fila-contenido').append(td+editar+eliminar);
+		}
+
+		//Funciones para buscar la informacion del contenido que se selecciono
+			$('.editarContenido').on('click',buscarContenidoEditar);
+			function buscarContenidoEditar(){
+				var id = $(this).attr('data-id');
+			  editarContenido(id,mostrarDatosContenido);
+			}
+
+			function editarContenido(id_contenidos,mostrarDatosContenido){
+				$.ajax({
+			  	data : {
+			    format :'jsonp',
+			    method : 'get',
+			    id_contenidos : id_contenidos
+			  	},
+			    url: 'buscar_contenido',
+			  }) .done(mostrarDatosContenido);
+			}
+
+			function mostrarDatosContenido(jsonData){
+			  $contenido = JSON.parse(jsonData);
+			  $('#id_Editartemas').val($contenido.id_temas);
+			  $('#id_Editarcontenidos').val($contenido.id_contenidos);
+			  $('#subtemaEditar').val($contenido.subclave);
+			  $('#contenidoEditar').val($contenido.contenido);
+			}
+			//Funciones para ELIMINAR un CONTENIDO
+			$('.eliminarContenido').on('click',buscarContenidoEliminar);
+			function buscarContenidoEliminar(){
+				var id = $(this).attr('data-id');
+				if(confirm('¿Estas seguro de eliminar este Contenido?') == true){
+					eliminarContenido(id,contenidoEliminado);
+				}
+			}
+			function eliminarContenido(id_contenidos,contenidoEliminado){
+				$.ajax({
+					data : {
+					format :'jsonp',
+					method : 'get',
+					id_contenidos : id_contenidos
+					},
+					url: 'eliminar_contenido',
+				}) .done(contenidoEliminado);
+			}
+
+			function contenidoEliminado(){
+				var id_tema = $('#id_Editartemas').val();
+				obtenerContenidos(id_tema,imprimirContenidos);
+				mensajeRegistroEliminado();
+			}
+
+	}//If imprimirContenidos
+	var btnNuevoContenido = '<div class="row"><div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"> <button type="button" class="btn btnNuevoContenido" name="btnNuevoContenido" data-toggle="modal" data-target="#agregarNuevoContenido"><i class="fa fa-list"></i>  Agregar Contenido</button></div><div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 cajaBtnVerTemas"><button type="button" class="btn btnVerTemas" name="btnVerTemas"><i class="fa fa-file-text-o"></i>  Ver Temas</button></div></div>';
+	$('#botones').html(btnNuevoContenido);
+	$('.btnVerTemas').on('click',realizarConsulta);
+}//Fin imprimirContenidos

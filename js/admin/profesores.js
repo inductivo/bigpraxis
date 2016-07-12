@@ -98,7 +98,6 @@ function imprimirProfesores(jsonData){
 	function enviarID(){
 		var id=$(this).attr('data-id');
 		$('#id_passProfesor').val(id);
-		console.log(id);
 	}
 
 	//Funciones para cargar los niveles en el formulario
@@ -189,7 +188,7 @@ function imprimirProfesores(jsonData){
 	}
 
 	function confirmarProfesorActualizado(){
-		$('#id_editarProfesor').val();
+		$('#id_editarProfesor').val('');
 		$('#editarNombre').val('');
 		$('#editarApellido').val('');
 		$('#editarEmail').val('');

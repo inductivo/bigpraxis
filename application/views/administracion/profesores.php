@@ -118,14 +118,14 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title"> <i class="fa fa-lg fa-asterisk icon-pass" aria-hidden="true"></i> INTRODUCIR NUEVA CONTRASEÑA</h4>
+        <h4 class="modal-title"> <i class="fa fa-lg fa-asterisk icon-pass" aria-hidden="true"></i> ACTUALIZAR CONTRASEÑA</h4>
       </div>
       <div class="modal-body">
         <form class="form-horizontal" id="frmPassProfesor" class="frmPassProfesor" method="post" action="">
             <input type="hidden" name="id_passProfesor" id="id_passProfesor">
             <div class="row form-group">
               <div class="col-lg-12">
-                <label class="txt-editar" for="cambiarPassword">Contraseña:</label>
+                <label class="txt-editar" for="cambiarPassword">Nueva Contraseña:</label>
                 <input id="cambiarPassword" type="password" name="cambiarPassword" class="input-editar">
               </div>
             </div>
@@ -145,6 +145,14 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
+<!-- jQuery -->
+<script type="text/javascript" src="<?= base_url('js/jquery.js')?>"></script>
+<script type="text/javascript" src="<?= base_url('js/bootstrap.min.js')?>"></script>
+<script type="text/javascript" src="<?= base_url('js/sweetalert.min.js')?>"></script>
+<script type="text/javascript" src="<?= base_url('js/jquery.validate.js')?>"></script>
+<script type="text/javascript" src="<?= base_url('js/validaciones.js')?>"></script>
+
 <script type="text/javascript" src="<?= base_url('js/admin/panel.js')?>"></script>
+<script type="text/javascript" src="<?= base_url('js/admin/consultar_preguntas.js')?>"></script>
+<script type="text/javascript" src="<?= base_url('js/admin/consultar_temas.js')?>"></script>
 <script type="text/javascript" src="<?= base_url('js/admin/profesores.js')?>"></script>
-<script type="text/javascript" src="<?= base_url('js/admin/validaciones.js')?>"></script>

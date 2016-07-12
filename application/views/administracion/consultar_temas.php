@@ -10,7 +10,7 @@
 <div class="row">
   <div class="col-lg-12" id="success"></div>
 </div>
-<form class="form-horizontal" id="frmconsultar-preguntas" method="post" action="#">
+<form class="form-horizontal" id="frmconsultar-temas" method="post" action="">
 
   <div class="row">
   	<div class="col-lg-4 col-sm-4 margen">
@@ -50,7 +50,7 @@
         <h4 class="modal-title"> <i class="fa fa-lg fa-pencil-square icon-editar" aria-hidden="true"></i> EDITAR TEMA</h4>
       </div>
       <div class="modal-body">
-        <form class="form-horizontal" id="frmEditarTema" method="post" action="#">
+        <form class="form-horizontal" id="frmEditarTema" name="frmEditarTema" method="post" action="">
             <input type="hidden" name="id_temas" id="id_temas">
             <input type="hidden" name="id_materias" id="id_materias">
           <div class="row form-group">
@@ -67,7 +67,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-cancelar" data-dismiss="modal"><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i> Cancelar</button>
-              <button id="btneditartemas" type="button" data-dismiss="modal" class="btn btn-guardar"><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i> Guardar</button>
+              <button id="btneditartemas" type="submit" class="btn btn-guardar"><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i> Guardar</button>
             </div>
           </form>
         </div>
@@ -76,7 +76,7 @@
 </div><!-- /.modal -->
 
 <!--Modal Agregar Tema -->
-<div id="agregarTema" class="modal fade" tabindex="-1" role="dialog">
+<div id="agregarTemaModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -84,23 +84,23 @@
         <h4 class="modal-title"> <i class="fa fa-lg fa-file-text-o icon-tema" aria-hidden="true"></i> AGREGAR TEMA</h4>
       </div>
       <div class="modal-body">
-        <form class="form-horizontal" id="frmEditarTema" method="post" action="#">
+        <form class="form-horizontal" id="frmAgregarTema" name="frmAgregarTema" class="frmAgregarTema" method="post" action="">
             <input type="hidden" name="id_nuevaMaterias" id="id_nuevaMateria">
           <div class="row form-group">
               <div class="col-lg-12">
-                <label class="txt-editar">Clave:</label>
-                <input id="nuevaClave" type="text" name="nuevaClave" class="input-editar" autofocus required>
+                <label class="txt-editar" for="nuevaClave">Clave:</label>
+                <input id="nuevaClave" type="text" name="nuevaClave" class="input-editar" autofocus>
               </div>
             </div>
             <div class="row form-group">
               <div class="col-lg-12">
-                <label class="txt-editar">Tema:</label>
-                <input id="nuevoTema" type="text" name="nuevoTema" class="input-editar" required>
+                <label class="txt-editar" for="nuevoTema">Tema:</label>
+                <input id="nuevoTema" type="text" name="nuevoTema" class="input-editar">
               </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-cancelar" data-dismiss="modal"><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i> Cancelar</button>
-              <button id="btnagregartema" type="button" data-dismiss="modal" class="btn btn-guardar"><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i> Guardar</button>
+              <button id="btnagregartema" name="btnagregartema" type="submit" class="btn btn-guardar"><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i> Guardar</button>
             </div>
           </form>
         </div>
@@ -110,7 +110,7 @@
 
 
 <!--Modal Editar Contenido -->
-<div id="editarContenido" class="modal fade" tabindex="-1" role="dialog">
+<div id="editarContenidoModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -118,7 +118,7 @@
         <h4 class="modal-title"> <i class="fa fa-lg fa-pencil-square icon-editar" aria-hidden="true"></i> EDITAR CONTENIDO</h4>
       </div>
       <div class="modal-body">
-        <form class="form-horizontal" id="frmEditarContenido" method="post" action="#">
+        <form class="form-horizontal" id="frmEditarContenido" name="frmEditarContenido" method="post" action="">
             <input type="hidden" name="id_Editartemas" id="id_Editartemas">
             <input type="hidden" name="id_Editarcontenidos" id="id_Editarcontenidos">
           <div class="row form-group">
@@ -135,7 +135,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-cancelar" data-dismiss="modal"><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i> Cancelar</button>
-              <button id="btneditarcontenido" type="button" data-dismiss="modal" class="btn btn-guardar btneditarcontenido"><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i> Guardar</button>
+              <button id="btneditarcontenido" type="submit" class="btn btn-guardar"><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i> Guardar</button>
             </div>
           </form>
         </div>
@@ -152,7 +152,7 @@
         <h4 class="modal-title"> <i class="fa fa-lg fa-list icon-contenido" aria-hidden="true"></i> AGREGAR CONTENIDO</h4>
       </div>
       <div class="modal-body">
-        <form class="form-horizontal" id="frmAgregarContenido" method="post" action="#">
+        <form class="form-horizontal" id="frmAgregarContenido" name="frmAgregarContenido" method="post" action="">
             <input type="hidden" name="id_temaNuevoContenido" id="id_temaNuevoContenido">
           <div class="row form-group">
               <div class="col-lg-12">
@@ -168,7 +168,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-cancelar" data-dismiss="modal"><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i> Cancelar</button>
-              <button id="btnguardarcontenido" type="button" data-dismiss="modal" class="btn btn-guardar"><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i> Guardar</button>
+              <button id="btnguardarcontenido" type="submit" class="btn btn-guardar"><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i> Guardar</button>
             </div>
           </form>
         </div>
@@ -176,7 +176,10 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<script src="<?= base_url('js/jquery.js')?>"></script>
-<script src="<?= base_url('js/admin/agregar_preguntas.js')?>"></script>
-<script src="<?= base_url('js/admin/consultar_temas.js')?>"></script>
-<script src="<?= base_url('js/admin/panel.js')?>"></script>
+<script type="text/javascript" src="<?= base_url('js/jquery.js')?>"></script>
+<script type="text/javascript" src="<?= base_url('js/bootstrap.min.js')?>"></script>
+
+<script type="text/javascript" src="<?= base_url('js/jquery.validate.js')?>"></script>
+<script type="text/javascript" src="<?= base_url('js/admin/panel.js')?>"></script>
+<script type="text/javascript" src="<?= base_url('js/admin/consultar_temas.js')?>"></script>
+<script type="text/javascript" src="<?= base_url('js/admin/validar_temas.js')?>"></script>

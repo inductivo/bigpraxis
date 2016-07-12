@@ -4,17 +4,9 @@ $(document).ready(function() {
 
 	cargarGrados();
 
-	$('#grados').on('change', cargarSemestres);
-	$('#grados').on('focus', cargarSemestres);
-
-	$('#semestres').on('change', cargarMaterias);
-	$('#semestres').on('click', cargarMaterias);
-
 	$('#materias').on('change', cargarTemas);
 	$('#materias').on('click', cargarTemas);
-	//$('#materias').on('select', cargarTemas);
-	//$('#materias').on('focus', cargarTemas);
-
+	
 	$('#temas').on('change', cargarContenidos);
 	$('#temas').on('click', cargarContenidos);
 	//$('#temas').on('focus', cargarContenidos);
@@ -44,135 +36,8 @@ $(document).ready(function() {
         }
         return false;
     });
+		cargarEditor();
 
-//EDITOR
-	 tinymce.init({
-	    selector: "textarea",
-	    plugins: [
-	        "leaui_formula",
-	        "advlist autolink lists link image charmap print preview anchor",
-	        "searchreplace visualblocks code fullscreen",
-	        "insertdatetime media table contextmenu paste",
-	        "tiny_mce_wiris",
-	        "jbimages",
-	        "autoresize",
-	        "code",
-
-
-	    ],
-	    paste_data_images: true,
-	    toolbar: "leaui_formula | insertfile bold italic superscript subscript | bullist numlist | jbimages charmap link code ",
-	    menubar:false,
-	    statusbar : false,
-	    language : 'es_MX',
-	    relative_urls: false,
-	    height: 200,
-	    autoresize_min_height: 200,
-  		autoresize_max_height: 800
-		});
-
-
-
-	function cargarGrados()
-	{
-		obtenerGrados(imprimirGrados);
-		cargarSemestres();
-	}
-
-	function obtenerGrados(imprimirGrados)
-	{
-		$.ajax({
-			data : {
-				format :'jsonp',
-				method : 'get'
-			},
-			url: 'cargargrados',
-		}) .done(imprimirGrados);
-	}
-
-	function imprimirGrados(jsonData)
-	{
-		$('#grados').empty();
-		$opciones = JSON.parse(jsonData);
-
-		for(i=0; i<$opciones.length;i++)
-		{
-			$('#grados').append('<option value="'+ $opciones[i].id_grados +'">'+ $opciones[i].grado +'</option>');
-		}
-	}
-
-	//Se cargan los semestres
-
-	function cargarSemestres()
-	{
-		var idgrado = $('#grados').val();
-		obtenerSemestres(idgrado,imprimirSemestres);
-
-	}
-
-	function obtenerSemestres(idgrado,imprimirSemestres)
-	{
-		$.ajax({
-			data : {
-				format :'jsonp',
-				method : 'get',
-				id_grados: idgrado
-			},
-			url: 'cargarsemestres',
-		}) .done(imprimirSemestres);
-	}
-
-	function imprimirSemestres(jsonData)
-	{
-		$('#semestres').empty();
-		$('#materias').empty();
-		$('#temas').empty();
-		$('#contenidos').empty();
-
-		$opciones = JSON.parse(jsonData);
-
-		for(i=0; i<$opciones.length;i++)
-		{
-			$('#semestres').append('<option value="'+ $opciones[i].id_semestre +'">'+ $opciones[i].semestre+'</option>');
-		}
-
-		//obtenerMaterias(1,imprimirMaterias);
-	}
-
-
-	function cargarMaterias()
-	{
-		var idsemestre = $('#semestres').val();
-		obtenerMaterias(idsemestre,imprimirMaterias);
-
-	}
-
-	function obtenerMaterias(idsemestre,imprimirMaterias)
-	{
-		$.ajax({
-			data : {
-				format :'jsonp',
-				method : 'get',
-				id_semestre: idsemestre
-			},
-			url: 'cargarmaterias',
-		}) .done(imprimirMaterias);
-	}
-
-	function imprimirMaterias(jsonData)
-	{
-
-		$('#materias').empty();
-		$('#temas').empty();
-		$('#contenidos').empty();
-
-		$opciones = JSON.parse(jsonData);
-
-		for(i=0; i<$opciones.length;i++)
-		{
-			$('#materias').append('<option value="'+ $opciones[i].id_materias +'">'+ $opciones[i].materia +'</option>');
-		}
-	}
 
 	//Cargar TEMAS
 
@@ -314,7 +179,20 @@ $(document).ready(function() {
 
 		}
 
-		tinymce.init({
+		cargarEditor();
+
+		return false;
+	}
+
+	window.setTimeout(function() {
+    	$(".alerta").fadeTo(1500, 0).slideUp(500, function(){
+        $(this).remove();
+    	});
+	}, 5000);
+
+function cargarEditor(){
+	//EDITOR
+		 tinymce.init({
 		    selector: "textarea",
 		    plugins: [
 		        "leaui_formula",
@@ -325,8 +203,6 @@ $(document).ready(function() {
 		        "jbimages",
 		        "autoresize",
 		        "code",
-
-
 		    ],
 		    paste_data_images: true,
 		    toolbar: "leaui_formula | insertfile bold italic superscript subscript | bullist numlist | jbimages charmap link code ",
@@ -338,17 +214,7 @@ $(document).ready(function() {
 		    autoresize_min_height: 200,
 	  		autoresize_max_height: 800
 			});
-
-		return false;
-	}
-
-	window.setTimeout(function() {
-    	$(".alerta").fadeTo(1500, 0).slideUp(500, function(){
-        $(this).remove();
-    	});
-	}, 5000);
-
-
+}
 
 
 });

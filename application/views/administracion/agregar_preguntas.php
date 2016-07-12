@@ -112,6 +112,6 @@
 </form>
 
 <script src="<?= base_url('js/jquery.js')?>"></script>
-<script src="<?= base_url('js/admin/agregar_preguntas.js')?>"></script>
 <script src="<?= base_url('js/admin/panel.js')?>"></script>
+<script src="<?= base_url('js/admin/agregar_preguntas.js')?>"></script>
 <script src="<?= base_url('js/tinymce/tinymce.min.js')?>"></script>
