@@ -11,7 +11,7 @@ class Principal extends CI_Controller {
 		$this->load->model('Model_cursos');
 		$this->load->model('Model_contenidos');
 		$this->form_validation->set_message('validar_credenciales', '<strong>Incorrect</strong> <strong>Username</strong> or <strong>Password</strong>');
-		$this->form_validation->set_message('required', 'Introducir <strong>%s</strong>');
+		$this->form_validation->set_message('required', 'Ingresar <strong>%s</strong>');
 	}
 
 
@@ -155,13 +155,12 @@ class Principal extends CI_Controller {
 	{
 		$respuestas = array();
 
-		$this->form_validation->set_rules('txtpregunta','la Pregunta','required');
-		$this->form_validation->set_rules('txtrepaso','el Repaso','required');
-		$this->form_validation->set_rules('txtsolucion','la Solucion','required');
+		$this->form_validation->set_rules('txtpregunta','PREGUNTA','required');
+		$this->form_validation->set_rules('txtrepaso','REPASO','required');
+		$this->form_validation->set_rules('txtsolucion','SOLUCIÓN','required');
+
 		//Falta agregar la validacion de las respuestas
-
 		if ($this->form_validation->run()){
-
 			$pregunta = array(
 				'id_grados' => $this->input->post('grados'),
 				'id_semestre' => $this->input->post('semestres'),
@@ -174,26 +173,28 @@ class Principal extends CI_Controller {
 				);
 
 			$opciones = $this->input->post('resp');
-
-
-
 			$cont=count($opciones);
 
-    		for ($i = 0; $i < $cont; $i++) {
-		       $check= $this->input->post('chk'.($i+1));
-
-		       $respuestas[$i+1] = $check;
-
+    	for ($i = 0; $i < $cont; $i++) {
+		  	$check= $this->input->post('chk'.($i+1));
+		    $respuestas[$i+1] = $check;
 		    }
 
-
 			$this->Model_administracion->insertar_pregunta($pregunta,$opciones,$respuestas);
-			$this->panel_profesores();
+			$this->regresar_agregar_preguntas();
 			echo  '<div class="row text-center"><div class="col-lg-12 margen alert alert-success alerta" id="mensaje"><strong>Muy bien!</strong> Pregunta agregada con éxito.</div></div>';
+		}else{
+
+			$this->regresar_agregar_preguntas();
 		}
-		else
-		{
-			$this->panel_profesores();
+	}
+
+	public function regresar_agregar_preguntas(){
+		if($this->session->userdata('id_usuarios') == null){
+			redirect('principal/acceso_denegado');
+		}else{
+			$data['contenido'] = 'administracion/agregar_preguntas';
+			$this->load->view('templates/template_panel',$data);
 		}
 
 	}

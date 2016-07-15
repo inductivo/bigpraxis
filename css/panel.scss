@@ -5,25 +5,28 @@ $amarillo:#e9bc1c;
 $amarillo-secundario:#fbc215;
 $azul:#30ccbf;
 
-
-
-
-body
-{
+body{
 	background-color: $gris_bg;
 	padding-bottom: 70px;
 }
 
 div.margen { margin:10px 0;}
-div.margenbtn { margin:20px 0;
-	display: none;}
+div.margenbtn {
+	margin:20px 0;
+	display: none;
+}
 
-textarea.txtarea{width: 100%;
-				font-size: 16px;}
+.respuestas__editor{
+	margin-bottom: 15px;
+}
+
+textarea.txtarea{
+	width: 100%;
+	font-size: 16px;
+}
 
 
-nav.navbar-inverse
-{
+nav.navbar-inverse{
 	background-color: $verde;
 }
 
@@ -56,11 +59,15 @@ nav.navbar-inverse
 	margin-right: 8px;
 }
 
-#cajatipopregunta {display:none;}
+/*#cajatipopregunta {display:none;}
 #cajarespuestas {display:none;}
 #cajanuevaresp{display: none;}
 #cajas{display: none;}
-#publicar{display: none;}
+#publicar{display: none;}*/
+
+.cursor{
+	cursor:pointer;
+}
 
 div.panelprincipal{
 	font-family: 'Roboto';
@@ -338,6 +345,18 @@ div.panelprincipal{
 	color:$rojo;
 }
 
+.alerta-validacion{
+	background-color: $rojo;
+	color:white;
+	border-radius: 5px;
+	font-size: 14px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	line-height: 30px;
+}
+
 .cajaBtnVerTemas{
 	text-align: right;
 }
@@ -346,6 +365,6 @@ div.panelprincipal{
 	text-transform: uppercase;
 }
 
- input.error{
-	 border: 2px solid $rojo;
+ select.error, input.error{
+	 border: 2px solid $rojo !important;
  }

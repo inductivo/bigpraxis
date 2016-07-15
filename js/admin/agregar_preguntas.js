@@ -3,17 +3,17 @@ $(document).ready(function() {
 
 
 	cargarGrados();
+	construirPregunta();
+	cargarTipoPregunta();
 
 	$('#materias').on('change', cargarTemas);
 	$('#materias').on('click', cargarTemas);
-	
+
 	$('#temas').on('change', cargarContenidos);
 	$('#temas').on('click', cargarContenidos);
 	//$('#temas').on('focus', cargarContenidos);
 
-	$('#agregar').on('click', construirPregunta);
-	$('#agregar').on('click', cargarTipoPregunta);
-	$('#agregar').on('click', cargarRespuestas);
+
 
 	//Datos para desplegar campos Respuestas
 	var maxInputs = 4;
@@ -107,18 +107,13 @@ $(document).ready(function() {
 
 	//Cargar TIPO DE PREGUNTAS
 
-	function cargarTipoPregunta()
-	{
+	function cargarTipoPregunta(){
 		var tipo=document.getElementById("cajatipopregunta");
 		tipo.style.display = 'block';
-
-
 		obtenerTipoPregunta(imprimirTipoPregunta);
-
 	}
 
-	function obtenerTipoPregunta(imprimirTipoPregunta)
-	{
+	function obtenerTipoPregunta(imprimirTipoPregunta){
 		$.ajax({
 			data : {
 				format :'jsonp',
@@ -129,8 +124,7 @@ $(document).ready(function() {
 	}
 
 
-	function imprimirTipoPregunta(jsonData)
-	{
+	function imprimirTipoPregunta(jsonData){
 		$('#tipopregunta').empty();
 		$opciones = JSON.parse(jsonData);
 
@@ -141,8 +135,7 @@ $(document).ready(function() {
 	}
 
 	//Cargar RESPUESTAS
-	function cargarRespuestas()
-	{
+	function cargarRespuestas(){
 		var id=document.getElementById("cajarespuestas");
 		id.style.display = 'block';
 
@@ -150,9 +143,7 @@ $(document).ready(function() {
 		id2.style.display = 'block';
 	}
 
-
-	function construirPregunta()
-	{
+	function construirPregunta(){
 		var pregunta=document.getElementById("cajaPregunta");
 		pregunta.style.display = 'block';
 
@@ -164,23 +155,17 @@ $(document).ready(function() {
 
 	}
 
-	function agregarRespuesta()
-	{
-
-
+	function agregarRespuesta(){
 		if(x <= maxInputs)
 		{
 			 FieldCount++;
             //agregar campo
-            $(contenedor_r).append('<div class="input-group"><input type="hidden" name="chk'+FieldCount+'" value="0" ><span class="input-group-addon"><input type="checkbox" value="1" id="check' + FieldCount +'"  name="chk'+FieldCount+'"></span> <textarea name="resp[]" id="r'+ FieldCount +'" class="txtarea" ></textarea><a href="#" class="eliminar">&times;</a></div>');
+            $(contenedor_r).append('<div class="input-group respuestas__editor"><input type="hidden" name="chk'+FieldCount+'" value="0" ><span class="input-group-addon"><input type="checkbox" value="1" id="check' + FieldCount +'"  name="chk'+FieldCount+'"></span> <textarea name="resp[]" id="r'+ FieldCount +'" class="txtarea" required></textarea><a href="#" class="eliminar cursor fa fa-times-circle fa-lg icon-eliminar"></a></div>');
 
             //$(respuestas).append('<div><input type="text" name="resp[]" id="r'+ FieldCount +'" placeholder="Texto '+ FieldCount +'"/><a href="#" class="eliminar">&times;</a></div>');
             x++; //text box increment
-
 		}
-
 		cargarEditor();
-
 		return false;
 	}
 
@@ -193,7 +178,7 @@ $(document).ready(function() {
 function cargarEditor(){
 	//EDITOR
 		 tinymce.init({
-		    selector: "textarea",
+		    mode: "textareas",
 		    plugins: [
 		        "leaui_formula",
 		        "advlist autolink lists link image charmap print preview anchor",
@@ -212,7 +197,11 @@ function cargarEditor(){
 		    relative_urls: false,
 		    height: 200,
 		    autoresize_min_height: 200,
-	  		autoresize_max_height: 800
+	  		autoresize_max_height: 800,
+				onchange_callback: function(editor) {
+					tinyMCE.triggerSave();
+					$("#" + editor.id).valid();
+				}
 			});
 }
 

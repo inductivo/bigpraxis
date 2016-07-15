@@ -5,11 +5,8 @@
     <h2 class="page-header">Temas</h2>
     <div id="mensaje"></div>
   </div>
+</div>
 
-</div>
-<div class="row">
-  <div class="col-lg-12" id="success"></div>
-</div>
 <form class="form-horizontal" id="frmconsultar-temas" method="post" action="">
 
   <div class="row">
