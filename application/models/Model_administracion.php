@@ -174,12 +174,16 @@ class Model_administracion extends CI_Model{
 
 		public function cargarPreguntas($grado,$semestre,$materia,$tema,$contenido)
 		{
+
+			$this->db->select('preguntas.*,tipo_pregunta.*');
+			$this->db->from('preguntas');
+			$this->db->join('tipo_pregunta','preguntas.id_tipo_pregunta = tipo_pregunta.id_tipo_pregunta','inner');
 			$this->db->where('id_grados', $grado);
 			$this->db->where('id_semestre', $semestre);
 			$this->db->where('id_temas', $tema);
 			$this->db->where('id_contenidos', $contenido);
 
-			$query = $this->db->get('preguntas');
+			$query = $this->db->get();
 			$arreglo= array();
 
 			if($query->num_rows() > 0)
@@ -190,7 +194,7 @@ class Model_administracion extends CI_Model{
 									'id_preguntas'=>$registro->id_preguntas,
 									'id_temas'=>$registro->id_temas,
 									'id_contenidos'=>$registro->id_contenidos,
-									'id_tipo_pregunta'=>$registro->id_tipo_pregunta,
+									'tipo'=>$registro->tipo,
 									'pregunta'=>$registro->pregunta,
 									'repaso'=>$registro->repaso,
 									'solucion'=>$registro->solucion,
@@ -388,6 +392,31 @@ public function cambiar_password_profesor($registro){
 			$this->db->set($registro);
 			$this->db->where('id_usuarios',$registro['id_usuarios']);
 			$this->db->update('usuarios');
+}
+
+//Función para Consultar Respuestas
+public function consultar_respuestas($id){
+	$this->db->select('preguntas.id_preguntas, preguntas.pregunta,preguntas.id_tipo_pregunta,opciones.*');
+	$this->db->from('opciones');
+	$this->db->join('preguntas','preguntas.id_preguntas = opciones.id_preguntas','inner');
+	$this->db->where('opciones.id_preguntas',$id);
+	$query = $this->db->get();
+
+	$arreglo = array();
+	if($query->num_rows() > 0){
+		 foreach($query->result() as $registro){
+			 $arreglo[] = array(
+					'id_preguntas'=> $registro->id_preguntas,
+					'pregunta' => $registro->pregunta,
+					'id_opciones' => $registro->id_opciones,
+					'opcion' => $registro->opcion,
+					'respuesta'	=> $registro->respuesta
+				);
+		 }
+	}
+			$json = json_encode($arreglo);
+			echo $json;
+
 }
 
 }//FIN

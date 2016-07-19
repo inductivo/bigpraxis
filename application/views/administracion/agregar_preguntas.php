@@ -21,7 +21,7 @@
 	</div>
 	<div class="col-lg-4 col-sm-4 margen">
 		<p>SEMESTRE:</p>
-		<select class="form-control" name="semestres" id="semestres" ></select>
+		<select class="form-control" name="semestres" id="semestres"></select>
 	</div>
 	<div class="col-lg-4 col-sm-4 margen">
 		<p>MATERIA:</p>

@@ -1,12 +1,8 @@
-
-
 <div class="row">
-
   <div class="col-lg-12">
     <button type="button" class="btn btnatras" name="btnatras" id="btnatras"> <i class="fa fa-arrow-left"></i> Regresar </button>
     <h2 class="page-header">Consultar Preguntas</h2>
   </div>
-
 
 	<?= validation_errors('<div class="col-md-12 alert alert-danger">','</div>'); ?>
 </div>
@@ -55,24 +51,30 @@
 
 <div id="mostrarPreguntas"></div>
 
-
-<div id="modal-pregunta" class="modal fade" tabindex="-1" role="dialog">
+<!--Modal Ver Respuestas-->
+<div id="verRespuestas" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title"></h4>
+        <h4 class="modal-title"> <i class="fa fa-list-ul fa-lg icon-contenido" aria-hidden="true"></i> RESPUESTAS</h4>
       </div>
-      <div class="modal-body"></div>
+      <div class="modal-body">
+        <input type="hidden" name="id_preguntas" id="id_preguntas">
+        <div id="content-pregunta"></div>
+        <div id="content-respuestas"></div>
+        <div id="content-editar"></div>
+
+      </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Guardar</button>
+          <div id="content-btn"></div>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
 <script src="<?= base_url('js/jquery.js')?>"></script>
+<script type="text/javascript" src="<?= base_url('js/bootstrap.min.js')?>"></script>
 <script src="<?= base_url('js/admin/agregar_preguntas.js')?>"></script>
 <script src="<?= base_url('js/admin/consultar_preguntas.js')?>"></script>
 <script src="<?= base_url('js/admin/panel.js')?>"></script>

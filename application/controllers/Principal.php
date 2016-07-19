@@ -182,7 +182,14 @@ class Principal extends CI_Controller {
 
 			$this->Model_administracion->insertar_pregunta($pregunta,$opciones,$respuestas);
 			$this->regresar_agregar_preguntas();
-			echo  '<div class="row text-center"><div class="col-lg-12 margen alert alert-success alerta" id="mensaje"><strong>Muy bien!</strong> Pregunta agregada con éxito.</div></div>';
+
+			$grado = $this->input->post('grados');
+			$semestre =$this->input->post('semestres');
+			$materia = $this->input->post('materias');
+			$tema = $this->input->post('temas');
+			$contenido = $this->input->post('contenidos');
+
+			echo  '<div class="row text-center"><div class="col-lg-12 margen alerta-exito alerta" id="mensaje"><strong>Muy bien!</strong> Pregunta agregada con éxito.</div></div>';
 		}else{
 
 			$this->regresar_agregar_preguntas();
@@ -399,6 +406,11 @@ class Principal extends CI_Controller {
 	//Vista Profesores(usuarios)
 	public function consultar_profesores(){
 		$this->load->view('administracion/profesores');
+	}
+
+	//Vista CONSULTAR Alumnos
+	public function alumnos(){
+		$this->load->view('administracion/alumnos');
 	}
 
 

@@ -74,22 +74,24 @@ function imprimirPreguntas(jsonData)
 
 		//var preg='<div class="row"><div class="col-lg-12 panel panel-default cont-pregunta"><div class="panel-heading"><h3 class="panel-title badge"><bold>'+cont+'</bold></h3></div><div class="panel-body">'+ $preguntas[i].pregunta+'</div></div></div>';
 
-		var titulo_preg='<div class="row"><div class="col-lg-12 titulo-pregunta text-center">'+cont+'</div>';
-		var pregunta= '<div class="col-lg-12 panel panel-default panel-pregunta data-idpregunta="'+$preguntas[i].id_preguntas+'">'+ $preguntas[i].pregunta+'</div></div>';
+		var pregunta= '<div class="row"><div class="col-lg-1 col-md-1 col-sm-1 text-center titulo-pregunta">'+cont+'</div><div class="col-lg-11 col-md-11 col-sm-11 panel panel-default panel-pregunta data-idpregunta="'+$preguntas[i].id_preguntas+'">'+ $preguntas[i].pregunta+'</div></div>';
 
 		var titulo_tipo = '<div class="row" style="display:none"><div class="col-lg-12 titulo-respuesta"><i class="fa fa-th-list" aria-hidden="true"></i> Tipo de Pregunta</div>';
-		var tipo = '<div class="col-lg-12 panel panel-default panel-respuesta"><div class="panel-body">'+$preguntas[i].id_tipo_pregunta+'</div></div>';
+		var tipo = '<div class="col-lg-12 panel panel-default panel-respuesta"><div class="panel-body">'+$preguntas[i].tipo+'</div></div>';
 
-		var titulo_resp = '<div class="col-lg-12 titulo-respuesta"><i class="fa fa-th-list" aria-hidden="true"></i> Respuestas</div>';
-		var respuestas = '<div class="col-lg-12 panel panel-default panel-respuesta"><div class="panel-body">Listado de Respuesta</div></div>';
+		//var titulo_resp = '<div class="col-lg-12 titulo-respuesta"><i class="fa fa-th-list" aria-hidden="true"></i> Respuestas</div>';
+		//var respuestas = '<div class="col-lg-12 panel panel-default panel-respuesta"><div class="panel-body"></div></div>';
 
 		var titulo_repaso = '<div class="col-lg-12 titulo-repaso"><i class="fa fa-pencil-square" aria-hidden="true"></i> Repaso</div>';
 		var repaso = '<div class="col-lg-12 panel panel-default panel-repaso"><div class="panel-body">'+$preguntas[i].repaso+'</div></div>';
 
 		var titulo_solucion = '<div class="col-lg-12 titulo-solucion"><i class="fa fa-check-circle" aria-hidden="true"></i> Solución</div>';
-		var solucion = '<div class="col-lg-12 panel panel-default panel-solucion"><div class="panel-body">'+$preguntas[i].solucion+'</div></div></div>';
+		var solucion = '<div class="col-lg-12 panel panel-default panel-solucion"><div class="panel-body">'+$preguntas[i].solucion+'</div></div>';
 
-		$('#mostrarPreguntas').append(titulo_preg+pregunta+titulo_tipo+tipo+titulo_resp+respuestas+titulo_repaso+repaso+titulo_solucion+solucion);
+    var btn_respuestas = '<div class="col-lg-6 col-md-6 col-xs-6 text-center"><button type="button" class="btn btnrespuestas" data-toggle="modal" data-target="#verRespuestas" data-id='+$preguntas[i].id_preguntas+'><i class="fa fa-list-ul" aria-hidden="true"></i> Ver Respuestas</button></div>';
+    var btn_editar_pregunta = '<div class="col-lg-6 col-md-6 col-xs-6 text-center"><button type="button" class="btn btneditarpregunta"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar Pregunta</button></div></div>';
+
+		$('#mostrarPreguntas').append(pregunta+titulo_tipo+tipo+titulo_repaso+repaso+titulo_solucion+solucion+btn_respuestas+btn_editar_pregunta);
 	}
 
 	$('.titulo-pregunta').on('click', function(e) {
@@ -102,4 +104,48 @@ function imprimirPreguntas(jsonData)
 			$('.modal-body').html(repasop);*/
 
 	});
+
+  $('.btnrespuestas').on('click',buscarRespuestas);
+
+  function buscarRespuestas(){
+    var id_pregunta= $(this).attr('data-id');
+    $('#id_preguntas').val(id_pregunta);
+    consultarRespuestas(id_pregunta,mostrarRespuestas);
+  }
+
+  function consultarRespuestas(id_preguntas,mostrarRespuestas){
+    $.ajax({
+      data : {
+        format :'jsonp',
+        method : 'get',
+        id_preguntas : id_preguntas
+      },
+      url: '../administracion/consultar_respuestas',
+    }) .done(mostrarRespuestas);
+  }
+
+  function mostrarRespuestas(jsonData){
+    $opciones=JSON.parse(jsonData);
+
+    var pregunta = '<div class="pregunta">'+$opciones[1].pregunta+'</div>';
+    $('#content-pregunta').html(pregunta);
+
+    if($opciones.length > 0){
+  		var th= '<div class="row"><div class="col-lg-12"><div class="table-responsive"><table id="fila-contenido" class="table table-condensed tabla-temas"><tr class="th-temas"><th class="text-center">Opciones</th><th class="text-center">Respuestas</th></tr></table></div></div></div>';
+  		$('#content-respuestas').html(th);
+
+  		for(i=0; i<$opciones.length;i++){
+  			var td = '<tr class="tr-temas"><td class="text-center">'+$opciones[i].opcion+'</td>';
+          if($opciones[i].respuesta == 1){
+            var td2 = '<td class="text-center"><span><i class="fa fa-check fa-lg icon-ok" aria-hidden="true"></i></span></td></tr>';
+          }
+          else{
+            var td2 = '<td class="text-center"><span><i class="fa fa-times fa-lg icon-bad" aria-hidden="true"></i></span></td></tr>';
+          }
+
+  			$('#fila-contenido').append(td+td2);
+  		}
+    }
+  }
+
 }

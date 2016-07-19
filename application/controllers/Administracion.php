@@ -76,4 +76,9 @@ class Administracion extends CI_Controller {
 		$this->Model_administracion->cambiar_password_profesor($registro);
 	}
 
+	public function consultar_respuestas(){
+		$id=$_GET['id_preguntas'];
+		$this->Model_administracion->consultar_respuestas($id);
+	}
+
 }

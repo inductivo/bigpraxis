@@ -1,6 +1,4 @@
-
 $(document).ready(function() {
-
 
 	cargarGrados();
 	construirPregunta();
@@ -109,7 +107,7 @@ $(document).ready(function() {
 
 	function cargarTipoPregunta(){
 		var tipo=document.getElementById("cajatipopregunta");
-		tipo.style.display = 'block';
+		//tipo.style.display = 'block';
 		obtenerTipoPregunta(imprimirTipoPregunta);
 	}
 
@@ -145,14 +143,8 @@ $(document).ready(function() {
 
 	function construirPregunta(){
 		var pregunta=document.getElementById("cajaPregunta");
-		pregunta.style.display = 'block';
-
 		var cajas=document.getElementById("cajas");
-		cajas.style.display = 'block';
-
 		var publicar=document.getElementById("publicar");
-		publicar.style.display = 'block';
-
 	}
 
 	function agregarRespuesta(){

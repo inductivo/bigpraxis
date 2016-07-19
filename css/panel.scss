@@ -11,9 +11,12 @@ body{
 }
 
 div.margen { margin:10px 0;}
+div.btn-consultar-alumnos{
+	margin-top: 30px;
+}
+
 div.margenbtn {
 	margin:20px 0;
-	display: none;
 }
 
 .respuestas__editor{
@@ -131,6 +134,28 @@ div.panelprincipal{
 	}
 }
 
+.btneditarpregunta{
+	background-color: $azul;
+	border-bottom: 4px solid #1c7a72;
+	color:white;
+	margin-bottom: 30px;
+
+	&:hover{
+		background-color:#1ddfcf;
+	}
+}
+
+.btnrespuestas{
+	background-color:$amarillo;
+	border-bottom:4px solid #bf9913;
+	color:white;
+	margin-bottom: 30px;
+
+	&:hover{
+		background-color:$amarillo-secundario;
+	}
+}
+
 .btnNuevoContenido{
 	background-color:$amarillo;
 	border: 1px solid $amarillo;
@@ -153,14 +178,17 @@ div.panelprincipal{
 }
 
 .titulo-pregunta{
+	border-radius: 5px;
 	font-family: 'Roboto';
-	font-size: 18px;
-	font-weight: 500;
-  padding: 5px 0 5px 10px;
-  background-color: #FFA192;
+	font-size: 28px;
+	font-weight: bold;
   color: black;
-  border-radius: 5px;
 	cursor: pointer;
+
+	&:hover{
+		background-color: #81E7AA;
+
+	}
 }
 
 .titulo-respuesta{
@@ -198,7 +226,7 @@ div.panelprincipal{
 
 .panel-pregunta{
 	color:black;
-	border: 2px solid #D6523C;
+	border: 2px solid #f8f8f8;
 	font-size: 18px;
 }
 
@@ -231,6 +259,13 @@ div.panelprincipal{
 .cont-pregunta{
 	cursor: pointer;
 }
+
+.pregunta{
+	color:black;
+	font-size: 18px;
+	margin-bottom: 20px;
+}
+
 
 //Consultar temas
 
@@ -274,6 +309,12 @@ div.panelprincipal{
 
 .icon-pass{
 	color:#ABB7B7;
+}
+.icon-ok{
+	color:$verde;
+}
+.icon-bad{
+	color:$rojo;
 }
 
 //Estilos de la ventana modal de Editar Tema
