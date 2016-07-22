@@ -115,7 +115,8 @@ function imprimirPreguntas(jsonData)
 
     $('#titulo-pregunta').html('');
     $('#mostrarPreguntas').html('');
-    $('#btnConsultar').html('');
+    var btnc=document.getElementById("btnConsultar");
+		btnc.style.display = 'none';
     $('#mostrarPreguntas').load('../administracion/editar_preguntas');
 
     mostrarDatosPregunta(id_pregunta, imprimirDatosPregunta);
@@ -194,6 +195,7 @@ function imprimirDatosRespuestas(jsonData){
   }
 
 }
+
 
   $('.btnrespuestas').on('click',buscarRespuestas);
 

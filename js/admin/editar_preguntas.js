@@ -33,3 +33,12 @@ function cargarEditor(){
 }
 
 });
+
+$('#btncancelarpregunta').on('click',regresarPreguntas);
+
+function regresarPreguntas(){
+	$('#titulo-pregunta').html('');
+	$('#mostrarPreguntas').html('');
+	var btnc=document.getElementById("btnConsultar");
+	btnc.style.display = 'block';
+}
