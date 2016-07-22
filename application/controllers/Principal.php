@@ -446,7 +446,8 @@ class Principal extends CI_Controller {
 				$this->Model_administracion->actualizar_opciones($opciones,$respuestas,$idopciones);
 
 				$this->regresar_consultar_preguntas();
-				echo  '<div class="row text-center"><div class="col-lg-12 margen alerta-exito alerta" id="mensaje">Pregunta actualizada con éxito</div></div>';
+				echo  '<div class="row text-center"><div class="col-lg-12 margen alerta-exito alerta" id="mensaje"><strong>Muy bien!</strong> Pregunta actualizada con éxito.</div></div>';
+
 			}
 			else{
 				$this->regresar_consultar_preguntas();

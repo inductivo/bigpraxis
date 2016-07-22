@@ -447,4 +447,53 @@ public function actualizar_pregunta($pregunta,$id){
 		}
 }
 
+public function consultar_alumnos($grado,$semestre){
+	$this->db->where('id_grados', $grado);
+	$this->db->where('id_semestres', $semestre);
+	$this->db->order_by('apellidos','asc');
+	$query = $this->db->get('alumnos');
+
+	$arreglo= array();
+
+	if($query->num_rows() > 0)
+	{
+			foreach($query->result() as $registro)
+			{
+					$arreglo[] = array(
+							'id_alumnos'=>$registro->id_alumnos,
+							'nombre'=>$registro->nombre,
+							'apellidos'=>$registro->apellidos,
+							'id_grados'=>$registro->id_grados,
+							'id_semestres'=>$registro->id_semestres,
+							'email'=>$registro->email,
+							'id_lms'=>$registro->id_lms
+							);
+			}
+	}
+	$json = json_encode($arreglo);
+	echo $json;
+}
+
+	//Agregar Nuevo ALUMNO
+	public function agregar_alumno($registro){
+			$this->db->set($registro);
+			$this->db->insert('alumnos');
+	}
+
+	//Realiza la consulta para buscar los datos del ALUMNO
+	public function buscar_alumno($id) {
+		$this->db->where('id_alumnos', $id);
+		$query = $this->db->get('alumnos')->row();
+		$json = json_encode($query);
+		echo $json;
+	}
+
+	//Se actualiza la información del ALUMNO
+	public function editar_alumno($registro){
+				$this->db->set($registro);
+				$this->db->where('id_alumnos',$registro['id_alumnos']);
+				$this->db->update('alumnos');
+	}
+
+
 }//FIN

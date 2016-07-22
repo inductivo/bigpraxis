@@ -91,7 +91,6 @@ function imprimirProfesores(jsonData){
 		$('#editarApellido').val($profesor.apellidos);
 		$('#editarEmail').val($profesor.email);
 		$('#editarNivel').val($profesor.nivel);
-		$('#editarEmail').val($profesor.email);
 	}
 
 	$('.cambiarPassword').on('click',enviarID);

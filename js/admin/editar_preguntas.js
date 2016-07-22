@@ -1,6 +1,7 @@
 $(document).ready(function() {
 cargarEditor();
 
+
 function cargarEditor(){
 	//EDITOR
 		 tinymce.init({
@@ -30,6 +31,5 @@ function cargarEditor(){
 				}
 			});
 }
-
 
 });

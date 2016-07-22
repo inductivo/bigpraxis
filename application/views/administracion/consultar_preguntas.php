@@ -77,5 +77,5 @@
 <script type="text/javascript" src="<?= base_url('js/jquery.js')?>"></script>
 <script type="text/javascript" src="<?= base_url('js/bootstrap.min.js')?>"></script>
 <script type="text/javascript" src="<?= base_url('js/tinymce/tinymce.min.js')?>"></script>
-<script type="text/javascript" src="<?= base_url('js/admin/consultar_preguntas.js')?>"></script>
 <script type="text/javascript" src="<?= base_url('js/admin/panel.js')?>"></script>
+<script type="text/javascript" src="<?= base_url('js/admin/consultar_preguntas.js')?>"></script>

@@ -90,4 +90,58 @@ class Administracion extends CI_Controller {
 		$this->Model_administracion->buscar_pregunta($id);
 	}
 
+	// Realizar la consulta de Alumnos
+	public function consultar_alumnos(){
+		$grado=$_GET['grado'];
+		$semestre=$_GET['semestre'];
+		$this->Model_administracion->consultar_alumnos($grado,$semestre);
+	}
+
+	//Agregar Nuevo Alumno
+	public function validar_alumno(){
+
+		$grado=$_GET['grado'];
+		$semestre=$_GET['semestre'];
+		$nombre=$_GET['nombre'];
+		$apellidos=$_GET['apellidos'];
+		$email=$_GET['email'];
+		$lms=$_GET['lms'];
+		$password=$_GET['password'];
+
+			$registro = array(
+				'id_grados' => $grado,
+				'id_semestres' => $semestre,
+				'nombre' => $nombre,
+				'apellidos'  => $apellidos,
+				'email'  => $email,
+				'id_lms'	=> $lms,
+				'password' => md5($password)
+			);
+			$this->Model_administracion->agregar_alumno($registro);
+	}
+
+	// Realizar la consulta para obtener los datos del ALUMNO
+	public function buscar_alumno(){
+		$id=$_GET['id_alumno'];
+		$this->Model_administracion->buscar_alumno($id);
+	}
+
+	//Funcion para capturar la información editada del ALUMNO
+	public function editar_alumno(){
+		$id_alumno=$_GET['id_alumno'];
+		$nombre=$_GET['nombre'];
+		$apellidos=$_GET['apellidos'];
+		$email=$_GET['email'];
+		$lms=$_GET['lms'];
+
+			$registro = array(
+				'id_alumnos' => $id_alumno,
+				'nombre' => $nombre,
+				'apellidos'  => $apellidos,
+				'email'  => $email,
+				'id_lms'	=> $lms
+			);
+			$this->Model_administracion->editar_alumno($registro);
+	}
+
 }

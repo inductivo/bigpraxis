@@ -30,7 +30,7 @@ function imprimirTemas(jsonData){
   $('#content').empty();
 	$temas= JSON.parse(jsonData);
 
-  var cabecera = '<div class="row header-pregunta"><div class="col-lg-12 text-left"> <i class="fa fa-question-circle fa-lg" aria-hidden="true"></i> Se encontraron <strong>'+$temas.length+'</strong> temas</div> </div>';
+  var cabecera = '<div class="row header-pregunta"><div class="col-lg-12 text-left"> <i class="fa fa-file-text-o fa-lg" aria-hidden="true"></i> Se encontraron <strong>'+$temas.length+'</strong> temas</div> </div>';
   $('#cabecera').html(cabecera);
 
   if($temas.length > 0){

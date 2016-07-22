@@ -5,6 +5,12 @@ $('#opcionpreguntas').on('click',opcionesPreguntas);
 $('#opciones-preguntas').on('click','li',elegirPreguntas);
 $('#btnconsultarpreguntas').on('click',realizarConsulta);
 
+  window.setTimeout(function() {
+  		$(".alerta-exito").fadeTo(1500, 0).slideUp(500, function(){
+  			$(this).remove();
+  		});
+  }, 3500);
+
 function opcionesPreguntas()
 {
   var html2= '<ul class="list-group ul-opciones">';
@@ -185,7 +191,6 @@ function imprimirDatosRespuestas(jsonData){
       }
       $('#r'+i).val($respuestas[i].opcion);
       $('#idopcion'+i).val($respuestas[i].id_opciones);
-      console.log($('#idopcion'+i).val());
   }
 
 }
