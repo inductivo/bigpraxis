@@ -416,7 +416,35 @@ public function consultar_respuestas($id){
 	}
 			$json = json_encode($arreglo);
 			echo $json;
+}
 
+public function buscar_pregunta($id){
+	$this->db->where('id_preguntas', $id);
+	$query = $this->db->get('preguntas')->row();
+	$json = json_encode($query);
+	echo $json;
+}
+
+public function actualizar_pregunta($pregunta,$id){
+	$this->db->set($pregunta);
+	$this->db->where('id_preguntas',$id);
+	$this->db->update('preguntas');
+	}
+
+	public function actualizar_opciones($opciones,$respuestas,$idopciones){
+		$valores = array();
+
+		$cont=count($opciones);
+		for ($i = 0; $i < $cont; $i++) {
+
+			$valores['opcion']=$opciones[$i];
+			$valores['respuesta']=$respuestas[$i];
+
+			$this->db->set($valores);
+			$this->db->where('id_opciones',$idopciones[$i]);
+			$this->db->update('opciones');
+
+		}
 }
 
 }//FIN

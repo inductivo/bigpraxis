@@ -81,4 +81,13 @@ class Administracion extends CI_Controller {
 		$this->Model_administracion->consultar_respuestas($id);
 	}
 
+	public function editar_preguntas(){
+		$this->load->view('administracion/editar_preguntas');
+	}
+
+	public function buscar_pregunta(){
+		$id=$_GET['id_preguntas'];
+		$this->Model_administracion->buscar_pregunta($id);
+	}
+
 }

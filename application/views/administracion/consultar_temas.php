@@ -164,8 +164,12 @@
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-cancelar" data-dismiss="modal"><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i> Cancelar</button>
-              <button id="btnguardarcontenido" type="submit" class="btn btn-guardar"><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i> Guardar</button>
+              <div class="row">
+                <div class="col-xs-12">
+                  <button type="button" class="btn btn-cancelar" data-dismiss="modal"><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i> Cancelar</button>
+                  <button id="btnguardarcontenido" type="submit" class="btn btn-guardar"><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i> Guardar</button>
+                </div>
+              </div>
             </div>
           </form>
         </div>

@@ -1,3 +1,4 @@
+
 <div class="row">
   <div class="col-lg-12">
     <button type="button" class="btn btnatras" name="btnatras" id="btnatras"> <i class="fa fa-arrow-left"></i> Regresar </button>
@@ -39,7 +40,7 @@
   	</div>
   </div>
 
-  <div class="row">
+  <div id="btnConsultar" class="row">
   	<div class="col-lg-12">
   		<button type="button" class="btn btnconsultar" name="btnconsultarpreguntas" id="btnconsultarpreguntas">Consultar <i class="fa fa-search"></i> </button>
   	</div>
@@ -48,8 +49,8 @@
 </form>
 
 <div id="titulo-pregunta"></div>
-
 <div id="mostrarPreguntas"></div>
+
 
 <!--Modal Ver Respuestas-->
 <div id="verRespuestas" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
@@ -73,8 +74,8 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<script src="<?= base_url('js/jquery.js')?>"></script>
+<script type="text/javascript" src="<?= base_url('js/jquery.js')?>"></script>
 <script type="text/javascript" src="<?= base_url('js/bootstrap.min.js')?>"></script>
-<script src="<?= base_url('js/admin/agregar_preguntas.js')?>"></script>
-<script src="<?= base_url('js/admin/consultar_preguntas.js')?>"></script>
-<script src="<?= base_url('js/admin/panel.js')?>"></script>
+<script type="text/javascript" src="<?= base_url('js/tinymce/tinymce.min.js')?>"></script>
+<script type="text/javascript" src="<?= base_url('js/admin/consultar_preguntas.js')?>"></script>
+<script type="text/javascript" src="<?= base_url('js/admin/panel.js')?>"></script>

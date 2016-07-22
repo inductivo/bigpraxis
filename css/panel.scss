@@ -62,12 +62,6 @@ nav.navbar-inverse{
 	margin-right: 8px;
 }
 
-/*#cajatipopregunta {display:none;}
-#cajarespuestas {display:none;}
-#cajanuevaresp{display: none;}
-#cajas{display: none;}
-#publicar{display: none;}*/
-
 .cursor{
 	cursor:pointer;
 }
@@ -184,11 +178,6 @@ div.panelprincipal{
 	font-weight: bold;
   color: black;
 	cursor: pointer;
-
-	&:hover{
-		background-color: #81E7AA;
-
-	}
 }
 
 .titulo-respuesta{
@@ -244,6 +233,17 @@ div.panelprincipal{
 .panel-solucion{
 	border: 2px solid $verde;
 	font-size: 18px;
+}
+
+.text-pregunta{
+	cursor:pointer;
+	&:hover{
+		background-color: #81E7AA;
+	}
+}
+
+.info-pregunta{
+	display: none;
 }
 
 .header-pregunta{

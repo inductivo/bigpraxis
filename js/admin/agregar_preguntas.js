@@ -4,15 +4,6 @@ $(document).ready(function() {
 	construirPregunta();
 	cargarTipoPregunta();
 
-	$('#materias').on('change', cargarTemas);
-	$('#materias').on('click', cargarTemas);
-
-	$('#temas').on('change', cargarContenidos);
-	$('#temas').on('click', cargarContenidos);
-	//$('#temas').on('focus', cargarContenidos);
-
-
-
 	//Datos para desplegar campos Respuestas
 	var maxInputs = 4;
 	var contenedor_r = $('#respuestas');
@@ -37,100 +28,7 @@ $(document).ready(function() {
 		cargarEditor();
 
 
-	//Cargar TEMAS
-
-	function cargarTemas()
-	{
-		var idmateria = $('#materias').val();
-		obtenerTemas(idmateria,imprimirTemas);
-
-	}
-
-	function obtenerTemas(idmateria,imprimirTemas)
-	{
-		$.ajax({
-			data : {
-				format :'jsonp',
-				method : 'get',
-				id_materias: idmateria
-			},
-			url: 'cargartemas',
-		}) .done(imprimirTemas);
-	}
-
-	function imprimirTemas(jsonData)
-	{
-		$('#temas').empty();
-		$('#contenidos').empty();
-
-		$opciones = JSON.parse(jsonData);
-
-		for(i=0; i<$opciones.length;i++)
-		{
-			$('#temas').append('<option value="'+ $opciones[i].id_temas +'">'+ $opciones[i].clave +". " + $opciones[i].tema +'</option>');
-		}
-	}
-
-	//Cargar CONTENIDOS
-
-	function cargarContenidos()
-	{
-		var idtema = $('#temas').val();
-		obtenerContenidos(idtema,imprimirContenidos);
-
-	}
-
-	function obtenerContenidos(idtema,imprimirContenidos)
-	{
-		$.ajax({
-			data : {
-				format :'jsonp',
-				method : 'get',
-				id_temas: idtema
-			},
-			url: 'cargarcontenidos',
-		}) .done(imprimirContenidos);
-	}
-
-	function imprimirContenidos(jsonData)
-	{
-		$('#contenidos').empty();
-		$opciones = JSON.parse(jsonData);
-
-		for(i=0; i<$opciones.length;i++)
-		{
-			$('#contenidos').append('<option value="'+ $opciones[i].id_contenidos +'">'+ $opciones[i].subclave +" " + $opciones[i].contenido +'</option>');
-		}
-	}
-
-	//Cargar TIPO DE PREGUNTAS
-
-	function cargarTipoPregunta(){
-		var tipo=document.getElementById("cajatipopregunta");
-		//tipo.style.display = 'block';
-		obtenerTipoPregunta(imprimirTipoPregunta);
-	}
-
-	function obtenerTipoPregunta(imprimirTipoPregunta){
-		$.ajax({
-			data : {
-				format :'jsonp',
-				method : 'get'
-			},
-			url: 'cargartipopregunta',
-		}) .done(imprimirTipoPregunta);
-	}
-
-
-	function imprimirTipoPregunta(jsonData){
-		$('#tipopregunta').empty();
-		$opciones = JSON.parse(jsonData);
-
-		for(i=0; i<$opciones.length;i++)
-		{
-			$('#tipopregunta').append('<option value="'+ $opciones[i].id_tipo_pregunta +'">'+ $opciones[i].tipo +'</option>');
-		}
-	}
+	
 
 	//Cargar RESPUESTAS
 	function cargarRespuestas(){
@@ -152,7 +50,7 @@ $(document).ready(function() {
 		{
 			 FieldCount++;
             //agregar campo
-            $(contenedor_r).append('<div class="input-group respuestas__editor"><input type="hidden" name="chk'+FieldCount+'" value="0" ><span class="input-group-addon"><input type="checkbox" value="1" id="check' + FieldCount +'"  name="chk'+FieldCount+'"></span> <textarea name="resp[]" id="r'+ FieldCount +'" class="txtarea" required></textarea><a href="#" class="eliminar cursor fa fa-times-circle fa-lg icon-eliminar"></a></div>');
+            $(contenedor_r).append('<div class="input-group respuestas__editor"><input type="hidden" name="chk'+FieldCount+'" value="0" ><span class="input-group-addon"><input type="checkbox" value="1" id="check' + FieldCount +'"  name="chk'+FieldCount+'"></span> <textarea name="resp[]" id="r'+ FieldCount +'" class="txtarea"></textarea><a href="#" class="eliminar cursor fa fa-times-circle fa-lg icon-eliminar"></a></div>');
 
             //$(respuestas).append('<div><input type="text" name="resp[]" id="r'+ FieldCount +'" placeholder="Texto '+ FieldCount +'"/><a href="#" class="eliminar">&times;</a></div>');
             x++; //text box increment

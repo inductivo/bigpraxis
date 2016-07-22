@@ -413,5 +413,54 @@ class Principal extends CI_Controller {
 		$this->load->view('administracion/alumnos');
 	}
 
+	public function actualizar_pregunta(){
 
-}
+		$respuestas = array();
+		$idopciones = array();
+
+		$this->form_validation->set_rules('txtpregunta','PREGUNTA','required');
+		$this->form_validation->set_rules('txtrepaso','REPASO','required');
+		$this->form_validation->set_rules('txtsolucion','SOLUCIÓN','required');
+
+		if ($this->form_validation->run()){
+			$id = $this->input->post('idpreguntas');
+
+				$pregunta = array(
+					'id_tipo_pregunta' => $this->input->post('tipopregunta'),
+					'pregunta' => $this->input->post('txtpregunta'),
+					'repaso' => $this->input->post('txtrepaso'),
+					'solucion' => $this->input->post('txtsolucion')
+				);
+
+				$opciones = $this->input->post('resp');
+				$cont=count($opciones);
+
+				for ($i = 0; $i < $cont; $i++) {
+					$check= $this->input->post('chk'.($i));
+					$idopcion= $this->input->post('idopcion'.($i));
+					$respuestas[$i] = $check;
+					$idopciones[$i] = $idopcion;
+					}
+
+				$this->Model_administracion->actualizar_pregunta($pregunta,$id);
+				$this->Model_administracion->actualizar_opciones($opciones,$respuestas,$idopciones);
+
+				$this->regresar_consultar_preguntas();
+				echo  '<div class="row text-center"><div class="col-lg-12 margen alerta-exito alerta" id="mensaje">Pregunta actualizada con éxito</div></div>';
+			}
+			else{
+				$this->regresar_consultar_preguntas();
+			}
+	}
+
+	public function regresar_consultar_preguntas(){
+		if($this->session->userdata('id_usuarios') == null){
+			redirect('principal/acceso_denegado');
+		}else{
+			$data['contenido'] = 'administracion/consultar_preguntas';
+			$this->load->view('templates/template_panel',$data);
+		}
+
+	}
+
+}//FIN

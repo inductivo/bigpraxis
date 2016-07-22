@@ -1,3 +1,6 @@
+$(document).ready(function() {
+cargarGrados();
+
 $('#opcionpreguntas').on('click',opcionesPreguntas);
 $('#opciones-preguntas').on('click','li',elegirPreguntas);
 $('#btnconsultarpreguntas').on('click',realizarConsulta);
@@ -74,9 +77,9 @@ function imprimirPreguntas(jsonData)
 
 		//var preg='<div class="row"><div class="col-lg-12 panel panel-default cont-pregunta"><div class="panel-heading"><h3 class="panel-title badge"><bold>'+cont+'</bold></h3></div><div class="panel-body">'+ $preguntas[i].pregunta+'</div></div></div>';
 
-		var pregunta= '<div class="row"><div class="col-lg-1 col-md-1 col-sm-1 text-center titulo-pregunta">'+cont+'</div><div class="col-lg-11 col-md-11 col-sm-11 panel panel-default panel-pregunta data-idpregunta="'+$preguntas[i].id_preguntas+'">'+ $preguntas[i].pregunta+'</div></div>';
+		var pregunta= '<div class="row"><div class="col-lg-1 col-md-1 col-sm-1 text-center titulo-pregunta">'+cont+'</div><div class="col-lg-11 col-md-11 col-sm-11 panel panel-default panel-pregunta text-pregunta data-idpregunta="'+$preguntas[i].id_preguntas+'">'+ $preguntas[i].pregunta+'</div></div>';
 
-		var titulo_tipo = '<div class="row" style="display:none"><div class="col-lg-12 titulo-respuesta"><i class="fa fa-th-list" aria-hidden="true"></i> Tipo de Pregunta</div>';
+		var titulo_tipo = '<div class="row info-pregunta"><div class="col-lg-12 titulo-respuesta"><i class="fa fa-th-list" aria-hidden="true"></i> Tipo de Pregunta</div>';
 		var tipo = '<div class="col-lg-12 panel panel-default panel-respuesta"><div class="panel-body">'+$preguntas[i].tipo+'</div></div>';
 
 		//var titulo_resp = '<div class="col-lg-12 titulo-respuesta"><i class="fa fa-th-list" aria-hidden="true"></i> Respuestas</div>';
@@ -89,21 +92,103 @@ function imprimirPreguntas(jsonData)
 		var solucion = '<div class="col-lg-12 panel panel-default panel-solucion"><div class="panel-body">'+$preguntas[i].solucion+'</div></div>';
 
     var btn_respuestas = '<div class="col-lg-6 col-md-6 col-xs-6 text-center"><button type="button" class="btn btnrespuestas" data-toggle="modal" data-target="#verRespuestas" data-id='+$preguntas[i].id_preguntas+'><i class="fa fa-list-ul" aria-hidden="true"></i> Ver Respuestas</button></div>';
-    var btn_editar_pregunta = '<div class="col-lg-6 col-md-6 col-xs-6 text-center"><button type="button" class="btn btneditarpregunta"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar Pregunta</button></div></div>';
+    var btn_editar_pregunta = '<div class="col-lg-6 col-md-6 col-xs-6 text-center"><button type="button" class="btn btneditarpregunta" data-id='+$preguntas[i].id_preguntas+'><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar Pregunta</button></div></div>';
 
 		$('#mostrarPreguntas').append(pregunta+titulo_tipo+tipo+titulo_repaso+repaso+titulo_solucion+solucion+btn_respuestas+btn_editar_pregunta);
 	}
 
-	$('.titulo-pregunta').on('click', function(e) {
-		$(this).parent().next().toggle('slow');
+	$('.text-pregunta').on('click', function(e) {
+    $(this).parent().next().toggle('slow');
 		e.preventDefault();
-
-		//Evento ventana Modal
-		/*var repasop = $(this).attr('data-repaso');
-		  $('.modal-title').text('Juan');
-			$('.modal-body').html(repasop);*/
-
 	});
+
+  $('.btneditarpregunta').on('click',cargarDatosPregunta);
+
+  function cargarDatosPregunta(){
+    var id_pregunta= $(this).attr('data-id');
+
+    $('#titulo-pregunta').html('');
+    $('#mostrarPreguntas').html('');
+    $('#btnConsultar').html('');
+    $('#mostrarPreguntas').load('../administracion/editar_preguntas');
+
+    mostrarDatosPregunta(id_pregunta, imprimirDatosPregunta);
+    mostrarDatosRespuestas(id_pregunta,imprimirDatosRespuestas);
+  }
+
+  function mostrarDatosPregunta(id_preguntas,imprimirDatosPregunta){
+    $.ajax({
+      data : {
+        format :'jsonp',
+        method : 'get',
+        id_preguntas : id_preguntas
+      },
+      url: '../administracion/buscar_pregunta',
+    }) .done(imprimirDatosPregunta);
+  }
+
+  function mostrarDatosRespuestas(id_preguntas,imprimirDatosRespuestas){
+    $.ajax({
+      data : {
+        format :'jsonp',
+        method : 'get',
+        id_preguntas : id_preguntas
+      },
+      url: '../administracion/consultar_respuestas',
+    }) .done(imprimirDatosRespuestas);
+  }
+
+function imprimirDatosPregunta(jsonData){
+
+  $pregunta = JSON.parse(jsonData);
+  $('#txtpregunta').val($pregunta.pregunta);
+  $('#idpreguntas').val($pregunta.id_preguntas);
+  $('#txtrepaso').val($pregunta.repaso);
+  $('#txtsolucion').val($pregunta.solucion);
+  var id_tipo_pregunta = $pregunta.id_tipo_pregunta;
+
+  	$.ajax({
+  		data : {
+  			format :'jsonp',
+  			method : 'get',
+  		},
+  		url: 'cargartipopregunta',
+  	}) .done(imprimirTipoPregunta);
+
+  function imprimirTipoPregunta(jsonData){
+  	$('#tipopregunta').empty();
+  	$opciones = JSON.parse(jsonData);
+
+  	for(i=0; i<$opciones.length;i++){
+  		$('#tipopregunta').append('<option value="'+ $opciones[i].id_tipo_pregunta +'">'+ $opciones[i].tipo +'</option>');
+  	}
+
+    $('#tipopregunta').val(id_tipo_pregunta);
+  }
+
+}
+
+function imprimirDatosRespuestas(jsonData){
+  $respuestas = JSON.parse(jsonData);
+  console.log($respuestas);
+
+  for(i=0;i<$respuestas.length;i++){
+    var caja = '<div class="input-group respuestas__editor"><input type="hidden" name="chk'+i+'" value='+$respuestas[i].respuesta+'><span class="input-group-addon"><input type="checkbox" name="chk'+i+'" id="chk'+i+'" value='+$respuestas[i].respuesta+' class="cursor cajarespuestas__check"></span><textarea name="resp[]" class="txtarea" id="r'+i+'" value='+$respuestas[i].opcion+'></textarea>';
+    var idopcion = '<input type="hidden" name="idopcion'+i+'" id="idopcion'+i+'"></div>';
+    $('#respuestas').append(caja+idopcion);
+
+      if($respuestas[i].respuesta == 1){
+        $('#chk'+i).prop("checked", true);
+      }
+      else{
+        $('#chk'+i).prop("checked", false);
+      }
+      $('#r'+i).val($respuestas[i].opcion);
+      $('#idopcion'+i).val($respuestas[i].id_opciones);
+      console.log($('#idopcion'+i).val());
+  }
+
+}
 
   $('.btnrespuestas').on('click',buscarRespuestas);
 
@@ -149,3 +234,5 @@ function imprimirPreguntas(jsonData)
   }
 
 }
+
+});
