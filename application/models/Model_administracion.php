@@ -495,5 +495,18 @@ public function consultar_alumnos($grado,$semestre){
 				$this->db->update('alumnos');
 	}
 
+	//Se actualiza el PASSWORD del ALUMNO
+	public function cambiar_password_alumno($registro){
+				$this->db->set($registro);
+				$this->db->where('id_alumnos',$registro['id_alumnos']);
+				$this->db->update('alumnos');
+	}
+
+	//ELIMINA el registro del usuario ALUMNO
+	public function eliminar_alumno($id) {
+				$this->db->where('id_alumnos', $id);
+				$this->db->delete('alumnos');
+	}
+
 
 }//FIN

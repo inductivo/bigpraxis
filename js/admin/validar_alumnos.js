@@ -93,8 +93,8 @@ $(document).ready(function(){
 
   });
 
-/*
-  $('#frmPassProfesor').validate({
+
+  $('#frmPassAlumno').validate({
     rules:{
       cambiarPassword:{
         required:true
@@ -121,8 +121,8 @@ $(document).ready(function(){
       $(element).addClass(validClass).removeClass(errorClass);
     },
     submitHandler: function () {
-        validarPassProfesor();
+        validarPassAlumno();
     }
-  });*/
+  });
 
 });

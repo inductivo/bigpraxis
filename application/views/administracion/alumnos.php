@@ -133,6 +133,39 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
+<!--Modal Actualizar Contraseña-->
+<div id="actualizarPassword" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"> <i class="fa fa-lg fa-asterisk icon-pass" aria-hidden="true"></i> ACTUALIZAR CONTRASEÑA</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" id="frmPassAlumno" class="frmPassAlumno" method="post" action="">
+            <input type="hidden" name="id_passAlumno" id="id_passAlumno">
+            <div class="row form-group">
+              <div class="col-lg-12">
+                <label class="txt-editar" for="cambiarPassword">Nueva Contraseña:</label>
+                <input id="cambiarPassword" type="password" name="cambiarPassword" class="input-editar">
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-lg-12">
+                <label class="txt-editar" for="cambiarPassword2">Confirmar Contraseña:</label>
+                <input id="cambiarPassword2" type="password" name="cambiarPassword2" class="input-editar">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-cancelar" data-dismiss="modal"><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i> Cancelar</button>
+              <button id="btnPassAlumno" type="submit" name="passAlumno" class="btn btn-guardar"><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i> Guardar</button>
+            </div>
+          </form>
+        </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 <!-- jQuery -->
 <script type="text/javascript" src="<?= base_url('js/jquery.js')?>"></script>
 <script type="text/javascript" src="<?= base_url('js/bootstrap.min.js')?>"></script>

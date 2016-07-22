@@ -82,6 +82,36 @@ function imprimirAlumnos(jsonData){
 		$('#editarLMS').val($alumno.id_lms);
 	}
 
+  $('.cambiarPassword').on('click',enviarID);
+	function enviarID(){
+		var id=$(this).attr('data-id');
+		$('#id_passAlumno').val(id);
+	}
+
+  //Funciones para ELIMINAR el registro de un ALUMNO
+	$('.eliminarAlumno').on('click',buscarAlumnoEliminar);
+	function buscarAlumnoEliminar(){
+		var id=$(this).attr('data-id');
+		if(confirm('¿Estas seguro de eliminar este ALUMNO?') == true){
+				eliminarAlumno(id,alumnoEliminado);
+			}
+	}
+	function eliminarAlumno(id_alumno,alumnoEliminado){
+		$.ajax({
+			data : {
+				format :'jsonp',
+				method : 'get',
+				id_alumno : id_alumno
+			},
+			url: '../administracion/eliminar_alumno',
+		}) .done(alumnoEliminado);
+	}
+
+	function alumnoEliminado(){
+		realizarConsultaAlumnos();
+		mensajeRegistroEliminado();
+	}
+
 }
 
 //Funciones para agregar un nuevo ALUMNO
@@ -152,6 +182,32 @@ function confirmarAlumnoActualizado(){
   $('#editarEmail').val('');
   $('#editarLMS').val('');
   $('#editarAlumno').modal('hide');
+  realizarConsultaAlumnos();
+  mensajeExito();
+}
+
+//Funciones para CAMBIAR LA CONTRASEÑA del ALUMNO
+function validarPassAlumno(){
+  var id_alumno = $('#id_passAlumno').val();
+  var password= $('#cambiarPassword').val();
+
+  $.ajax({
+    data : {
+      format :'jsonp',
+      method : 'get',
+      id_alumno : id_alumno,
+      password : password
+    },
+    url: '../administracion/cambiar_password_alumno',
+  }) .done(confirmarPassAlumno);
+}
+
+function confirmarPassAlumno(){
+  $('#id_passAlumno').val('');
+  $('#cambiarPassword').val('');
+  $('#cambiarPassword2').val('');
+
+  $('#actualizarPassword').modal('hide');
   realizarConsultaAlumnos();
   mensajeExito();
 }

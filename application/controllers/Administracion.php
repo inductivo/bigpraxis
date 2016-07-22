@@ -144,4 +144,22 @@ class Administracion extends CI_Controller {
 			$this->Model_administracion->editar_alumno($registro);
 	}
 
+	//Función para cambiar el Password del ALUMNO
+	public function cambiar_password_alumno(){
+		$id_alumno=$_GET['id_alumno'];
+		$password=$_GET['password'];
+
+		$registro = array(
+			'id_alumnos' => $id_alumno,
+			'password' => md5($password)
+		);
+		$this->Model_administracion->cambiar_password_alumno($registro);
+	}
+
+	// Realizar la consulta para ELIMINAR el registro del ALUMNO
+	public function eliminar_alumno(){
+		$id=$_GET['id_alumno'];
+		$this->Model_administracion->eliminar_alumno($id);
+	}
+
 }
