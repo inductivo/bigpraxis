@@ -4,6 +4,7 @@
     <button type="button" class="btn btnatras" name="btnatras" id="btnatras"> <i class="fa fa-arrow-left"></i> Regresar </button>
     <h2 class="page-header">Consultar Preguntas</h2>
   </div>
+  <div id="mensaje"></div>
 
 	<?= validation_errors('<div class="col-md-12 alert alert-danger">','</div>'); ?>
 </div>

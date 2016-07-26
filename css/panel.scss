@@ -141,6 +141,17 @@ div.panelprincipal{
 	}
 }
 
+.btneliminarpregunta{
+	background-color: $rojo;
+	border-bottom: 4px solid #AA4437;
+	color:white;
+	margin-bottom: 30px;
+
+	&:hover{
+		background-color:#ff4842;
+	}
+}
+
 .btnrespuestas{
 	background-color:$amarillo;
 	border-bottom:4px solid #bf9913;

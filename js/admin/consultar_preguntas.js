@@ -4,6 +4,7 @@ cargarGrados();
 $('#opcionpreguntas').on('click',opcionesPreguntas);
 $('#opciones-preguntas').on('click','li',elegirPreguntas);
 $('#btnconsultarpreguntas').on('click',realizarConsulta);
+$('#contenidos').on('change',realizarConsulta);
 
   window.setTimeout(function() {
   		$(".alerta-exito").fadeTo(1500, 0).slideUp(500, function(){
@@ -97,16 +98,44 @@ function imprimirPreguntas(jsonData)
 		var titulo_solucion = '<div class="col-lg-12 titulo-solucion"><i class="fa fa-check-circle" aria-hidden="true"></i> Solución</div>';
 		var solucion = '<div class="col-lg-12 panel panel-default panel-solucion"><div class="panel-body">'+$preguntas[i].solucion+'</div></div>';
 
-    var btn_respuestas = '<div class="col-lg-6 col-md-6 col-xs-6 text-center"><button type="button" class="btn btnrespuestas" data-toggle="modal" data-target="#verRespuestas" data-id='+$preguntas[i].id_preguntas+'><i class="fa fa-list-ul" aria-hidden="true"></i> Ver Respuestas</button></div>';
-    var btn_editar_pregunta = '<div class="col-lg-6 col-md-6 col-xs-6 text-center"><button type="button" class="btn btneditarpregunta" data-id='+$preguntas[i].id_preguntas+'><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar Pregunta</button></div></div>';
+    var btn_respuestas = '<div class="col-lg-4 col-md-4 text-center"><button type="button" class="btn btnrespuestas" data-toggle="modal" data-target="#verRespuestas" data-id='+$preguntas[i].id_preguntas+'><i class="fa fa-list-ul" aria-hidden="true"></i> Ver Respuestas</button></div>';
+    var btn_editar_pregunta = '<div class="col-lg-4 col-md-4 text-center"><button type="button" class="btn btneditarpregunta" data-id='+$preguntas[i].id_preguntas+'><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar Pregunta</button></div>';
+    var btn_eliminar_pregunta = '<div class="col-lg-4 col-md-4 text-center"><button type="button" class="btn btneliminarpregunta" data-id='+$preguntas[i].id_preguntas+'><i class="fa fa-times" aria-hidden="true"></i> Eliminar Pregunta</button></div></div>';
 
-		$('#mostrarPreguntas').append(pregunta+titulo_tipo+tipo+titulo_repaso+repaso+titulo_solucion+solucion+btn_respuestas+btn_editar_pregunta);
+
+		$('#mostrarPreguntas').append(pregunta+titulo_tipo+tipo+titulo_repaso+repaso+titulo_solucion+solucion+btn_respuestas+btn_editar_pregunta+btn_eliminar_pregunta);
 	}
 
 	$('.text-pregunta').on('click', function(e) {
     $(this).parent().next().toggle('slow');
 		e.preventDefault();
 	});
+
+  $('.btneliminarpregunta').on('click', buscarPreguntaEliminar);
+
+  function buscarPreguntaEliminar(){
+    var id_pregunta = $(this).attr('data-id');
+    if(confirm('¿Estas seguro de eliminar esta Pregunta?') == true)
+    {
+      eliminarPregunta(id_pregunta,preguntaEliminada);
+    }
+  }
+
+  function eliminarPregunta(id_pregunta,preguntaEliminada){
+    $.ajax({
+      data : {
+        format :'jsonp',
+        method : 'get',
+        id_pregunta : id_pregunta
+      },
+      url: '../administracion/eliminar_pregunta',
+    }) .done(preguntaEliminada);
+  }
+
+  function preguntaEliminada(){
+    realizarConsulta();
+    mensajeRegistroEliminado();
+  }
 
   $('.btneditarpregunta').on('click',cargarDatosPregunta);
 

@@ -508,5 +508,16 @@ public function consultar_alumnos($grado,$semestre){
 				$this->db->delete('alumnos');
 	}
 
+	//ELIMINA una PREGUNTA
+	public function eliminar_pregunta($id) {
+				$this->db->where('id_preguntas', $id);
+				$this->db->delete('preguntas');
+
+		//Elimina las respuestas
+		$this->db->where('id_preguntas', $id);
+		$this->db->delete('opciones');
+
+	}
+
 
 }//FIN

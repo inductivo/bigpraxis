@@ -162,4 +162,10 @@ class Administracion extends CI_Controller {
 		$this->Model_administracion->eliminar_alumno($id);
 	}
 
+	// Realizar la consulta para ELIMINAR la PREGUNTA Y SUS RESPUESTAS
+	public function eliminar_pregunta(){
+		$id=$_GET['id_pregunta'];
+		$this->Model_administracion->eliminar_pregunta($id);
+	}
+
 }
