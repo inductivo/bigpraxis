@@ -10,7 +10,8 @@ class Principal extends CI_Controller {
 		$this->load->model('Model_administracion');
 		$this->load->model('Model_cursos');
 		$this->load->model('Model_contenidos');
-		$this->form_validation->set_message('validar_credenciales', '<strong>Incorrect</strong> <strong>Username</strong> or <strong>Password</strong>');
+		$this->form_validation->set_message('validar_credenciales_profesores', '<strong>Incorrect</strong> <strong>Username</strong> or <strong>Password</strong>');
+		$this->form_validation->set_message('validar_credenciales_alumnos', '<strong>Incorrect</strong> <strong>Username</strong> or <strong>Password</strong>');
 		$this->form_validation->set_message('required', 'Ingresar <strong>%s</strong>');
 	}
 
@@ -51,12 +52,11 @@ class Principal extends CI_Controller {
 
 	public function login_estudiantes()
 	{
-		$this->form_validation->set_rules('email','Email','trim|callback_validar_credenciales');
+		$this->form_validation->set_rules('email','Email','trim|callback_validar_credenciales_alumnos');
 		$this->form_validation->set_rules('password','Password','trim');
 
 		if ($this->form_validation->run()){
 
-			/*Se accede al dashboard*/
 			redirect('principal/panel_estudiantes');
 		} else
 		{
@@ -66,7 +66,7 @@ class Principal extends CI_Controller {
 
 	public function login_profesores()
 	{
-		$this->form_validation->set_rules('email','Email','trim|callback_validar_credenciales');
+		$this->form_validation->set_rules('email','Email','trim|callback_validar_credenciales_profesores');
 		$this->form_validation->set_rules('password','Password','trim');
 
 		if ($this->form_validation->run()){
@@ -78,16 +78,21 @@ class Principal extends CI_Controller {
 		}
 	}
 
-	public function validar_credenciales()
-	{
+	public function validar_credenciales_profesores(){
 		$email = $this->input->post('email');
 		$password = $this->input->post('password');
 		return $this->administracionlib->login($email,md5($password));
 	}
 
+	public function validar_credenciales_alumnos(){
+		$email = $this->input->post('email');
+		$password = $this->input->post('password');
+		return $this->administracionlib->login_alumnos($email,md5($password));
+	}
+
 	public function panel_estudiantes()
 	{
-		if($this->session->userdata('id_usuarios') == null)
+		if($this->session->userdata('id_alumnos') == null)
 		{
 			redirect('principal/acceso_denegado');
 		}else{

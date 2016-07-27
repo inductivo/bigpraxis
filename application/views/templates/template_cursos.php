@@ -13,6 +13,7 @@
 
     <title>Bigpraxis</title>
 
+    <link href='https://fonts.googleapis.com/css?family=Montserrat|Lato:400,700,300,900|Roboto:400,100,300,700,500,900' rel='stylesheet' type='text/css'>
     <!-- Bootstrap Core CSS -->
     <link href="<?= base_url('css/bootstrap.min.css')?>" rel="stylesheet">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -20,6 +21,8 @@
 
     <!-- Custom CSS -->
     <link href="<?= base_url('css/cursos.css')?>" rel="stylesheet">
+    <link href="<?= base_url('css/principal.css')?>" rel="stylesheet">
+
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
     <!--Favicon -->
@@ -59,9 +62,13 @@
                     <a class="navbar-brand" href="<?php echo site_url('principal'); ?>"><img class="img-responsive logo" src="<?= base_url('img/logo.png')?>"></a>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav navbar-right">
-                       <li><?= anchor('principal/acceder','<i class="fa fa-group txtmenu"> Teachers</i>');?></li>
-                        <li><?= anchor('principal/acceder','<i class="fa fa-book txtmenu"> Students</i>');?></li>
+                   <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                              <a href="#" class="dropdown-toggle menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-lg avatar" aria-hidden="true"></i>  <?= $this->session->userdata('nombre'); ?> <?= $this->session->userdata('apellidos'); ?> <span class="caret"></span></a>
+                              <ul class="dropdown-menu">
+                                    <li><a class="cerrarsesion" href="<?php echo site_url('principal/cerrar_sesion')?>" ><font color="red"><i class="fa fa-power-off"></i></font> Cerrar sesión</a></li>
+                              </ul>
+                            </li>
                     </ul>
                 </div>
 

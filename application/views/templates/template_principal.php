@@ -62,7 +62,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li><?= anchor('principal/profesores','<i class="fa fa-group txtmenu">  <span class="txtFontMenu">Teachers</span></i>');?></li>
-                    <li><?= anchor('#','<i class="fa fa-book txtmenu">  <span class="txtFontMenu">Students</span></i>');?></li>
+                    <li><?= anchor('principal/estudiantes','<i class="fa fa-book txtmenu">  <span class="txtFontMenu">Students</span></i>');?></li>
                 </ul>
             </div>
 

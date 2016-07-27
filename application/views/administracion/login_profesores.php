@@ -3,13 +3,13 @@
 	<?= validation_errors('<div class="col-sm-6 col-sm-offset-3 alert alert-danger text-center msj">','</div>'); ?>
 	<div class="col-sm-6 col-sm-offset-3 box-login">
 		<div class="form-top text-center">
-			<h2 class="top-txt1">Sign In</h2>
-			<h4 class="top-txt2">section for teachers</h4>
-			<!--<img class="img-responsive img-center" src= <?= base_url("img/logo_teachers.png")?>" alt="Bigpraxis"> -->
+		<img class="img-login img-responsive center-block" src="<?= base_url('img/admin/high-school.png')?>" alt="Bigpraxis" />
+			<h4 class="top-txt2">section for <strong>Teachers</strong></h4>
 		</div>
 
 		<div class="form-bottom">
 			<form class="frmlogin center-block" action= "login_profesores" method="post" id="frmlogin">
+				<h4 class="top-txt1">Sign In</h4>
 			    <div class="form-group">
 			      <div class="input-group">
 					  <span class="input-group-addon icon-input" id="emailtxt"><i class="fa fa-user"></i></span>

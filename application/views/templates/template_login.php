@@ -51,7 +51,16 @@
 </head>
 
 <body>
-
+  <header>
+      <!-- Navigation -->
+      <nav class="barnav navbar navbar-inverse navbar-fixed-top" role="navigation">
+          <div class="container">
+              <div class="navbar-header">
+                  <a class="navbar-brand" href="<?php echo site_url('principal'); ?>"><img class="img-responsive logo" src="<?= base_url('img/logo.png')?>"></a>
+              </div>
+          </div>
+      </nav>
+  </header>
 
     <!-- Page Content -->
     <div class="container" id="principal">
