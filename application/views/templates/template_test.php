@@ -43,15 +43,6 @@
     <meta name="msapplication-TileImage" content="<?= base_url('img/favicon/ms-icon-144x144.png')?>">
     <meta name="theme-color" content="#ffffff">
 
-
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
 </head>
 
 <body>
@@ -93,11 +84,6 @@
                     </div> <!-- /.row -->
                 </div>
         </nav>
-
-        <!-- jQuery -->
-        <script src="<?= base_url('js/jquery.js')?>"></script>
-        <script src="<?= base_url('js/bootstrap.min.js')?>"></script>
-
 
     </footer>
 

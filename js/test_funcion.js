@@ -4,8 +4,6 @@ $(document).ready(function() {
 	var aciertos=0;
 	var preguntas_mostradas=0;
 
-	
-
 	$('#caja_tiempo').countdown({since:0,format: 'HMS',padZeroes: true, description: '',compact:true});
 	$('#caja_aciertos').html(aciertos);
 	$('#caja_problemas').html(problemas);
@@ -18,7 +16,6 @@ $(document).ready(function() {
 
 	//Conocemos el número de preguntas del contenido
 	var num_preguntas = $("#num_preguntas").val();
-	console.log("Numero de preguntas:" + num_preguntas);
 
 	//Se incia el test
 	obtenerPregunta(id_contenidos,mostrarPregunta);
@@ -47,13 +44,13 @@ $(document).ready(function() {
 			//recorremos todos los checkbox seleccionados con .each
 			$('input[name="checkbox[]"]:checked').each(function() {
 			//$(this).val() es el valor del checkbox correspondiente
-			checkboxValues.push($(this).val()); 
+			checkboxValues.push($(this).val());
 	    	});
 
 	    	validacheck(id_pregunta,id_contenidos,checkboxValues,mostrarResultado);
 		}
-	
-	 } 
+
+	 }
 
 	 function validaradio(id_preguntas,id_contenidos,opcion,callback)
 	 {
@@ -87,12 +84,12 @@ $(document).ready(function() {
 
 	 function mostrarResultado(jsonData)
 	 {
-	 	
+
 	 	var respuesta = JSON.parse(jsonData);
 
 	 	for(var i=0; i<respuesta.length;i++)
 		{
-				
+
 			if(respuesta[i].validacion == 0)
 		 	{
 		 		var html ='';
@@ -134,7 +131,7 @@ $(document).ready(function() {
 				aciertos=aciertos+1;
 				$('#caja_aciertos').html(aciertos);
 		 	}
-			
+
 		}
 
 	 }
@@ -182,7 +179,7 @@ $(document).ready(function() {
 
 	function mostrarPregunta(jsonData)
 	{
-			preguntas_mostradas ++;	
+			preguntas_mostradas ++;
 
 			$('#caja_pregunta').empty();
 			$('#caja_boton').empty();
@@ -195,11 +192,11 @@ $(document).ready(function() {
 			var id_cont = datos.id_contenidos;
 
 			var html1 ='';
-			var tipo_preg = datos.id_tipo_pregunta;	
+			var tipo_preg = datos.id_tipo_pregunta;
 			var titulo = datos.subclave+' '+datos.contenido;
 			var pregunta = datos.pregunta;
 
-			$('#caja_titulo').html(titulo);	
+			$('#caja_titulo').html(titulo);
 			$('#caja_pregunta').html(pregunta);
 
 			if(tipo_preg == 1)
@@ -212,14 +209,20 @@ $(document).ready(function() {
 			{
 				obtenerOpciones(datos.id_preguntas,mostrarOpcionesCheck);
 			}
-						
-			html1 = '<div class="row cont-btnenviar"><div class="col-md-2"><button type="button" class="btn btn-block btn-enviar" name="enviar" id="btnenviar" data-idcont="'+id_cont+'" data-preg="'+id_preg+'" data-tipo="'+tipo_preg+'">Revisar respuesta</button></div></div>';
+
+			html1 = '<div class="row cont-btnenviar"><div class="col-md-12"><button type="button" class="btn btn-enviar" name="enviar" id="btnenviar" data-idcont="'+id_cont+'" data-preg="'+id_preg+'" data-tipo="'+tipo_preg+'"><i class="fa fa-play-circle fa-lg" aria-hidden="true"></i> Revisar respuesta</button></div></div>';
 
 			$('#caja_boton').html(html1);
 		}
 		else{
-
-			$('#caja_pregunta').html("FIN DEL TEST");
+			var inicio ="<div class='row'> <div class='col-lg-12 text-center'>";
+			var img = "<span><i class='fa fa-thumbs-o-up fa-5x' aria-hidden='true'></i></span>";
+			var titulo= "<h2>Has completado el TEST</h2>";
+			var ok= "<p>Aciertos: <strong>"+aciertos+"</strong></p>";
+			var preg= "<p>Preguntas: <strong>"+problemas+"</strong></p>";
+			var btn = "<button type='button' class='btn btn-enviar btn-contestar' id="+id_contenidos+" name='btn-contestar'><i class='fa fa-refresh fa-lg' aria-hidden='true'></i>  Volver a Contestar</button>";
+			var fin = "</div></div>";
+			$('#caja_pregunta').html(inicio+img+titulo+ok+preg+btn+fin);
 			$('#caja_opciones').empty();
 			$('#caja_incorrecto').removeClass('caja-incorrecto');
 			//$('#caja_respuesta').removeClass('caja-respuesta');
@@ -229,6 +232,13 @@ $(document).ready(function() {
 			$('#caja_respuesta').empty();
 			$('#caja_siguiente').empty();
 			$('#caja_tiempo').countdown('pause');
+
+			$('.btn-contestar2').on('click',recargarTest);
+
+			function recargarTest(){
+				$('#id_contenidos').val(id_contenidos)
+				iniciaTest();
+			}
 		}
 
 	}
@@ -261,7 +271,7 @@ $(document).ready(function() {
             html2= '<label for="'+datos[i].id_opciones+'">'+ datos[i].opcion +'</label></div>';
             $('#caja_opciones').append(html1+html2);
 		}
-		
+
 	}
 
 	function mostrarOpcionesCheck(jsonData)
@@ -275,7 +285,7 @@ $(document).ready(function() {
 
 		for(var i=0; i<datos.length;i++)
 		{
-			
+
 			html1= '<div class="test"><input type="checkbox" name="checkbox[]" id="'+datos[i].id_opciones+'" class="checkbox" value="'+datos[i].opcion+'">';
             html2= '<label for="'+datos[i].id_opciones+'">'+datos[i].opcion+'</label></div>';
             $('#caja_opciones').append(html1+html2);
@@ -284,4 +294,3 @@ $(document).ready(function() {
 
 
 });
-

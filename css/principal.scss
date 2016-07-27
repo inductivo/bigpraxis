@@ -10,10 +10,9 @@ $azul:#30ccbf;
 @import url(http://fonts.googleapis.com/css?family=Roboto:500,900,100,300,700,400);
 
 body {
-
 	padding-bottom: 50px;
-    padding-top: 50px;
-    background-color: $verde;
+  padding-top: 50px;
+  background-color: $verde;
 }
 
 nav.navbar-inverse{
@@ -132,8 +131,7 @@ div a.btnstart
 
 }
 
-div a.btnstart:hover
-{
+div a.btnstart:hover{
 	background-color: #ff4842;
 }
 
@@ -143,10 +141,8 @@ div a.btnstart:hover
 	margin: 0 auto;
 }
 
-p.materias
-{
+p.materias{
 	font-size: 18px;
-
 }
 
 

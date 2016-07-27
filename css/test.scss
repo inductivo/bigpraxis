@@ -3,11 +3,6 @@ $rojo: #ff4842;
 
 @import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700);
 
-/* Preguntas Radio*/
-
-body {
-  background-color: #FFFFFF;
-}
 
 
 h2.titulo-test {
@@ -32,6 +27,12 @@ div.test {
 
 div.seccion-estadisticas{
   border-bottom:1px solid #bdc3c7;
+  margin-bottom: 10px;
+}
+
+div.seccion-preguntas{
+  background-color: white;
+  border-radius: 5px;
 }
 
 div.caja-incorrecto{
@@ -56,7 +57,7 @@ div.caja-respuesta{
     -mox-border-radius: 5px;
     height: 50px;
     margin-top: 10px;
-    
+
   p{
       padding-top: 10px;
       font-size: 1.5em;
@@ -207,12 +208,11 @@ div.statsbg {
   border-radius: 13px 13px 13px 13px;
   -moz-border-radius: 13px 13px 13px 13px;
   -webkit-border-radius: 13px 13px 13px 13px;
- 
+
 }
 
-div.cont-btnenviar
-{
-  margin-top: 60px;
+div.cont-btnenviar{
+  margin-top: 80px;
   margin-bottom: 20px;
 }
 
@@ -222,7 +222,7 @@ button.btn-enviar{
   border-radius: 5px;
   -webkit-border-radius: 5px;
   color:#FFFFFF;
-  
+
   &:hover{
     background-color:rgba(#30ccbf,0.8);
   }
@@ -245,7 +245,3 @@ button.btn-siguiente{
 #caja_opciones{
   margin-bottom: 10px;
 }
-
-
-
-

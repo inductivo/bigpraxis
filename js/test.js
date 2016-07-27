@@ -1,4 +1,3 @@
-$(document).ready(function() {
 
 	$('#lista_contenidos').on('click','li',iniciaTest);
 
@@ -8,7 +7,3 @@ $(document).ready(function() {
 		$('#principal').load('problemas',{id_contenidos:id_contenidos});
 
 	}
-
-
-
-});
