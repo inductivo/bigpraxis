@@ -14,3 +14,4 @@
 
 <script type="text/javascript" src="<?= base_url('js/cursos_funcion.js')?>"></script>
 <script type="text/javascript" src="<?= base_url('js/contenidos.js')?>"></script>
+<script type="text/javascript" src="<?= base_url('js/general.js')?>"></script>

@@ -1,8 +1,5 @@
 $(document).ready(function() {
-
-	//$('#lista-materias').on('click','li',temas);
-	//$('#lista-temas').on('click','div',subtemas);
-
+	
 		var id_materias = $("#id_materias").val();
 		var materia = $("#materia").val();
 

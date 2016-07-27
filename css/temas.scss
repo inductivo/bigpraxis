@@ -1,3 +1,9 @@
+$verde: #30CC71;
+$rojo: #ff4842;
+$gris_bg:#f1f2f2;
+$amarillo:#e9bc1c;
+$amarillo-secundario:#fbc215;
+$azul:#30ccbf;
 
 h1.titulo-contenidos {
   color: #585858;
@@ -28,6 +34,14 @@ li.li-contenidos {
 
 .imgtemas{
   max-width: 250px;
+}
+
+.img-margen{
+  margin-bottom: 20px;
+}
+
+.label-contenido{
+  background-color: $azul !important;
 }
 
 img.imgtemas:hover {

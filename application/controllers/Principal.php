@@ -214,7 +214,7 @@ class Principal extends CI_Controller {
 
 	public function vista_temas()
 	{
-		$this->load->view('temas');
+		$this->load->view('test/temas');
 	}
 
 
