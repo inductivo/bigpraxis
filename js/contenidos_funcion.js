@@ -1,9 +1,9 @@
 $(document).ready(function() {
 
-	var id_temas = $("#id_temas").val();
+	var id_temas = $('#id_temas').val();
 	obtenerSubtemas(id_temas,mostrarSubtemas);
 
-	function obtenerSubtemas(id_temas,callback){
+	function obtenerSubtemas(id_temas,mostrarSubtemas){
 		$.ajax({
 			data : {
 				format : 'jsonp',
@@ -11,7 +11,7 @@ $(document).ready(function() {
 				id_temas: id_temas
 			},
 			url : 'subtemas'
-		}).done(callback);
+		}).done(mostrarSubtemas);
 	}
 
 	function mostrarSubtemas(jsonData){
@@ -35,7 +35,7 @@ $(document).ready(function() {
 		}
 
 			html3= '<h1 class="page-header text-center titulo-contenidos">'+titulo+'</h1>';
-			$("#titulo-contenidos").append(html3);
+			$('#titulo-contenidos').append(html3);
 
 		   	html4='<img class="img-rounded img-responsive img-center imgtemas img-margen" src="'+imagen+'" alt="'+contenido+'">';
 			$('#div-imagen').append(html4);

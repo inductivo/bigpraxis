@@ -1,4 +1,9 @@
 $verde: #30CC71;
+$rojo: #ff4842;
+$gris_bg:#f1f2f2;
+$amarillo:#e9bc1c;
+$amarillo-secundario:#fbc215;
+$azul:#30ccbf;
 
 /*Fonts*/
 @import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
@@ -54,6 +59,26 @@ img.logo{
 max-width: 150px;
 margin-top: -15px;
 
+}
+
+img.img-error{
+	max-width: 200px;
+}
+
+.jumbo-box{
+	background-color: white;
+	color:$rojo;
+	border-radius: 10px;
+	margin-top: 30px;
+}
+
+.btn-denied{
+	background-color: $amarillo-secundario;
+	color:white;
+	&:hover{
+		background-color: $amarillo;
+
+	}
 }
 
 span.txtFontMenu{

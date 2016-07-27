@@ -16,16 +16,13 @@ class Principal extends CI_Controller {
 	}
 
 
-	public function index()
-	{
+	public function index(){
 		$data['contenido'] = 'inicio';
 		$this->load->view('templates/template_principal',$data);
-
 	}
 
 	/* Funciòn para cerrar la sesiòn del usuario*/
-	public function cerrar_sesion()
-	{
+	public function cerrar_sesion(){
 		$this->session->sess_destroy();
 		redirect('principal/index');
 	}
@@ -36,43 +33,35 @@ class Principal extends CI_Controller {
 	}
 
 	//Acceso Estudiantes
-	public function estudiantes()
-	{
+	public function estudiantes(){
 		$data['contenido'] = 'administracion/login_estudiantes';
 		$this->load->view('templates/template_login',$data);
 	}
 
 	//Acceso Profesores
-	public function profesores()
-	{
+	public function profesores(){
 		$data['contenido'] = 'administracion/login_profesores';
 		$this->load->view('templates/template_login',$data);
 	}
 
-	public function login_estudiantes()
-	{
+	public function login_estudiantes(){
 		$this->form_validation->set_rules('email','Email','trim|callback_validar_credenciales_alumnos');
 		$this->form_validation->set_rules('password','Password','trim');
 
 		if ($this->form_validation->run()){
-
 			redirect('principal/panel_estudiantes');
-		} else
-		{
+		} else{
 			$this->estudiantes();
 		}
 	}
 
-	public function login_profesores()
-	{
+	public function login_profesores(){
 		$this->form_validation->set_rules('email','Email','trim|callback_validar_credenciales_profesores');
 		$this->form_validation->set_rules('password','Password','trim');
 
 		if ($this->form_validation->run()){
-			/*Se accede al dashboard*/
 			redirect('principal/panel_profesores');
-		} else
-		{
+		} else{
 			$this->profesores();
 		}
 	}
@@ -89,17 +78,13 @@ class Principal extends CI_Controller {
 		return $this->administracionlib->login_alumnos($email,md5($password));
 	}
 
-	public function panel_estudiantes()
-	{
-		if($this->session->userdata('id_alumnos') == null)
-		{
+	public function panel_estudiantes(){
+		if($this->session->userdata('id_alumnos') == null){
 			redirect('principal/acceso_denegado');
 		}else{
-
 			$data['contenido'] = 'test/cursos';
 			$this->load->view('templates/template_cursos',$data);
 		}
-
 	}
 
 	public function panel_profesores()
@@ -116,47 +101,39 @@ class Principal extends CI_Controller {
 
 	}
 
-	public function acceso_denegado()
-	{
+	public function acceso_denegado(){
 		$data['contenido'] = 'administracion/acceso_denegado';
 		$this->load->view('templates/template_principal',$data);
 	}
 
-	public function cargarGrados()
-	{
+	public function cargarGrados(){
 		$this->Model_administracion->cargarGrados();
 	}
 
-	public function cargarSemestres()
-	{
+	public function cargarSemestres(){
 		$this->Model_administracion->cargarSemestres();
 	}
 
-	public function cargarMaterias()
-	{
+	public function cargarMaterias(){
 		$idsemestre=$_GET['id_semestre'];
 		$this->Model_administracion->cargarMaterias($idsemestre);
 	}
 
-	public function cargarTemas()
-	{
+	public function cargarTemas(){
 		$idmateria=$_GET['id_materias'];
 		$this->Model_administracion->cargarTemas($idmateria);
 	}
 
-	public function cargarContenidos()
-	{
+	public function cargarContenidos(){
 		$idtema=$_GET['id_temas'];
 		$this->Model_administracion->cargarContenidos($idtema);
 	}
 
-	public function cargarTipoPregunta()
-	{
+	public function cargarTipoPregunta(){
 		$this->Model_administracion->cargarTipoPregunta();
 	}
 
-	public function publicar()
-	{
+	public function publicar(){
 		$respuestas = array();
 
 		$this->form_validation->set_rules('txtpregunta','PREGUNTA','required');
@@ -216,8 +193,7 @@ class Principal extends CI_Controller {
 	}
 
 
-	public function temas()
-	{
+	public function temas(){
 		$id_materia= $_GET['id_materias'];
 		$this->Model_cursos->obtenerTemas($id_materia);
 	}
@@ -227,8 +203,7 @@ class Principal extends CI_Controller {
 		$this->load->view('test/contenidos');
 	}
 
-	public function subtemas()
-	{
+	public function subtemas(){
 		$id_temas= $_GET['id_temas'];
 		$this->Model_contenidos->mostrarSubtemas($id_temas);
 	}
@@ -238,28 +213,24 @@ class Principal extends CI_Controller {
 		$this->load->view('test');
 	}
 
-	public function obtener_pregunta()
-	{
+	public function obtener_pregunta(){
 		$id_contenido= $_GET['id_contenidos'];
 		$this->Model_contenidos->obtener_pregunta($id_contenido);
 	}
 
-	public function obtener_opciones()
-	{
+	public function obtener_opciones(){
 		$id_pregunta = $_GET['id_pregunta'];
 		$this->Model_contenidos->obtener_opciones($id_pregunta);
 	}
 
-	public function validar_respuesta_radio()
-	{
+	public function validar_respuesta_radio(){
 		$id_p=$_GET['id_preguntas'];
 		$opcion = $_GET['opcion'];
 		$id_cont = $_GET['id_contenidos'];
 		$this->Model_contenidos->radio_obtener($id_p,$id_cont,$opcion);
 	}
 
-	public function validar_respuesta_check()
-	{
+	public function validar_respuesta_check(){
 		$id_p=$_GET['id_preguntas'];
 		$id_cont = $_GET['id_contenidos'];
 		$opcion = $_GET['opcion'];
@@ -267,25 +238,21 @@ class Principal extends CI_Controller {
 	}
 
 	//Vista AGREGAR preguntas en Panel
-	public function agregar_preguntas()
-	{
+	public function agregar_preguntas(){
 		$this->load->view('administracion/agregar_preguntas');
 	}
 	//Vista CONSULTAR preguntas en Panel
-	public function consultar_preguntas()
-	{
+	public function consultar_preguntas(){
 		$this->load->view('administracion/consultar_preguntas');
 	}
 
 	//Vista CONSULTAR temas en Panel
-	public function consultar_temas()
-	{
+	public function consultar_temas(){
 		$this->load->view('administracion/consultar_temas');
 	}
 
 	//Vista Panel
-	public function panel_home()
-	{
+	public function panel_home(){
 		if($this->session->userdata('id_usuarios') == null){
 			redirect('principal/acceso_denegado');
 		}else if($this->session->userdata('nivel') == 1){
@@ -296,8 +263,7 @@ class Principal extends CI_Controller {
 	}
 
 	// Realizar la consulta para obtener las preguntas del tema y contenido seleccionado
-	public function cargarPreguntas()
-	{
+	public function cargarPreguntas(){
 		$grado=$_GET['grado'];
 		$semestre=$_GET['semestre'];
 		$materia=$_GET['materia'];
@@ -308,16 +274,13 @@ class Principal extends CI_Controller {
 	}
 
 	// Realizar la consulta para obtener los temas de la materia seleccionada
-	public function cargarConsultaTemas()
-	{
+	public function cargarConsultaTemas(){
 		$materia=$_GET['materia'];
-
 		$this->Model_administracion->cargarConsultaTemas($materia);
 	}
 
 	// Realizar la consulta para obtener el tema y poder editarlo
-	public function buscar_tema()
-	{
+	public function buscar_tema(){
 		$id=$_GET['id_temas'];
 		$this->Model_administracion->buscar_tema($id);
 	}
@@ -338,8 +301,7 @@ class Principal extends CI_Controller {
 	}
 
 	// Realizar la consulta para eliminar un tema
-	public function eliminar_tema()
-	{
+	public function eliminar_tema(){
 		$id=$_GET['id_temas'];
 		$this->Model_administracion->eliminar_tema($id);
 	}
@@ -359,8 +321,7 @@ class Principal extends CI_Controller {
 	}
 
 	// Realizar la consulta para obtener los contenidos del tema seleccionado
-	public function buscar_contenidos()
-	{
+	public function buscar_contenidos(){
 		$id=$_GET['id_temas'];
 		$this->Model_administracion->buscar_contenidos($id);
 	}
@@ -384,8 +345,7 @@ class Principal extends CI_Controller {
 	}
 
 	// Realizar la consulta para eliminar un Contenido
-	public function eliminar_contenido()
-	{
+	public function eliminar_contenido(){
 		$id=$_GET['id_contenidos'];
 		$this->Model_administracion->eliminar_contenido($id);
 	}

@@ -1,6 +1,9 @@
-$('#btnatras').on('click',regresarMaterias);
+$(document).ready(function() {
+	$('#btnatras').on('click',regresarMaterias);
 
-function regresarMaterias(){
-	$('#principal').html('');
-	$('#principal').load('panel_estudiantes');
-}
+	function regresarMaterias(){
+		$('#principal').html('');
+		$('#principal').load('panel_estudiantes');
+	}
+
+});
