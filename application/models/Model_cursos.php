@@ -6,8 +6,14 @@ class Model_cursos extends CI_Model{
 		parent::__construct();
 	}
 
-    function mostrarSemestre1()
-    {
+	function mostrarSemestre($id){
+
+			$this->db->where('id_semestre',$id);
+			$query = $this->db->get('materias');
+			return $query->result();
+	}
+
+		function mostrarSemestre1(){
 
         $this->db->where('id_semestre',1);
         //$this->db->order_by('semestre','asc');

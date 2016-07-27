@@ -97,7 +97,7 @@ class Principal extends CI_Controller {
 			redirect('principal/acceso_denegado');
 		}else{
 
-			$data['contenido'] = 'cursos';
+			$data['contenido'] = 'test/cursos';
 			$this->load->view('templates/template_cursos',$data);
 		}
 

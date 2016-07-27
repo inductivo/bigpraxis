@@ -7,19 +7,46 @@ $verde: #30CC71;
 body {
 
 	padding-bottom: 50px;
-    padding-top: 50px; 
+    padding-top: 50px;
     background-color: $verde;
 }
 
+nav.navbar-inverse{
+	background-color: $verde;
+}
 
-header nav.barnav
-{
-	background-color:$verde; 
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus{
+	background-color: $verde;
 
 }
 
-button.btniconbar
-{
+.navbar-inverse .navbar-nav>li>a {
+    color:white;
+
+		&:hover{
+			color:white;
+			text-decoration: underline;
+		}
+}
+
+.dropdown-menu>li>a {
+	background-color: white;
+	color:black;
+
+
+	&:hover{
+		background-color: white;
+		color:black;
+		font-weight: 900;
+	}
+}
+
+header nav.barnav{
+	background-color:$verde;
+
+}
+
+button.btniconbar{
 	background-color: $verde;
 }
 
@@ -29,8 +56,7 @@ margin-top: -15px;
 
 }
 
-span.txtFontMenu
-{
+span.txtFontMenu{
 	font-family:'Roboto', sans-serif;
 	font-size:16px;
 }
@@ -38,7 +64,7 @@ span.txtFontMenu
 i.txtmenu
 {
 	color:#FFFFFF;
-	
+
 }
 
 i.txtmenu:hover
@@ -95,7 +121,7 @@ div a.btnstart:hover
 p.materias
 {
 	font-size: 18px;
-	
+
 }
 
 

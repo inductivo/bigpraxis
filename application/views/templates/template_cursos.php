@@ -3,7 +3,7 @@
 
 <html lang="en">
 
-<head>
+  <head>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,6 +22,7 @@
     <!-- Custom CSS -->
     <link href="<?= base_url('css/cursos.css')?>" rel="stylesheet">
     <link href="<?= base_url('css/principal.css')?>" rel="stylesheet">
+    <link href="<?= base_url('css/temas.css')?>" rel="stylesheet">
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
@@ -42,7 +43,7 @@
     <link rel="manifest" href="<?= base_url('img/favicon/manifest.json')?>">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="<?= base_url('img/favicon/ms-icon-144x144.png')?>">
-    <meta name="theme-color" content="#ffffff">">
+    <meta name="theme-color" content="#ffffff">
 
 </head>
 
@@ -93,18 +94,11 @@
                         <div class="col-lg-10 col-sm-10 col-xs-8">
                             <p class="txtsv">Copyright &copy; Suma Ventas Consultores 2016</p>
                         </div>
-                        <div class="col-lg-2 col-sm-2 col-xs-4 text-right ">
-                            <ul class="list-inline">
-                                <li><a href="https://www.facebook.com/sumaventas"><i class="fa fa-facebook-official fa-2x txtfooter tw-icon"></i></a></li>
-                                <li><a href="https://twitter.com/suma_ventas"><i class="fa fa-twitter fa-2x txtfooter fac-icon"></i></a></li>
-                            </ul>
-                        </div><!-- /.col-lg-12 -->
                     </div> <!-- /.row -->
                 </div>
         </nav>
         <!-- jQuery -->
         <script src="<?= base_url('js/jquery.js')?>"></script>
-        <script src="<?= base_url('js/cursos.js')?>"></script>
         <script src="<?= base_url('js/bootstrap.min.js')?>"></script>
         <script src="<?= base_url('js/sweetalert.min.js')?>"></script>
     </footer>

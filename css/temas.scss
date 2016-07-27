@@ -1,12 +1,6 @@
-/* Temas de los cursos */
-
-/*Fonts*/
-@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
-
-@import url(http://fonts.googleapis.com/css?family=Roboto:500,900,100,300,700,400);
 
 h1.titulo-contenidos {
-  color: #FFFFFF;
+  color: #585858;
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
   font-size: 35px;
@@ -15,7 +9,7 @@ h1.titulo-contenidos {
 
 h4 {
   &.h4temas {
-    color: #FFFFFF;
+    color: #585858;
     font-family: 'Roboto', sans-serif;
     font-size: 2em;
     font-weight: 300;
@@ -30,6 +24,10 @@ h4 {
 
 li.li-contenidos {
   cursor: pointer;
+}
+
+.imgtemas{
+  max-width: 250px;
 }
 
 img.imgtemas:hover {
