@@ -32,6 +32,14 @@
 			<div class="col-lg-12 col-md-12" id="opciones-profesores"></div>
 		</div>
 	</div>
+
+	<div id="opciontest" class="col-lg-3 col-md-3 col-sm-3">
+		<img class="img-opcion" src="<?= base_url('img/admin/test.png')?>" alt="Test" />
+		<p class="menu-txt">EJERCICIOS</p>
+		<div class="row">
+			<div class="col-lg-12 col-md-12" id="opciones-test"></div>
+		</div>
+	</div>
 </div>
 
 <script type="text/javascript" src="<?= base_url('js/jquery.js')?>"></script>
@@ -41,3 +49,4 @@
 <script type="text/javascript" src="<?= base_url('js/admin/consultar_temas.js')?>"></script>
 <script type="text/javascript" src="<?= base_url('js/admin/profesores.js')?>"></script>
 <script type="text/javascript" src="<?= base_url('js/admin/alumnos.js')?>"></script>
+<script type="text/javascript" src="<?= base_url('js/admin/iniciar_test.js')?>"></script>

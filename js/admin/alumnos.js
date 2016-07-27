@@ -5,6 +5,7 @@ $('#opcionalumnos').on('click',opcionesAlumnos);
 $('#btnalumnos').on('click',realizarConsultaAlumnos);
 
 function opcionesAlumnos(){
+  $('#principal').empty();
   $('#principal').load('alumnos');
 }
 

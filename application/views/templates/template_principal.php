@@ -97,17 +97,7 @@
                     </div> <!-- /.row -->
                 </div>
         </nav>
-         <!-- jQuery -->
-        <script src="<?= base_url('js/jquery.js')?>"></script>
-        <script src="<?= base_url('js/bootstrap.min.js')?>"></script>
-        <script src="<?= base_url('js/sweetalert.min.js')?>"></script>
 
-        <!-- Validaciones -->
-        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.js"></script>
-        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
-        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/additional-methods.js"></script>
-        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/additional-methods.min.js"></script>
-        <script src="<?= base_url('js/validaciones.js')?>"></script>
     </footer>
 </body>
 </html>

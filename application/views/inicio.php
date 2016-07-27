@@ -27,11 +27,6 @@
 
         <div class="row divstart">
             <div class="col-md-6 col-md-offset-3 text-center">
-                <a href="<?php echo site_url('principal/cursos'); ?>" class="btn btnstart btn-block" role="button">GET STARTED NOW!</a>          
+                <a href="<?php echo site_url('principal/estudiantes'); ?>" class="btn btnstart btn-block" role="button">GET STARTED NOW!</a>
             </div>
         </div>
-
-
-
-
-

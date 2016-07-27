@@ -30,10 +30,9 @@ class Principal extends CI_Controller {
 		redirect('principal/index');
 	}
 
-	public function cursos()
-	{
-		$data['contenido'] = 'cursos';
-		$this->load->view('templates/template_temas',$data);
+	public function cursos(){
+			$data['contenido'] = 'cursos';
+			$this->load->view('templates/template_cursos',$data);
 	}
 
 	//Acceso Estudiantes
@@ -108,7 +107,7 @@ class Principal extends CI_Controller {
 		if($this->session->userdata('id_usuarios') == null){
 			redirect('principal/acceso_denegado');
 		}else if($this->session->userdata('nivel') == 1){
-						$data['contenido'] = 'administracion/panel';
+						$data['contenido'] = 'administracion/panel_administrador';
 						$this->load->view('templates/template_panel',$data);
 					}else{
 						$data['contenido'] = 'administracion/panel_profesores';
@@ -212,8 +211,7 @@ class Principal extends CI_Controller {
 	}
 
 
-	public function vista_temas()
-	{
+	public function vista_temas(){
 		$this->load->view('test/temas');
 	}
 
@@ -225,9 +223,8 @@ class Principal extends CI_Controller {
 	}
 
 
-	public function vista_contenidos()
-	{
-		$this->load->view('contenidos');
+	public function vista_contenidos(){
+		$this->load->view('test/contenidos');
 	}
 
 	public function subtemas()
@@ -237,8 +234,7 @@ class Principal extends CI_Controller {
 	}
 
 
-	public function problemas()
-	{
+	public function problemas(){
 		$this->load->view('test');
 	}
 
@@ -293,7 +289,7 @@ class Principal extends CI_Controller {
 		if($this->session->userdata('id_usuarios') == null){
 			redirect('principal/acceso_denegado');
 		}else if($this->session->userdata('nivel') == 1){
-			$this->load->view('administracion/panel');
+			$this->load->view('administracion/panel_administrador');
 		}else{
 			$this->load->view('administracion/panel_profesores');
 		}

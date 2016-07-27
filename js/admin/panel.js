@@ -196,6 +196,6 @@ function imprimirTipoPregunta(jsonData){
 $('#btnatras').on('click',regresarPanel);
 
 function regresarPanel(){
-
+	$('#principal').html('');
 	$('#principal').load('panel_home');
 }

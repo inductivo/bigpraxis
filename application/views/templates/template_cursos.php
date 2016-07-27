@@ -63,19 +63,18 @@
                     <a class="navbar-brand" href="<?php echo site_url('principal'); ?>"><img class="img-responsive logo" src="<?= base_url('img/logo.png')?>"></a>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                   <ul class="nav navbar-nav navbar-right">
-                            <li class="dropdown">
-                              <a href="#" class="dropdown-toggle menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-lg avatar" aria-hidden="true"></i>  <?= $this->session->userdata('nombre'); ?> <?= $this->session->userdata('apellidos'); ?> <span class="caret"></span></a>
-                              <ul class="dropdown-menu">
-                                    <li><a class="cerrarsesion" href="<?php echo site_url('principal/cerrar_sesion')?>" ><font color="red"><i class="fa fa-power-off"></i></font> Cerrar sesión</a></li>
-                              </ul>
-                            </li>
-                    </ul>
+                  <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-lg avatar" aria-hidden="true"></i>  <?= $this->session->userdata('nombre'); ?> <?= $this->session->userdata('apellidos'); ?> <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a class="cerrarsesion" href="<?php echo site_url('principal/cerrar_sesion')?>" ><font color="red"><i class="fa fa-power-off"></i></font> Cerrar sesión</a></li>
+                      </ul>
+                    </li>
+                  </ul>
                 </div>
-
-            </div>
+              </div>
             <!-- /.container -->
-        </nav>
+          </nav>
     </header>
 
     <!-- Page Content -->
@@ -97,9 +96,7 @@
                     </div> <!-- /.row -->
                 </div>
         </nav>
-        <!-- jQuery -->
-        <script src="<?= base_url('js/jquery.js')?>"></script>
-        <script src="<?= base_url('js/bootstrap.min.js')?>"></script>
+        
         <script src="<?= base_url('js/sweetalert.min.js')?>"></script>
     </footer>
 

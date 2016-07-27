@@ -1,7 +1,6 @@
 $(document).ready(function() {
 
 	cargarGrados();
-	construirPregunta();
 	cargarTipoPregunta();
 
 	//Datos para desplegar campos Respuestas
@@ -27,9 +26,6 @@ $(document).ready(function() {
     });
 		cargarEditor();
 
-
-	
-
 	//Cargar RESPUESTAS
 	function cargarRespuestas(){
 		var id=document.getElementById("cajarespuestas");
@@ -39,20 +35,11 @@ $(document).ready(function() {
 		id2.style.display = 'block';
 	}
 
-	function construirPregunta(){
-		var pregunta=document.getElementById("cajaPregunta");
-		var cajas=document.getElementById("cajas");
-		var publicar=document.getElementById("publicar");
-	}
-
 	function agregarRespuesta(){
-		if(x <= maxInputs)
-		{
+		if(x <= maxInputs){
 			 FieldCount++;
             //agregar campo
             $(contenedor_r).append('<div class="input-group respuestas__editor"><input type="hidden" name="chk'+FieldCount+'" value="0" ><span class="input-group-addon"><input type="checkbox" value="1" id="check' + FieldCount +'"  name="chk'+FieldCount+'"></span> <textarea name="resp[]" id="r'+ FieldCount +'" class="txtarea"></textarea><a href="#" class="eliminar cursor fa fa-times-circle fa-lg icon-eliminar"></a></div>');
-
-            //$(respuestas).append('<div><input type="text" name="resp[]" id="r'+ FieldCount +'" placeholder="Texto '+ FieldCount +'"/><a href="#" class="eliminar">&times;</a></div>');
             x++; //text box increment
 		}
 		cargarEditor();

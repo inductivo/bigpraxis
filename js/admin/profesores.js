@@ -1,6 +1,7 @@
 $('#opcionprofesores').on('click',opcionesProfesores);
 
 function opcionesProfesores(){
+	$('#principal').html('');
 	$('#principal').load('consultar_profesores',buscarProfesores);
 }
 

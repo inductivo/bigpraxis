@@ -26,12 +26,10 @@ function opcionesPreguntas()
 }
 
 
-function elegirPreguntas()
-{
+function elegirPreguntas(){
 var id_li = $(this).attr('data-li');
-
-if(id_li == 1)
-{
+$('#principal').html('');
+if(id_li == 1){
     $('#principal').load('agregar_preguntas');
 }
 else {
@@ -206,7 +204,6 @@ function imprimirDatosPregunta(jsonData){
 
 function imprimirDatosRespuestas(jsonData){
   $respuestas = JSON.parse(jsonData);
-  console.log($respuestas);
 
   for(i=0;i<$respuestas.length;i++){
     var caja = '<div class="input-group respuestas__editor"><input type="hidden" name="chk'+i+'" value='+$respuestas[i].respuesta+'><span class="input-group-addon"><input type="checkbox" name="chk'+i+'" id="chk'+i+'" value='+$respuestas[i].respuesta+' class="cursor cajarespuestas__check"></span><textarea name="resp[]" class="txtarea" id="r'+i+'" value='+$respuestas[i].opcion+'></textarea>';

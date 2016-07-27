@@ -7,6 +7,7 @@ cargarGrados();
 //Funciones para consultar los temas
 function opcionesTemas(){
 	$('#opciones-preguntas').html('');
+	$('#principal').html('');
 	$('#principal').load('consultar_temas');
 }
 

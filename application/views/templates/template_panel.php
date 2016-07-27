@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--TEMPLATE PANEL -->
 <html lang="en">
 
 <head>
