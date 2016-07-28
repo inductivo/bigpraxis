@@ -1,4 +1,3 @@
-$(document).ready(function() {
 
 	$('#lista-temas').on('click','div',subtemas);
 
@@ -7,5 +6,3 @@ $(document).ready(function() {
 		$('#principal').html('');
 		$('#principal').load('vista_contenidos',{id_temas:id_temas});
 	}
-
-});

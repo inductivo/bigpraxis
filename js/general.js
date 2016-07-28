@@ -1,5 +1,5 @@
 
-	$('#btnatras').on('click',regresarMaterias);
+	$('.btnatras').on('click',regresarMaterias);
 
 	function regresarMaterias(){
 		$('#principal').html('');

@@ -7,5 +7,5 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /en/index.php [L]
 </IfModule>
- 
+
 # FIN

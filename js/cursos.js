@@ -1,4 +1,3 @@
-$(document).ready(function() {
 
 	$('#lista-materias1').on('click','li',temasVista);
 	$('#lista-materias2').on('click','li',temasVista);
@@ -14,5 +13,3 @@ $(document).ready(function() {
 		$('#principal').html('');
 		$('#principal').load('vista_temas',{id_materias:id_materias,materia:materia});
 	}
-
-});
