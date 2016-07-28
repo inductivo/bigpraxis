@@ -19,12 +19,11 @@
 
 
     <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="<?= base_url('css/principal.css')?>" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?= base_url('css/cursos.css')?>" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?= base_url('css/callouts.css')?>" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?= base_url('css/temas.css')?>" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="<?= base_url('css/principal.css')?>" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="<?= base_url('css/sweetalert.css')?>"
-
+    <link rel="stylesheet" type="text/css" href="<?= base_url('css/sweetalert.css')?>">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
     <!--Favicon -->
@@ -78,7 +77,7 @@
           </nav>
     </header>
 
-    <!-- Page Content -->
+    <!-- CONTENIDO PRINCIPAL-->
     <div class="container" id="principal">
 
         <?php $this->load->view($contenido); ?>

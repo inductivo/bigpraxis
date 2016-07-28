@@ -4,9 +4,8 @@
   </div>
 </div>
 
-<input type="hidden" id="id_temas" value="<?php echo $_POST['id_temas'];?>"></input>
-
 <div class="row">
+  <input type="hidden" id="id_temas" value="<?php echo $_POST['id_temas'];?>"></input>
   <div id="titulo-contenidos" class="col-lg-8 col-lg-offset-4"></div>
 </div>
 
@@ -17,6 +16,8 @@
   </div>
 </div><!--.row -->
 
+<script type="text/javascript" src="<?= base_url('js/jquery.js')?>"></script>
+<script type="text/javascript" src="<?= base_url('js/bootstrap.min.js')?>"></script>
 <script type="text/javascript" src="<?= base_url('js/contenidos_funcion.js')?>"></script>
 <script type="text/javascript" src="<?= base_url('js/test.js')?>"></script>
 <script type="text/javascript" src="<?= base_url('js/general.js')?>"></script>
