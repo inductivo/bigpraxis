@@ -47,5 +47,6 @@
         <script type="text/javascript" src="<?= base_url('js/jquery.countdown.js')?>"></script>
         <script type="text/javascript" src="<?= base_url('js/jquery.countdown-es.js')?>"></script>
         <script type="text/javascript" src="<?= base_url('js/sweetalert.min.js')?>"></script>
+        <script type="text/javascript" src="<?= base_url('js/general.js')?>"></script>
         <script type="text/javascript" src="<?= base_url('js/test_funcion.js')?>"></script>
         <script type="text/javascript" src="<?= base_url('js/test.js')?>"></script>

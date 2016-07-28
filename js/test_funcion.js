@@ -215,12 +215,12 @@ $(document).ready(function() {
 			$('#caja_boton').html(html1);
 		}
 		else{
-			var inicio ="<div class='row'> <div class='col-lg-12 text-center'>";
-			var img = "<span><i class='fa fa-thumbs-o-up fa-5x' aria-hidden='true'></i></span>";
-			var titulo= "<h2>Has completado el TEST</h2>";
-			var ok= "<p>Aciertos: <strong>"+aciertos+"</strong></p>";
-			var preg= "<p>Preguntas: <strong>"+problemas+"</strong></p>";
-			var btn = "<button type='button' class='btn btn-enviar btn-contestar' id="+id_contenidos+" name='btn-contestar'><i class='fa fa-refresh fa-lg' aria-hidden='true'></i>  Volver a Contestar</button>";
+			var inicio ="<div class='row'> <div class='col-lg-12 fin-preguntas text-center'>";
+			var img = "<span><i class='fa fa-thumbs-o-up fa-5x icon-fin' aria-hidden='true'></i></span>";
+			var titulo= "<h1 class='fin-titulo'>¡Terminaste!</h1>";
+			var ok= "<p class='fin-info'>Aciertos: <strong>"+aciertos+"</strong></p>";
+			var preg= "<p class='fin-info'>Preguntas: <strong>"+problemas+"</strong></p>";
+			var btn = "<button type='button' class='btn btn-lg btn-fin' id="+id_contenidos+" name='btn-fin'><i class='fa fa-caret-square-o-left fa-lg' aria-hidden='true'></i>  Regresar</button>";
 			var fin = "</div></div>";
 			$('#caja_pregunta').html(inicio+img+titulo+ok+preg+btn+fin);
 			$('#caja_opciones').empty();
@@ -233,11 +233,10 @@ $(document).ready(function() {
 			$('#caja_siguiente').empty();
 			$('#caja_tiempo').countdown('pause');
 
-			$('.btn-contestar2').on('click',recargarTest);
+			$('.btn-fin').on('click',regresar);
 
-			function recargarTest(){
-				$('#id_contenidos').val(id_contenidos)
-				iniciaTest();
+			function regresar(){
+				regresarMaterias();
 			}
 		}
 
