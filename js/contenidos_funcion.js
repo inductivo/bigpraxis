@@ -1,4 +1,3 @@
-$(document).ready(function() {
 
 	var id_temas = $('#id_temas').val();
 	obtenerSubtemas(id_temas,mostrarSubtemas);
@@ -40,5 +39,3 @@ $(document).ready(function() {
 		   	html4='<img class="img-rounded img-responsive img-center imgtemas img-margen" src="'+imagen+'" alt="'+contenido+'">';
 			$('#div-imagen').append(html4);
 	}
-
-});

@@ -1,5 +1,4 @@
-$(document).ready(function() {
-	
+
 		var id_materias = $("#id_materias").val();
 		var materia = $("#materia").val();
 
@@ -7,7 +6,7 @@ $(document).ready(function() {
 		mostrarMateria(materia);
 
 
-	function obtenerTemas(id_materias,callback) {
+	function obtenerTemas(id_materias,mostrarTemas) {
 		$.ajax({
 			data : {
 				format : 'jsonp',
@@ -15,7 +14,7 @@ $(document).ready(function() {
 				id_materias: id_materias
 			},
 			url : 'temas'
-		}).done(callback);
+		}).done(mostrarTemas);
 	}
 
 	function mostrarTemas(jsonData) {
@@ -23,7 +22,6 @@ $(document).ready(function() {
 		var datos = JSON.parse(jsonData);
 		var html1 ='';
 		var html2='';
-		var row=0;
 
 		for(i=0; i<datos.length;i++){
 
@@ -40,6 +38,3 @@ $(document).ready(function() {
 		html4='<h1 id="h1-temas" class="page-header text-center title">'+nom_materia+'</h1>';
 		$('#titulo-tema').html(html4);
 	}
-
-
-});

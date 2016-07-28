@@ -3,7 +3,6 @@
 <!--TEMPLATE CURSOS -->
 <html lang="en">
   <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
@@ -14,7 +13,7 @@
 
     <link href='https://fonts.googleapis.com/css?family=Montserrat|Lato:400,700,300,900|Roboto:400,100,300,700,500,900' rel='stylesheet' type='text/css'>
     <!-- Bootstrap Core CSS -->
-    <link href="<?= base_url('css/bootstrap.min.css')?>" rel="stylesheet">
+    <link rel="stylesheet" href="<?= base_url('css/bootstrap.min.css')?>" rel="stylesheet">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
 
@@ -24,7 +23,6 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url('css/callouts.css')?>" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?= base_url('css/temas.css')?>" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?= base_url('css/sweetalert.css')?>">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
     <!--Favicon -->
     <link rel="apple-touch-icon" sizes="57x57" href="<?= base_url('img/favicon/apple-icon-57x57.png')?>">
@@ -51,10 +49,10 @@
     <header>
         <!-- Navigation -->
         <nav class="barnav navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container">
+            <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                    <button type="button" class="btniconbar navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <button type="button" class="btniconbar navbar-toggle collapsed" data-toggle="collapse" aria-expanded="false">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -62,10 +60,11 @@
                     </button>
                     <a class="navbar-brand" href="<?php echo site_url('principal'); ?>"><img class="img-responsive logo" src="<?= base_url('img/logo.png')?>"></a>
                 </div>
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <div class="collapse navbar-collapse">
                   <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                      <a href="#" class="dropdown-toggle menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-lg avatar" aria-hidden="true"></i>  <?= $this->session->userdata('nombre'); ?> <?= $this->session->userdata('apellidos'); ?> <span class="caret"></span></a>
+                      <a href="#" class="dropdown-toggle menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-lg avatar" aria-hidden="true"></i>  <?= $this->session->userdata('nombre'); ?> <?= $this->session->userdata('apellidos'); ?>
+                      <span class="caret"></span></a>
                       <ul class="dropdown-menu">
                         <li><a class="cerrarsesion" href="<?php echo site_url('principal/cerrar_sesion')?>" ><font color="red"><i class="fa fa-power-off"></i></font> Cerrar sesión</a></li>
                       </ul>
@@ -73,17 +72,13 @@
                   </ul>
                 </div>
               </div>
-            <!-- /.container -->
           </nav>
     </header>
 
     <!-- CONTENIDO PRINCIPAL-->
     <div class="container" id="principal">
-
-        <?php $this->load->view($contenido); ?>
-
+      <?php $this->load->view($contenido); ?>
     </div>
-    <!-- /.container -->
 
     <!-- Footer -->
     <footer>

@@ -16,37 +16,37 @@ body {
 }
 
 nav.navbar-inverse{
-	background-color: $verde;
+	background-color: $verde !important;
 }
 
 .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus{
-	background-color: $verde;
+	background-color: $verde !important;
 
 }
 
 .navbar-inverse .navbar-nav>li>a {
-    color:white;
+    color:white !important;
 
 		&:hover{
-			color:white;
-			text-decoration: underline;
+			color:white !important;
+			text-decoration: underline !important;
 		}
 }
 
 .dropdown-menu>li>a {
-	background-color: white;
-	color:black;
+	background-color: white !important;
+	color:black !important;
 
 
 	&:hover{
-		background-color: white;
-		color:black;
-		font-weight: 900;
+		background-color: white !important;
+		color:black !important;
+		font-weight: 900 !important;
 	}
 }
 
 header nav.barnav{
-	background-color:$verde;
+	background-color:$verde !important;
 
 }
 
