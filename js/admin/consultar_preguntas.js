@@ -29,13 +29,12 @@ function opcionesPreguntas()
 function elegirPreguntas(){
 var id_li = $(this).attr('data-li');
 $('#principal').html('');
-if(id_li == 1){
-    $('#principal').load('agregar_preguntas');
-}
-else {
-  $('#principal').load('consultar_preguntas');
-}
-
+  if(id_li == 1){
+      $('#principal').load('agregar_preguntas');
+  }
+  else {
+    $('#principal').load('consultar_preguntas');
+  }
 }
 
 function realizarConsulta(){

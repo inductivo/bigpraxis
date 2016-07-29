@@ -61,8 +61,7 @@ class Model_contenidos extends CI_Model{
 
 
 	//Obtiene TODAS las preguntas de la BD con el id_contenido que se pasa como parámetro
-	public function obtener_pregunta2($id_contenido)
-	{
+	public function obtener_pregunta2($id_contenido){
 		$this->db->select('preguntas.*, contenidos.contenido,contenidos.subclave');
 		$this->db->from('preguntas');
     $this->db->join('contenidos','preguntas.id_contenidos = contenidos.id_contenidos','inner');
@@ -73,10 +72,8 @@ class Model_contenidos extends CI_Model{
 
         $arreglo = array();
 
-        if($query->num_rows() > 0)
-        {
-            foreach($query->result() as $registro)
-            {
+        if($query->num_rows() > 0){
+            foreach($query->result() as $registro){
                 $arreglo[] = array(
                 'id_preguntas'=> $registro->id_preguntas,
                 'id_grados' => $registro->id_grados,
@@ -93,13 +90,12 @@ class Model_contenidos extends CI_Model{
             }
         }
 
-      	$json = json_encode($arreglo);
+      $json = json_encode($arreglo);
      	echo $json;
 	}
 
     //Obtiene una sola pregunta de la BD
-    public function obtener_pregunta($id_contenido)
-    {
+    public function obtener_pregunta($id_contenido){
         $this->db->select('preguntas.*, contenidos.contenido,contenidos.subclave');
         $this->db->from('preguntas');
         $this->db->join('contenidos','preguntas.id_contenidos = contenidos.id_contenidos','inner');

@@ -219,7 +219,7 @@ class Principal extends CI_Controller {
 	}
 
 	public function obtener_opciones(){
-		$id_pregunta = $_GET['id_pregunta'];
+		$id_pregunta = $_GET['id_preguntas'];
 		$this->Model_contenidos->obtener_opciones($id_pregunta);
 	}
 

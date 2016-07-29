@@ -21,7 +21,6 @@ h4 {
     font-weight: 300;
   }
   &.h4contenidos {
-    color: #585858;
     font-family: 'Roboto', sans-serif;
     font-size: 1.5em;
     font-weight: 300;
@@ -30,6 +29,11 @@ h4 {
 
 li.li-contenidos {
   cursor: pointer;
+  color: #585858;
+  &:hover {
+    background-color: $amarillo-secundario;
+    color:#FFFFFF;
+  }
 }
 
 .imgtemas{
