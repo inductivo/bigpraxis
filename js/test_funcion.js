@@ -212,7 +212,6 @@ $(document).ready(function() {
       html2= '<label for="'+datos[i].id_opciones+'">'+ datos[i].opcion +'</label></div>';
       $('#caja_opciones').append(html1+html2);
 		}
-
 	}
 
 	function mostrarOpcionesCheck(jsonData){
