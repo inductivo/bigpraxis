@@ -263,18 +263,28 @@ button.btn-fin{
 }
 
 .fin-titulo{
-  color: $rojo;
+  color: black;
   font-family: 'Roboto', sans-serif;
+  font-weight: bold;
 }
 
 .fin-info{
   color:black;
+}
+.reprobado{
+  color:$rojo;
+}
+.aprobado{
+  color:$verde;
 }
 
 .btn-fin{
   margin-top:20px;
 }
 
-.icon-fin{
+.icon-fin-aprobado{
   color:$verde;
+}
+.icon-fin-reprobado{
+  color:$rojo;
 }
