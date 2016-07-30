@@ -433,7 +433,6 @@ public function actualizar_pregunta($pregunta,$id){
 
 	public function actualizar_opciones($opciones,$respuestas,$idopciones){
 		$valores = array();
-
 		$cont=count($opciones);
 		for ($i = 0; $i < $cont; $i++) {
 

@@ -144,21 +144,16 @@ $(document).ready(function() {
 
 	function mostrarPregunta2(jsonData){
 		var pregunta = JSON.parse(jsonData);
-		console.log("id contenido: " +  id_contenidos);
 
 		if($.inArray(pregunta.id_preguntas,arreglo_preguntas) > -1){
 			if(arreglo_preguntas.length == num_preguntas){
 				fin_test();
 			}else{
 				obtenerPregunta(id_contenidos,mostrarPregunta2);
-				console.log("Volver a obtener pregunta");
 			}
 
 		}else{
 			arreglo_preguntas.push(pregunta.id_preguntas);
-			console.log("Pregunta agregada al arreglo");
-			console.log(arreglo_preguntas);
-
 			preguntas_mostradas ++;
 			$('#caja_pregunta').empty();
 			$('#caja_boton').empty();

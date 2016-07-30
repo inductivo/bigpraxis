@@ -76,18 +76,10 @@ function imprimirPreguntas(jsonData)
 	for(i=0; i<$preguntas.length;i++)
 	{
 		cont++;
-		//Activar Modal
-		//var preg='<div class="row"><div class="col-lg-12 panel panel-default cont-pregunta" data-repaso="'+$preguntas[i].repaso+'" data-solucion="'+$preguntas[i].solucion+'" data-toggle="modal" data-target="#modal-pregunta"><div class="panel-heading"><h3 class="panel-title badge"><bold>'+cont+'</bold></h3></div><div class="panel-body">'+ $preguntas[i].pregunta+'</div></div></div>';
-
-		//var preg='<div class="row"><div class="col-lg-12 panel panel-default cont-pregunta"><div class="panel-heading"><h3 class="panel-title badge"><bold>'+cont+'</bold></h3></div><div class="panel-body">'+ $preguntas[i].pregunta+'</div></div></div>';
-
 		var pregunta= '<div class="row"><div class="col-lg-1 col-md-1 col-sm-1 text-center titulo-pregunta">'+cont+'</div><div class="col-lg-11 col-md-11 col-sm-11 panel panel-default panel-pregunta text-pregunta data-idpregunta="'+$preguntas[i].id_preguntas+'">'+ $preguntas[i].pregunta+'</div></div>';
 
 		var titulo_tipo = '<div class="row info-pregunta"><div class="col-lg-12 titulo-respuesta"><i class="fa fa-th-list" aria-hidden="true"></i> Tipo de Pregunta</div>';
 		var tipo = '<div class="col-lg-12 panel panel-default panel-respuesta"><div class="panel-body">'+$preguntas[i].tipo+'</div></div>';
-
-		//var titulo_resp = '<div class="col-lg-12 titulo-respuesta"><i class="fa fa-th-list" aria-hidden="true"></i> Respuestas</div>';
-		//var respuestas = '<div class="col-lg-12 panel panel-default panel-respuesta"><div class="panel-body"></div></div>';
 
 		var titulo_repaso = '<div class="col-lg-12 titulo-repaso"><i class="fa fa-pencil-square" aria-hidden="true"></i> Repaso</div>';
 		var repaso = '<div class="col-lg-12 panel panel-default panel-repaso"><div class="panel-body">'+$preguntas[i].repaso+'</div></div>';
@@ -211,9 +203,11 @@ function imprimirDatosRespuestas(jsonData){
 
       if($respuestas[i].respuesta == 1){
         $('#chk'+i).prop("checked", true);
+        $('#chk'+i).val(1);
       }
       else{
         $('#chk'+i).prop("checked", false);
+        $('#chk'+i).val(0);
       }
       $('#r'+i).val($respuestas[i].opcion);
       $('#idopcion'+i).val($respuestas[i].id_opciones);
