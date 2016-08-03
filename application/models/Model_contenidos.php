@@ -157,7 +157,7 @@ class Model_contenidos extends CI_Model{
 	}
 
 
-    public function radio_obtener($idp,$idc,$opcion)
+    public function radio_obtener($idp,$idc,$id_opcion_correcta)
     {
         $sql = "SELECT * FROM opciones WHERE id_preguntas = ? AND respuesta = ?";
         $consulta = $this->db->query($sql, array($idp,1));
@@ -168,7 +168,7 @@ class Model_contenidos extends CI_Model{
         {
             $row = $consulta->row();
 
-            if($row->opcion == $opcion)
+            if($row->id_opciones == $id_opcion_correcta)
             {
 
                 $this->db->select('mensajes.*');

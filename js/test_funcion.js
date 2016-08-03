@@ -32,8 +32,8 @@ $(document).ready(function() {
 	 	var id_contenidos = $(this).attr('data-idcont');
 
 		if(id_tipo == 1){
-			var radioValue = $('input[name="radio"]:checked').val();
-			validaradio(id_pregunta,id_contenidos,radioValue,mostrarResultado);
+			var opcion_correcta = $('input[name="radio"]:checked').attr('id');
+			validaradio(id_pregunta,id_contenidos,opcion_correcta,mostrarResultado);
 
 		} else if (id_tipo == 2){
 			var checkboxValues = new Array();
@@ -211,7 +211,7 @@ $(document).ready(function() {
 		var html2='';
 
 		for(var i=0; i<datos.length;i++){
-			html1= '<div class="test"><input type="radio" maxlength="524288" name="radio" id="'+datos[i].id_opciones+'" class="radio" value="'+datos[i].opcion+'">';
+			html1= '<div class="test"><input type="radio" maxlength="524288" name="radio" id="'+datos[i].id_opciones+'" class="radio" value="0">';
       html2= '<label for="'+datos[i].id_opciones+'">'+ datos[i].opcion +'</label></div>';
       $('#caja_opciones').append(html1+html2);
 		}
@@ -224,7 +224,7 @@ $(document).ready(function() {
 		var html2='';
 
 		for(var i=0; i<datos.length;i++){
-			html1= '<div class="test"><input type="checkbox" name="checkbox[]" id="'+datos[i].id_opciones+'" class="checkbox" value="'+datos[i].opcion+'">';
+			html1= '<div class="test"><input type="checkbox" name="checkbox[]" id="'+datos[i].id_opciones+'" class="checkbox">';
       html2= '<label for="'+datos[i].id_opciones+'">'+datos[i].opcion+'</label></div>';
       $('#caja_opciones').append(html1+html2);
 		}
@@ -238,7 +238,7 @@ $(document).ready(function() {
 
 		if(calificacion >= 70){
 			var img = "<span><i class='fa fa-thumbs-o-up fa-5x icon-fin-aprobado' aria-hidden='true'></i></span>";
-			var titulo= "<h1 class='fin-titulo'>¡Terminaste!</h1>";
+			var titulo= "<h1 class='fin-titulo'>¡Muy bien!</h1>";
 			var mostrar_calificacion = "<p><span class='fin-info'>Calificación:</span> <span class='aprobado'><strong>"+calificacion+"</strong></span></p>";
 		}else{
 			var img = "<span><i class='fa fa-thumbs-o-down fa-5x icon-fin-reprobado' aria-hidden='true'></i></span>";
