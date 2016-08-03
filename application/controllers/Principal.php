@@ -15,7 +15,6 @@ class Principal extends CI_Controller {
 		$this->form_validation->set_message('required', 'Ingresar <strong>%s</strong>');
 	}
 
-
 	public function index(){
 		$data['contenido'] = 'inicio';
 		$this->load->view('templates/template_principal',$data);
@@ -28,7 +27,7 @@ class Principal extends CI_Controller {
 	}
 
 	public function cursos(){
-			$data['contenido'] = 'cursos';
+			$data['contenido'] = 'administracion/cursos';
 			$this->load->view('templates/template_cursos',$data);
 	}
 
