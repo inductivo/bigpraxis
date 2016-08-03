@@ -224,9 +224,9 @@ class Principal extends CI_Controller {
 
 	public function validar_respuesta_radio(){
 		$id_p=$_GET['id_preguntas'];
-		$opcion = $_GET['opcion'];
+		$opcion_correcta = $_GET['opcion'];
 		$id_cont = $_GET['id_contenidos'];
-		$this->Model_contenidos->radio_obtener($id_p,$id_cont,$opcion);
+		$this->Model_contenidos->radio_obtener($id_p,$id_cont,$opcion_correcta);
 	}
 
 	public function validar_respuesta_check(){

@@ -64,7 +64,7 @@ function cargarEditor(){
 		        "tiny_mce_wiris",
 		        "jbimages",
 		        "autoresize",
-		        "code",
+		        "code"
 		    ],
 		    paste_data_images: true,
 		    toolbar: "leaui_formula | insertfile bold italic superscript subscript | bullist numlist | jbimages charmap link code ",

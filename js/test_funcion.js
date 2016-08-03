@@ -32,8 +32,8 @@ $(document).ready(function() {
 	 	var id_contenidos = $(this).attr('data-idcont');
 
 		if(id_tipo == 1){
-			var radioValue = $('input[name="radio"]:checked').val();
-			validaradio(id_pregunta,id_contenidos,radioValue,mostrarResultado);
+			var opcion_correcta = $('input[name="radio"]:checked').attr('id');
+			validaradio(id_pregunta,id_contenidos,opcion_correcta,mostrarResultado);
 
 		} else if (id_tipo == 2){
 			var checkboxValues = new Array();
@@ -144,48 +144,51 @@ $(document).ready(function() {
 
 	function mostrarPregunta2(jsonData){
 		var pregunta = JSON.parse(jsonData);
-
-		if($.inArray(pregunta.id_preguntas,arreglo_preguntas) > -1){
-			if(arreglo_preguntas.length == num_preguntas){
-				fin_test();
-			}else{
-				obtenerPregunta(id_contenidos,mostrarPregunta2);
-			}
-
+		if(pregunta == null){
+			fin_test();
 		}else{
-			arreglo_preguntas.push(pregunta.id_preguntas);
-			preguntas_mostradas ++;
-			$('#caja_pregunta').empty();
-			$('#caja_boton').empty();
-
-			if(preguntas_mostradas <= num_preguntas){
-				var html1 ='';
-
-				var id_preg = pregunta.id_preguntas;
-				var id_cont = pregunta.id_contenidos;
-				var tipo_preg = pregunta.id_tipo_pregunta;
-				var titulo = pregunta.subclave+' '+pregunta.contenido;
-				var pregunta = pregunta.pregunta;
-
-				$('#caja_titulo').html(titulo);
-				$('#caja_pregunta').html(pregunta);
-
-				if(tipo_preg == 1){
-
-					obtenerOpciones(id_preg,mostrarOpcionesRadio);
-
-				}
-				else if(tipo_preg == 2){
-					obtenerOpciones(id_preg,mostrarOpcionesCheck);
+			if($.inArray(pregunta.id_preguntas,arreglo_preguntas) > -1){
+				if(arreglo_preguntas.length == num_preguntas){
+					fin_test();
+				}else{
+					obtenerPregunta(id_contenidos,mostrarPregunta2);
 				}
 
-				html1 = '<div class="row cont-btnenviar"><div class="col-md-12"><button type="button" class="btn btn-enviar" name="enviar" id="btnenviar" data-idcont="'+id_cont+'" data-preg="'+id_preg+'" data-tipo="'+tipo_preg+'"><i class="fa fa-play-circle fa-lg" aria-hidden="true"></i> Revisar respuesta</button></div></div>';
-
-				$('#caja_boton').html(html1);
 			}else{
-				fin_test();
-			}
+				arreglo_preguntas.push(pregunta.id_preguntas);
+				preguntas_mostradas ++;
+				$('#caja_pregunta').empty();
+				$('#caja_boton').empty();
 
+				if(preguntas_mostradas <= num_preguntas){
+					var html1 ='';
+
+					var id_preg = pregunta.id_preguntas;
+					var id_cont = pregunta.id_contenidos;
+					var tipo_preg = pregunta.id_tipo_pregunta;
+					var titulo = pregunta.subclave+' '+pregunta.contenido;
+					var pregunta = pregunta.pregunta;
+
+					$('#caja_titulo').html(titulo);
+					$('#caja_pregunta').html(pregunta);
+
+					if(tipo_preg == 1){
+
+						obtenerOpciones(id_preg,mostrarOpcionesRadio);
+
+					}
+					else if(tipo_preg == 2){
+						obtenerOpciones(id_preg,mostrarOpcionesCheck);
+					}
+
+					html1 = '<div class="row cont-btnenviar"><div class="col-md-12"><button type="button" class="btn btn-enviar" name="enviar" id="btnenviar" data-idcont="'+id_cont+'" data-preg="'+id_preg+'" data-tipo="'+tipo_preg+'"><i class="fa fa-play-circle fa-lg" aria-hidden="true"></i> Revisar respuesta</button></div></div>';
+
+					$('#caja_boton').html(html1);
+				}else{
+					fin_test();
+				}
+
+			}
 		}
 
 	}
@@ -208,7 +211,7 @@ $(document).ready(function() {
 		var html2='';
 
 		for(var i=0; i<datos.length;i++){
-			html1= '<div class="test"><input type="radio" maxlength="524288" name="radio" id="'+datos[i].id_opciones+'" class="radio" value="'+datos[i].opcion+'">';
+			html1= '<div class="test"><input type="radio" maxlength="524288" name="radio" id="'+datos[i].id_opciones+'" class="radio" value="0">';
       html2= '<label for="'+datos[i].id_opciones+'">'+ datos[i].opcion +'</label></div>';
       $('#caja_opciones').append(html1+html2);
 		}
@@ -221,21 +224,29 @@ $(document).ready(function() {
 		var html2='';
 
 		for(var i=0; i<datos.length;i++){
-			html1= '<div class="test"><input type="checkbox" name="checkbox[]" id="'+datos[i].id_opciones+'" class="checkbox" value="'+datos[i].opcion+'">';
+			html1= '<div class="test"><input type="checkbox" name="checkbox[]" id="'+datos[i].id_opciones+'" class="checkbox">';
       html2= '<label for="'+datos[i].id_opciones+'">'+datos[i].opcion+'</label></div>';
       $('#caja_opciones').append(html1+html2);
 		}
 	}
 
 	function fin_test(){
+		var calificacion = ((aciertos*100)/problemas).toFixed(2);
 		var inicio ="<div class='row'> <div class='col-lg-12 fin-preguntas text-center'>";
-		var img = "<span><i class='fa fa-thumbs-o-up fa-5x icon-fin' aria-hidden='true'></i></span>";
-		var titulo= "<h1 class='fin-titulo'>¡Terminaste!</h1>";
-		var ok= "<p class='fin-info'>Aciertos: <strong>"+aciertos+"</strong></p>";
-		var preg= "<p class='fin-info'>Preguntas: <strong>"+problemas+"</strong></p>";
-		var btn = "<button type='button' class='btn btn-lg btn-fin' id="+id_contenidos+" name='btn-fin'><i class='fa fa-caret-square-o-left fa-lg' aria-hidden='true'></i>  Regresar</button>";
 		var fin = "</div></div>";
-		$('#caja_pregunta').html(inicio+img+titulo+ok+preg+btn+fin);
+		var btn = "<button type='button' class='btn btn-lg btn-fin' id="+id_contenidos+" name='btn-fin'><i class='fa fa-caret-square-o-left fa-lg' aria-hidden='true'></i>  Regresar</button>";
+
+		if(calificacion >= 70){
+			var img = "<span><i class='fa fa-thumbs-o-up fa-5x icon-fin-aprobado' aria-hidden='true'></i></span>";
+			var titulo= "<h1 class='fin-titulo'>¡Muy bien!</h1>";
+			var mostrar_calificacion = "<p><span class='fin-info'>Calificación:</span> <span class='aprobado'><strong>"+calificacion+"</strong></span></p>";
+		}else{
+			var img = "<span><i class='fa fa-thumbs-o-down fa-5x icon-fin-reprobado' aria-hidden='true'></i></span>";
+			var titulo= "<h1 class='fin-titulo'>¡Sigue Intentando!</h1>";
+			var mostrar_calificacion = "<p><span class='fin-info'>Calificación:</span> <span class='reprobado'><strong>"+calificacion+"</strong></span></p>";
+		}
+
+		$('#caja_pregunta').html(inicio+img+titulo+mostrar_calificacion+btn+fin);
 		$('#caja_opciones').empty();
 		$('#caja_incorrecto').removeClass('caja-incorrecto');
 		$('#caja_incorrecto').empty();
