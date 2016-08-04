@@ -49,4 +49,4 @@
 <script type="text/javascript" src="<?= base_url('js/admin/consultar_temas.js')?>"></script>
 <script type="text/javascript" src="<?= base_url('js/admin/profesores.js')?>"></script>
 <script type="text/javascript" src="<?= base_url('js/admin/alumnos.js')?>"></script>
-<script type="text/javascript" src="<?= base_url('js/admin/iniciar_test.js')?>"></script>
+<script type="text/javascript" src="<?= base_url('js/admin/test_profesores.js')?>"></script>
