@@ -252,12 +252,17 @@ class Principal extends CI_Controller {
 
 	//Vista Panel
 	public function panel_home(){
-		if($this->session->userdata('id_usuarios') == null){
-			redirect('principal/acceso_denegado');
-		}else if($this->session->userdata('nivel') == 1){
-			$this->load->view('administracion/panel_administrador');
+		if($this->session->userdata('id_alumnos') == null){
+			if($this->session->userdata('id_usuarios') == null){
+				redirect('principal/acceso_denegado');
+			}else if($this->session->userdata('nivel') == 1){
+				$this->load->view('administracion/panel_administrador');
+				}else{
+					$this->load->view('administracion/panel_profesores');
+				}
 		}else{
-			$this->load->view('administracion/panel_profesores');
+			$data['contenido'] = 'test/cursos';
+			$this->load->view('templates/template_cursos',$data);
 		}
 	}
 

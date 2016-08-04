@@ -3,5 +3,5 @@
 
 	function regresarMaterias(){
 		$('#principal').html('');
-		$('#principal').load('panel_estudiantes');
+		$('#principal').load('panel_home');
 	}
