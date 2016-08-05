@@ -3,6 +3,8 @@
 
         <input type="hidden" id="id_contenidos" value="<?php echo $_POST['id_contenidos'];?>"></input>
         <input type="hidden" id="num_preguntas" value="<?php echo $this->Model_contenidos->num_preguntas($_POST['id_contenidos']);?>"></input>
+        <input type="hidden" id="preg_test" value="<?php echo $this->Model_contenidos->num_preguntas_test($_POST['id_contenidos']);?>"></input>
+
 
        <!--Sección de Time -->
         <div class="row text-center">

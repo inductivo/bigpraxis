@@ -16,6 +16,10 @@ $(document).ready(function() {
 	//Obtenemos el id del contenido
 	var id_contenidos = $("#id_contenidos").val();
 
+
+	//Conocemos el número de preguntas que se ASIGNARON al contenido
+	var num_preguntas_test = $("#preg_test").val();
+
 	//Conocemos el número de preguntas del contenido
 	var num_preguntas = $("#num_preguntas").val();
 
@@ -148,7 +152,7 @@ $(document).ready(function() {
 			fin_test();
 		}else{
 			if($.inArray(pregunta.id_preguntas,arreglo_preguntas) > -1){
-				if(arreglo_preguntas.length == num_preguntas){
+				if(arreglo_preguntas.length == num_preguntas_test){
 					fin_test();
 				}else{
 					obtenerPregunta(id_contenidos,mostrarPregunta2);
@@ -160,7 +164,7 @@ $(document).ready(function() {
 				$('#caja_pregunta').empty();
 				$('#caja_boton').empty();
 
-				if(preguntas_mostradas <= num_preguntas){
+				if(preguntas_mostradas <= num_preguntas_test){
 					var html1 ='';
 
 					var id_preg = pregunta.id_preguntas;

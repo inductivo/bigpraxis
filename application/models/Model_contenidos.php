@@ -59,6 +59,20 @@ class Model_contenidos extends CI_Model{
         return $this->db->count_all_results();
     }
 
+		//Se obtiene el número total de preguntas que se Asignaron para el TEST
+		public function num_preguntas_test($id_contenido)
+		{
+				$this->db->select('preguntas_test');
+				$this->db->where('id_contenidos', $id_contenido);
+				$this->db->from('contenidos');
+				$query= $this->db->get();
+
+				foreach ($query->result() as $row)
+				{
+        	echo $row->preguntas_test;
+				}
+		}
+
 
 	//Obtiene TODAS las preguntas de la BD con el id_contenido que se pasa como parámetro
 	public function obtener_pregunta2($id_contenido){

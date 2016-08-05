@@ -130,6 +130,12 @@
                 <input id="contenidoEditar" type="text" name="contenidoEditar" class="input-editar" required>
               </div>
             </div>
+            <div class="row form-group">
+              <div class="col-lg-12">
+                <label class="txt-editar">Preguntas asigandas al test:</label>
+                <input id="preguntasAsignadasEditar" type="text" name="preguntasAsignadasEditar" class="input-editar" required>
+              </div>
+            </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-cancelar" data-dismiss="modal"><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i> Cancelar</button>
               <button id="btneditarcontenido" type="submit" class="btn btn-guardar"><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i> Guardar</button>
@@ -161,6 +167,12 @@
               <div class="col-lg-12">
                 <label class="txt-editar">Contenido:</label>
                 <input id="nuevoContenido" type="text" name="nuevoContenido" class="input-editar" required>
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-lg-12">
+                <label class="txt-editar">Preguntas asigandas al test:</label>
+                <input id="nuevoPreguntasAsignadas" type="text" name="nuevoPreguntasAsignadas" class="input-editar" required>
               </div>
             </div>
             <div class="modal-footer">

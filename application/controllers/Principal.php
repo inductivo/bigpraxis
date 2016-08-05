@@ -339,11 +339,13 @@ class Principal extends CI_Controller {
 		$id=$_GET['id_contenidos'];
 		$subclave=$_GET['subclave'];
 		$contenido=$_GET['contenido'];
+		$preguntas_test=$_GET['preguntasAsig'];
 
 		$registro = array(
       'id_contenidos' => $id,
       'subclave'  => $subclave,
-      'contenido'  => $contenido
+      'contenido'  => $contenido,
+			'preguntas_test' => $preguntas_test
 		);
 		$this->Model_administracion->actualizar_contenido($registro);
 	}
@@ -359,11 +361,13 @@ class Principal extends CI_Controller {
 		$id_temas=$_GET['id_temas'];
 		$subclave=$_GET['subclave'];
 		$contenido=$_GET['contenido'];
+		$preguntas_test=$_GET['preguntasAsig'];
 
 		$registro = array(
 			'id_temas' => $id_temas,
       'subclave'  => $subclave,
-      'contenido'  => $contenido
+      'contenido'  => $contenido,
+			'preguntas_test' => $preguntas_test
 		);
 		$this->Model_administracion->agregar_contenido($registro);
 	}

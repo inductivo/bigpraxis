@@ -168,4 +168,9 @@ class Administracion extends CI_Controller {
 		$this->Model_administracion->eliminar_pregunta($id);
 	}
 
+	public function numero_preguntas_contenido(){
+		$id=$_GET['id_contenidos'];
+		echo $this->Model_contenidos->num_preguntas($id);
+	}
+
 }

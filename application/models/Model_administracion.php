@@ -116,7 +116,8 @@ class Model_administracion extends CI_Model{
 	            $arreglo[] = array(
 	                'id_contenidos'=> $registro->id_contenidos,
 	                'subclave' => $registro->subclave,
-	                'contenido' => $registro->contenido
+	                'contenido' => $registro->contenido,
+									'preguntas_test' => $registro->preguntas_test
 
 	              );
 	           }
@@ -285,7 +286,8 @@ class Model_administracion extends CI_Model{
 									'id_temas'=>$registro->id_temas,
 									'tema'=>$registro->tema,
 									'subclave'=>$registro->subclave,
-									'contenido'=>$registro->contenido
+									'contenido'=>$registro->contenido,
+									'preguntas_test' => $registro->preguntas_test
 									);
 					}
 			}

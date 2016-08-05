@@ -60,11 +60,19 @@ $(document).ready(function(){
       },
       nuevoContenido:{
         required:true
+      },
+      nuevoPreguntasAsignadas:{
+        required:true,
+        number:true
       }
     },
     messages:{
       nuevoSubtema: "<span class='label label-danger'>Ingresar SUBTEMA</span>",
-      nuevoContenido: "<span class='label label-danger'>Ingresar CONTENIDO</span>"
+      nuevoContenido: "<span class='label label-danger'>Ingresar CONTENIDO</span>",
+      nuevoPreguntasAsignadas:{
+        required : "<span class='label label-danger'>Ingresar el NÚMERO DE PREGUNTAS</span>",
+        number: "<span class='label label-danger'>El valor debe de ser un NÚMERO</span>"
+      }
     },
     errorPlacement: function ( error, element ) {
       error.insertAfter( element );
@@ -87,11 +95,19 @@ $(document).ready(function(){
       },
       contenidoEditar:{
         required:true
+      },
+      preguntasAsignadasEditar:{
+        required:true,
+        number:true
       }
     },
     messages:{
       subtemaEditar: "<span class='label label-danger'>Ingresar SUBTEMA</span>",
-      contenidoEditar: "<span class='label label-danger'>Ingresar CONTENIDO</span>"
+      contenidoEditar: "<span class='label label-danger'>Ingresar CONTENIDO</span>",
+      preguntasAsignadasEditar:{
+        required : "<span class='label label-danger'>Ingresar el NÚMERO DE PREGUNTAS</span>",
+        number: "<span class='label label-danger'>El valor debe de ser un NÚMERO</span>"
+      }
     },
     errorPlacement: function ( error, element ) {
       error.insertAfter( element );
