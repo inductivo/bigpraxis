@@ -13,6 +13,18 @@ class Model_cursos extends CI_Model{
 			return $query->result();
 	}
 
+	function obtenerSemestre($id){
+		$this->db->select('numero');
+		$this->db->where('id_semestre',$id);
+		return $this->db->get('semestres')->row();
+	}
+
+	function obtenerPeriodo($id){
+		$this->db->select('periodo');
+		$this->db->where('id_semestre',$id);
+		return $this->db->get('semestres')->row();
+	}
+
 		function mostrarSemestre1(){
 
         $this->db->where('id_semestre',1);
