@@ -136,6 +136,19 @@
                 <input id="preguntasAsignadasEditar" type="text" name="preguntasAsignadasEditar" class="input-editar" required>
               </div>
             </div>
+            <div class="row">
+              <div class="col-lg-12"><label class="txt-editar">Status:</label></div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <label class="radio-inline">
+                  <input id="status-activo" type="radio" name="status" value="1"><span class="txtradio-editar activo">Activo</span>
+                </label>
+                <label class="radio-inline">
+                  <input id="status-inactivo" type="radio" name="status" value="0"> <span class="txtradio-editar noactivo">Inactivo</span>
+                </label>
+              </div>
+            </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-cancelar" data-dismiss="modal"><i class="fa fa-times-circle-o fa-lg" aria-hidden="true"></i> Cancelar</button>
               <button id="btneditarcontenido" type="submit" class="btn btn-guardar"><i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i> Guardar</button>
@@ -173,6 +186,19 @@
               <div class="col-lg-12">
                 <label class="txt-editar">Preguntas asigandas al test:</label>
                 <input id="nuevoPreguntasAsignadas" type="text" name="nuevoPreguntasAsignadas" class="input-editar" required>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12"><label class="txt-editar">Status:</label></div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <label class="radio-inline">
+                  <input type="radio" name="nuevoStatus" value="1"><span class="txtradio-editar activo">Activo</span>
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="nuevoStatus" value="0" checked> <span class="txtradio-editar noactivo">Inactivo</span>
+                </label>
               </div>
             </div>
             <div class="modal-footer">

@@ -40,6 +40,7 @@ class Model_contenidos extends CI_Model{
                 'tema' => $registro->tema,
                 'id_contenidos' => $registro->id_contenidos,
                 'contenido' => $registro->contenido,
+								'activacion' => $registro->activacion,
                 'subclave' => $registro->subclave,
                 'imagen' => $registro->imagen
               );

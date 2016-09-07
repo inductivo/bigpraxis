@@ -24,18 +24,40 @@
 		var contenido='';
 
 		for(i=0; i<datos.length;i++){
-			html1='<li class="list-group-item li-contenidos" id="'+datos[i].id_contenidos+'">';
-			html2= '<h4 class="h4contenidos"> <span class="label label-contenido">'+ datos[i].subclave +'</span><span> '+datos[i].contenido+'</span></h4></li>';
+			if(datos[i].activacion == 1){
 
-			imagen=datos[i].imagen;
-			contenido=datos[i].contenido;
-			titulo = datos[i].tema;
-			$('#ul-contenidos').append(html1+html2);
+				html1='<li class="list-group-item li-contenidos" id="'+datos[i].id_contenidos+'">';
+				html2= '<h4 class="h4contenidos"> <span class="label label-contenido">'+ datos[i].subclave +'</span><span> '+datos[i].contenido+'</span></h4></li>';
+
+				imagen=datos[i].imagen;
+				contenido=datos[i].contenido;
+				titulo = datos[i].tema;
+				$('#ul-contenidos').append(html1+html2);
+			}
+			else{
+				html5='<li class="list-group-item li-contenidos2" id="'+datos[i].id_contenidos+'">';
+				html6= '<h4 class="h4contenidos"> <span class="label label-contenido2">'+ datos[i].subclave +'</span><span> '+datos[i].contenido+'</span></h4></li>';
+
+				imagen=datos[i].imagen;
+				contenido=datos[i].contenido;
+				titulo = datos[i].tema;
+				$('#ul-contenidos').append(html5+html6);
+			}
 		}
 
 			html3= '<h1 class="page-header text-center titulo-contenidos">'+titulo+'</h1>';
 			$('#titulo-contenidos').append(html3);
 
-		   	html4='<img class="img-rounded img-responsive img-center imgtemas img-margen" src="'+imagen+'" alt="'+contenido+'">';
+		  html4='<img class="img-rounded img-responsive img-center imgtemas img-margen" src="'+imagen+'" alt="'+contenido+'">';
 			$('#div-imagen').append(html4);
+
+			$('.li-contenidos').on('click',iniciaTest);
+			function iniciaTest(){
+				var id_contenidos = $(this).attr('id');
+				$('#principal').html('');
+				$('#principal').load('problemas',{id_contenidos:id_contenidos});
+
+			}
+
+
 	}

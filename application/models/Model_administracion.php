@@ -289,6 +289,7 @@ class Model_administracion extends CI_Model{
 									'tema'=>$registro->tema,
 									'subclave'=>$registro->subclave,
 									'contenido'=>$registro->contenido,
+									'activacion'=>$registro->activacion,
 									'preguntas_test' => $registro->preguntas_test
 									);
 					}

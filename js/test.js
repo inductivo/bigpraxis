@@ -1,5 +1,6 @@
 
-	$('#lista_contenidos').on('click','li',iniciaTest);
+	//$('#lista_contenidos').on('click','li',iniciaTest);
+
 
 	function iniciaTest(){
 		var id_contenidos = $(this).attr('id');

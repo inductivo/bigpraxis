@@ -194,14 +194,18 @@ function imprimirTemas(jsonData){
 
 	//Funciones para AGREGAR UN CONTENIDO NUEVO
 	function agregarContenido(){
+		debugger;
 		var id_nuevoTema = $('#id_temaNuevoContenido').val();
 		var nuevaSubclave = $('#nuevoSubtema').val();
 		var nuevoContenido = $('#nuevoContenido').val();
 		var nuevoPreguntasAsig = $('#nuevoPreguntasAsignadas').val();
-		enviarNuevoContenido(id_nuevoTema,nuevaSubclave,nuevoContenido,nuevoPreguntasAsig,contenidoAgregado);
+		var nuevoStatus = $('input:radio[name=nuevoStatus]:checked').val();
+		console.log("Activacion: " + nuevoStatus);
+
+		enviarNuevoContenido(id_nuevoTema,nuevaSubclave,nuevoContenido,nuevoStatus,nuevoPreguntasAsig,contenidoAgregado);
 	}
 
-	function enviarNuevoContenido(id_temas,subclave,contenido,preguntasAsig,contenidoAgregado){
+	function enviarNuevoContenido(id_temas,subclave,contenido,activacion,preguntasAsig,contenidoAgregado){
 		$.ajax({
 			data : {
 				format :'jsonp',
@@ -209,6 +213,7 @@ function imprimirTemas(jsonData){
 				id_temas : id_temas,
 				subclave : subclave,
 				contenido : contenido,
+				activacion : activacion,
 				preguntasAsig : preguntasAsig
 			},
 			url: 'agregar_contenido',
@@ -230,11 +235,12 @@ function imprimirTemas(jsonData){
 		var id_contenido = $('#id_Editarcontenidos').val();
 		var subclave = $('#subtemaEditar').val();
 		var contenido = $('#contenidoEditar').val();
+		var status = $('input:radio[name=status]:checked').val();
 		var preguntasAsig = $('#preguntasAsignadasEditar').val();
-		enviarContenido(id_contenido,subclave,contenido,preguntasAsig,edicionContenidoExitosa);
+		enviarContenido(id_contenido,subclave,contenido,status,preguntasAsig,edicionContenidoExitosa);
 	}
 
-	function enviarContenido(id_contenidos,subclave,contenido,preguntasAsig,edicionContenidoExitosa){
+	function enviarContenido(id_contenidos,subclave,contenido,activacion,preguntasAsig,edicionContenidoExitosa){
 		$.ajax({
 			data : {
 				format :'jsonp',
@@ -242,6 +248,7 @@ function imprimirTemas(jsonData){
 				id_contenidos : id_contenidos,
 				subclave : subclave,
 				contenido : contenido,
+				activacion : activacion,
 				preguntasAsig : preguntasAsig
 			},
 			url: 'guardar_contenido',
@@ -293,7 +300,7 @@ function imprimirContenidos(jsonData){
 	$contenidos= JSON.parse(jsonData);
 
 	if($contenidos.length > 0){
-		var th= '<div class="row"><div class="col-lg-12"><div class="table-responsive"><table id="fila-contenido" class="table table-condensed tabla-temas"><tr class="th-temas"><th class="text-center">Subtema</th><th class="text-center">Contenido</th><th class="text-center">Preguntas existentes</th><th class="text-center">Preguntas asignadas</th><th></th><th></th></tr></table></div></div></div>';
+		var th= '<div class="row"><div class="col-lg-12"><div class="table-responsive"><table id="fila-contenido" class="table table-condensed tabla-temas"><tr class="th-temas"><th class="text-center">Subtema</th><th class="text-center">Contenido</th><th class="text-center">Preguntas existentes</th><th class="text-center">Preguntas asignadas</th><th class="text-center">Status</th><th></th><th></th></tr></table></div></div></div>';
 		$('#content').html(th);
 
 		for(var i=0; i<$contenidos.length;i++){
@@ -302,7 +309,15 @@ function imprimirContenidos(jsonData){
 			var preg_asignadas = '<td class="text-center">'+$contenidos[i].preguntas_test+'</td>';
 			var editar = '<td><span data-id='+$contenidos[i].id_contenidos+' data-toggle="modal" data-target="#editarContenidoModal" class="editarContenido"><i class="fa fa-lg fa-pencil-square icon-cursor icon-editar" aria-hidden="true"> </i></span><span class="hidden-xs hidden-sm"> Editar</span></td>';
 			var eliminar = '<td><span data-id='+$contenidos[i].id_contenidos+' class="eliminarContenido"><i class="fa fa-lg fa-times-circle icon-cursor icon-eliminar" aria-hidden="true"></i></span></td></tr>';
-			$('#fila-contenido').append(td+preg+preg_asignadas+editar+eliminar+preg);
+
+			if($contenidos[i].activacion == 1){
+				var status = '<td class="text-center"><span><i class="fa fa-circle icon-activacion1" aria-hidden="true"></i></span></td>';
+			}
+			else{
+				var status = '<td class="text-center"><span><i class="fa fa-circle icon-activacion2" aria-hidden="true"></i></span></td>';
+			}
+
+			$('#fila-contenido').append(td+preg+preg_asignadas+status+editar+eliminar+preg);
 			num_preg($contenidos[i].id_contenidos,i);
 		}
 
@@ -346,6 +361,14 @@ function imprimirContenidos(jsonData){
 			  $('#subtemaEditar').val($contenido.subclave);
 			  $('#contenidoEditar').val($contenido.contenido);
 				$('#preguntasAsignadasEditar').val($contenido.preguntas_test);
+
+				if($contenido.activacion == 1){
+					$('#status-activo').prop("checked", true);
+				}
+				else{
+						$('#status-inactivo').prop("checked", true);
+				}
+
 			}
 			//Funciones para ELIMINAR un CONTENIDO
 			$('.eliminarContenido').on('click',buscarContenidoEliminar);
