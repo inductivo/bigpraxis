@@ -300,24 +300,25 @@ function imprimirContenidos(jsonData){
 	$contenidos= JSON.parse(jsonData);
 
 	if($contenidos.length > 0){
-		var th= '<div class="row"><div class="col-lg-12"><div class="table-responsive"><table id="fila-contenido" class="table table-condensed tabla-temas"><tr class="th-temas"><th class="text-center">Subtema</th><th class="text-center">Contenido</th><th class="text-center">Preguntas existentes</th><th class="text-center">Preguntas asignadas</th><th class="text-center">Status</th><th></th><th></th></tr></table></div></div></div>';
+		var th= '<div class="row"><div class="col-lg-12"><div class="table-responsive"><table id="fila-contenido" class="table table-condensed tabla-temas"><tr class="th-temas"><th class="text-center">Status</th><th class="text-center">Subtema</th><th class="text-center">Contenido</th><th class="text-center">Preguntas existentes</th><th class="text-center">Preguntas asignadas</th><th></th><th></th></tr></table></div></div></div>';
 		$('#content').html(th);
 
 		for(var i=0; i<$contenidos.length;i++){
-			var td = '<tr class="tr-temas"><td class="text-center">'+$contenidos[i].subclave+'</td><td>'+$contenidos[i].contenido+'</td>';
+			var inicio = '<tr class="tr-temas">';
+			var td = '<td class="text-center">'+$contenidos[i].subclave+'</td><td>'+$contenidos[i].contenido+'</td>';
 			var preg = '<td class="text-center"><strong><span id="num_cont'+i+'"></span></strong></td>';
 			var preg_asignadas = '<td class="text-center">'+$contenidos[i].preguntas_test+'</td>';
 			var editar = '<td><span data-id='+$contenidos[i].id_contenidos+' data-toggle="modal" data-target="#editarContenidoModal" class="editarContenido"><i class="fa fa-lg fa-pencil-square icon-cursor icon-editar" aria-hidden="true"> </i></span><span class="hidden-xs hidden-sm"> Editar</span></td>';
 			var eliminar = '<td><span data-id='+$contenidos[i].id_contenidos+' class="eliminarContenido"><i class="fa fa-lg fa-times-circle icon-cursor icon-eliminar" aria-hidden="true"></i></span></td></tr>';
 
 			if($contenidos[i].activacion == 1){
-				var status = '<td class="text-center"><span><i class="fa fa-circle icon-activacion1" aria-hidden="true"></i></span></td>';
+				var status = '<td class="text-center"><span><i class="fa fa-check-circle fa-lg icon-activacion1" aria-hidden="true"></i></span></td>';
 			}
 			else{
-				var status = '<td class="text-center"><span><i class="fa fa-circle icon-activacion2" aria-hidden="true"></i></span></td>';
+				var status = '<td class="text-center"><span><i class="fa fa-ban fa-lg icon-activacion2" aria-hidden="true"></i></span></td>';
 			}
 
-			$('#fila-contenido').append(td+preg+preg_asignadas+status+editar+eliminar+preg);
+			$('#fila-contenido').append(inicio+status+td+preg+preg_asignadas+editar+eliminar+preg);
 			num_preg($contenidos[i].id_contenidos,i);
 		}
 
