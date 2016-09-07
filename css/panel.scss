@@ -275,6 +275,15 @@ div.panelprincipal{
 .icon-cursor{
 	cursor: pointer;
 }
+
+.icon-activacion1{
+	color:#3FD363;
+}
+
+.icon-activacion2{
+	color:#ff4842;
+}
+
 .icon-eliminar{
 	color:$rojo;
 }
@@ -314,6 +323,48 @@ div.panelprincipal{
 	font-size: 18px;
 	line-height: 35px;
 	width: 100%;
+}
+
+.txtradio-editar{
+	font-family: "Roboto";
+	font-size: 18px;
+}
+
+[type="radio"] {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px; margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+[type="radio"] + span {
+  display: block;
+}
+
+[type="radio"] + span:before {
+  content: '';
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.1em;
+  border-radius: 1em;
+  border: 0.125em solid #fff;
+  box-shadow: 0 0 0 0.15em #000;
+  margin-right: 0.5em;
+  transition: 0.5s ease all;
+}
+
+[type="radio"]:checked + span.activo:before {
+  background: #3FD363;
+  box-shadow: 0 0 0 0.15em #000;
+}
+
+[type="radio"]:checked + span.noactivo:before {
+  background: #ff4842;
+  box-shadow: 0 0 0 0.15em #000;
 }
 
 .select{

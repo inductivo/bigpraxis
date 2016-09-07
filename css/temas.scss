@@ -36,6 +36,12 @@ li.li-contenidos {
   }
 }
 
+li.li-contenidos2 {
+  //cursor: pointer;
+  background-color: #ECECEC;
+  color: #D2D7D3;
+}
+
 .imgtemas{
   max-width: 250px;
 }
@@ -46,6 +52,10 @@ li.li-contenidos {
 
 .label-contenido{
   background-color: $azul !important;
+}
+
+.label-contenido2{
+  background-color: #D2D7D3 !important;
 }
 
 img.imgtemas:hover {
