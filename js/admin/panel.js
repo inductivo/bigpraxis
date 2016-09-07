@@ -1,4 +1,5 @@
 
+
 $('#grados').on('change', cargarSemestres);
 $('#grados').on('focus', cargarSemestres);
 
@@ -15,7 +16,12 @@ $('#temas').on('click', cargarContenidos);
 //CARGAR GRADOS
 function cargarGrados(){
 	obtenerGrados(imprimirGrados);
-	cargarSemestres();
+	cargarSemestres2();
+}
+
+//Funcion donde carga por default el Periodo con sus semestres
+function cargarSemestres2(){
+	obtenerSemestres(1,imprimirSemestres);
 }
 
 function obtenerGrados(imprimirGrados){
@@ -40,32 +46,34 @@ function imprimirGrados(jsonData){
 
 //CARGAR SEMESTRES
 function cargarSemestres(){
-	var idgrado = $('#grados').val();
-	obtenerSemestres(idgrado,imprimirSemestres);
+	var id_grados = $('#grados').val();
+	obtenerSemestres(id_grados,imprimirSemestres);
 }
 
-function obtenerSemestres(idgrado,imprimirSemestres){
+function obtenerSemestres(id_grados,imprimirSemestres){
 	$.ajax({
 		data : {
 			format :'jsonp',
 			method : 'get',
-			id_grados: idgrado
+			id_grados : id_grados
 		},
 		url: 'cargarsemestres',
 	}) .done(imprimirSemestres);
 }
 
 function imprimirSemestres(jsonData){
+	$opciones = JSON.parse(jsonData);
+
 	$('#semestres').empty();
 	$('#materias').empty();
 	$('#temas').empty();
 	$('#contenidos').empty();
 
-	$opciones = JSON.parse(jsonData);
-
-	for(i=0; i<$opciones.length;i++)
-	{
-		$('#semestres').append('<option value="'+ $opciones[i].id_semestre +'">'+ $opciones[i].semestre+'</option>');
+	if($opciones.length > 0){
+		for(i=0; i<$opciones.length;i++)
+		{
+			$('#semestres').append('<option value="'+ $opciones[i].id_semestre +'">'+ $opciones[i].semestre+'</option>');
+		}
 	}
 }
 

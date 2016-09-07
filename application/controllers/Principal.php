@@ -109,8 +109,9 @@ class Principal extends CI_Controller {
 		$this->Model_administracion->cargarGrados();
 	}
 
-	public function cargarSemestres(){
-		$this->Model_administracion->cargarSemestres();
+	public function cargarsemestres(){
+		$idgrados = $_GET['id_grados'];
+		$this->Model_administracion->cargarSemestres($idgrados);
 	}
 
 	public function cargarMaterias(){

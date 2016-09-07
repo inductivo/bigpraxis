@@ -15,7 +15,7 @@ class Model_administracion extends CI_Model{
 
     	public function cargarGrados()
       	{
-	        $query = $this->db->query('SELECT * FROM grados');
+	        $query = $this->db->query('SELECT id_grados,grado FROM grados');
 	        $arreglo = array();
 
 	        if($query->num_rows() > 0)
@@ -33,9 +33,11 @@ class Model_administracion extends CI_Model{
 	            echo $json;
       }
 
-      public function cargarSemestres()
+      public function cargarSemestres($id_grados)
       	{
-	        $query = $this->db->query('SELECT * FROM semestres');
+
+					$sql = "SELECT * FROM semestres WHERE id_grados = ?";
+        	$query = $this->db->query($sql, array($id_grados));
 	        $arreglo = array();
 
 	        if($query->num_rows() > 0)
