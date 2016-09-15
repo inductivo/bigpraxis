@@ -14,14 +14,14 @@
     <link rel="shortcut icon" href="/favicon.ico" />
 
     <!-- Bootstrap CSS -->
-    <link href="<?= base_url('css/bootstrap.min.css')?>" rel="stylesheet">
+    <link rel="stylesheet" href="<?= base_url('css/bootstrap.min.css')?>">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link href='https://fonts.googleapis.com/css?family=Montserrat|Lato:400,700,300,900|Roboto:400,100,300,700,500,900' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Montserrat|Lato:400,700,300,900|Roboto:400,100,300,700,500,900'>
 
 
     <!-- Custom CSS -->
-    <link href="<?= base_url('css/principal.css')?>" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="<?= base_url('css/sweetalert.css')?>">
+    <link rel="stylesheet" href="<?= base_url('css/principal.css')?>">
+    <link rel="stylesheet" href="<?= base_url('css/sweetalert.css')?>">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
     <!--Favicon -->
