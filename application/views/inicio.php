@@ -22,7 +22,6 @@
                 <img class="img-circle img-responsive img-center imgstep" src="<?= base_url('img/paso3.png')?>" alt="Tercero">
                 <h3 class="steps">3. Answer the Exercises</h3>
             </div>
-
         </div> <!--.row-->
 
         <div class="row divstart">
