@@ -54,4 +54,23 @@ function login_alumnos($email,$password){
 	}
 }
 
+function cambiar_password_alumno($pass_actual,$pass_nuevo){
+	if($this->CI->session->userdata('id_alumnos') == null){
+			redirect('principal/acceso_denegado');
+		}
+		else{
+			$id_alumno = $this->CI->session->userdata('id_alumnos');
+			$alumno_info = $this->CI->Model_alumnos->buscar_alumno($id_alumno);
+
+			if($alumno_info->password == $pass_actual){
+					$registro = array('id_alumnos' => $id_alumno,
+								  'password' => $pass_nuevo);
+					$this->CI->Model_alumnos->actualizar_alumno($registro);
+				}
+				else{
+					return FALSE;
+				}
+		}
+	}
+
 }

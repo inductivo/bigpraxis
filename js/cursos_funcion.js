@@ -13,7 +13,14 @@
 				method : 'get',
 				id_materias: id_materias
 			},
-			url : 'temas'
+			url : 'temas',
+			beforeSend: function(){
+        var loader = '<div class="col-lg-12 text-center">Cargando...</div>';
+        $('#loading').append(loader);
+      },
+      complete: function(){
+        $('#loading').remove();
+      }
 		}).done(mostrarTemas);
 	}
 

@@ -26,6 +26,8 @@
 
         <!--Sección de preguntas -->
         <div class="row seccion-preguntas">
+          <div id="loading" class="row"></div>
+
             <div class="col-lg-12 text-left">
                 <div id="caja" class="caja">
                     <div id="caja_incorrecto"></div>

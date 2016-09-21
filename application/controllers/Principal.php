@@ -13,6 +13,8 @@ class Principal extends CI_Controller {
 		$this->form_validation->set_message('validar_credenciales_profesores', '<strong>Incorrect</strong> <strong>Username</strong> or <strong>Password</strong>');
 		$this->form_validation->set_message('validar_credenciales_alumnos', '<strong>Incorrect</strong> <strong>Username</strong> or <strong>Password</strong>');
 		$this->form_validation->set_message('required', 'Ingresar <strong>%s</strong>');
+		$this->form_validation->set_message('matches', 'Las <b>contraseñas</b> no coinciden');
+		$this->form_validation->set_message('validar_credenciales_password', '<b>Contraseña ACTUAL</b> incorrecta');
 	}
 
 	public function index(){
@@ -24,6 +26,11 @@ class Principal extends CI_Controller {
 	public function cerrar_sesion(){
 		$this->session->sess_destroy();
 		redirect('principal/index');
+	}
+
+	public function cambiar_password(){
+		$data['contenido'] = 'alumnos/cambiar_password';
+		$this->load->view('templates/template_cursos',$data);
 	}
 
 	public function cursos(){
@@ -436,6 +443,25 @@ class Principal extends CI_Controller {
 			$this->load->view('templates/template_panel',$data);
 		}
 
+	}
+
+	public function validar_password_alumno(){
+		$this->form_validation->set_rules('pass_actual','Contraseña Actual','required|callback_validar_credenciales_password');
+		$this->form_validation->set_rules('pass_nuevo','Nueva Contraseña','required|matches[pass_nuevoc]');
+		$this->form_validation->set_rules('pass_nuevoc','Confirmar Nueva Contraseña:','required');
+
+		if ($this->form_validation->run()){
+			redirect('principal/panel_estudiantes');
+		} else{
+			$this->cambiar_password();
+		}
+
+	}
+
+	public function validar_credenciales_password(){
+		$pass_actual = $this->input->post('pass_actual');
+		$pass_nuevo = $this->input->post('pass_nuevo');
+		return $this->administracionlib->cambiar_password_alumno(md5($pass_actual),md5($pass_nuevo));
 	}
 
 }//FIN
