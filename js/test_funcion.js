@@ -142,7 +142,14 @@ $(document).ready(function() {
 				method : 'get',
 				id_contenidos: id_contenido
 			},
-			url : 'obtener_pregunta'
+			url : 'obtener_pregunta',
+			beforeSend: function(){
+        var loader = '<div class="col-lg-12 text-center">Cargando...</div>';
+        $('#loading').append(loader);
+      },
+      complete: function(){
+        $('#loading').remove();
+      }
 		}).done(mostrarPregunta2);
 	}
 

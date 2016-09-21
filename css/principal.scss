@@ -175,3 +175,55 @@ i.fac-icon:hover
 {
 	color:#55acee;
 }
+
+div.form-top{
+  padding: 0 25px 15px 25px;
+}
+
+.txt-password{
+	color: black;
+	font-family: "Lato";
+	font-size: 20px;
+}
+
+.input-password{
+	border: 2px solid #ECECEC;
+	border-radius: 5px;
+	font-family: "Roboto";
+	font-size: 18px;
+	line-height: 35px;
+	width: 100%;
+}
+
+div.box-password{
+  margin-top: 45px;
+	border: 5px solid white;
+	padding: 20px;
+	border-radius: 10px;
+}
+
+.btn-guardar{
+	border: 2px solid $verde;
+	background-color:$verde;
+	border-bottom:4px solid #1C7A43;
+	color: white;
+	font-size: 18px;
+	font-family: "Lato";
+
+		&:hover{
+			background-color: #3FD363;
+		}
+}
+
+.btn-cancelar{
+	border: 2px solid $rojo;
+	background-color: $rojo;
+	border-bottom:4px solid #AA4437;
+	color: white;
+	font-size: 18px;
+	font-family: "Lato";
+
+		&:hover{
+			background-color: #ff4842;
+		}
+	}

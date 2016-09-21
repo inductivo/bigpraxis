@@ -66,6 +66,7 @@
                       <a href="#" class="dropdown-toggle menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-lg avatar" aria-hidden="true"></i>  <?= $this->session->userdata('nombre'); ?> <?= $this->session->userdata('apellidos'); ?>
                       <span class="caret"></span></a>
                       <ul class="dropdown-menu">
+                        <li><a class="cerrarsesion" href="<?php echo site_url('principal/cambiar_password')?>" ><i class="fa fa-asterisk"></i> Cambiar contraseña</a></li>
                         <li><a class="cerrarsesion" href="<?php echo site_url('principal/cerrar_sesion')?>" ><font color="red"><i class="fa fa-power-off"></i></font> Cerrar sesión</a></li>
                       </ul>
                     </li>

@@ -10,7 +10,7 @@
 
 	<div id="titulo-tema" class="col-lg-12"></div>
 </div>
-
+<div id="loading" class="row"></div>
 <div id="lista-temas" class="row"></div>
 
 <script type="text/javascript" src="<?= base_url('js/jquery.js')?>"></script>

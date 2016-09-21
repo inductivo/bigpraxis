@@ -9,7 +9,14 @@
 				method : 'get',
 				id_temas: id_temas
 			},
-			url : 'subtemas'
+			url : 'subtemas',
+			beforeSend: function(){
+        var loader = '<div class="col-lg-12 text-center">Cargando...</div>';
+        $('#loading').append(loader);
+      },
+      complete: function(){
+        $('#loading').remove();
+      }
 		}).done(mostrarSubtemas);
 	}
 
